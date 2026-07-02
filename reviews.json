@@ -14,9 +14,44 @@
             "id": "electronics",
             "ru": "Электроника",
             "he": "אלקטרוניקה"
+        },
+        {
+            "id": "other",
+            "ru": "Other",
+            "he": "other"
         }
     ],
     "reviews": [
+        {
+            "id": "18v",
+            "category": "other",
+            "rating": 88.6,
+            "priceAli": 30.99,
+            "priceLocal": 68,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S4d143ffb272d4a40834e134face33744a.jpg",
+            "ru": {
+                "title": "Компактная УШМ для 18V батарей ⚡️",
+                "excerpt": "Устали от громоздкой «болгарки»? Эта компактная аккумуляторная УШМ идеально подходит для мелких работ по резке и совместима с популярными батареями 18V от Makita.",
+                "pros": [
+                    "Компактный размер",
+                    "Совместимость с Makita 18V",
+                    "Доступная цена"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/e/_c35ZFC7X"
+            },
+            "he": {
+                "title": "משחזת זווית קומפקטית לסוללות 18V ⚡️",
+                "excerpt": "נמאס לכם מהמשחזת הגדולה והמסורבלת? משחזת זווית נטענת וקומפקטית זו מושלמת לעבודות חיתוך קטנות ותואמת לסוללות 18V הפופולריות של מקיטה.",
+                "pros": [
+                    "גודל קומפקטי",
+                    "תאימות לסוללות מקיטה 18V",
+                    "מחיר אטרקטיבי"
+                ],
+                "linkText": "לקנייה בעליאקספרס",
+                "aliLink": "https://s.click.aliexpress.com/e/_c35ZFC7X"
+            }
+        },
         {
             "id": "hutt-w66",
             "category": "smarthome",
