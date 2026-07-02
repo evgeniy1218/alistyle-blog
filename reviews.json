@@ -14,9 +14,44 @@
             "id": "electronics",
             "ru": "Электроника",
             "he": "אלקטרוניקה"
+        },
+        {
+            "id": "other",
+            "ru": "Other",
+            "he": "other"
         }
     ],
     "reviews": [
+        {
+            "id": "item-1005011845133523",
+            "category": "other",
+            "rating": 83.3,
+            "priceAli": 67.54,
+            "priceLocal": 148,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S768457adfe9c499dbd8f76eeddfd0427H.jpg",
+            "ru": {
+                "title": "🚲 Защити свой велик, а не опустошай кошелек!",
+                "excerpt": "Надоело переживать, оставляя велосипед на улице? Умный U-замок от ROCKBROS с доступом по NFC защитит ваш транспорт и сбережет нервы, и все это по цене ниже налогового лимита.",
+                "pros": [
+                    "Бесключевой доступ NFC",
+                    "Надежная U-конструкция",
+                    "Полная водонепроницаемость"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://he.aliexpress.com/item/1005011845133523.html?spm=a2g0o.productlist.main.1.1f7dpgPgpgPgs3&algo_pvid=3443e1ed-c4f5-42ad-8625-1c1f1b89a101&algo_exp_id=3443e1ed-c4f5-42ad-8625-1c1f1b89a101-0&pdp_ext_f=%7B%22order%22%3A%2268%22%2C%22spu_best_type%22%3A%22price%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21EUR%21131.54%2160.51%21%21%21995.78%21458.06%21%40212e520f17829301353198578e083e%2112000056762735231%21sea%21IL%216063880761%21X%211%210%21n_tag%3A-29919%3Bd%3A14374e0%3Bm03_new_user%3A-29895&curPageLogUid=QXWIFzgS3uif&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005011845133523%7C_p_origin_prod%3A&connected_by=trendpiper&aff_fcid=e44bf43bc3fd4ea784b5591627ce90eb-1782930149132-09682-_DDBFVS9&tt=CPS_NORMAL&aff_fsk=_DDBFVS9&aff_platform=portals-tool&sk=_DDBFVS9&aff_trace_key=e44bf43bc3fd4ea784b5591627ce90eb-1782930149132-09682-_DDBFVS9&terminal_id=18ba36284ba7459dadcb8cccc4c68959&afSmartRedirect=y#nav-description"
+            },
+            "he": {
+                "title": "🚲 הגנה חכמה לאופניים, בלי לקרוע את הכיס!",
+                "excerpt": "נמאס לכם לדאוג כשאתם משאירים את האופניים בחוץ? מנעול פרסה חכם של ROCKBROS עם פתיחת NFC ישמור על הכלי שלכם ועל השקט הנפשי, והכל במחיר אטרקטיבי מתחת לרף המכס.",
+                "pros": [
+                    "פתיחה ב-NFC ללא מפתח",
+                    "מבנה פרסה חזק ואמין",
+                    "עמידות מלאה למים"
+                ],
+                "linkText": "לקנייה בעליאקספרס",
+                "aliLink": "https://he.aliexpress.com/item/1005011845133523.html?spm=a2g0o.productlist.main.1.1f7dpgPgpgPgs3&algo_pvid=3443e1ed-c4f5-42ad-8625-1c1f1b89a101&algo_exp_id=3443e1ed-c4f5-42ad-8625-1c1f1b89a101-0&pdp_ext_f=%7B%22order%22%3A%2268%22%2C%22spu_best_type%22%3A%22price%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21EUR%21131.54%2160.51%21%21%21995.78%21458.06%21%40212e520f17829301353198578e083e%2112000056762735231%21sea%21IL%216063880761%21X%211%210%21n_tag%3A-29919%3Bd%3A14374e0%3Bm03_new_user%3A-29895&curPageLogUid=QXWIFzgS3uif&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005011845133523%7C_p_origin_prod%3A&connected_by=trendpiper&aff_fcid=e44bf43bc3fd4ea784b5591627ce90eb-1782930149132-09682-_DDBFVS9&tt=CPS_NORMAL&aff_fsk=_DDBFVS9&aff_platform=portals-tool&sk=_DDBFVS9&aff_trace_key=e44bf43bc3fd4ea784b5591627ce90eb-1782930149132-09682-_DDBFVS9&terminal_id=18ba36284ba7459dadcb8cccc4c68959&afSmartRedirect=y#nav-description"
+            }
+        },
         {
             "id": "hutt-w66",
             "category": "smarthome",
