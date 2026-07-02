@@ -1,36 +1,110 @@
 {
     "categories": [
-        "other"
+        {
+            "id": "smarthome",
+            "ru": "Умный дом",
+            "he": "בית חכם"
+        },
+        {
+            "id": "cartech",
+            "ru": "Автотовары",
+            "he": "מוצרים לרכב"
+        },
+        {
+            "id": "electronics",
+            "ru": "Электроника",
+            "he": "אלקטרוניקה"
+        }
     ],
     "reviews": [
         {
-            "id": "item-1005011845133523",
-            "category": "other",
-            "rating": 83.3,
-            "priceAli": 67.54,
-            "priceLocal": 148,
-            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S768457adfe9c499dbd8f76eeddfd0427H.jpg",
+            "id": "hutt-w66",
+            "category": "smarthome",
+            "rating": 4.8,
+            "priceAli": 240,
+            "priceLocal": 550,
+            "image": "./hutt_robot.png",
             "ru": {
-                "title": "🚲 Защити свой велик, а не опустошай кошелек!",
-                "excerpt": "Надоело переживать, оставляя велосипед на улице? Умный U-замок от ROCKBROS с доступом по NFC защитит ваш транспорт и сбережет нервы, и все это по цене ниже налогового лимита.",
+                "title": "Робот-мойщик окон HUTT W66",
+                "excerpt": "Реальный спаситель от песка и пыли хамсинов на высоких этажах Израиля. Больше никакого риска при мытье окон.",
                 "pros": [
-                    "Бесключевой доступ NFC",
-                    "Надежная U-конструкция",
-                    "Полная водонепроницаемость"
+                    "Безопасность на высоте",
+                    "Автораспыление воды",
+                    "Управление со смартфона"
                 ],
                 "linkText": "Купить на AliExpress",
-                "aliLink": "https://he.aliexpress.com/item/1005011845133523.html?spm=a2g0o.productlist.main.1.1f7dpgPgpgPgs3&algo_pvid=3443e1ed-c4f5-42ad-8625-1c1f1b89a101&algo_exp_id=3443e1ed-c4f5-42ad-8625-1c1f1b89a101-0&pdp_ext_f=%7B%22order%22%3A%2268%22%2C%22spu_best_type%22%3A%22price%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21EUR%21131.54%2160.51%21%21%21995.78%21458.06%21%40212e520f17829301353198578e083e%2112000056762735231%21sea%21IL%216063880761%21X%211%210%21n_tag%3A-29919%3Bd%3A14374e0%3Bm03_new_user%3A-29895&curPageLogUid=QXWIFzgS3uif&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005011845133523%7C_p_origin_prod%3A&connected_by=trendpiper&aff_fcid=e44bf43bc3fd4ea784b5591627ce90eb-1782930149132-09682-_DDBFVS9&tt=CPS_NORMAL&aff_fsk=_DDBFVS9&aff_platform=portals-tool&sk=_DDBFVS9&aff_trace_key=e44bf43bc3fd4ea784b5591627ce90eb-1782930149132-09682-_DDBFVS9&terminal_id=18ba36284ba7459dadcb8cccc4c68959&afSmartRedirect=y#nav-description"
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=HUTT+window+cleaner+robot"
             },
             "he": {
-                "title": "🚲 הגנה חכמה לאופניים, בלי לקרוע את הכיס!",
-                "excerpt": "נמאס לכם לדאוג כשאתם משאירים את האופניים בחוץ? מנעול פרסה חכם של ROCKBROS עם פתיחת NFC ישמור על הכלי שלכם ועל השקט הנפשי, והכל במחיר אטרקטיבי מתחת לרף המכס.",
+                "title": "רובוט מנקה חלונות חכם HUTT W66",
+                "excerpt": "מציל אמיתי מפני אבק וחול של חמסינים בקומות גבוהות. לא מסתכנים יותר בניקוי חלונות ידני.",
                 "pros": [
-                    "פתיחה ב-NFC ללא מפתח",
-                    "מבנה פרסה חזק ואמין",
-                    "עמידות מלאה למים"
+                    "בטיחות בגובה",
+                    "ריסוס מים אוטומטי",
+                    "שליטה מהטלפון"
                 ],
                 "linkText": "לקנייה בעליאקספרס",
-                "aliLink": "https://he.aliexpress.com/item/1005011845133523.html?spm=a2g0o.productlist.main.1.1f7dpgPgpgPgs3&algo_pvid=3443e1ed-c4f5-42ad-8625-1c1f1b89a101&algo_exp_id=3443e1ed-c4f5-42ad-8625-1c1f1b89a101-0&pdp_ext_f=%7B%22order%22%3A%2268%22%2C%22spu_best_type%22%3A%22price%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21EUR%21131.54%2160.51%21%21%21995.78%21458.06%21%40212e520f17829301353198578e083e%2112000056762735231%21sea%21IL%216063880761%21X%211%210%21n_tag%3A-29919%3Bd%3A14374e0%3Bm03_new_user%3A-29895&curPageLogUid=QXWIFzgS3uif&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005011845133523%7C_p_origin_prod%3A&connected_by=trendpiper&aff_fcid=e44bf43bc3fd4ea784b5591627ce90eb-1782930149132-09682-_DDBFVS9&tt=CPS_NORMAL&aff_fsk=_DDBFVS9&aff_platform=portals-tool&sk=_DDBFVS9&aff_trace_key=e44bf43bc3fd4ea784b5591627ce90eb-1782930149132-09682-_DDBFVS9&terminal_id=18ba36284ba7459dadcb8cccc4c68959&afSmartRedirect=y#nav-description"
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=HUTT+window+cleaner+robot"
+            }
+        },
+        {
+            "id": "baseus-vacuum",
+            "category": "cartech",
+            "rating": 4.7,
+            "priceAli": 110,
+            "priceLocal": 230,
+            "image": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&auto=format&fit=crop&q=60",
+            "ru": {
+                "title": "Беспроводной автопылесос Baseus A2",
+                "excerpt": "Компактный и мощный пылесос для быстрой уборки салона. Отлично справляется с крошками и песком с пляжа.",
+                "pros": [
+                    "Легкий и мобильный",
+                    "Хорошая сила всасывания",
+                    "Заряжается от Type-C"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Baseus+car+vacuum"
+            },
+            "he": {
+                "title": "שואב אבק אלחוטי לרכב Baseus A2",
+                "excerpt": "שואב אבק קומפקטי ועוצמתי לניקוי מהיר של הרכב. מתמודד מצוין עם פירורים וחול מהים.",
+                "pros": [
+                    "קל ונייד",
+                    "עוצמת שאיבה טובה",
+                    "טעינה דרך Type-C"
+                ],
+                "linkText": "לקנייה בעליאקספרס",
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Baseus+car+vacuum"
+            }
+        },
+        {
+            "id": "ugreen-gan65",
+            "category": "electronics",
+            "rating": 4.9,
+            "priceAli": 78,
+            "priceLocal": 180,
+            "image": "https://images.unsplash.com/photo-1608248597481-496100c8c836?w=500&auto=format&fit=crop&q=60",
+            "ru": {
+                "title": "Быстрое зарядное устройство Ugreen GaN 65W",
+                "excerpt": "Универсальный сетевой адаптер, заменяющий кучу зарядок. Заряжает ноутбук, планшет и телефон одновременно.",
+                "pros": [
+                    "Технология GaN",
+                    "3 порта USB (2 Type-C)",
+                    "Защита от перегрева"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Ugreen+GaN+65W"
+            },
+            "he": {
+                "title": "מטען מהיר Ugreen GaN 65W",
+                "excerpt": "מטען קיר אוניברסלי שמחליף את כל המטענים שלכם. מטעין מחשב נייד, טאבלט וטלפון בו-זמנית.",
+                "pros": [
+                    "טכנולוגיית GaN מתקדמת",
+                    "3 יציאות USB מהירות",
+                    "הגנה מפני התחממות"
+                ],
+                "linkText": "לקנייה בעליאקספרס",
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Ugreen+GaN+65W"
             }
         }
     ]
