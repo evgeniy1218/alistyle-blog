@@ -16,15 +16,15 @@
             "he": "אלקטרוניקה"
         },
         {
-            "id": "other",
-            "ru": "Other",
-            "he": "other"
+            "id": "tools",
+            "ru": "Инструменты",
+            "he": "כלי עבודה"
         }
     ],
     "reviews": [
         {
             "id": "item-3256805826467085",
-            "category": "other",
+            "category": "tools",
             "rating": 92,
             "priceAli": 122.59,
             "priceLocal": 680,
@@ -64,7 +64,7 @@
         },
         {
             "id": "dewalt",
-            "category": "other",
+            "category": "tools",
             "rating": 89.1,
             "priceAli": 39.25,
             "priceLocal": 217,
@@ -104,7 +104,7 @@
         },
         {
             "id": "item-3256812184277123",
-            "category": "other",
+            "category": "tools",
             "rating": 98,
             "priceAli": 58.55,
             "priceLocal": 324,
@@ -136,7 +136,7 @@
         },
         {
             "id": "18v",
-            "category": "other",
+            "category": "tools",
             "rating": 88.6,
             "priceAli": 30.99,
             "priceLocal": 68,
@@ -166,7 +166,7 @@
         },
         {
             "id": "xiaomi",
-            "category": "other",
+            "category": "tools",
             "rating": 98,
             "priceAli": 78.13,
             "priceLocal": 433,
@@ -206,7 +206,7 @@
         },
         {
             "id": "makita",
-            "category": "other",
+            "category": "tools",
             "rating": 100,
             "priceAli": 36.89,
             "priceLocal": 204,
