@@ -23,96 +23,6 @@
     ],
     "reviews": [
         {
-            "id": "hutt-w66",
-            "category": "smarthome",
-            "rating": 4.8,
-            "priceAli": 240,
-            "priceLocal": 550,
-            "image": "./hutt_robot.png",
-            "ru": {
-                "title": "Робот-мойщик окон HUTT W66",
-                "excerpt": "Реальный спаситель от песка и пыли хамсинов на высоких этажах Израиля. Больше никакого риска при мытье окон.",
-                "pros": [
-                    "Безопасность на высоте",
-                    "Автораспыление воды",
-                    "Управление со смартфона"
-                ],
-                "linkText": "Купить на AliExpress",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=HUTT+window+cleaner+robot"
-            },
-            "he": {
-                "title": "רובוט מנקה חלונות חכם HUTT W66",
-                "excerpt": "מציל אמיתי מפני אבק וחול של חמסינים בקומות גבוהות. לא מסתכנים יותר בניקוי חלונות ידני.",
-                "pros": [
-                    "בטיחות בגובה",
-                    "ריסוס מים אוטומטי",
-                    "שליטה מהטלפון"
-                ],
-                "linkText": "לקנייה בעליאקספרס",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=HUTT+window+cleaner+robot"
-            }
-        },
-        {
-            "id": "baseus-vacuum",
-            "category": "cartech",
-            "rating": 4.7,
-            "priceAli": 110,
-            "priceLocal": 230,
-            "image": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&auto=format&fit=crop&q=60",
-            "ru": {
-                "title": "Беспроводной автопылесос Baseus A2",
-                "excerpt": "Компактный и мощный пылесос для быстрой уборки салона. Отлично справляется с крошками и песком с пляжа.",
-                "pros": [
-                    "Легкий и мобильный",
-                    "Хорошая сила всасывания",
-                    "Заряжается от Type-C"
-                ],
-                "linkText": "Купить на AliExpress",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Baseus+car+vacuum"
-            },
-            "he": {
-                "title": "שואב אבק אלחוטי לרכב Baseus A2",
-                "excerpt": "שואב אבק קומפקטי ועוצמתי לניקוי מהיר של הרכב. מתמודד מצוין עם פירורים וחול מהים.",
-                "pros": [
-                    "קל ונייד",
-                    "עוצמת שאיבה טובה",
-                    "טעינה דרך Type-C"
-                ],
-                "linkText": "לקנייה בעליאקספרס",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Baseus+car+vacuum"
-            }
-        },
-        {
-            "id": "ugreen-gan65",
-            "category": "electronics",
-            "rating": 4.9,
-            "priceAli": 78,
-            "priceLocal": 180,
-            "image": "https://images.unsplash.com/photo-1608248597481-496100c8c836?w=500&auto=format&fit=crop&q=60",
-            "ru": {
-                "title": "Быстрое зарядное устройство Ugreen GaN 65W",
-                "excerpt": "Универсальный сетевой адаптер, заменяющий кучу зарядок. Заряжает ноутбук, планшет и телефон одновременно.",
-                "pros": [
-                    "Технология GaN",
-                    "3 порта USB (2 Type-C)",
-                    "Защита от перегрева"
-                ],
-                "linkText": "Купить на AliExpress",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Ugreen+GaN+65W"
-            },
-            "he": {
-                "title": "מטען מהיר Ugreen GaN 65W",
-                "excerpt": "מטען קיר אוניברסלי שמחליף את כל המטענים שלכם. מטעין מחשב נייד, טאבלט וטלפון בו-זמנית.",
-                "pros": [
-                    "טכנולוגיית GaN מתקדמת",
-                    "3 יציאות USB מהירות",
-                    "הגנה מפני התחממות"
-                ],
-                "linkText": "לקנייה בעליאקספרס",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Ugreen+GaN+65W"
-            }
-        },
-        {
             "id": "dewalt",
             "category": "other",
             "rating": 89.1,
@@ -252,6 +162,96 @@
                 ],
                 "linkText": "לקנייה בעליאקספרס",
                 "aliLink": "https://s.click.aliexpress.com/e/_c3N3TqNJ"
+            }
+        },
+        {
+            "id": "hutt-w66",
+            "category": "smarthome",
+            "rating": 4.8,
+            "priceAli": 240,
+            "priceLocal": 550,
+            "image": "./hutt_robot.png",
+            "ru": {
+                "title": "Робот-мойщик окон HUTT W66",
+                "excerpt": "Реальный спаситель от песка и пыли хамсинов на высоких этажах Израиля. Больше никакого риска при мытье окон.",
+                "pros": [
+                    "Безопасность на высоте",
+                    "Автораспыление воды",
+                    "Управление со смартфона"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=HUTT+window+cleaner+robot"
+            },
+            "he": {
+                "title": "רובוט מנקה חלונות חכם HUTT W66",
+                "excerpt": "מציל אמיתי מפני אבק וחול של חמסינים בקומות גבוהות. לא מסתכנים יותר בניקוי חלונות ידני.",
+                "pros": [
+                    "בטיחות בגובה",
+                    "ריסוס מים אוטומטי",
+                    "שליטה מהטלפון"
+                ],
+                "linkText": "לקנייה בעליאקספרס",
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=HUTT+window+cleaner+robot"
+            }
+        },
+        {
+            "id": "baseus-vacuum",
+            "category": "cartech",
+            "rating": 4.7,
+            "priceAli": 110,
+            "priceLocal": 230,
+            "image": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&auto=format&fit=crop&q=60",
+            "ru": {
+                "title": "Беспроводной автопылесос Baseus A2",
+                "excerpt": "Компактный и мощный пылесос для быстрой уборки салона. Отлично справляется с крошками и песком с пляжа.",
+                "pros": [
+                    "Легкий и мобильный",
+                    "Хорошая сила всасывания",
+                    "Заряжается от Type-C"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Baseus+car+vacuum"
+            },
+            "he": {
+                "title": "שואב אבק אלחוטי לרכב Baseus A2",
+                "excerpt": "שואב אבק קומפקטי ועוצמתי לניקוי מהיר של הרכב. מתמודד מצוין עם פירורים וחול מהים.",
+                "pros": [
+                    "קל ונייד",
+                    "עוצמת שאיבה טובה",
+                    "טעינה דרך Type-C"
+                ],
+                "linkText": "לקנייה בעליאקספרס",
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Baseus+car+vacuum"
+            }
+        },
+        {
+            "id": "ugreen-gan65",
+            "category": "electronics",
+            "rating": 4.9,
+            "priceAli": 78,
+            "priceLocal": 180,
+            "image": "https://images.unsplash.com/photo-1608248597481-496100c8c836?w=500&auto=format&fit=crop&q=60",
+            "ru": {
+                "title": "Быстрое зарядное устройство Ugreen GaN 65W",
+                "excerpt": "Универсальный сетевой адаптер, заменяющий кучу зарядок. Заряжает ноутбук, планшет и телефон одновременно.",
+                "pros": [
+                    "Технология GaN",
+                    "3 порта USB (2 Type-C)",
+                    "Защита от перегрева"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Ugreen+GaN+65W"
+            },
+            "he": {
+                "title": "מטען מהיר Ugreen GaN 65W",
+                "excerpt": "מטען קיר אוניברסלי שמחליף את כל המטענים שלכם. מטעין מחשב נייד, טאבלט וטלפון בו-זמנית.",
+                "pros": [
+                    "טכנולוגיית GaN מתקדמת",
+                    "3 יציאות USB מהירות",
+                    "הגנה מפני התחממות"
+                ],
+                "linkText": "לקנייה בעליאקספרס",
+                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Ugreen+GaN+65W"
             }
         }
     ]
