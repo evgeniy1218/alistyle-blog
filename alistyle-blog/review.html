@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-head-title">Обзор товара — AliStyle Blog</title>
+    <meta name="description" content="Честные обзоры и тестирование гаджетов и товаров с AliExpress. Реальный опыт использования и выводы.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Reading Progress Bar -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo-link">
+                <span>AliStyle</span><span class="logo-dot"></span><span style="font-weight: 400; font-size: 1.1rem; color: var(--color-text-secondary); margin-left: 4px;" data-translate="logoSub">Blog</span>
+            </a>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link" data-filter="all" data-translate="navAll">Все</a></li>
+                    <li><a href="index.html" class="nav-link" data-filter="electronics" data-translate="navElectronics">Гаджеты</a></li>
+                    <li><a href="index.html" class="nav-link" data-filter="smarthome" data-translate="navSmartHome">Для дома</a></li>
+                    <li><a href="index.html" class="nav-link" data-filter="cartech" data-translate="navCarTech">Автотовары</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 16px;">
+                <div class="search-container">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="search-input" class="search-input" data-translate-placeholder="searchPlaceholder" placeholder="Поиск обзоров...">
+                </div>
+
+                <!-- Language Toggle Button -->
+                <button id="lang-toggle" class="lang-btn" style="background: none; border: 1.5px solid var(--color-text-primary); color: var(--color-text-primary); padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 12px; cursor: pointer; transition: all 0.2s ease;">HE</button>
+            </div>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="review-main">
+        
+        <!-- Breadcrumbs for SEO -->
+        <nav aria-label="Breadcrumb">
+            <ul class="breadcrumbs" id="breadcrumbs-container">
+                <li class="breadcrumb-item"><a href="index.html" data-translate="breadcrumbHome">Главная</a></li>
+                <li class="breadcrumb-separator">/</li>
+                <li class="breadcrumb-item" id="breadcrumb-category-item"><span id="breadcrumb-category">Раздел</span></li>
+                <li class="breadcrumb-separator">/</li>
+                <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-title">Загрузка...</li>
+            </ul>
+        </nav>
+
+        <!-- Dynamic Review Article -->
+        <article>
+            <header class="review-header">
+                <div class="review-meta">
+                    <span class="review-category" id="review-meta-category">Категория</span>
+                    <span class="review-date" id="review-meta-date">12 июля 2026</span>
+                </div>
+                <h1 class="review-h1" id="review-title">Загрузка обзора...</h1>
+            </header>
+
+            <!-- Fast Buy Box (Conversion-focused quick-view layout right at the top) -->
+            <section class="fast-buy-box" id="fast-buy-box">
+                <div class="fast-buy-gallery">
+                    <div class="fast-buy-image-container">
+                        <img class="fast-buy-image" id="review-image" src="logo.png" alt="Изображение товара" fetchpriority="high" width="300" height="300">
+                    </div>
+                    <div class="fast-buy-thumbnails" id="fast-buy-thumbnails">
+                        <!-- Clickable thumbnails -->
+                    </div>
+                </div>
+                <div class="fast-buy-info">
+                    <div class="fast-buy-rating">
+                        <span class="rating-text" data-translate="editorRating">Оценка редакции:</span>
+                        <div class="rating-stars" id="review-rating-stars">
+                            <!-- Stars loaded dynamically -->
+                        </div>
+                    </div>
+                    <div class="fast-buy-pros-cons">
+                        <h4 data-translate="verdictTitle">Особенности и преимущества:</h4>
+                        <ul class="fast-buy-list" id="review-pros-list">
+                            <!-- Pros list loaded dynamically -->
+                        </ul>
+                    </div>
+                    
+                    <!-- Pulsating CTA Button targeting AliExpress -->
+                    <a href="#" class="buy-button-ali" id="main-buy-btn" target="_blank" rel="nofollow noopener">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17.21 9l-4.38-6.56a1 1 0 0 0-.83-.44 1 1 0 0 0-.83.44L6.79 9H2a1 1 0 0 0-1 1v1a1 1 0 0 0 .88 1L3 21a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2l1.12-9a1 1 0 0 0 .88-1v-1a1 1 0 0 0-1-1h-4.79zM9.38 9l2.62-3.93L14.62 9H9.38zM19 21H5l-1-8h16l-1 8z"/>
+                        </svg>
+                        <span id="buy-btn-text" data-translate="buyBtnText">Узнать цену на AliExpress</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Detailed Review Content (Rendered from Markdown) -->
+            <div class="review-content" id="review-body">
+                <!-- Detailed text populated here -->
+            </div>
+        </article>
+
+        <!-- Messenger Banner (Inline version) -->
+        <section class="newsletter-section" style="margin: 40px 0; border-radius: var(--border-radius-md); background: #1C1C24; color: white;">
+            <div class="newsletter-card" style="padding: 10px;">
+                <h3 style="color: white; font-family: var(--font-serif); margin-bottom: 8px;" data-translate="messengerTitleShort">🔥 Скидки и Промокоды в Telegram</h3>
+                <p style="color: #B3B9C9; font-size: 0.9rem; margin-bottom: 16px;" data-translate="messengerDescShort">Каждый день публикуем подборки крутых товаров с AliExpress, промокоды и секретные купоны продавцов.</p>
+                <a href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer" class="messenger-btn tg" style="display: inline-flex; width: auto; font-size: 0.95rem; padding: 10px 24px;">
+                    <span data-translate="messengerTgBtnShort">Подписаться на Telegram</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Similar Articles (Interlinking) -->
+        <section class="similar-articles">
+            <h3 class="similar-title" data-translate="similarTitle">Похожие обзоры</h3>
+            <div class="similar-grid" id="similar-reviews-grid">
+                <!-- Dynamic interlinking cards loaded here -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating Mobile Buy Button (Sticky Footer) -->
+    <div class="mobile-sticky-cta" id="mobile-sticky-cta">
+        <div class="mobile-sticky-info">
+            <span class="mobile-sticky-title" id="sticky-title">Товар</span>
+            <span class="mobile-sticky-price" id="sticky-price">Скидка на AliExpress</span>
+        </div>
+        <a href="#" class="mobile-sticky-btn" id="sticky-buy-btn" target="_blank" rel="nofollow noopener" data-translate="stickyBuyBtnText">
+            Купить
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-top">
+            <div class="footer-logo-block">
+                <div class="footer-logo">
+                    <span>AliStyle</span><span class="logo-dot"></span><span>Blog</span>
+                </div>
+                <p class="footer-disclaimer" data-translate="footerDisclaimer">
+                    Честные обзоры и тестирование гаджетов с AliExpress. Мы не продаем товары напрямую, а находим лучшие предложения и делимся ссылками по партнерской программе AliExpress.
+                </p>
+            </div>
+            <div class="footer-links-block">
+                <h4 data-translate="footerNavTitle">Навигация</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html" data-filter="electronics" data-translate="navElectronics">Электроника</a></li>
+                    <li><a href="index.html" data-filter="smarthome" data-translate="navSmartHome">Товары для дома</a></li>
+                    <li><a href="index.html" data-filter="cartech" data-translate="navCarTech">Автотовары</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-block">
+                <h4 data-translate="footerLegalTitle">Правовая информация</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy.html" id="privacy-policy-link" data-translate="footerPrivacy">Политика конфиденциальности</a></li>
+                    <li><a href="agreement.html" id="affiliate-disclosure-link" data-translate="footerDisclosure">Партнерский дисклеймер</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p id="footer-copy" data-translate="footerCopy">© 2026 AliStyle Blog. Все права защищены. Цены и информация действительны на момент публикации обзоров.</p>
+            <div class="social-links">
+                <a href="#" class="social-icon-btn" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.28 7.68-7c.34-.3-.07-.46-.52-.16L7.74 12.06l-4.13-1.3c-.9-.28-.92-.9.19-1.33L19.92 3.1c.74-.27 1.39.18 1.15 1.25l-2.74 13.06c-.2.98-.78 1.22-1.58.77l-4.18-3.09-2 1.95c-.22.22-.4.4-.79.4z"/></svg>
+                </a>
+                <a href="#" class="social-icon-btn" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.507 9.388.507 9.388.507s7.517 0 9.388-.507a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+</body>
+</html>

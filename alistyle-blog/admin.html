@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AliStyle CMS - Панель управления</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <div class="admin-container">
+        
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-title">
+                <img src="logo.png" alt="AliStyle Logo">
+                <div>
+                    <h1>AliStyle CMS</h1>
+                    <p>Управление публикациями обзоров</p>
+                </div>
+                <span>Serverless v1.0</span>
+            </div>
+            <div class="admin-global-actions">
+                <button id="btn-save-deploy" class="btn btn-primary">Опубликовать в сеть 🚀</button>
+            </div>
+        </header>
+
+        <!-- GitHub Integration Settings -->
+        <section class="settings-card">
+            <div id="settings-toggle" class="settings-header">
+                <h2>⚙️ Настройки интеграции с GitHub (для автодеплоя)</h2>
+                <span id="settings-icon">▼</span>
+            </div>
+            <div id="settings-body" class="settings-body hidden">
+                <div class="form-group">
+                    <label>GitHub Username (Логин)</label>
+                    <input type="text" id="gh-owner" placeholder="Например: robotime-israel">
+                </div>
+                <div class="form-group">
+                    <label>Имя репозитория (Repository Name)</label>
+                    <input type="text" id="gh-repo" placeholder="Например: alistyle-blog">
+                </div>
+                <div class="form-group">
+                    <label>Путь к reviews.json в репозитории</label>
+                    <input type="text" id="gh-path" placeholder="reviews.json или alistyle-blog/reviews.json">
+                </div>
+                <div class="form-group form-group-full">
+                    <label>GitHub Personal Access Token (PAT)</label>
+                    <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxx">
+                </div>
+                <div class="form-group form-group-full">
+                    <button id="btn-save-settings" class="btn btn-secondary" style="align-self: flex-start;">Сохранить настройки в браузере</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Management Panel -->
+        <section class="settings-card">
+            <div id="categories-toggle" class="settings-header">
+                <h2>🏷️ Управление категориями сайта</h2>
+                <span id="categories-icon">▼</span>
+            </div>
+            <div id="categories-body" class="settings-body hidden">
+                <div class="form-group form-group-full">
+                    <div id="admin-categories-list" class="reviews-list">
+                        <!-- Categories list will be loaded dynamically -->
+                    </div>
+                </div>
+                
+                <!-- Add/Edit category inputs inline -->
+                <div class="form-group">
+                    <label id="cat-id-label">ID новой категории (латиницей)</label>
+                    <input type="text" id="new-cat-id" placeholder="Например: kitchen">
+                </div>
+                <div class="form-group">
+                    <label>Название на русском (RU)</label>
+                    <input type="text" id="new-cat-ru" placeholder="Кухня">
+                </div>
+                <div class="form-group">
+                    <label>Название на иврите (HE)</label>
+                    <input type="text" id="new-cat-he" placeholder="מטבח" style="direction: rtl;">
+                </div>
+                <div class="form-group" style="justify-content: flex-end; display: flex; gap: 10px;">
+                    <input type="hidden" id="cat-edit-mode" value="false">
+                    <input type="hidden" id="cat-edit-old-id" value="">
+                    <button id="btn-cancel-cat-edit" type="button" class="btn btn-secondary hidden" style="margin-top: 22px;">Отмена</button>
+                    <button id="btn-add-category" type="button" class="btn btn-primary" style="margin-top: 22px;">+ Добавить категорию</button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Reviews Management Panel -->
+        <section class="reviews-card">
+            <div class="reviews-bar">
+                <input type="text" id="admin-search" class="search-bar" placeholder="Поиск по обзорам...">
+                <button id="btn-add-review" class="btn btn-primary">+ Добавить новый обзор</button>
+            </div>
+            
+            <div id="admin-reviews-list" class="reviews-list">
+                <!-- Reviews items will be loaded here dynamically -->
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Modal Form (Add/Edit Review) -->
+    <div id="review-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Редактирование обзора</h2>
+                <button id="btn-close-modal" class="btn btn-secondary" style="padding: 4px 10px;">✕</button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="tab-general">Общие данные</button>
+                <button class="tab-btn" data-tab="tab-ru">Русская версия (RU)</button>
+                <button class="tab-btn" data-tab="tab-he">Иврит версия (HE)</button>
+            </div>
+
+            <form id="review-form">
+                <input type="hidden" id="form-id-hidden">
+
+                <!-- Tab General -->
+                <div id="tab-general" class="tab-pane">
+                    <div class="form-group">
+                        <label>ID публикации (латиницей, без пробелов)</label>
+                        <input type="text" id="form-id" placeholder="Например: hutt-w66" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Категория</label>
+                        <select id="form-category" required>
+                            <!-- Dynamic category options will be loaded here -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Рейтинг (от 1 до 5)</label>
+                        <input type="number" id="form-rating" step="0.1" min="1" max="5" placeholder="4.8" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Цена на Ali (в шекелях ₪)</label>
+                        <input type="number" id="form-price-ali" placeholder="240" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Цена в Израиле (в шекелях ₪)</label>
+                        <input type="number" id="form-price-local" placeholder="550" required>
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label>Ссылка на фото (URL или относительный путь)</label>
+                        <input type="text" id="form-image" placeholder="Например: ./hutt_robot.png" required>
+                    </div>
+                </div>
+
+                <!-- Tab Russian (RU) -->
+                <div id="tab-ru" class="tab-pane hidden">
+                    <div class="form-group">
+                        <label>Заголовок обзора (RU)</label>
+                        <input type="text" id="form-ru-title" placeholder="Робот-мойщик окон HUTT W66">
+                    </div>
+                    <div class="form-group">
+                        <label>Короткий анонс (RU)</label>
+                        <textarea id="form-ru-excerpt" rows="3" placeholder="Реальный спаситель от песка и пыли..."></textarea>
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label>Полный текст обзора (RU - Markdown)</label>
+                        <textarea id="form-ru-body" rows="8" placeholder="Полный текст обзора в формате Markdown..."></textarea>
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label>Преимущества / Плюсы (RU)</label>
+                        <div id="ru-pros-container" class="pros-list-editor">
+                            <!-- Dynamic inputs -->
+                        </div>
+                        <button type="button" id="btn-add-ru-pro" class="btn btn-secondary" style="margin-top: 8px; padding: 6px 12px; font-size: 12px;">+ Добавить плюс</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Текст кнопки (RU)</label>
+                        <input type="text" id="form-ru-btn-text" value="Купить на AliExpress">
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label>Реферальная ссылка (RU)</label>
+                        <input type="text" id="form-ru-link" placeholder="https://s.click.aliexpress.com/e/...">
+                    </div>
+                </div>
+
+                <!-- Tab Hebrew (HE) -->
+                <div id="tab-he" class="tab-pane hidden">
+                    <div class="form-group" style="direction: rtl;">
+                        <label>Заголовок обзора (HE)</label>
+                        <input type="text" id="form-he-title" placeholder="רובוט מנקה חלונות חכם HUTT W66">
+                    </div>
+                    <div class="form-group" style="direction: rtl;">
+                        <label>Короткий анонс (HE)</label>
+                        <textarea id="form-he-excerpt" rows="3" placeholder="מציל אמיתי מפני אבק וחול..."></textarea>
+                    </div>
+                    <div class="form-group form-group-full" style="direction: rtl;">
+                        <label>Полный текст обзора (HE - Markdown)</label>
+                        <textarea id="form-he-body" rows="8" placeholder="טקסט מלא של הסקירה בפורמט Markdown..." style="direction: rtl;"></textarea>
+                    </div>
+                    <div class="form-group form-group-full" style="direction: rtl;">
+                        <label>Преимущества / Плюсы (HE)</label>
+                        <div id="he-pros-container" class="pros-list-editor">
+                            <!-- Dynamic inputs -->
+                        </div>
+                        <button type="button" id="btn-add-he-pro" class="btn btn-secondary" style="margin-top: 8px; padding: 6px 12px; font-size: 12px;">+ להוסיף יתרון</button>
+                    </div>
+                    <div class="form-group" style="direction: rtl;">
+                        <label>Текст кнопки (HE)</label>
+                        <input type="text" id="form-he-btn-text" value="לקנייה בעליאקספרס">
+                    </div>
+                    <div class="form-group form-group-full" style="direction: rtl;">
+                        <label>Реферальная ссылка (HE)</label>
+                        <input type="text" id="form-he-link" placeholder="https://s.click.aliexpress.com/e/...">
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="modal-actions">
+                    <button type="button" id="btn-cancel" class="btn btn-secondary">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Сохранить обзор</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- App Logic -->
+    <script src="admin.js"></script>
+</body>
+</html>
