@@ -111,19 +111,11 @@
         },
         {
             "id": "baseus",
-            "category": "other",
-            "rating": 98.4,
-            "priceAli": 61.08,
+            "category": "electronics",
+            "rating": 5,
+            "priceAli": 61,
             "priceLocal": 338,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se1ac01e882884db195e87bfd6e9852b8t.jpg",
-            "images": [
-                "https://ae-pic-a1.aliexpress-media.com/kf/Se1ac01e882884db195e87bfd6e9852b8t.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Hc68e6fe4d5224e89b8148955cbec7001B.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/H9ca3279479a54af9a1211ea99a7c19c6o.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/H5fee610276f74a07a2aabbc31e9d2814L.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Hab4a5313cf3e498898e0d7441574361f3.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Sf1c915926a91423db4ac4530f5f2164cC.jpg"
-            ],
             "ru": {
                 "title": "Baseus-спаситель: честный тест пускового устройства",
                 "excerpt": "Надоело искать, у кого \"прикурить\"? Протестировали популярный бустер Baseus с AliExpress и рассказываем, спасет ли он вас в самый неподходящий момент.",
@@ -518,96 +510,6 @@
                 ],
                 "linkText": "לקנייה בעליאקספרס",
                 "aliLink": "https://he.aliexpress.com/item/1005011741382558.html?spm=a2g0o.best.0.0.1d812c25YQv5rO&pdp_npi=6%40dis%21EUR%21%E2%82%AC73.43%21%E2%82%AC35.25%21%21%21%21%21%400b1bf20a17798109013195404e5a88%2112000056411090577%21btfaff%21%21%21%211%210%21&pvid=e75769c9-c575-4547-b5ec-2940e37e5b58&afTraceInfo=1005011741382558__pc__pcBestMore2Love__hmyeHIH__1779810901804&_gl=1*p8ty4c*_gcl_au*MTk2OTE4MzA4MS4xNzc2Mjc5MDY5*_ga*Nzc1NzI3MDAzLjE3NDEwMzcxMDI.*_ga_VED1YSGNC7*czE3Nzk4MTA4ODEkbzg1JGcxJHQxNzc5ODEwODg3JGo1NCRsMCRoMA..&gatewayAdapt=glo2isr&connected_by=trendpiper&aff_fcid=573f3652b1104074978dfd18bda16cb1-1779810924858-06008-_DDBFVS9&tt=CPS_NORMAL&aff_fsk=_DDBFVS9&aff_platform=portals-tool&sk=_DDBFVS9&aff_trace_key=573f3652b1104074978dfd18bda16cb1-1779810924858-06008-_DDBFVS9&terminal_id=18ba36284ba7459dadcb8cccc4c68959&afSmartRedirect=y#nav-description"
-            }
-        },
-        {
-            "id": "hutt-w66",
-            "category": "smarthome",
-            "rating": 4.8,
-            "priceAli": 240,
-            "priceLocal": 550,
-            "image": "./hutt_robot.png",
-            "ru": {
-                "title": "Робот-мойщик окон HUTT W66",
-                "excerpt": "Реальный спаситель от песка и пыли хамсинов на высоких этажах Израиля. Больше никакого риска при мытье окон.",
-                "pros": [
-                    "Безопасность на высоте",
-                    "Автораспыление воды",
-                    "Управление со смартфона"
-                ],
-                "linkText": "Купить на AliExpress",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=HUTT+window+cleaner+robot"
-            },
-            "he": {
-                "title": "רובוט מנקה חלונות חכם HUTT W66",
-                "excerpt": "מציל אמיתי מפני אבק וחול של חמסינים בקומות גבוהות. לא מסתכנים יותר בניקוי חלונות ידני.",
-                "pros": [
-                    "בטיחות בגובה",
-                    "ריסוס מים אוטומטי",
-                    "שליטה מהטלפון"
-                ],
-                "linkText": "לקנייה בעליאקספרס",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=HUTT+window+cleaner+robot"
-            }
-        },
-        {
-            "id": "baseus-vacuum",
-            "category": "cartech",
-            "rating": 4.7,
-            "priceAli": 110,
-            "priceLocal": 230,
-            "image": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&auto=format&fit=crop&q=60",
-            "ru": {
-                "title": "Беспроводной автопылесос Baseus A2",
-                "excerpt": "Компактный и мощный пылесос для быстрой уборки салона. Отлично справляется с крошками и песком с пляжа.",
-                "pros": [
-                    "Легкий и мобильный",
-                    "Хорошая сила всасывания",
-                    "Заряжается от Type-C"
-                ],
-                "linkText": "Купить на AliExpress",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Baseus+car+vacuum"
-            },
-            "he": {
-                "title": "שואב אבק אלחוטי לרכב Baseus A2",
-                "excerpt": "שואב אבק קומפקטי ועוצמתי לניקוי מהיר של הרכב. מתמודד מצוין עם פירורים וחול מהים.",
-                "pros": [
-                    "קל ונייד",
-                    "עוצמת שאיבה טובה",
-                    "טעינה דרך Type-C"
-                ],
-                "linkText": "לקנייה בעליאקספרס",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Baseus+car+vacuum"
-            }
-        },
-        {
-            "id": "ugreen-gan65",
-            "category": "electronics",
-            "rating": 4.9,
-            "priceAli": 78,
-            "priceLocal": 180,
-            "image": "https://images.unsplash.com/photo-1608248597481-496100c8c836?w=500&auto=format&fit=crop&q=60",
-            "ru": {
-                "title": "Быстрое зарядное устройство Ugreen GaN 65W",
-                "excerpt": "Универсальный сетевой адаптер, заменяющий кучу зарядок. Заряжает ноутбук, планшет и телефон одновременно.",
-                "pros": [
-                    "Технология GaN",
-                    "3 порта USB (2 Type-C)",
-                    "Защита от перегрева"
-                ],
-                "linkText": "Купить на AliExpress",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Ugreen+GaN+65W"
-            },
-            "he": {
-                "title": "מטען מהיר Ugreen GaN 65W",
-                "excerpt": "מטען קיר אוניברסלי שמחליף את כל המטענים שלכם. מטעין מחשב נייד, טאבלט וטלפון בו-זמנית.",
-                "pros": [
-                    "טכנולוגיית GaN מתקדמת",
-                    "3 יציאות USB מהירות",
-                    "הגנה מפני התחממות"
-                ],
-                "linkText": "לקנייה בעליאקספרס",
-                "aliLink": "https://www.aliexpress.com/wholesale?SearchText=Ugreen+GaN+65W"
             }
         }
     ]
