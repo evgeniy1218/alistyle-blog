@@ -255,6 +255,8 @@ function applyLanguageSettings() {
     });
 }
 
+let siteSettingsData = {};
+
 /**
  * Fetch Reviews JSON Data
  */
@@ -264,9 +266,32 @@ async function fetchDatabase() {
         const data = await response.json();
         categoriesData = data.categories || [];
         reviewsData = data.reviews || [];
+        siteSettingsData = data.siteSettings || {};
+        applySiteSettings();
     } catch (e) {
         console.error('Error fetching reviews database:', e);
         reviewsData = [];
+    }
+}
+
+/**
+ * Apply Social Links to DOM elements dynamically
+ */
+function applySiteSettings() {
+    if (!siteSettingsData) return;
+
+    const tgLinks = document.querySelectorAll('a[href*="t.me"]');
+    const waLinks = document.querySelectorAll('a[href*="chat.whatsapp.com"]');
+    const ytLinks = document.querySelectorAll('a[aria-label="YouTube"]');
+
+    if (siteSettingsData.telegramLink) {
+        tgLinks.forEach(link => { link.href = siteSettingsData.telegramLink; });
+    }
+    if (siteSettingsData.whatsappLink) {
+        waLinks.forEach(link => { link.href = siteSettingsData.whatsappLink; });
+    }
+    if (siteSettingsData.youtubeLink) {
+        ytLinks.forEach(link => { link.href = siteSettingsData.youtubeLink; });
     }
 }
 

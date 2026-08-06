@@ -1,5 +1,10 @@
 let reviewsData = [];
 let categoriesData = [];
+let siteSettingsData = {
+    telegramLink: "https://t.me/your_channel",
+    whatsappLink: "https://chat.whatsapp.com/your_group",
+    youtubeLink: "https://youtube.com/@your_channel"
+};
 let loadedReviewIds = [];
 let loadedCategoryIds = [];
 
@@ -73,6 +78,9 @@ async function fetchReviews() {
         
         categoriesData = data.categories || [];
         reviewsData = data.reviews || [];
+        if (data.siteSettings) {
+            siteSettingsData = data.siteSettings;
+        }
         
         loadedReviewIds = reviewsData.map(r => r.id);
         loadedCategoryIds = categoriesData.map(c => typeof c === 'object' ? c.id : c);
@@ -80,6 +88,7 @@ async function fetchReviews() {
         renderReviewsList();
         renderCategoriesList();
         populateCategoryDropdown();
+        populateSocialLinksInputs();
     } catch (e) {
         console.error("Error fetching reviews:", e);
         categoriesData = [];
@@ -90,6 +99,16 @@ async function fetchReviews() {
         renderCategoriesList();
         populateCategoryDropdown();
     }
+}
+
+function populateSocialLinksInputs() {
+    const tgInput = document.getElementById("site-tg-link");
+    const waInput = document.getElementById("site-wa-link");
+    const ytInput = document.getElementById("site-yt-link");
+
+    if (tgInput) tgInput.value = siteSettingsData.telegramLink || "";
+    if (waInput) waInput.value = siteSettingsData.whatsappLink || "";
+    if (ytInput) ytInput.value = siteSettingsData.youtubeLink || "";
 }
 
 
@@ -161,6 +180,29 @@ function setupEventListeners() {
         document.getElementById("settings-body").classList.add("hidden");
         document.getElementById("settings-icon").innerText = "▼";
     });
+
+    // Socials toggle & save
+    const socialsToggle = document.getElementById("socials-toggle");
+    if (socialsToggle) {
+        socialsToggle.addEventListener("click", () => {
+            const body = document.getElementById("socials-body");
+            body.classList.toggle("hidden");
+            document.getElementById("socials-icon").innerText = body.classList.contains("hidden") ? "▼" : "▲";
+        });
+    }
+
+    const btnSaveSocials = document.getElementById("btn-save-socials");
+    if (btnSaveSocials) {
+        btnSaveSocials.addEventListener("click", () => {
+            siteSettingsData.telegramLink = document.getElementById("site-tg-link").value.trim();
+            siteSettingsData.whatsappLink = document.getElementById("site-wa-link").value.trim();
+            siteSettingsData.youtubeLink = document.getElementById("site-yt-link").value.trim();
+
+            alert("Ссылки соцсетей обновлены локально! Нажмите «Опубликовать в сеть 🚀» для применения на сайте.");
+            document.getElementById("socials-body").classList.add("hidden");
+            document.getElementById("socials-icon").innerText = "▼";
+        });
+    }
 
     // Global Save and Deploy to GitHub
     document.getElementById("btn-save-deploy").addEventListener("click", () => {
@@ -458,8 +500,9 @@ async function deployToGitHub() {
         renderCategoriesList();
         populateCategoryDropdown();
 
-        // 2. Encode config (categories & reviews) in Base64
+        // 2. Encode config (siteSettings, categories & reviews) in Base64
         const payloadData = {
+            siteSettings: siteSettingsData,
             categories: categoriesData,
             reviews: reviewsData
         };
@@ -503,6 +546,7 @@ async function deployToGitHub() {
 // Backup: local download of reviews.json
 function downloadJsonBackup() {
     const payloadData = {
+        siteSettings: siteSettingsData,
         categories: categoriesData,
         reviews: reviewsData
     };
