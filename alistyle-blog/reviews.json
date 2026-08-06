@@ -1,4 +1,9 @@
 {
+    "siteSettings": {
+        "telegramLink": "https://t.me/your_channel",
+        "whatsappLink": "https://chat.whatsapp.com/your_group",
+        "youtubeLink": "https://youtube.com/@your_channel"
+    },
     "categories": [
         {
             "id": "smarthome",
