@@ -34,9 +34,119 @@
             "id": "5aliexpress",
             "ru": "5aliexpress",
             "he": "5aliexpress"
+        },
+        {
+            "id": "aliexpress",
+            "ru": "Aliexpress",
+            "he": "aliexpress"
         }
     ],
     "reviews": [
+        {
+            "id": "7---aliexpress",
+            "category": "aliexpress",
+            "rating": 4.8,
+            "priceAli": 0.0,
+            "priceLocal": 100,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sbcc4f796d1fb44128ab9a61dc20e3ef8B.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sbcc4f796d1fb44128ab9a61dc20e3ef8B.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sde0726e06b7949b78a43ef94d2ea56e2q.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sc46796044d3a457aa52969ef37d13f0aO.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S8348f6c7d4a54710b04ebfee630fae89I.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sef76bad5144b4a03990ab783bd5cbfcdl.jpg"
+            ],
+            "isCollection": true,
+            "products": [
+                {
+                    "id": 108,
+                    "title": "220V 800W High Power Paint Sprayer 900ml Electric Spray Gun Easy Spraying Cleaning for Home Painting Home Interior and Exterior",
+                    "priceAli": 87.99,
+                    "priceFormatted": "325.6 ₪",
+                    "rating": "5.0",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sbcc4f796d1fb44128ab9a61dc20e3ef8B.jpg",
+                    "aliLink": "http://129.121.96.26/api/v1/redirects/go/DTnKYmj9"
+                },
+                {
+                    "id": 104,
+                    "title": "TINSOL New Handheld High Temperature Steam Cleaner Kitchen Hood Cleaner for Deep Cleaning and Sanitising Electric Steam Cleaner",
+                    "priceAli": 64.48,
+                    "priceFormatted": "238.6 ₪",
+                    "rating": "4.5",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sde0726e06b7949b78a43ef94d2ea56e2q.png",
+                    "aliLink": "http://129.121.96.26/api/v1/redirects/go/j73xvkoB"
+                },
+                {
+                    "id": 103,
+                    "title": "2-in-1 Air Purifier with Humidifier Combo for Home Allergies and Pets Hair, Smokers in Bedroom, H13 True HEPA Filter",
+                    "priceAli": 111.63,
+                    "priceFormatted": "413.0 ₪",
+                    "rating": "4.7",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc46796044d3a457aa52969ef37d13f0aO.jpg",
+                    "aliLink": "http://129.121.96.26/api/v1/redirects/go/i527Kby7"
+                },
+                {
+                    "id": 105,
+                    "title": "Mini Hea Bag Seal Machine Package Sealer Bags Thermal Plastic Food Bag",
+                    "priceAli": 4.69,
+                    "priceFormatted": "17.4 ₪",
+                    "rating": "4.9",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S8348f6c7d4a54710b04ebfee630fae89I.jpg",
+                    "aliLink": "http://129.121.96.26/api/v1/redirects/go/VokWwjd5"
+                },
+                {
+                    "id": 101,
+                    "title": "SKIL DL6300 1/4 Inch Electric Impact Drill Electric Screwdriver 50N.m Brushless Motor Double Headed Quick Change 12V/20V Battery",
+                    "priceAli": 103.47,
+                    "priceFormatted": "382.8 ₪",
+                    "rating": "4.5",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sef76bad5144b4a03990ab783bd5cbfcdl.jpg",
+                    "aliLink": "http://129.121.96.26/api/v1/redirects/go/AUJXXuxS"
+                },
+                {
+                    "id": 100,
+                    "title": "Automatic Wine Dispenser Smart Sensor Wine Pump 4 Modes Touch Screen Digital for Red Wine Whiskey Liquor Electric Decanter",
+                    "priceAli": 22.91,
+                    "priceFormatted": "84.8 ₪",
+                    "rating": "4.8",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S7d2287436efc470f88699d669975b395J.jpg",
+                    "aliLink": "http://129.121.96.26/api/v1/redirects/go/ddcGhy6b"
+                },
+                {
+                    "id": 97,
+                    "title": "NOYAFA NF-8401 Automatic Circuit Breaker Finder 220V Circuit Switch Tester Fuse Socket Tester Electrician Diagnostic Tool",
+                    "priceAli": 53.84,
+                    "priceFormatted": "199.2 ₪",
+                    "rating": "4.8",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S10ebed713ee542029ad1ccb72de54f11o.jpg",
+                    "aliLink": "http://129.121.96.26/api/v1/redirects/go/apUh6fhj"
+                }
+            ],
+            "ru": {
+                "title": "Топ 7 товаров на AliExpress для вашего дома",
+                "excerpt": "Исследуйте нашу подборку из 7 лучших товаров на AliExpress, которые облегчат вашу жизнь и сделают дом более комфортным.",
+                "body": "Когда речь заходит о комфорте и удобстве в доме, правильные инструменты и устройства могут сыграть ключевую роль. Мы сделали для вас подборку из 7 лучших товаров на AliExpress, которые помогут вам сделать быт проще и комфортнее. От мощных распылителей краски до необычных гаджетов, такая подборка будет полезна каждому! Давайте рассмотрим эти fantastic товары подробнее.\n\n1. **220V 800W High Power Paint Sprayer 900ml Electric Spray Gun**\n**Цена:** 325.6 ₪  \n**Рейтинг:** ⭐️ 5.0 / 5  \nЭтот электрический распылитель краски просто находка для домашнего использования. Он позволяет быстро и ровно наносить краску, что сделает ваши проекты по благоустройству более легкими и быстрыми. Плюс, его просто чистить!\n👉 [Купить здесь](https://s.click.aliexpress.com/e/_c33abmrL)  \n\n2. **TINSOL New Handheld High Temperature Steam Cleaner**\n**Цена:** 238.6 ₪  \n**Рейтинг:** ⭐️ 4.5 / 5  \nПаровой очиститель TINSOL обеспечивает глубокую очистку благодаря высокой температуре пара. Он идеально подходит для кухни и может использоваться для дезинфекции различных поверхностей. Легкий и удобный в использовании!\n👉 [Купить здесь](https://he.aliexpress.com/item/1005009121075066.html)  \n\n3. **2-in-1 Air Purifier with Humidifier Combo**\n**Цена:** 413.0 ₪  \n**Рейтинг:** ⭐️ 4.7 / 5  \nЭтот очиститель воздуха с функцией увлажнителя - отличный выбор для людей, страдающих от аллергии и домашних животных. Он работает тихо и эффективно, обеспечивая свежий и чистый воздух в вашем доме.\n👉 [Купить здесь](https://he.aliexpress.com/item/1005006356982966.html)  \n\n4. **Mini Hea Bag Seal Machine**\n**Цена:** 17.4 ₪  \n**Рейтинг:** ⭐️ 4.9 / 5  \nМини-упаковочная машина станет вашим незаменимым помощником на кухне. Она быстро и надежно запечатает пакеты, сохраняя свежесть продуктов. Идеально подходит для хранения остатков еды.\n👉 [Купить здесь](https://s.click.aliexpress.com/e/_c4eBbUGl)  \n\n5. **SKIL DL6300 Electric Impact Drill**\n**Цена:** 382.8 ₪  \n**Рейтинг:** ⭐️ 4.5 / 5  \nЭлектрическая ударная дрель SKIL - это мощный инструмент с расходами, которые оправдают себя. С легкостью справляется с различными задачами, а аккумулятор позволяет работать без проводов.\n👉 [Купить здесь](https://s.click.aliexpress.com/e/_c45kGCHZ)  \n\n6. **Automatic Wine Dispenser Smart Sensor Wine Pump**\n**Цена:** 84.8 ₪  \n**Рейтинг:** ⭐️ 4.8 / 5  \nЭтот умный дозатор вина - отличный аксессуар для любителей вина. Он обеспечивает идеальную порцию каждый раз и сохранит аромат вашего напитка.\n👉 [Купить здесь](https://s.click.aliexpress.com/e/_c3AM9suJ)  \n\n7. **NOYAFA NF-8401 Automatic Circuit Breaker Finder**\n**Цена:** 199.2 ₪  \n**Рейтинг:** ⭐️ 4.8 / 5  \nИдеальный инструмент для электриков и домашних мастеров! Этот тестер поможет быстро найти автомат, отвечающий за определенную цепь, что значительно упростит работы по электричеству.\n👉 [Купить здесь](https://s.click.aliexpress.com/e/_c3911qVD)  \n\nЭта подборка товаров из AliExpress поможет упростить ваши домашние дела и сделать жизнь более комфортной. Обязательно загляните по ссылкам и выберите то, что вам наилучшим образом подойдет!",
+                "pros": [
+                    "Широкий выбор товаров",
+                    "Высокое качество",
+                    "Удобные ссылки для покупки"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": ""
+            },
+            "he": {
+                "title": "הטובים ביותר: 7 מוצרים מ-AliExpress לביתכם",
+                "excerpt": "גלה את האוסף שלנו של 7 המוצרים הטובים ביותר מ-AliExpress שישפכו אור על החיים שלך בבית.",
+                "body": "כאשר מדובר בנוחות ופשטות בבית, הכלים והאביזרים הנכונים יכולים לשחק תפקיד קרדינלי. אנו הכנו עבורכם אוסף של 7 המוצרים הטובים ביותר מ-AliExpress שיעזרו לכם לפשט את החיים שלכם ולעשות את הבית שלכם לנעים יותר. מהמפריחים צבע החזקים ועד גאדג'טים יוצאי דופן, אוסף כזה יהיה מועיל לכל אחד! בואו נבחן את המוצרים המדהימים הללו בפירוט.\n\n1. **220V 800W High Power Paint Sprayer 900ml Electric Spray Gun**\n**מחיר:** 325.6 ₪  \n**דירוג:** ⭐️ 5.0 / 5  \nהמפריח צבע החשמלי הזה הוא מציאה לשימוש ביתי. הוא מאפשר ליישם צבע במהירות ובאופן אחיד, מה שיגרום לפרויקטים שלכם להיות קלים ומהירים יותר. בנוסף, קל לנקות אותו!\n👉 [לקנייה כאן](https://s.click.aliexpress.com/e/_c33abmrL)  \n\n2. **TINSOL New Handheld High Temperature Steam Cleaner**\n**מחיר:** 238.6 ₪  \n**דירוג:** ⭐️ 4.5 / 5  \nהמנקה אדים TINSOL מספק ניקוי מעמיק הודות לטמפרטורת אדים גבוהה. הוא מושלם למטבח וניתן להשתמש בו לחיטוי משטחים שונים. קל ונוח לשימוש!\n👉 [לקנייה כאן](https://he.aliexpress.com/item/1005009121075066.html)  \n\n3. **2-in-1 Air Purifier with Humidifier Combo**\n**מחיר:** 413.0 ₪  \n**דירוג:** ⭐️ 4.7 / 5  \nהמנקה אוויר הזה עם פונקציית לחות הוא בחירה מצוינת עבור אנשים הסובלים מאלרגיות ובעלי חיים. הוא פועל בשקט וביעילות, ומספק אוויר רענן ונקי לביתכם.\n👉 [לקנייה כאן](https://he.aliexpress.com/item/1005006356982966.html)  \n\n4. **Mini Hea Bag Seal Machine**\n**מחיר:** 17.4 ₪  \n**דירוג:** ⭐️ 4.9 / 5  \nמכונת האריזות הקטנה הזו תהיה העוזר הבלתי נדלה שלכם במטבח. היא סוגרת את השקיות במהירות ובאופן מהימן, ומסייעת לשמור על טריות המזון. מושלם לאחסון שאריות אוכל.\n👉 [לקנייה כאן](https://s.click.aliexpress.com/e/_c4eBbUGl)  \n\n5. **SKIL DL6300 Electric Impact Drill**\n**מחיר:** 382.8 ₪  \n**דירוג:** ⭐️ 4.5 / 5  \nמקדחת ההשפעה החשמלית SKIL היא כלי עוצמתי עם יישומים שמחזירים את ההשקעה שלה. היא מתמודדת בקלות עם משימות שונות, והסוללה מאפשרת עבודה ללא חוטים.\n👉 [לקנייה כאן](https://s.click.aliexpress.com/e/_c45kGCHZ)  \n\n6. **Automatic Wine Dispenser Smart Sensor Wine Pump**\n**מחיר:** 84.8 ₪  \n**דירוג:** ⭐️ 4.8 / 5  \nהדיספנסר החכם הזה הוא אביזר מצוין לאוהבי היין. הוא מספק את המנה המושלמת בכל פעם ושומר על הארומה של המשקה שלכם.\n👉 [לקנייה כאן](https://s.click.aliexpress.com/e/_c3AM9suJ)  \n\n7. **NOYAFA NF-8401 Automatic Circuit Breaker Finder**\n**מחיר:** 199.2 ₪  \n**דירוג:** ⭐️ 4.8 / 5  \nכלי אידיאלי עבור חשמלאים ואנשי מקצוע! המבחן הזה עוזר למצוא בקלות את המפסק האחראי על מעגל מסוים, מה שמקל במידה רבה על עבודות חשמל.\n👉 [לקנייה כאן](https://s.click.aliexpress.com/e/_c3911qVD)  \n\nאסופת המוצרים הזו מ-AliExpress תסייע לכם לפשט את העבודות הביתיות ולעשות את החיים שלכם לנוחים יותר. אל תהססו להיכנס לקישורים ולבחור את מה שטוב ביותר בשבילכם!",
+                "pros": [
+                    "מגוון רחב של מוצרים",
+                    "איכות גבוהה",
+                    "לינקים נוחים לרכישה"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": ""
+            }
+        },
         {
             "id": "220v-800w-high-power-paint-spr",
             "category": "other",
