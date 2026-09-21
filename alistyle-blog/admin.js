@@ -89,6 +89,7 @@ async function fetchReviews() {
         renderCategoriesList();
         populateCategoryDropdown();
         populateSocialLinksInputs();
+        populateAdsInputs();
     } catch (e) {
         console.error("Error fetching reviews:", e);
         categoriesData = [];
@@ -109,6 +110,62 @@ function populateSocialLinksInputs() {
     if (tgInput) tgInput.value = siteSettingsData.telegramLink || "";
     if (waInput) waInput.value = siteSettingsData.whatsappLink || "";
     if (ytInput) ytInput.value = siteSettingsData.youtubeLink || "";
+}
+
+function populateAdsInputs() {
+    const ads = siteSettingsData.ads || {};
+    const top = ads.topBanner || {};
+    const article = ads.inArticleBanner || {};
+
+    // Top banner
+    const topEnabled = document.getElementById("ad-top-enabled");
+    const topType = document.getElementById("ad-top-type");
+    const topImage = document.getElementById("ad-top-image");
+    const topLink = document.getElementById("ad-top-link");
+    const topAlt = document.getElementById("ad-top-alt");
+    const topHtml = document.getElementById("ad-top-html");
+
+    if (topEnabled) topEnabled.checked = !!top.enabled;
+    if (topType) {
+        topType.value = top.type || "image";
+        toggleAdTypeFields("top", topType.value);
+    }
+    if (topImage) topImage.value = top.imageUrl || "";
+    if (topLink) topLink.value = top.linkUrl || "";
+    if (topAlt) topAlt.value = top.altText || "";
+    if (topHtml) topHtml.value = top.customHtml || "";
+
+    // In-Article banner
+    const artEnabled = document.getElementById("ad-article-enabled");
+    const artType = document.getElementById("ad-article-type");
+    const artImage = document.getElementById("ad-article-image");
+    const artLink = document.getElementById("ad-article-link");
+    const artAlt = document.getElementById("ad-article-alt");
+    const artHtml = document.getElementById("ad-article-html");
+
+    if (artEnabled) artEnabled.checked = !!article.enabled;
+    if (artType) {
+        artType.value = article.type || "image";
+        toggleAdTypeFields("article", artType.value);
+    }
+    if (artImage) artImage.value = article.imageUrl || "";
+    if (artLink) artLink.value = article.linkUrl || "";
+    if (artAlt) artAlt.value = article.altText || "";
+    if (artHtml) artHtml.value = article.customHtml || "";
+}
+
+function toggleAdTypeFields(prefix, type) {
+    const imgFields = document.getElementById(`ad-${prefix}-image-fields`);
+    const htmlFields = document.getElementById(`ad-${prefix}-html-fields`);
+    if (imgFields && htmlFields) {
+        if (type === "customHtml") {
+            imgFields.classList.add("hidden");
+            htmlFields.classList.remove("hidden");
+        } else {
+            imgFields.classList.remove("hidden");
+            htmlFields.classList.add("hidden");
+        }
+    }
 }
 
 
@@ -204,6 +261,56 @@ function setupEventListeners() {
         });
     }
 
+    // Ads toggle & type change & save
+    const adsToggle = document.getElementById("ads-toggle");
+    if (adsToggle) {
+        adsToggle.addEventListener("click", () => {
+            const body = document.getElementById("ads-body");
+            body.classList.toggle("hidden");
+            document.getElementById("ads-icon").innerText = body.classList.contains("hidden") ? "▼" : "▲";
+        });
+    }
+
+    const adTopType = document.getElementById("ad-top-type");
+    if (adTopType) {
+        adTopType.addEventListener("change", (e) => toggleAdTypeFields("top", e.target.value));
+    }
+
+    const adArticleType = document.getElementById("ad-article-type");
+    if (adArticleType) {
+        adArticleType.addEventListener("change", (e) => toggleAdTypeFields("article", e.target.value));
+    }
+
+    const btnSaveAds = document.getElementById("btn-save-ads");
+    if (btnSaveAds) {
+        btnSaveAds.addEventListener("click", () => {
+            siteSettingsData.ads = {
+                topBanner: {
+                    enabled: document.getElementById("ad-top-enabled").checked,
+                    type: document.getElementById("ad-top-type").value,
+                    imageUrl: document.getElementById("ad-top-image").value.trim(),
+                    linkUrl: document.getElementById("ad-top-link").value.trim(),
+                    altText: document.getElementById("ad-top-alt").value.trim(),
+                    customHtml: document.getElementById("ad-top-html").value.trim(),
+                    badgeText: "Реклама / Партнерский блок"
+                },
+                inArticleBanner: {
+                    enabled: document.getElementById("ad-article-enabled").checked,
+                    type: document.getElementById("ad-article-type").value,
+                    imageUrl: document.getElementById("ad-article-image").value.trim(),
+                    linkUrl: document.getElementById("ad-article-link").value.trim(),
+                    altText: document.getElementById("ad-article-alt").value.trim(),
+                    customHtml: document.getElementById("ad-article-html").value.trim(),
+                    badgeText: "Спонсорский блок"
+                }
+            };
+
+            alert("Настройки рекламы обновлены локально! Нажмите «Опубликовать в сеть 🚀» для применения на сайте.");
+            document.getElementById("ads-body").classList.add("hidden");
+            document.getElementById("ads-icon").innerText = "▼";
+        });
+    }
+
     // Global Save and Deploy to GitHub
     document.getElementById("btn-save-deploy").addEventListener("click", () => {
         deployToGitHub();
@@ -259,6 +366,46 @@ function setupEventListeners() {
     // Pros lists actions
     document.getElementById("btn-add-ru-pro").addEventListener("click", () => addProInput("ru"));
     document.getElementById("btn-add-he-pro").addEventListener("click", () => addProInput("he"));
+
+    // Gallery Actions
+    const btnAddImg = document.getElementById("btn-add-gallery-image");
+    if (btnAddImg) {
+        btnAddImg.addEventListener("click", () => addGalleryImageInput());
+    }
+    const btnParseBulk = document.getElementById("btn-parse-bulk-images");
+    if (btnParseBulk) {
+        btnParseBulk.addEventListener("click", () => {
+            const textarea = document.getElementById("form-bulk-images");
+            if (!textarea || !textarea.value.trim()) return;
+            const lines = textarea.value.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+            lines.forEach(url => addGalleryImageInput(url));
+            textarea.value = "";
+        });
+    }
+}
+
+function addGalleryImageInput(url = "") {
+    const container = document.getElementById("gallery-images-container");
+    if (!container) return;
+    const row = document.createElement("div");
+    row.className = "gallery-image-row";
+    row.innerHTML = `
+        <img class="gallery-image-preview" src="${url || 'logo.png'}" alt="Preview" onerror="this.src='logo.png'">
+        <input type="text" class="gallery-img-input" value="${url}" placeholder="https://domain.com/photo.jpg">
+        <button type="button" class="btn-del-img" title="Удалить фото">✕</button>
+    `;
+
+    const input = row.querySelector(".gallery-img-input");
+    const preview = row.querySelector(".gallery-image-preview");
+    input.addEventListener("input", () => {
+        preview.src = input.value.trim() || 'logo.png';
+    });
+
+    row.querySelector(".btn-del-img").addEventListener("click", () => {
+        row.remove();
+    });
+
+    container.appendChild(row);
 }
 
 function openModal(reviewId = null) {
@@ -269,6 +416,12 @@ function openModal(reviewId = null) {
     document.getElementById("review-form").reset();
     document.getElementById("ru-pros-container").innerHTML = "";
     document.getElementById("he-pros-container").innerHTML = "";
+    const galleryContainer = document.getElementById("gallery-images-container");
+    if (galleryContainer) galleryContainer.innerHTML = "";
+    const formVideo = document.getElementById("form-video");
+    if (formVideo) formVideo.value = "";
+    const bulkArea = document.getElementById("form-bulk-images");
+    if (bulkArea) bulkArea.value = "";
 
     // Set first tab as active
     document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
@@ -291,7 +444,16 @@ function openModal(reviewId = null) {
             document.getElementById("form-rating").value = review.rating;
             document.getElementById("form-price-ali").value = review.priceAli;
             document.getElementById("form-price-local").value = review.priceLocal;
-            document.getElementById("form-image").value = review.image;
+            document.getElementById("form-image").value = review.image || "";
+            if (formVideo) formVideo.value = review.video || review.videoUrl || "";
+
+            // Gallery images (unlimited)
+            const imagesList = review.images || (review.image ? [review.image] : []);
+            imagesList.forEach(img => {
+                if (img && img !== review.image) {
+                    addGalleryImageInput(img);
+                }
+            });
 
             // RU Data
             document.getElementById("form-ru-title").value = review.ru?.title || "";
@@ -361,6 +523,21 @@ function saveFormValues() {
     });
 
     const formId = document.getElementById("form-id").value.trim();
+    const mainImage = document.getElementById("form-image").value.trim();
+
+    // Collect all gallery images
+    const galleryImages = [];
+    if (mainImage) {
+        galleryImages.push(mainImage);
+    }
+    document.querySelectorAll(".gallery-img-input").forEach(inp => {
+        const val = inp.value.trim();
+        if (val && !galleryImages.includes(val)) {
+            galleryImages.push(val);
+        }
+    });
+
+    const videoVal = document.getElementById("form-video") ? document.getElementById("form-video").value.trim() : "";
 
     const newReview = {
         id: formId,
@@ -368,7 +545,9 @@ function saveFormValues() {
         rating: parseFloat(document.getElementById("form-rating").value),
         priceAli: parseInt(document.getElementById("form-price-ali").value),
         priceLocal: parseInt(document.getElementById("form-price-local").value),
-        image: document.getElementById("form-image").value.trim(),
+        image: mainImage,
+        images: galleryImages,
+        video: videoVal,
         ru: {
             title: document.getElementById("form-ru-title").value.trim(),
             excerpt: document.getElementById("form-ru-excerpt").value.trim(),

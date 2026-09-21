@@ -2,7 +2,27 @@
     "siteSettings": {
         "telegramLink": "https://t.me/@alli_obzor",
         "whatsappLink": "https://chat.whatsapp.com/your_group",
-        "youtubeLink": "https://youtube.com/@your_channel"
+        "youtubeLink": "https://youtube.com/@your_channel",
+        "ads": {
+            "topBanner": {
+                "enabled": true,
+                "type": "image",
+                "imageUrl": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&auto=format&fit=crop&q=80",
+                "linkUrl": "https://s.click.aliexpress.com",
+                "altText": "🔥 Распродажа электроники на AliExpress — Скидки до 70%!",
+                "customHtml": "",
+                "badgeText": "Реклама / Партнерский блок"
+            },
+            "inArticleBanner": {
+                "enabled": true,
+                "type": "image",
+                "imageUrl": "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=1200&auto=format&fit=crop&q=80",
+                "linkUrl": "https://s.click.aliexpress.com",
+                "altText": "Эксклюзивные купоны дня на гаджеты и автотовары",
+                "customHtml": "",
+                "badgeText": "Спонсорский блок"
+            }
+        }
     },
     "categories": [
         {
@@ -46,7 +66,7 @@
             "id": "10----aliexpress",
             "category": "other",
             "rating": 4.8,
-            "priceAli": 0.0,
+            "priceAli": 0,
             "priceLocal": 100,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/S1bbd5876b33a45998dcc5cf2e6a7e106k.png",
             "images": [
@@ -204,7 +224,17 @@
                 ],
                 "linkText": "לקנייה בעליאקפסרס",
                 "aliLink": "https://s.click.aliexpress.com/e/_c3a8vAlx"
-            }
+            },
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S6af8ad786b1e408f88a406fc83e4b0c5J.png",
+                "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=800&auto=format&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=800&auto=format&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&auto=format&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&auto=format&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=800&auto=format&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=800&auto=format&fit=crop&q=80"
+            ],
+            "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         },
         {
             "id": "once-for-all",

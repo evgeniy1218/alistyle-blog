@@ -1451,3 +1451,319 @@ img {
         gap: 20px;
     }
 }
+
+/* ==========================================================================
+   MODERN CONVERSION & PERFORMANCE EXTENSIONS
+   ========================================================================== */
+
+/* Performance: smooth scrolling & content-visibility */
+.article-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 420px;
+}
+
+/* Price comparison in catalog cards */
+.card-prices {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.card-price-ali {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--color-ali-red);
+    letter-spacing: -0.5px;
+    font-family: var(--font-sans);
+}
+
+.card-price-local {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+    font-weight: 500;
+}
+
+.card-savings-badge {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: #FFFFFF;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+}
+
+/* Category Filter Counts Badge */
+.filter-count {
+    display: inline-block;
+    font-size: 0.75rem;
+    opacity: 0.75;
+    margin-left: 5px;
+    background: rgba(0, 0, 0, 0.06);
+    padding: 1px 6px;
+    border-radius: 10px;
+}
+
+html[dir="rtl"] .filter-count {
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+/* In-Feed Sponsored Review Card */
+.article-card.sponsored-card {
+    border: 2px dashed rgba(255, 59, 48, 0.35);
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 248, 246, 0.6) 100%);
+}
+
+.sponsored-tag {
+    background: linear-gradient(135deg, #FF9500 0%, #FF3B30 100%);
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Verdict Score Badge (Review Detail) */
+.verdict-score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: #FFFFFF;
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+    width: fit-content;
+}
+
+/* Fast Buy Price Box (Review Detail) */
+.fast-buy-prices-wrap {
+    background: var(--color-surface-soft);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    padding: 14px 16px;
+    margin-bottom: 18px;
+}
+
+.fast-buy-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.fast-buy-price-row:last-child {
+    margin-bottom: 0;
+    padding-top: 6px;
+    border-top: 1px dashed var(--color-border);
+}
+
+.fast-buy-price-ali-val {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--color-ali-red);
+}
+
+.fast-buy-price-local-val {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.fast-buy-savings-val {
+    color: #10B981;
+    font-weight: 700;
+}
+
+/* Coupon Box (1-Click Copy) */
+.coupon-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 149, 0, 0.08);
+    border: 1px dashed var(--color-ali-orange);
+    border-radius: var(--border-radius-sm);
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    gap: 8px;
+}
+
+.coupon-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.coupon-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.coupon-code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--color-ali-red);
+    background: #FFFFFF;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 59, 48, 0.25);
+    letter-spacing: 0.5px;
+}
+
+.coupon-copy-btn {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.coupon-copy-btn:hover {
+    background: var(--color-ali-red);
+    color: #FFFFFF;
+    border-color: var(--color-ali-red);
+}
+
+.coupon-copy-btn.copied {
+    background: #10B981;
+    color: #FFFFFF;
+    border-color: #10B981;
+}
+
+/* Floating Sticky Mobile CTA Bar */
+.mobile-sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--color-border);
+    padding: 10px 16px;
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    z-index: 999;
+    transform: translateY(110%);
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.mobile-sticky-cta.active {
+    transform: translateY(0);
+}
+
+.sticky-product-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+}
+
+.sticky-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: var(--color-surface-soft);
+    flex-shrink: 0;
+    border: 1px solid var(--color-border);
+}
+
+.sticky-texts {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sticky-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+.sticky-price {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--color-ali-red);
+    margin-top: 2px;
+}
+
+.sticky-buy-btn {
+    background: var(--color-ali-gradient);
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 10px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+}
+
+.sticky-buy-btn:active {
+    transform: scale(0.97);
+}
+
+/* RTL / Hebrew Adjustments for new components */
+html[dir="rtl"] .card-price-ali {
+    direction: ltr;
+}
+
+html[dir="rtl"] .fast-buy-price-ali-val {
+    direction: ltr;
+}
+
+html[dir="rtl"] .coupon-code {
+    direction: ltr;
+}
+
+html[dir="rtl"] .fast-buy-list-item.pro::before {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .fast-buy-list-item.con::before {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .fast-buy-list-item {
+    padding-left: 0;
+    padding-right: 20px;
+}

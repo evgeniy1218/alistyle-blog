@@ -64,7 +64,16 @@ const translations = {
         readReviewLink: "Читать обзор →",
         loadingText: "Загрузка обзоров...",
         noResults: "Ничего не найдено",
-        errorNotFound: "Обзор не найден"
+        errorNotFound: "Обзор не найден",
+        savingsText: "Ваша выгода:",
+        savingsCard: "Экономия ",
+        couponLabel: "🔥 Промокод на скидку:",
+        couponBtn: "Скопировать",
+        couponCopied: "Скопировано!",
+        editorChoice: "Выбор редакции",
+        sponsoredReview: "Спонсорский блок",
+        goToDeals: "Перейти к скидкам →",
+        videoTitle: "Видеообзор и демонстрация работы"
     },
     he: {
         pageTitle: "AliStyle Blog — סקירות מוצרים אמיתיות מעליאקספרס",
@@ -79,7 +88,7 @@ const translations = {
         heroSubtitle: "בוחרים את הטוב ביותר ומסננים את השאר. בודקים בחיים האמיתיים ומשתפים קישורים למוכרים אמינים.",
         heroCta: "לכל המציאות של החודש",
         filterAll: "כל הסקירות",
-        filterElectronics: "אלקטרוניקה וגאдג'טים",
+        filterElectronics: "אלקטרוניקה וגאדג'טים",
         filterSmartHome: "מוצרים לבית",
         filterCarTech: "מוצרים לרכב",
         discountBadge: "הנחה",
@@ -102,7 +111,7 @@ const translations = {
         footerNavTitle: "ניווט",
         footerLegalTitle: "מידע משפטי",
         footerPrivacy: "מדיניות פרטיות",
-        footerDisclosure: "גילוי נאות שותפים",
+        footerDisclosure: "גילвой נאות שותפים",
         footerCopy: "© 2026 AliStyle Blog. כל הזכויות שמורות. המחירים והמידע נכונים ליום פרסום הסקירה.",
         
         // Review Page strings
@@ -119,7 +128,16 @@ const translations = {
         readReviewLink: "לקרוא סקירה ←",
         loadingText: "טוען סקירות...",
         noResults: "לא נמצאו תוצאות",
-        errorNotFound: "הסקירה לא נמצאה"
+        errorNotFound: "הסקירה לא נמצאה",
+        savingsText: "החיסכון שלך:",
+        savingsCard: "חיסכון ",
+        couponLabel: "🔥 קוד קופון להנחה:",
+        couponBtn: "העתק",
+        couponCopied: "הועתק!",
+        editorChoice: "בחירת המערכת",
+        sponsoredReview: "תוכן ממומן",
+        goToDeals: "לכל המבצעים ←",
+        videoTitle: "סקירת וידאו והדגמת שימוש"
     }
 };
 
@@ -293,6 +311,94 @@ function applySiteSettings() {
     if (siteSettingsData.youtubeLink) {
         ytLinks.forEach(link => { link.href = siteSettingsData.youtubeLink; });
     }
+
+    renderAdBanners();
+}
+
+/**
+ * Render Ad Banners dynamically on pages
+ */
+function renderAdBanners() {
+    const ads = siteSettingsData.ads;
+    if (!ads) return;
+
+    // 1. Top Banner
+    const topContainer = document.getElementById('ad-top-banner');
+    if (topContainer) {
+        topContainer.innerHTML = '';
+        if (ads.topBanner && ads.topBanner.enabled) {
+            topContainer.style.display = 'block';
+            if (ads.topBanner.type === 'customHtml' && ads.topBanner.customHtml) {
+                topContainer.innerHTML = `
+                    <div style="margin: 20px auto; max-width: 1200px; padding: 0 16px; text-align: center;">
+                        <div style="font-size: 10px; color: var(--color-text-secondary); text-transform: uppercase; margin-bottom: 4px;">${ads.topBanner.badgeText || 'Реклама'}</div>
+                        <div style="display: inline-block; max-width: 100%; border: 1px solid var(--color-border); border-radius: var(--border-radius-md); padding: 8px; background: var(--color-surface);">${ads.topBanner.customHtml}</div>
+                    </div>
+                `;
+            } else if (ads.topBanner.imageUrl && ads.topBanner.linkUrl) {
+                topContainer.innerHTML = `
+                    <div style="margin: 20px auto; max-width: 1200px; padding: 0 16px; text-align: center;">
+                        <div style="font-size: 10px; color: var(--color-text-secondary); text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px;">${ads.topBanner.badgeText || 'Реклама / Партнерский материал'}</div>
+                        <a href="${ads.topBanner.linkUrl}" target="_blank" rel="sponsored nofollow noopener" style="display: block; border-radius: var(--border-radius-md); overflow: hidden; border: 1px solid var(--color-border);">
+                            <img src="${ads.topBanner.imageUrl}" alt="${ads.topBanner.altText || 'Реклама'}" style="width: 100%; max-height: 180px; object-fit: cover; display: block;" loading="lazy">
+                        </a>
+                    </div>
+                `;
+            }
+        } else {
+            topContainer.style.display = 'none';
+        }
+    }
+
+    // 2. Article / In-feed Banner
+    const articleContainer = document.getElementById('ad-article-banner');
+    if (articleContainer) {
+        articleContainer.innerHTML = '';
+        if (ads.inArticleBanner && ads.inArticleBanner.enabled) {
+            articleContainer.style.display = 'block';
+            if (ads.inArticleBanner.type === 'customHtml' && ads.inArticleBanner.customHtml) {
+                articleContainer.innerHTML = `
+                    <div style="margin: 30px 0; text-align: center;">
+                        <div style="font-size: 10px; color: var(--color-text-secondary); text-transform: uppercase; margin-bottom: 4px;">${ads.inArticleBanner.badgeText || 'Спонсорский блок'}</div>
+                        <div style="display: inline-block; max-width: 100%; border: 1px solid var(--color-border); border-radius: var(--border-radius-md); padding: 8px; background: var(--color-surface);">${ads.inArticleBanner.customHtml}</div>
+                    </div>
+                `;
+            } else if (ads.inArticleBanner.imageUrl && ads.inArticleBanner.linkUrl) {
+                articleContainer.innerHTML = `
+                    <div style="margin: 30px 0; text-align: center;">
+                        <div style="font-size: 10px; color: var(--color-text-secondary); text-transform: uppercase; margin-bottom: 4px;">${ads.inArticleBanner.badgeText || 'Спонсорский блок'}</div>
+                        <a href="${ads.inArticleBanner.linkUrl}" target="_blank" rel="sponsored nofollow noopener" style="display: block; border-radius: var(--border-radius-md); overflow: hidden; border: 1px solid var(--color-border);">
+                            <img src="${ads.inArticleBanner.imageUrl}" alt="${ads.inArticleBanner.altText || 'Реклама'}" style="width: 100%; max-height: 220px; object-fit: cover; display: block;" loading="lazy">
+                        </a>
+                    </div>
+                `;
+            }
+        } else {
+            articleContainer.style.display = 'none';
+        }
+    }
+}
+
+/**
+ * Update dynamic category count badges on filter bar
+ */
+function updateCategoryCounts() {
+    const counts = { all: reviewsData.length };
+    reviewsData.forEach(r => {
+        if (r.category) {
+            counts[r.category] = (counts[r.category] || 0) + 1;
+        }
+    });
+
+    const countAll = document.getElementById('count-all');
+    if (countAll) countAll.textContent = `(${counts.all})`;
+
+    Object.keys(counts).forEach(cat => {
+        const badge = document.getElementById(`count-${cat}`);
+        if (badge) {
+            badge.textContent = `(${counts[cat]})`;
+        }
+    });
 }
 
 /**
@@ -304,18 +410,24 @@ function renderIndexPage() {
     grid.innerHTML = '';
 
     const t = translations[currentLang];
+    updateCategoryCounts();
 
     if (reviewsData.length === 0) {
         grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--color-text-secondary); padding: 40px 0;">${t.noResults}</div>`;
         return;
     }
 
+    const ads = siteSettingsData?.ads;
+
     reviewsData.forEach((item, index) => {
         const langData = item[currentLang] || item['ru'] || item['he'];
         if (!langData) return;
 
-        // Calculate discount percentage if not custom tagged
-        const discountVal = item.priceLocal ? Math.round(((item.priceLocal - item.priceAli) / item.priceLocal) * 100) : 35;
+        // Calculate discount percentage and savings
+        const priceAli = Number(item.priceAli) || 0;
+        const priceLocal = Number(item.priceLocal) || 0;
+        const savings = priceLocal > priceAli ? (priceLocal - priceAli) : 0;
+        const discountVal = priceLocal > 0 ? Math.round(((priceLocal - priceAli) / priceLocal) * 100) : 35;
 
         // Map Category Label
         const categoryObj = categoriesData.find(c => c.id === item.category);
@@ -323,7 +435,7 @@ function renderIndexPage() {
 
         // Build Star Ratings
         let starsHTML = '';
-        const fullStars = Math.floor(item.rating);
+        const fullStars = Math.floor(item.rating || 5);
         for (let i = 1; i <= 5; i++) {
             if (i <= fullStars) {
                 starsHTML += `<svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
@@ -341,8 +453,8 @@ function renderIndexPage() {
 
         card.innerHTML = `
             <div class="article-img-wrapper">
-                <span class="discount-badge">${t.discountBadge} ${discountVal}%</span>
-                <img class="article-img" src="${item.image || 'logo.png'}" alt="${langData.title}" ${imgPriority} width="350" height="220" onerror="this.src='logo.png'">
+                <span class="discount-badge">-${discountVal}%</span>
+                <img class="article-img" src="${item.image || 'logo.png'}" alt="${langData.title}" ${imgPriority} decoding="async" width="350" height="220" onerror="this.src='logo.png'">
             </div>
             <div class="article-content">
                 <div class="article-meta">
@@ -351,11 +463,16 @@ function renderIndexPage() {
                 <h2 class="article-title">
                     <a href="review.html?id=${item.id}">${langData.title}</a>
                 </h2>
+                <div class="card-prices">
+                    <span class="card-price-ali">₪${priceAli}</span>
+                    ${priceLocal ? `<span class="card-price-local">₪${priceLocal}</span>` : ''}
+                    ${savings > 0 ? `<span class="card-savings-badge">${t.savingsCard}₪${savings}</span>` : ''}
+                </div>
                 <p class="article-excerpt">${langData.excerpt || ''}</p>
                 <div class="article-footer">
-                    <div class="rating-stars" aria-label="Рейтинг: ${item.rating} из 5">
+                    <div class="rating-stars" aria-label="Рейтинг: ${item.rating || 5} из 5">
                         ${starsHTML}
-                        <span class="rating-value">${item.rating}</span>
+                        <span class="rating-value">${item.rating || 5.0}</span>
                     </div>
                     <a href="review.html?id=${item.id}" class="read-more-link">
                         ${t.readMoreBtn} 
@@ -367,6 +484,36 @@ function renderIndexPage() {
             </div>
         `;
         grid.appendChild(card);
+
+        // Insert native In-Feed Ad Banner card after the 3rd card
+        if (index === 2 && ads && ads.inArticleBanner && ads.inArticleBanner.enabled && ads.inArticleBanner.imageUrl) {
+            const adCard = document.createElement('article');
+            adCard.className = 'article-card sponsored-card';
+            adCard.setAttribute('data-category', 'all');
+            adCard.innerHTML = `
+                <div class="article-img-wrapper">
+                    <span class="discount-badge sponsored-tag">${ads.inArticleBanner.badgeText || t.sponsoredReview}</span>
+                    <a href="${ads.inArticleBanner.linkUrl}" target="_blank" rel="sponsored nofollow noopener">
+                        <img class="article-img" src="${ads.inArticleBanner.imageUrl}" alt="${ads.inArticleBanner.altText || 'Реклама'}" loading="lazy" decoding="async" width="350" height="220">
+                    </a>
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-category" style="color: var(--color-ali-orange);">${t.sponsoredReview}</span>
+                    </div>
+                    <h2 class="article-title">
+                        <a href="${ads.inArticleBanner.linkUrl}" target="_blank" rel="sponsored nofollow noopener">${ads.inArticleBanner.altText || 'Эксклюзивные предложения дня на AliExpress'}</a>
+                    </h2>
+                    <p class="article-excerpt">${currentLang === 'he' ? 'מבצעים בלעדיים וקופונים יומיים מעליאקספרס לחברי הבלוג.' : 'Эксклюзивные скидки, проверенные продавцы и моментальные купоны AliExpress.'}</p>
+                    <div class="article-footer">
+                        <a href="${ads.inArticleBanner.linkUrl}" target="_blank" rel="sponsored nofollow noopener" class="read-more-link" style="color: var(--color-ali-red); font-weight: 700;">
+                            ${t.goToDeals}
+                        </a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(adCard);
+        }
     });
 }
 
@@ -501,18 +648,69 @@ function renderReviewPage() {
         imgEl.alt = langData.title;
     }
 
-    // Gallery Thumbnails
+    // Verdict Score Badge
+    const verdictScoreEl = document.getElementById('verdict-score');
+    if (verdictScoreEl) {
+        const score = review.rating ? (review.rating * 2).toFixed(1) : '9.6';
+        verdictScoreEl.innerHTML = `⭐ ${score} / 10 &nbsp; ${t.editorChoice}`;
+    }
+
+    // Prices and savings
+    const priceAli = Number(review.priceAli) || 0;
+    const priceLocal = Number(review.priceLocal) || Math.round(priceAli * 1.8);
+    const savings = priceLocal > priceAli ? (priceLocal - priceAli) : 0;
+    const discountVal = priceLocal > 0 ? Math.round(((priceLocal - priceAli) / priceLocal) * 100) : 35;
+
+    const priceAliEl = document.getElementById('fast-buy-price-ali');
+    const priceLocalEl = document.getElementById('fast-buy-price-local');
+    const savingsEl = document.getElementById('fast-buy-savings');
+
+    if (priceAliEl) priceAliEl.innerText = `₪${priceAli}`;
+    if (priceLocalEl) priceLocalEl.innerText = `₪${priceLocal}`;
+    if (savingsEl) savingsEl.innerText = `₪${savings} (-${discountVal}%)`;
+
+    // 1-Click Copy Coupon Code
+    const couponBox = document.getElementById('fast-buy-coupon');
+    const couponCodeText = document.getElementById('coupon-code-text');
+    const couponCopyBtn = document.getElementById('coupon-copy-btn');
+
+    const promoCode = review.coupon || review.promoCode || 'ALI2026';
+    if (couponBox && couponCodeText && couponCopyBtn) {
+        couponBox.style.display = 'flex';
+        couponCodeText.innerText = promoCode;
+        couponCopyBtn.onclick = () => {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(promoCode).then(() => {
+                    couponCopyBtn.innerText = t.couponCopied;
+                    couponCopyBtn.classList.add('copied');
+                    setTimeout(() => {
+                        couponCopyBtn.innerText = t.couponBtn;
+                        couponCopyBtn.classList.remove('copied');
+                    }, 2000);
+                }).catch(() => {
+                    prompt('Copy coupon code:', promoCode);
+                });
+            } else {
+                prompt('Copy coupon code:', promoCode);
+            }
+        };
+    }
+
+    // Gallery Thumbnails (supports unlimited photos)
     const thumbsContainer = document.getElementById('fast-buy-thumbnails');
     if (thumbsContainer) {
         thumbsContainer.innerHTML = '';
-        const imageList = review.images || (review.image ? [review.image] : []);
+        const rawImages = review.images && review.images.length > 0 ? review.images : (review.image ? [review.image] : []);
+        // Remove empty items and duplicates
+        const imageList = [...new Set(rawImages.filter(url => url && typeof url === 'string' && url.trim().length > 0))];
         
         if (imageList.length > 1) {
             imageList.forEach((imgUrl, idx) => {
                 const thumb = document.createElement('img');
-                thumb.className = `fast-buy-thumbnail ${imgUrl === (review.image || 'logo.png') ? 'active' : ''}`;
+                thumb.className = `fast-buy-thumbnail ${idx === 0 ? 'active' : ''}`;
                 thumb.src = imgUrl;
                 thumb.alt = `Product view ${idx + 1}`;
+                thumb.loading = 'lazy';
                 thumb.onerror = () => { thumb.style.display = 'none'; };
                 
                 thumb.addEventListener('click', () => {
@@ -524,7 +722,7 @@ function renderReviewPage() {
                         setTimeout(() => {
                             imgEl.src = imgUrl;
                             imgEl.style.opacity = '1';
-                        }, 200);
+                        }, 150);
                     }
                 });
                 thumbsContainer.appendChild(thumb);
@@ -539,7 +737,7 @@ function renderReviewPage() {
     const starsContainer = document.getElementById('review-rating-stars');
     if (starsContainer) {
         starsContainer.innerHTML = '';
-        const fullStars = Math.floor(review.rating);
+        const fullStars = Math.floor(review.rating || 5);
         for (let i = 1; i <= 5; i++) {
             if (i <= fullStars) {
                 starsContainer.innerHTML += `<svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
@@ -547,7 +745,7 @@ function renderReviewPage() {
                 starsContainer.innerHTML += `<svg class="star empty" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
             }
         }
-        starsContainer.innerHTML += `<span class="rating-value">${review.rating}</span>`;
+        starsContainer.innerHTML += `<span class="rating-value">${review.rating || 5.0}</span>`;
     }
 
     // Pros list
@@ -576,14 +774,15 @@ function renderReviewPage() {
 
     // 6. Mobile sticky panel
     const stickyPanel = document.getElementById('mobile-sticky-cta');
+    const stickyThumb = document.getElementById('sticky-thumb');
     const stickyTitle = document.getElementById('sticky-title');
     const stickyPrice = document.getElementById('sticky-price');
     const stickyBuyBtn = document.getElementById('sticky-buy-btn');
 
+    if (stickyThumb) stickyThumb.src = review.image || 'logo.png';
     if (stickyTitle) stickyTitle.innerText = langData.title;
     if (stickyPrice) {
-        const discountVal = review.priceLocal ? Math.round(((review.priceLocal - review.priceAli) / review.priceLocal) * 100) : 35;
-        stickyPrice.innerText = `${t.stickyDiscount} -${discountVal}%`;
+        stickyPrice.innerText = `₪${priceAli} (-${discountVal}%)`;
     }
     if (stickyBuyBtn) {
         stickyBuyBtn.href = langData.aliLink || '#';
@@ -592,8 +791,57 @@ function renderReviewPage() {
     // Trigger Mobile sticky visibility Observer
     initStickyPurchaseTrigger();
 
+    // Video Review Section (YouTube / Shorts / MP4)
+    const videoSection = document.getElementById('review-video-section');
+    const videoContainer = document.getElementById('review-video-container');
+    const videoHeading = document.getElementById('video-heading-text');
+    const videoUrl = review.video || review.videoUrl || langData.video || '';
+
+    if (videoHeading && t.videoTitle) {
+        videoHeading.innerText = t.videoTitle;
+    }
+
+    if (videoSection && videoContainer) {
+        if (videoUrl && videoUrl.trim()) {
+            videoContainer.innerHTML = renderVideoEmbedHtml(videoUrl);
+            videoSection.style.display = 'block';
+        } else {
+            videoSection.style.display = 'none';
+            videoContainer.innerHTML = '';
+        }
+    }
+
+    // SEO Schema.org JSON-LD
+    injectJsonLd(review, langData, priceAli, discountVal);
+
     // 7. Load Similar reviews
     renderSimilarReviews(review);
+}
+
+/**
+ * Render Responsive Video Embed for YouTube, Shorts or MP4
+ */
+function renderVideoEmbedHtml(videoUrl) {
+    if (!videoUrl) return '';
+    const trimmed = videoUrl.trim();
+
+    // 1. YouTube (watch, shorts, youtu.be, embed)
+    const ytMatch = trimmed.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/\s]{11})/i);
+    if (ytMatch && ytMatch[1]) {
+        const videoId = ytMatch[1];
+        return `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: var(--border-radius-md);"></iframe>`;
+    }
+
+    // 2. Direct MP4 / WebM / Video file
+    if (trimmed.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i)) {
+        return `<video controls playsinline preload="metadata" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; border-radius: var(--border-radius-md); background: #000;">
+            <source src="${trimmed}" type="video/mp4">
+            Ваш браузер не поддерживает встроенное видео.
+        </video>`;
+    }
+
+    // 3. Generic Embed URL
+    return `<iframe src="${trimmed}" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: var(--border-radius-md);"></iframe>`;
 }
 
 function renderErrorPage(msg) {
@@ -606,6 +854,55 @@ function renderErrorPage(msg) {
                 <a href="index.html" class="hero-cta" style="margin-top: 30px; display: inline-block;">На главную / Home</a>
             </div>
         `;
+    }
+}
+
+/**
+ * Dynamic injection of Schema.org Product & Review JSON-LD
+ */
+function injectJsonLd(review, langData, priceAli, discountVal) {
+    try {
+        let script = document.getElementById('schema-jsonld');
+        if (!script) {
+            script = document.createElement('script');
+            script.id = 'schema-jsonld';
+            script.type = 'application/ld+json';
+            document.head.appendChild(script);
+        }
+
+        const jsonLd = {
+            "@context": "https://schema.org",
+            "@type": "Review",
+            "name": langData.title,
+            "reviewBody": langData.excerpt || langData.title,
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": review.rating || 5,
+                "bestRating": 5,
+                "worstRating": 1
+            },
+            "author": {
+                "@type": "Organization",
+                "name": "AliStyle Blog"
+            },
+            "itemReviewed": {
+                "@type": "Product",
+                "name": langData.title,
+                "image": review.image || "",
+                "description": langData.excerpt || "",
+                "offers": {
+                    "@type": "Offer",
+                    "price": String(priceAli || 0),
+                    "priceCurrency": "ILS",
+                    "availability": "https://schema.org/InStock",
+                    "url": langData.aliLink || window.location.href
+                }
+            }
+        };
+
+        script.text = JSON.stringify(jsonLd);
+    } catch (e) {
+        console.warn('Could not inject JSON-LD schema:', e);
     }
 }
 

@@ -51,6 +51,9 @@
         </div>
     </header>
 
+    <!-- Top Ad Banner Container -->
+    <div id="ad-top-banner" style="display: none;"></div>
+
     <!-- Main Container -->
     <main class="review-main">
         
@@ -86,12 +89,40 @@
                     </div>
                 </div>
                 <div class="fast-buy-info">
+                    <div id="verdict-score" class="verdict-score-badge">⭐ 4.9 / 5.0 Выбор редакции</div>
+                    
                     <div class="fast-buy-rating">
                         <span class="rating-text" data-translate="editorRating">Оценка редакции:</span>
                         <div class="rating-stars" id="review-rating-stars">
                             <!-- Stars loaded dynamically -->
                         </div>
                     </div>
+
+                    <!-- Price Comparison in Shekels -->
+                    <div class="fast-buy-prices-wrap" id="fast-buy-prices">
+                        <div class="fast-buy-price-row">
+                            <span data-translate="priceAliText">На AliExpress:</span>
+                            <span class="fast-buy-price-ali-val" id="fast-buy-price-ali">₪0</span>
+                        </div>
+                        <div class="fast-buy-price-row">
+                            <span data-translate="priceLocalText">В магазинах Израиля:</span>
+                            <span class="fast-buy-price-local-val" id="fast-buy-price-local">₪0</span>
+                        </div>
+                        <div class="fast-buy-price-row">
+                            <span data-translate="savingsText">Ваша выгода:</span>
+                            <span class="fast-buy-savings-val" id="fast-buy-savings">₪0</span>
+                        </div>
+                    </div>
+
+                    <!-- 1-Click Copy Coupon Code -->
+                    <div class="coupon-box" id="fast-buy-coupon" style="display: none;">
+                        <div class="coupon-info">
+                            <span class="coupon-label" data-translate="couponLabel">🔥 Промокод на скидку:</span>
+                            <span class="coupon-code" id="coupon-code-text">ALI2026</span>
+                        </div>
+                        <button type="button" class="coupon-copy-btn" id="coupon-copy-btn" data-translate="couponBtn">Скопировать</button>
+                    </div>
+
                     <div class="fast-buy-pros-cons">
                         <h4 data-translate="verdictTitle">Особенности и преимущества:</h4>
                         <ul class="fast-buy-list" id="review-pros-list">
@@ -100,7 +131,7 @@
                     </div>
                     
                     <!-- Pulsating CTA Button targeting AliExpress -->
-                    <a href="#" class="buy-button-ali" id="main-buy-btn" target="_blank" rel="nofollow noopener">
+                    <a href="#" class="buy-button-ali" id="main-buy-btn" target="_blank" rel="sponsored nofollow noopener">
                         <svg viewBox="0 0 24 24">
                             <path d="M17.21 9l-4.38-6.56a1 1 0 0 0-.83-.44 1 1 0 0 0-.83.44L6.79 9H2a1 1 0 0 0-1 1v1a1 1 0 0 0 .88 1L3 21a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2l1.12-9a1 1 0 0 0 .88-1v-1a1 1 0 0 0-1-1h-4.79zM9.38 9l2.62-3.93L14.62 9H9.38zM19 21H5l-1-8h16l-1 8z"/>
                         </svg>
@@ -113,6 +144,19 @@
             <div class="review-content" id="review-body">
                 <!-- Detailed text populated here -->
             </div>
+
+            <!-- Video Review Section (YouTube / Shorts / MP4) -->
+            <section class="review-video-section" id="review-video-section" style="display: none; margin: 40px 0;">
+                <h3 class="review-video-title" data-translate="videoTitle" style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary);">
+                    <span>🎬</span> <span id="video-heading-text">Видеообзор и демонстрация работы</span>
+                </h3>
+                <div class="video-container" id="review-video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--border-radius-md); box-shadow: var(--shadow-lg); background: #000;">
+                    <!-- Embedded video player -->
+                </div>
+            </section>
+
+            <!-- In-Article Ad Banner Container -->
+            <div id="ad-article-banner" style="display: none;"></div>
         </article>
 
         <!-- Messenger Banner (Inline version) -->
@@ -183,9 +227,24 @@
                 <a href="#" class="social-icon-btn" aria-label="YouTube">
                     <svg viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.507 9.388.507 9.388.507s7.517 0 9.388-.507a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
+    </footer>
+
+    <!-- Floating Sticky Mobile CTA Bar -->
+    <div class="mobile-sticky-cta" id="mobile-sticky-cta">
+        <div class="sticky-product-meta">
+            <img class="sticky-thumb" id="sticky-thumb" src="logo.png" alt="" width="44" height="44">
+            <div class="sticky-texts">
+                <span class="sticky-title" id="sticky-title">Загрузка...</span>
+                <span class="sticky-price" id="sticky-price">₪0</span>
             </div>
         </div>
-    </footer>
+        <a href="#" class="sticky-buy-btn" id="sticky-buy-btn" target="_blank" rel="sponsored nofollow noopener">
+            <span data-translate="stickyBuyBtnText">Купить</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </div>
 
     <!-- Scripts -->
     <script src="main.js"></script>

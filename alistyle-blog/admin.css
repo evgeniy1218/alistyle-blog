@@ -343,3 +343,47 @@ input:focus, select:focus, textarea:focus {
     padding-top: 20px;
     border-top: 1.5px solid var(--border-color);
 }
+
+/* Multi-Photo Gallery Editor */
+.gallery-image-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.03);
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.gallery-image-preview {
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    object-fit: cover;
+    background: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    flex-shrink: 0;
+}
+
+.gallery-image-row input {
+    flex: 1;
+    font-size: 13px;
+    padding: 6px 10px;
+}
+
+.btn-del-img {
+    padding: 6px 10px;
+    background: #fee2e2;
+    color: #ef4444;
+    border: 1px solid #fca5a5;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.btn-del-img:hover {
+    background: #ef4444;
+    color: #fff;
+}
+

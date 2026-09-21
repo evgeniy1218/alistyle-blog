@@ -79,6 +79,89 @@
             </div>
         </section>
 
+        <!-- Site Ads Management Panel -->
+        <section class="settings-card">
+            <div id="ads-toggle" class="settings-header">
+                <h2>💰 Управление рекламой и баннерами</h2>
+                <span id="ads-icon">▼</span>
+            </div>
+            <div id="ads-body" class="settings-body hidden">
+                <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color, #334155);">
+                    <h3 style="margin-bottom: 10px; font-size: 1.05rem; color: #f8fafc;">1. Главный верхний баннер (Top Banner)</h3>
+                    <div class="form-group form-group-full" style="display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox" id="ad-top-enabled" style="width: 18px; height: 18px; cursor: pointer;">
+                        <label for="ad-top-enabled" style="cursor: pointer; margin: 0; font-weight: 600;">Показывать верхний баннер на сайте</label>
+                    </div>
+                    <div class="form-group">
+                        <label>Тип баннера</label>
+                        <select id="ad-top-type" style="width: 100%; padding: 8px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid #334155;">
+                            <option value="image">Картинка с партнерской ссылкой (AliExpress)</option>
+                            <option value="customHtml">Свой HTML-код / Google AdSense</option>
+                        </select>
+                    </div>
+                    <div id="ad-top-image-fields">
+                        <div class="form-group">
+                            <label>URL картинки баннера</label>
+                            <input type="text" id="ad-top-image" placeholder="https://domain.com/banner.jpg">
+                        </div>
+                        <div class="form-group">
+                            <label>Партнерская ссылка для клика</label>
+                            <input type="text" id="ad-top-link" placeholder="https://s.click.aliexpress.com/e/...">
+                        </div>
+                        <div class="form-group form-group-full">
+                            <label>Текст/подпись баннера</label>
+                            <input type="text" id="ad-top-alt" placeholder="Горящие скидки на AliExpress">
+                        </div>
+                    </div>
+                    <div id="ad-top-html-fields" class="hidden">
+                        <div class="form-group form-group-full">
+                            <label>Код рекламы (Google AdSense / Yandex RTB / HTML-скрипт)</label>
+                            <textarea id="ad-top-html" rows="4" placeholder="<script ...></script> или <ins class='adsbygoogle' ...></ins>" style="width: 100%; padding: 8px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid #334155;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 10px; font-size: 1.05rem; color: #f8fafc;">2. Реклама внутри обзора / в ленте (In-Article Banner)</h3>
+                    <div class="form-group form-group-full" style="display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox" id="ad-article-enabled" style="width: 18px; height: 18px; cursor: pointer;">
+                        <label for="ad-article-enabled" style="cursor: pointer; margin: 0; font-weight: 600;">Показывать баннер внутри статей и ленты</label>
+                    </div>
+                    <div class="form-group">
+                        <label>Тип баннера</label>
+                        <select id="ad-article-type" style="width: 100%; padding: 8px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid #334155;">
+                            <option value="image">Картинка с партнерской ссылкой (AliExpress)</option>
+                            <option value="customHtml">Свой HTML-код / Google AdSense</option>
+                        </select>
+                    </div>
+                    <div id="ad-article-image-fields">
+                        <div class="form-group">
+                            <label>URL картинки баннера</label>
+                            <input type="text" id="ad-article-image" placeholder="https://domain.com/banner-article.jpg">
+                        </div>
+                        <div class="form-group">
+                            <label>Партнерская ссылка для клика</label>
+                            <input type="text" id="ad-article-link" placeholder="https://s.click.aliexpress.com/e/...">
+                        </div>
+                        <div class="form-group form-group-full">
+                            <label>Текст/подпись баннера</label>
+                            <input type="text" id="ad-article-alt" placeholder="Спецкупоны для читателей блога">
+                        </div>
+                    </div>
+                    <div id="ad-article-html-fields" class="hidden">
+                        <div class="form-group form-group-full">
+                            <label>Код рекламы (Google AdSense / Yandex RTB / HTML-скрипт)</label>
+                            <textarea id="ad-article-html" rows="4" placeholder="<script ...></script> или <ins class='adsbygoogle' ...></ins>" style="width: 100%; padding: 8px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid #334155;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-group-full">
+                    <button id="btn-save-ads" class="btn btn-primary" style="align-self: flex-start;">Сохранить настройки рекламы</button>
+                </div>
+            </div>
+        </section>
+
         <!-- Categories Management Panel -->
         <section class="settings-card">
             <div id="categories-toggle" class="settings-header">
@@ -172,8 +255,26 @@
                         <input type="number" id="form-price-local" placeholder="550" required>
                     </div>
                     <div class="form-group form-group-full">
-                        <label>Ссылка на фото (URL или относительный путь)</label>
-                        <input type="text" id="form-image" placeholder="Например: ./hutt_robot.png" required>
+                        <label>Ссылка на главное фото обложки (URL)</label>
+                        <input type="text" id="form-image" placeholder="Например: https://images.unsplash.com/... или ./hutt_robot.png" required>
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label>📸 Дополнительные фото галереи (любое количество фото)</label>
+                        <div id="gallery-images-container" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px;">
+                            <!-- Dynamic image input rows -->
+                        </div>
+                        <button type="button" id="btn-add-gallery-image" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">+ Добавить еще фото</button>
+                        
+                        <div style="margin-top: 12px; background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--border-color); padding: 10px; border-radius: 8px;">
+                            <label style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; display: block;">⚡ Быстрая вставка пачки фото (по одной ссылке в строке):</label>
+                            <textarea id="form-bulk-images" rows="2" placeholder="https://image1.jpg&#10;https://image2.jpg&#10;https://image3.jpg" style="width: 100%; font-size: 12px; padding: 6px;"></textarea>
+                            <button type="button" id="btn-parse-bulk-images" class="btn btn-secondary" style="margin-top: 6px; padding: 4px 10px; font-size: 11px;">Вставить пачку фото в галерею</button>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label>🎬 Видео к обзору (YouTube / Shorts / прямая ссылка на MP4)</label>
+                        <input type="text" id="form-video" placeholder="https://www.youtube.com/watch?v=... или https://youtu.be/... или .mp4">
+                        <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">Поддерживаются обычные видео YouTube, Shorts, а также прямые видеофайлы MP4.</small>
                     </div>
                 </div>
 
