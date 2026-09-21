@@ -379,6 +379,40 @@ function renderAdBanners() {
     }
 }
 
+// Rating normalizer helper (handles 1-5, 5-10, and 0-100 scales)
+function normalizeRating(rawRating) {
+    let r = parseFloat(rawRating);
+    if (isNaN(r) || r <= 0) return { outOf5: '4.8', outOf10: '9.6', numOutOf5: 4.8 };
+    if (r > 10) {
+        // e.g. 98.9 -> outOf10: 9.9, outOf5: 4.9
+        const o10 = Math.min(10, Math.max(1, r / 10));
+        const o5 = Math.min(5, Math.max(1, r / 20));
+        return {
+            outOf5: o5.toFixed(1),
+            outOf10: o10.toFixed(1),
+            numOutOf5: o5
+        };
+    }
+    if (r > 5) {
+        // e.g. 9.6 -> outOf10: 9.6, outOf5: 4.8
+        const o10 = Math.min(10, Math.max(1, r));
+        const o5 = Math.min(5, Math.max(1, r / 2));
+        return {
+            outOf5: o5.toFixed(1),
+            outOf10: o10.toFixed(1),
+            numOutOf5: o5
+        };
+    }
+    // e.g. 4.8 -> outOf10: 9.6, outOf5: 4.8
+    const o5 = Math.min(5, Math.max(1, r));
+    const o10 = Math.min(10, Math.max(1, r * 2));
+    return {
+        outOf5: o5.toFixed(1),
+        outOf10: o10.toFixed(1),
+        numOutOf5: o5
+    };
+}
+
 /**
  * Dynamic Category Filters with Auto-discovery of all published categories
  */
@@ -745,40 +779,6 @@ function renderReviewPage() {
         imgEl.src = review.image || 'logo.png';
         imgEl.alt = langData.title;
     }
-
-// Rating normalizer helper (handles 1-5, 5-10, and 0-100 scales)
-function normalizeRating(rawRating) {
-    let r = parseFloat(rawRating);
-    if (isNaN(r) || r <= 0) return { outOf5: '4.8', outOf10: '9.6', numOutOf5: 4.8 };
-    if (r > 10) {
-        // e.g. 98.9 -> outOf10: 9.9, outOf5: 4.9
-        const o10 = Math.min(10, Math.max(1, r / 10));
-        const o5 = Math.min(5, Math.max(1, r / 20));
-        return {
-            outOf5: o5.toFixed(1),
-            outOf10: o10.toFixed(1),
-            numOutOf5: o5
-        };
-    }
-    if (r > 5) {
-        // e.g. 9.6 -> outOf10: 9.6, outOf5: 4.8
-        const o10 = Math.min(10, Math.max(1, r));
-        const o5 = Math.min(5, Math.max(1, r / 2));
-        return {
-            outOf5: o5.toFixed(1),
-            outOf10: o10.toFixed(1),
-            numOutOf5: o5
-        };
-    }
-    // e.g. 4.8 -> outOf10: 9.6, outOf5: 4.8
-    const o5 = Math.min(5, Math.max(1, r));
-    const o10 = Math.min(10, Math.max(1, r * 2));
-    return {
-        outOf5: o5.toFixed(1),
-        outOf10: o10.toFixed(1),
-        numOutOf5: o5
-    };
-}
 
     // Normalized rating
     const ratingObj = normalizeRating(review.rating);
