@@ -1,6 +1,6 @@
 {
     "siteSettings": {
-        "telegramLink": "https://t.me/your_channel",
+        "telegramLink": "https://t.me/@alli_obzor",
         "whatsappLink": "https://chat.whatsapp.com/your_group",
         "youtubeLink": "https://youtube.com/@your_channel"
     },
@@ -44,21 +44,11 @@
     "reviews": [
         {
             "id": "lcd",
-            "category": "other",
+            "category": "tools",
             "rating": 4.8,
-            "priceAli": 23.79,
+            "priceAli": 24,
             "priceLocal": 132,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/S6af8ad786b1e408f88a406fc83e4b0c5J.png",
-            "images": [
-                "https://ae-pic-a1.aliexpress-media.com/kf/S6af8ad786b1e408f88a406fc83e4b0c5J.png",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S3d8ec95cc6ef4288b66e244507404afbX.png",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Sa2d1b84a372d4301853ae1339a9a4ad3k.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Seb563511d3d741b28ca6255cd5c3d0fdP.png",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S09e7d171cd994d118ce0dc60739b6e586.png",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S535ff04374db4a2b8dcf59c6f55be7e6G.png"
-            ],
-            "isCollection": false,
-            "products": [],
             "ru": {
                 "title": "Обзор электронного рулетки с LCD дисплеем",
                 "excerpt": "Электронная рулетка с LCD дисплеем сочетает современный дизайн и функциональность, что делает её отличным выбором для ремонта и строительства.",
@@ -86,20 +76,11 @@
         },
         {
             "id": "once-for-all",
-            "category": "other",
+            "category": "smarthome",
             "rating": 4.8,
-            "priceAli": 72.04,
+            "priceAli": 72,
             "priceLocal": 399,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/S60d7e003e8194a2a9d5fe275b53f71561.jpg",
-            "images": [
-                "https://ae-pic-a1.aliexpress-media.com/kf/S60d7e003e8194a2a9d5fe275b53f71561.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S55498621a97f4d5dbd68daf57dcee064x.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S3bbab9a9a8b84a1095b70604f33c9cd75.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S0083267bc6af4960be52bef07c7995bau.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S4213167796a94375931bb48c00098db8Z.jpg"
-            ],
-            "isCollection": false,
-            "products": [],
             "ru": {
                 "title": "Обзор ONCE FOR ALL: Нож для мяса, который стоит своих денег? 🔪",
                 "excerpt": "Нож для мяса ONCE FOR ALL - это отличный инструмент для кухонных любителей, который сочетает удобство и качество. Узнайте, стоит ли его покупать.",
@@ -127,21 +108,11 @@
         },
         {
             "id": "5--1",
-            "category": "other",
-            "rating": 98.0,
-            "priceAli": 32.46,
+            "category": "electronics",
+            "rating": 4.8,
+            "priceAli": 32,
             "priceLocal": 180,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5d2f1769699d4a01a83be3d869ca1d0au.png",
-            "images": [
-                "https://ae-pic-a1.aliexpress-media.com/kf/S5d2f1769699d4a01a83be3d869ca1d0au.png",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S99e125dbf29f478680047b8e2e49f083x.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Sf7009846db0940079420a9786a90a93ap.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Se9e3be009d5047fbb67859e5603e5978k.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S2f775c3f216e4b2aae130e55f6f8194c8.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Sc420de7b0a6d4cdbbb0eaa0300c83972f.jpg"
-            ],
-            "isCollection": false,
-            "products": [],
             "ru": {
                 "title": "Обзор 5-в-1: Хороший ли это покупательский ход? 🤔",
                 "excerpt": "Ищете идеальное решение для зарядки нескольких устройств? Узнайте, почему 5-в-1 магнитная беспроводная зарядная станция может быть именно тем, что вам нужно.",
@@ -170,7 +141,7 @@
         {
             "id": "5--1",
             "category": "other",
-            "rating": 98.0,
+            "rating": 98,
             "priceAli": 32.46,
             "priceLocal": 180,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5d2f1769699d4a01a83be3d869ca1d0au.png",
@@ -211,21 +182,11 @@
         },
         {
             "id": "wireless-video-doorbell-camera",
-            "category": "other",
-            "rating": 98.0,
-            "priceAli": 11.76,
+            "category": "smarthome",
+            "rating": 5,
+            "priceAli": 12,
             "priceLocal": 65,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/S7700ffd4f0be443881edaa2ec453290d3.png",
-            "images": [
-                "https://ae-pic-a1.aliexpress-media.com/kf/S7700ffd4f0be443881edaa2ec453290d3.png",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S65b28f5ffb87481fadf9f67037da1c4ch.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Se1a49411934042c4aaf3ab3d0e4d9ff07.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Scb960c62a08043488d7eec8f664f30a7t.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/Sce07e98a25914ca5869fb2683a4138a4S.jpg",
-                "https://ae-pic-a1.aliexpress-media.com/kf/S355ea6c5c0a14cc882c912c5ee809fd1E.jpg"
-            ],
-            "isCollection": false,
-            "products": [],
             "ru": {
                 "title": "Обзор Wireless Video Doorbell Camera: Убийца традиционных звонков? 📹",
                 "excerpt": "Если вы ищете доступный способ повысить безопасность своего дома, эта камера — отличный выбор! Узнайте, что она может предложить.",
@@ -296,7 +257,7 @@
         {
             "id": "item-1005009278139726",
             "category": "other",
-            "rating": 98.0,
+            "rating": 98,
             "priceAli": 7.05,
             "priceLocal": 39,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sae5ba15a3aee4ac08b3bec378d8c308aP.jpg",
@@ -338,7 +299,7 @@
         {
             "id": "makita-ddf487",
             "category": "other",
-            "rating": 100.0,
+            "rating": 100,
             "priceAli": 36.89,
             "priceLocal": 204,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/S6829e4d5b28a41d19486abd74cd725b1C.jpg",
@@ -380,7 +341,7 @@
             "id": "7---aliexpress",
             "category": "aliexpress",
             "rating": 4.8,
-            "priceAli": 0.0,
+            "priceAli": 0,
             "priceLocal": 100,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sbcc4f796d1fb44128ab9a61dc20e3ef8B.jpg",
             "images": [
@@ -484,7 +445,7 @@
         {
             "id": "220v-800w-high-power-paint-spr",
             "category": "other",
-            "rating": 100.0,
+            "rating": 100,
             "priceAli": 87.99,
             "priceLocal": 488,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sbcc4f796d1fb44128ab9a61dc20e3ef8B.jpg",
@@ -523,7 +484,7 @@
             "id": "5-must-have---aliexpress",
             "category": "5aliexpress",
             "rating": 4.8,
-            "priceAli": 0.0,
+            "priceAli": 0,
             "priceLocal": 100,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc93ff5a909cd459db8d2711039d999e0R.jpg",
             "images": [
@@ -610,7 +571,7 @@
             "id": "aliexpress",
             "category": "5aliexpress",
             "rating": 4.8,
-            "priceAli": 0.0,
+            "priceAli": 0,
             "priceLocal": 100,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc93ff5a909cd459db8d2711039d999e0R.jpg",
             "images": [
@@ -697,7 +658,7 @@
             "id": "5----aliexpress",
             "category": "5aliexpress",
             "rating": 4.8,
-            "priceAli": 0.0,
+            "priceAli": 0,
             "priceLocal": 100,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc93ff5a909cd459db8d2711039d999e0R.jpg",
             "images": [
@@ -823,7 +784,7 @@
         {
             "id": "item-1005007129405374",
             "category": "other",
-            "rating": 98.0,
+            "rating": 98,
             "priceAli": 4.69,
             "priceLocal": 26,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/S8348f6c7d4a54710b04ebfee630fae89I.jpg",
@@ -863,7 +824,7 @@
         {
             "id": "tinsol",
             "category": "other",
-            "rating": 90.0,
+            "rating": 90,
             "priceAli": 64.48,
             "priceLocal": 357,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sde0726e06b7949b78a43ef94d2ea56e2q.png",
@@ -983,7 +944,7 @@
         {
             "id": "skil-dl6300",
             "category": "other",
-            "rating": 90.0,
+            "rating": 90,
             "priceAli": 103.47,
             "priceLocal": 574,
             "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sef76bad5144b4a03990ab783bd5cbfcdl.jpg",
