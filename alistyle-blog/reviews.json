@@ -43,6 +43,138 @@
     ],
     "reviews": [
         {
+            "id": "10----aliexpress",
+            "category": "other",
+            "rating": 4.8,
+            "priceAli": 0.0,
+            "priceLocal": 100,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S1bbd5876b33a45998dcc5cf2e6a7e106k.png",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S1bbd5876b33a45998dcc5cf2e6a7e106k.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S6af8ad786b1e408f88a406fc83e4b0c5J.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S60d7e003e8194a2a9d5fe275b53f71561.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S5b602bdf438c4b2c9e2e0b3bde66b4a5y.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S5d2f1769699d4a01a83be3d869ca1d0au.png"
+            ],
+            "isCollection": true,
+            "products": [
+                {
+                    "id": 117,
+                    "title": "380ML Electric Coffee Self Mixing Mug IP67 Waterproof Coffee Stirring Mug USB Charging Digital Display Automatic Magnetic Cup",
+                    "priceAli": 9.04,
+                    "priceFormatted": "33.4 ₪",
+                    "rating": "4.9",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S1bbd5876b33a45998dcc5cf2e6a7e106k.png",
+                    "aliLink": "https://s.click.aliexpress.com/e/_c4CTbvy5"
+                },
+                {
+                    "id": 116,
+                    "title": "LCD Screen Electric Ruler High Precision Rechargeable Digital Display Roller Ruler LCD Display Circular Linear Measurement",
+                    "priceAli": 23.79,
+                    "priceFormatted": "88.0 ₪",
+                    "rating": "4.8",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S6af8ad786b1e408f88a406fc83e4b0c5J.png",
+                    "aliLink": "https://s.click.aliexpress.com/e/_c3a8vAlx"
+                },
+                {
+                    "id": 115,
+                    "title": "ONCE FOR ALL Meat Slicer Cleaver Kitchen Knife Set For Meat Slicing Shredding, Manual Fresh Meat Cutter Food Slicer For Beef",
+                    "priceAli": 72.04,
+                    "priceFormatted": "266.5 ₪",
+                    "rating": "4.8",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S60d7e003e8194a2a9d5fe275b53f71561.jpg",
+                    "aliLink": "https://s.click.aliexpress.com/e/_c3bgdyPB"
+                },
+                {
+                    "id": 114,
+                    "title": "Baseus USB C HUB for Mac M3 M2 M1 System HDMI 4K@60Hz MST Triple Display for MacBook Air Pro Window 11-in-1 HUB Docking Station",
+                    "priceAli": 93.23,
+                    "priceFormatted": "345.0 ₪",
+                    "rating": "4.7",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5b602bdf438c4b2c9e2e0b3bde66b4a5y.jpg",
+                    "aliLink": "https://s.click.aliexpress.com/e/_c3pD7fO1"
+                },
+                {
+                    "id": 113,
+                    "title": "5-in-1 Magnetic Wireless Charging Station with Wireless Speaker Night Light Fast Charger for iPhone iWatch AirPods With Speaker",
+                    "priceAli": 32.46,
+                    "priceFormatted": "120.1 ₪",
+                    "rating": "4.9",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5d2f1769699d4a01a83be3d869ca1d0au.png",
+                    "aliLink": "https://s.click.aliexpress.com/e/_c4DZxlxb"
+                },
+                {
+                    "id": 112,
+                    "title": "Wireless Video Doorbell Camera, WiFi Two-way Talk Doorbell with IR Night Vision, Smart Home Security Surveillance Monitor",
+                    "priceAli": 11.76,
+                    "priceFormatted": "43.5 ₪",
+                    "rating": "4.9",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S7700ffd4f0be443881edaa2ec453290d3.png",
+                    "aliLink": "https://s.click.aliexpress.com/e/_c2xu9Xyp"
+                },
+                {
+                    "id": 109,
+                    "title": "1300W Carpet Upholstery Cleaner 13kPa Suction 100°C Steam 40s Heat-Up 3M Cord 1.1M Hose 1400ML 1200ML Tanks Deep Stain Removal",
+                    "priceAli": 121.51,
+                    "priceFormatted": "449.6 ₪",
+                    "rating": "4.7",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sb3a94cc496f64700b3c8b70b6c3dc168d.jpg",
+                    "aliLink": "https://s.click.aliexpress.com/e/_c3G3F7az"
+                },
+                {
+                    "id": 108,
+                    "title": "220V 800W High Power Paint Sprayer 900ml Electric Spray Gun Easy Spraying Cleaning for Home Painting Home Interior and Exterior",
+                    "priceAli": 87.99,
+                    "priceFormatted": "325.6 ₪",
+                    "rating": "5.0",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sbcc4f796d1fb44128ab9a61dc20e3ef8B.jpg",
+                    "aliLink": "https://s.click.aliexpress.com/e/_c33abmrL"
+                },
+                {
+                    "id": 107,
+                    "title": "Smart AI Robot WiFi Early Education Toys for Children Speech Recognition & Voice Interactive Educational Learning Machine",
+                    "priceAli": 43.62,
+                    "priceFormatted": "161.4 ₪",
+                    "rating": "4.5",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc93ff5a909cd459db8d2711039d999e0R.jpg",
+                    "aliLink": "https://s.click.aliexpress.com/e/_c3k2R9PT"
+                },
+                {
+                    "id": 105,
+                    "title": "Mini Hea Bag Seal Machine Package Sealer Bags Thermal Plastic Food Bag",
+                    "priceAli": 4.69,
+                    "priceFormatted": "17.4 ₪",
+                    "rating": "4.9",
+                    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S8348f6c7d4a54710b04ebfee630fae89I.jpg",
+                    "aliLink": "https://s.click.aliexpress.com/e/_c4eBbUGl"
+                }
+            ],
+            "ru": {
+                "title": "10 лучших товаров с AliExpress для израильтян: практичность и стиль",
+                "excerpt": "Если вы ищете полезные и интересные товары с AliExpress, этот пост для вас! Мы собрали идеальные решения для жизни в Израиле.",
+                "body": "Если вы ищете полезные и интересные товары с AliExpress, этот пост для вас! Мы собрали идеальные решения, которые подойдут для жизни в Израиле, учитывая высокие температуры, налоги и стоимость товаров в шекелях. Простота использования и доступность — вот основные критерии нашего выбора.\n\n**1. 380ML Electric Coffee Self Mixing Mug**  \nЦена: 33.4 ₪  \nРейтинг: ⭐️ 4.9 / 5  \nЭтот стильный кофе-мок выглядит не только современно, но и невероятно удобно. Автоматическая миксерная чаша с защитой IP67 — это отличный вариант для тех, кто не хочет тратить время на перемешивание напитка. Встроенный дисплей поможет следить за температурой, а USB-зарядка делает его использование совершенно беспластиковым.  👉 https://s.click.aliexpress.com/e/_c4CTbvy5\n\n**2. LCD Screen Electric Ruler**  \nЦена: 88.0 ₪  \nРейтинг: N/A  \nЕсли вам нужны точные измерения, этот рейсер станет незаменимым помощником. Высокая точность и возможность работы как с линейными, так и с круговыми измерениями делает этот прибор отличным вариантом для тех, кто занимается ремонтом или проектированием. 👉 https://s.click.aliexpress.com/e/_c3a8vAlx\n\n**3. ONCE FOR ALL Meat Slicer Knife Set**  \nЦена: 266.5 ₪  \nРейтинг: N/A  \nЭтот набор ножей идеально подходит для любителей готовить мясные угощения. Удобный резак и дополнительный нож позволяют быстро и качественно нарезать мясо. Если вы любите готовить, этот набор станет вашим лучшим помощником на кухне. 👉 https://s.click.aliexpress.com/e/_c3bgdyPB\n\n**4. Baseus USB C HUB for Mac**  \nЦена: 345.0 ₪  \nРейтинг: ⭐️ 4.7 / 5  \nДля владельцев Mac этот HUB становится находкой благодаря поддержке 4K изображения и множеству портов для подключения различных устройств. Многофункциональное решение для работы и развлечений, которое не подведет. 👉 https://s.click.aliexpress.com/e/_c3pD7fO1\n\n**5. 5-in-1 Magnetic Wireless Charging Station**  \nЦена: 120.1 ₪  \nРейтинг: ⭐️ 4.9 / 5  \nЭта беспроводная зарядная станция не только быстро заряжает ваши устройства, но и служит стильным элементом декора с функцией ночника и динамика. Практично и удобно для любой семьи. 👉 https://s.click.aliexpress.com/e/_c4DZxlxb\n\n**6. Wireless Video Doorbell Camera**  \nЦена: 43.5 ₪  \nРейтинг: ⭐️ 4.9 / 5  \nЭтот умный дверной звонок обеспечит безопасность вашего дома с возможностью двустороннего разговора и IR ночным видением. Не оставляйте безопасность своего дома на самотек. 👉 https://s.click.aliexpress.com/e/_c2xu9Xyp\n\n**7. 1300W Carpet Upholstery Cleaner**  \nЦена: 449.6 ₪  \nРейтинг: ⭐️ 4.7 / 5  \nЕсли у вас есть домашние животные или вы часто устраиваете вечеринки, этот очиститель ковров поможет быстро справиться с разными пятнами. Мощный паровой очиститель для глубокой чистки. 👉 https://s.click.aliexpress.com/e/_c3G3F7az\n\n**8. 220V 800W High Power Paint Sprayer**  \nЦена: 325.6 ₪  \nРейтинг: ⭐️ 5.0 / 5  \nЛегкое и быстрое покраска как интерьера, так и экстерьера вашего дома. Этот электрошприц — отличный выбор для DIY проектов! 👉 https://s.click.aliexpress.com/e/_c33abmrL\n\n**9. Smart AI Robot for Children**  \nЦена: 161.4 ₪  \nРейтинг: ⭐️ 4.5 / 5  \nЭтот умный робот сочетает в себе образовательные игры с системой распознавания речи, что делает его отличным подарком для детей, позволяя учиться с удовольствием. 👉 https://s.click.aliexpress.com/e/_c3k2R9PT\n\n**10. Mini Hea Bag Seal Machine**  \nЦена: 17.4 ₪  \nРейтинг: ⭐️ 4.9 / 5  \nПакуете еду на вынос или хотите сохранить продукты свежими? Этот пакетный запечатыватель станет вашим настоящим помощником в домашних условиях.  👉 https://s.click.aliexpress.com/e/_c4eBbUGl\n\nВ мире, где удобство и качество имеют важное значение, эти товары с AliExpress помогут вам сделать жизнь проще и комфортнее в Израиле. Не упустите шанс добавить что-то из этого списка в свою жизнь!",
+                "pros": [
+                    "Практичные и стильные товары",
+                    "Широкий выбор для дома и быта",
+                    "Удобные и современные решения"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": ""
+            },
+            "he": {
+                "title": "10 המוצרים הטובים ביותר מ-AliExpress לישראלים: פרקטיות וסגנון",
+                "excerpt": "אם אתם מחפשים מוצרים מועילים ועניין מ-AliExpress, הפוסט הזה בשבילכם! ריכזנו פתרונות אידיאליים לחיים בישראל.",
+                "body": "אם אתם מחפשים מוצרים מועילים ועניין מ-AliExpress, הפוסט הזה בשבילכם! ריכזנו פתרונות אידיאליים שמתאימים לחיים בישראל, בהתחשב בטמפרטורות הגבוהות, מיסים ועלויות המוצרים בשקלים. פשטות השימוש ונגישות - אלו הקריטריונים המרכזיים בבחירתנו.\n\n**1. כוס קפה חשמלית עם ערבוב עצמי של 380ML**  \nמחיר: 33.4 ₪  \nדירוג: ⭐️ 4.9 / 5  \nהכוס המודרנית הזו לא רק נראית מעולה, אלא גם נוחה מאוד. קנקן ערבוב אוטומטי עם הגנה IP67 - פתרון מצוין למי שלא רוצה לבזבז זמן על ערבוב המשקה. תצוגה מובנית עוזרת לעקוב אחרי הטמפרטורה, והטעינה באמצעות USB הופכת את השימוש בה לנוחה במיוחד. 👉 https://s.click.aliexpress.com/e/_c4CTbvy5\n\n**2. רצועת מדידה חשמלית עם מסך LCD**  \nמחיר: 88.0 ₪  \nדירוג: N/A  \nאם אתם זקוקים למדידות מדויקות, הכלי הזה יהיה לעזר רב. דיוק גבוה ויכולת עבודה עם מדידות לינאריות ועגולות עושה אותו מצוין עבור מי שעוסק בשיפוצים או תכנון. 👉 https://s.click.aliexpress.com/e/_c3a8vAlx\n\n**3. סט סכינים לחיתוך בשר ONCE FOR ALL**  \nמחיר: 266.5 ₪  \nדירוג: N/A  \nסט הסכינים הזה מצוין לאוהבי הבישול עם בשר. סכין חיתוך נוחה נוספת מאפשרת לחתוך בשר במהירות ובאיכות גבוהה. אם אתם אוהבים לבשל, הסט הזה יהיה לעזר שלכם במטבח. 👉 https://s.click.aliexpress.com/e/_c3bgdyPB\n\n**4. HUB USB C של Baseus למק**  \nמחיר: 345.0 ₪  \nדירוג: ⭐️ 4.7 / 5  \nלבעלי מק, ה-HUB הזה הוא מציאה בזכות התמיכה בתמונות 4K והרבה יציאות לחיבור מכשירים שונים. פתרון רב תכליתי לעבודה ופנאי שלא יאכזב. 👉 https://s.click.aliexpress.com/e/_c3pD7fO1\n\n**5. תחנת טעינה אלחוטית 5-in-1**  \nמחיר: 120.1 ₪  \nדירוג: ⭐️ 4.9 / 5  \nתחנת הטעינה האלחוטית הזו לא רק מטעינה את המכשירים שלכם במהירות, אלא גם служит כאלמנט עיצובי עם פונקציית מנורת לילה ורמקול. מעשית ונוחה לכל משפחה. 👉 https://s.click.aliexpress.com/e/_c4DZxlxb\n\n**6. מצלמת דלת חכמה אלחוטית**  \nמחיר: 43.5 ₪  \nדירוג: ⭐️ 4.9 / 5  \nהזמן החכם הזה מספק אבטחה לבית שלכם עם אפשרות שיחה דו-כיוונית וראיית לילה IR. אל תעזו להשאיר את בטיחות הבית שלכם במקרה. 👉 https://s.click.aliexpress.com/e/_c2xu9Xyp\n\n**7. מנקה שטיחים 1300W**  \nמחיר: 449.6 ₪  \nדירוג: ⭐️ 4.7 / 5  \nאם יש לכם חיות מחמד או שאתם מארחים מסיבות הרבה, מנקה השטיחים הזה יעזור לכם להתמודד במהירות עם כתמים שונים. מנקה מבוסס אדים בעוצמה גבוהה לניקוי עמוק. 👉 https://s.click.aliexpress.com/e/_c3G3F7az\n\n**8. משאבת צבע חשמלית 800W 220V**  \nמחיר: 325.6 ₪  \nדירוג: ⭐️ 5.0 / 5  \nצביעה קלה ומהירה של פנים וגם חוץ הבית. המשאבה החשמלית הזו היא בחירה מצוינת לפרויקטים DIY! 👉 https://s.click.aliexpress.com/e/_c33abmrL\n\n**9. רובוט חכם לילדים**  \nמחיר: 161.4 ₪  \nדירוג: ⭐️ 4.5 / 5  \nהרובוט החכם הזה משלב משחקים חינוכיים עם מערכת זיהוי דיבור, מה שהופך אותו למתנה מצוינת לילדים, מאפשרת להם ללמוד בהנאה. 👉 https://s.click.aliexpress.com/e/_c3k2R9PT\n\n**10. מכונת ס sealing קטנה**  \nמחיר: 17.4 ₪  \nדירוג: ⭐️ 4.9 / 5  \nמכינים אוכל לקחת או רוצים לשמור על טריות המזון? מכונת sealing הזו תהיה לעזר שלכם בבית. 👉 https://s.click.aliexpress.com/e/_c4eBbUGl\n\nבעולם שבו נוחות ואיכות חשובות, המוצרים האלה מ-AliExpress יעזרו לכם להפוך את החיים לפשוטים ונוחים יותר בישראל. אל תפספסו את ההזדמנות להוסיף משהו מרשימה זו לחייכם!",
+                "pros": [
+                    "מוצרים פרקטיים ומעוצבים",
+                    "מגוון רחב לבית ולבית",
+                    "פתרונות נוחים ומודרניים"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": ""
+            }
+        },
+        {
             "id": "lcd",
             "category": "tools",
             "rating": 4.8,
