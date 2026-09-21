@@ -89,28 +89,32 @@
                     </div>
                 </div>
                 <div class="fast-buy-info">
-                    <div id="verdict-score" class="verdict-score-badge">⭐ 4.9 / 5.0 Выбор редакции</div>
-                    
-                    <div class="fast-buy-rating">
-                        <span class="rating-text" data-translate="editorRating">Оценка редакции:</span>
-                        <div class="rating-stars" id="review-rating-stars">
-                            <!-- Stars loaded dynamically -->
+                    <div class="fast-buy-header-row">
+                        <div id="verdict-score" class="verdict-score-badge">⭐ 9.8 / 10 Выбор редакции</div>
+                        <div class="fast-buy-rating">
+                            <span class="rating-text" data-translate="editorRating">Оценка редакции:</span>
+                            <div class="rating-stars" id="review-rating-stars">
+                                <!-- Stars loaded dynamically -->
+                            </div>
                         </div>
                     </div>
 
+                    <h2 class="fast-buy-product-title" id="fast-buy-product-title">Загрузка...</h2>
+
                     <!-- Price Comparison in Shekels -->
                     <div class="fast-buy-prices-wrap" id="fast-buy-prices">
-                        <div class="fast-buy-price-row">
-                            <span data-translate="priceAliText">На AliExpress:</span>
+                        <div class="price-ali-block">
+                            <span class="price-label-ali" data-translate="priceAliText">На AliExpress:</span>
                             <span class="fast-buy-price-ali-val" id="fast-buy-price-ali">₪0</span>
                         </div>
-                        <div class="fast-buy-price-row">
-                            <span data-translate="priceLocalText">В магазинах Израиля:</span>
-                            <span class="fast-buy-price-local-val" id="fast-buy-price-local">₪0</span>
-                        </div>
-                        <div class="fast-buy-price-row">
-                            <span data-translate="savingsText">Ваша выгода:</span>
-                            <span class="fast-buy-savings-val" id="fast-buy-savings">₪0</span>
+                        <div class="price-local-block">
+                            <div class="price-local-subrow">
+                                <span class="price-label-local" data-translate="priceLocalText">В магазинах Израиля:</span>
+                                <span class="fast-buy-price-local-val" id="fast-buy-price-local">₪0</span>
+                            </div>
+                            <div class="price-savings-subrow">
+                                <span class="fast-buy-savings-val" id="fast-buy-savings">₪0</span>
+                            </div>
                         </div>
                     </div>
 

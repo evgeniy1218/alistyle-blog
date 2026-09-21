@@ -434,8 +434,9 @@ function renderIndexPage() {
         const categoryLabel = categoryObj ? (categoryObj[currentLang] || categoryObj['ru']) : item.category;
 
         // Build Star Ratings
+        const itemRatingObj = normalizeRating(item.rating);
         let starsHTML = '';
-        const fullStars = Math.floor(item.rating || 5);
+        const fullStars = Math.round(itemRatingObj.numOutOf5);
         for (let i = 1; i <= 5; i++) {
             if (i <= fullStars) {
                 starsHTML += `<svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
@@ -470,9 +471,9 @@ function renderIndexPage() {
                 </div>
                 <p class="article-excerpt">${langData.excerpt || ''}</p>
                 <div class="article-footer">
-                    <div class="rating-stars" aria-label="Рейтинг: ${item.rating || 5} из 5">
+                    <div class="rating-stars" aria-label="Рейтинг: ${itemRatingObj.outOf5} из 5">
                         ${starsHTML}
-                        <span class="rating-value">${item.rating || 5.0}</span>
+                        <span class="rating-value">${itemRatingObj.outOf5}</span>
                     </div>
                     <a href="review.html?id=${item.id}" class="read-more-link">
                         ${t.readMoreBtn} 
@@ -648,11 +649,53 @@ function renderReviewPage() {
         imgEl.alt = langData.title;
     }
 
+// Rating normalizer helper (handles 1-5, 5-10, and 0-100 scales)
+function normalizeRating(rawRating) {
+    let r = parseFloat(rawRating);
+    if (isNaN(r) || r <= 0) return { outOf5: '4.8', outOf10: '9.6', numOutOf5: 4.8 };
+    if (r > 10) {
+        // e.g. 98.9 -> outOf10: 9.9, outOf5: 4.9
+        const o10 = Math.min(10, Math.max(1, r / 10));
+        const o5 = Math.min(5, Math.max(1, r / 20));
+        return {
+            outOf5: o5.toFixed(1),
+            outOf10: o10.toFixed(1),
+            numOutOf5: o5
+        };
+    }
+    if (r > 5) {
+        // e.g. 9.6 -> outOf10: 9.6, outOf5: 4.8
+        const o10 = Math.min(10, Math.max(1, r));
+        const o5 = Math.min(5, Math.max(1, r / 2));
+        return {
+            outOf5: o5.toFixed(1),
+            outOf10: o10.toFixed(1),
+            numOutOf5: o5
+        };
+    }
+    // e.g. 4.8 -> outOf10: 9.6, outOf5: 4.8
+    const o5 = Math.min(5, Math.max(1, r));
+    const o10 = Math.min(10, Math.max(1, r * 2));
+    return {
+        outOf5: o5.toFixed(1),
+        outOf10: o10.toFixed(1),
+        numOutOf5: o5
+    };
+}
+
+    // Normalized rating
+    const ratingObj = normalizeRating(review.rating);
+
+    // Product Title inside the fast buy box
+    const cardTitleEl = document.getElementById('fast-buy-product-title');
+    if (cardTitleEl) {
+        cardTitleEl.innerText = langData.title;
+    }
+
     // Verdict Score Badge
     const verdictScoreEl = document.getElementById('verdict-score');
     if (verdictScoreEl) {
-        const score = review.rating ? (review.rating * 2).toFixed(1) : '9.6';
-        verdictScoreEl.innerHTML = `⭐ ${score} / 10 &nbsp; ${t.editorChoice}`;
+        verdictScoreEl.innerHTML = `⭐ ${ratingObj.outOf10} / 10 &nbsp; ${t.editorChoice}`;
     }
 
     // Prices and savings
@@ -667,7 +710,7 @@ function renderReviewPage() {
 
     if (priceAliEl) priceAliEl.innerText = `₪${priceAli}`;
     if (priceLocalEl) priceLocalEl.innerText = `₪${priceLocal}`;
-    if (savingsEl) savingsEl.innerText = `₪${savings} (-${discountVal}%)`;
+    if (savingsEl) savingsEl.innerText = `${t.savingsCard || 'Экономия '}₪${savings} (-${discountVal}%)`;
 
     // 1-Click Copy Coupon Code
     const couponBox = document.getElementById('fast-buy-coupon');
@@ -737,7 +780,7 @@ function renderReviewPage() {
     const starsContainer = document.getElementById('review-rating-stars');
     if (starsContainer) {
         starsContainer.innerHTML = '';
-        const fullStars = Math.floor(review.rating || 5);
+        const fullStars = Math.round(ratingObj.numOutOf5);
         for (let i = 1; i <= 5; i++) {
             if (i <= fullStars) {
                 starsContainer.innerHTML += `<svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
@@ -745,7 +788,7 @@ function renderReviewPage() {
                 starsContainer.innerHTML += `<svg class="star empty" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
             }
         }
-        starsContainer.innerHTML += `<span class="rating-value">${review.rating || 5.0}</span>`;
+        starsContainer.innerHTML += `<span class="rating-value">${ratingObj.outOf5}</span>`;
     }
 
     // Pros list
