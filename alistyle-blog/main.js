@@ -380,9 +380,18 @@ function renderAdBanners() {
 }
 
 /**
- * Update dynamic category count badges on filter bar
+ * Dynamic Category Filters with Auto-discovery of all published categories
  */
-function updateCategoryCounts() {
+let currentActiveFilter = 'all';
+
+function renderCategoryFilters() {
+    const container = document.getElementById('filter-container');
+    if (!container) return;
+
+    const t = translations[currentLang];
+    container.innerHTML = '';
+
+    // Count reviews per category
     const counts = { all: reviewsData.length };
     reviewsData.forEach(r => {
         if (r.category) {
@@ -390,14 +399,116 @@ function updateCategoryCounts() {
         }
     });
 
-    const countAll = document.getElementById('count-all');
-    if (countAll) countAll.textContent = `(${counts.all})`;
+    // 1. All reviews button
+    const allBtn = document.createElement('button');
+    allBtn.className = `filter-btn ${currentActiveFilter === 'all' ? 'active' : ''}`;
+    allBtn.setAttribute('data-filter', 'all');
+    allBtn.innerHTML = `<span>${t.filterAll}</span><span class="filter-count">(${counts.all})</span>`;
+    container.appendChild(allBtn);
 
-    Object.keys(counts).forEach(cat => {
-        const badge = document.getElementById(`count-${cat}`);
-        if (badge) {
-            badge.textContent = `(${counts[cat]})`;
+    // Fallbacks dictionary for category names
+    const catNameFallbacks = {
+        electronics: { ru: 'Электроника и Гаджеты', he: 'אלקטרוניקה וגאדג\'טים' },
+        smarthome: { ru: 'Товары для дома', he: 'מוצרים לבית' },
+        cartech: { ru: 'Автотовары', he: 'מוצרים לרכב' },
+        tools: { ru: 'Инструменты', he: 'כלי עבודה' },
+        aliexpress: { ru: 'Подборки AliExpress', he: 'אוספי AliExpress' },
+        other: { ru: 'Другие товары', he: 'מוצרים נוספים' }
+    };
+
+    const addedIds = new Set(['all']);
+
+    // First add from categoriesData
+    categoriesData.forEach(c => {
+        if (counts[c.id] && counts[c.id] > 0 && !addedIds.has(c.id)) {
+            addedIds.add(c.id);
+            const label = c[currentLang] || c['ru'] || (catNameFallbacks[c.id] ? catNameFallbacks[c.id][currentLang] : c.id);
+            const btn = document.createElement('button');
+            btn.className = `filter-btn ${currentActiveFilter === c.id ? 'active' : ''}`;
+            btn.setAttribute('data-filter', c.id);
+            btn.innerHTML = `<span>${label}</span><span class="filter-count">(${counts[c.id]})</span>`;
+            container.appendChild(btn);
         }
+    });
+
+    // Any remaining categories in reviewsData
+    Object.keys(counts).forEach(catId => {
+        if (!addedIds.has(catId) && counts[catId] > 0) {
+            addedIds.add(catId);
+            const fb = catNameFallbacks[catId];
+            const label = fb ? fb[currentLang] : (catId.charAt(0).toUpperCase() + catId.slice(1));
+            const btn = document.createElement('button');
+            btn.className = `filter-btn ${currentActiveFilter === catId ? 'active' : ''}`;
+            btn.setAttribute('data-filter', catId);
+            btn.innerHTML = `<span>${label}</span><span class="filter-count">(${counts[catId]})</span>`;
+            container.appendChild(btn);
+        }
+    });
+
+    // Bind event listeners
+    container.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filterVal = btn.getAttribute('data-filter') || 'all';
+            applyCategoryFilter(filterVal);
+        });
+    });
+}
+
+function applyCategoryFilter(filterValue) {
+    currentActiveFilter = filterValue;
+
+    // Sync filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-filter') === filterValue) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // Sync nav menu links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('data-filter') === filterValue) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+
+    // Toggle articles with smooth transition
+    const articles = document.querySelectorAll('.article-card');
+    articles.forEach(article => {
+        const cat = article.getAttribute('data-category');
+        if (filterValue === 'all' || cat === filterValue) {
+            article.style.display = 'flex';
+            setTimeout(() => {
+                article.style.opacity = '1';
+                article.style.transform = 'translateY(0)';
+            }, 30);
+        } else {
+            article.style.opacity = '0';
+            article.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                article.style.display = 'none';
+            }, 200);
+        }
+    });
+}
+
+function initCategoryFilters() {
+    renderCategoryFilters();
+
+    // Nav-bar filter links
+    document.querySelectorAll('.nav-link[data-filter]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const filterVal = link.getAttribute('data-filter') || 'all';
+            applyCategoryFilter(filterVal);
+            const grid = document.getElementById('reviews-grid');
+            if (grid) {
+                grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     });
 }
 
@@ -410,7 +521,7 @@ function renderIndexPage() {
     grid.innerHTML = '';
 
     const t = translations[currentLang];
-    updateCategoryCounts();
+    renderCategoryFilters();
 
     if (reviewsData.length === 0) {
         grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--color-text-secondary); padding: 40px 0;">${t.noResults}</div>`;
@@ -424,8 +535,23 @@ function renderIndexPage() {
         if (!langData) return;
 
         // Calculate discount percentage and savings
-        const priceAli = Number(item.priceAli) || 0;
-        const priceLocal = Number(item.priceLocal) || 0;
+        let priceAli = Number(item.priceAli) || 0;
+        let priceLocal = Number(item.priceLocal) || 0;
+        const isCollection = !!(item.isCollection || (item.products && item.products.length > 0));
+
+        if (isCollection && item.products && item.products.length > 0) {
+            const productPrices = item.products.map(p => {
+                if (p.priceFormatted) {
+                    const m = p.priceFormatted.match(/[\d.]+/);
+                    if (m) return parseFloat(m[0]);
+                }
+                return parseFloat(p.priceAli || 0);
+            }).filter(v => v > 0);
+            if (productPrices.length > 0) {
+                priceAli = Math.min(...productPrices);
+            }
+        }
+
         const savings = priceLocal > priceAli ? (priceLocal - priceAli) : 0;
         const discountVal = priceLocal > 0 ? Math.round(((priceLocal - priceAli) / priceLocal) * 100) : 35;
 
@@ -445,6 +571,18 @@ function renderIndexPage() {
             }
         }
 
+        const badgeHtml = isCollection
+            ? `<span class="discount-badge" style="background: linear-gradient(135deg, #FF6F00, #FF8F00);">${currentLang === 'he' ? `אוסף (${item.products?.length || ''})` : `Подборка (${item.products?.length || ''})`}</span>`
+            : `<span class="discount-badge">-${discountVal}%</span>`;
+
+        const priceAliDisplay = isCollection
+            ? (currentLang === 'he' ? `החל מ-₪${priceAli}` : `от ₪${priceAli}`)
+            : `₪${priceAli}`;
+
+        const savingsBadgeHtml = isCollection
+            ? `<span class="card-savings-badge" style="background: rgba(46, 125, 50, 0.1); color: var(--color-success);">${currentLang === 'he' ? `${item.products?.length} מוצרים` : `${item.products?.length} товаров`}</span>`
+            : (savings > 0 ? `<span class="card-savings-badge">${t.savingsCard}₪${savings}</span>` : '');
+
         const card = document.createElement('article');
         card.className = 'article-card';
         card.setAttribute('data-category', item.category);
@@ -454,7 +592,7 @@ function renderIndexPage() {
 
         card.innerHTML = `
             <div class="article-img-wrapper">
-                <span class="discount-badge">-${discountVal}%</span>
+                ${badgeHtml}
                 <img class="article-img" src="${item.image || 'logo.png'}" alt="${langData.title}" ${imgPriority} decoding="async" width="350" height="220" onerror="this.src='logo.png'">
             </div>
             <div class="article-content">
@@ -465,9 +603,9 @@ function renderIndexPage() {
                     <a href="review.html?id=${item.id}">${langData.title}</a>
                 </h2>
                 <div class="card-prices">
-                    <span class="card-price-ali">₪${priceAli}</span>
-                    ${priceLocal ? `<span class="card-price-local">₪${priceLocal}</span>` : ''}
-                    ${savings > 0 ? `<span class="card-savings-badge">${t.savingsCard}₪${savings}</span>` : ''}
+                    <span class="card-price-ali">${priceAliDisplay}</span>
+                    ${priceLocal && !isCollection ? `<span class="card-price-local">₪${priceLocal}</span>` : ''}
+                    ${savingsBadgeHtml}
                 </div>
                 <p class="article-excerpt">${langData.excerpt || ''}</p>
                 <div class="article-footer">
@@ -515,47 +653,6 @@ function renderIndexPage() {
             `;
             grid.appendChild(adCard);
         }
-    });
-}
-
-/**
- * Filter Cards by Category Click
- */
-function initCategoryFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const articles = () => document.querySelectorAll('.article-card');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const filterValue = button.getAttribute('data-filter') || 'all';
-
-            // Sync buttons
-            filterButtons.forEach(btn => {
-                if (btn.getAttribute('data-filter') === filterValue) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-
-            // Toggle cards with visual fade
-            articles().forEach(article => {
-                const category = article.getAttribute('data-category');
-                if (filterValue === 'all' || category === filterValue) {
-                    article.style.display = 'flex';
-                    setTimeout(() => {
-                        article.style.opacity = '1';
-                        article.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    article.style.opacity = '0';
-                    article.style.transform = 'translateY(10px)';
-                    setTimeout(() => {
-                        article.style.display = 'none';
-                    }, 200);
-                }
-            });
-        });
     });
 }
 
@@ -699,8 +796,23 @@ function normalizeRating(rawRating) {
     }
 
     // Prices and savings
-    const priceAli = Number(review.priceAli) || 0;
-    const priceLocal = Number(review.priceLocal) || Math.round(priceAli * 1.8);
+    let priceAli = Number(review.priceAli) || 0;
+    let priceLocal = Number(review.priceLocal) || Math.round(priceAli * 1.8);
+    const isCollection = !!(review.isCollection || (review.products && review.products.length > 0));
+
+    if (isCollection && review.products && review.products.length > 0) {
+        const productPrices = review.products.map(p => {
+            if (p.priceFormatted) {
+                const m = p.priceFormatted.match(/[\d.]+/);
+                if (m) return parseFloat(m[0]);
+            }
+            return parseFloat(p.priceAli || 0);
+        }).filter(v => v > 0);
+        if (productPrices.length > 0) {
+            priceAli = Math.min(...productPrices);
+        }
+    }
+
     const savings = priceLocal > priceAli ? (priceLocal - priceAli) : 0;
     const discountVal = priceLocal > 0 ? Math.round(((priceLocal - priceAli) / priceLocal) * 100) : 35;
 
@@ -708,9 +820,25 @@ function normalizeRating(rawRating) {
     const priceLocalEl = document.getElementById('fast-buy-price-local');
     const savingsEl = document.getElementById('fast-buy-savings');
 
-    if (priceAliEl) priceAliEl.innerText = `₪${priceAli}`;
-    if (priceLocalEl) priceLocalEl.innerText = `₪${priceLocal}`;
-    if (savingsEl) savingsEl.innerText = `${t.savingsCard || 'Экономия '}₪${savings} (-${discountVal}%)`;
+    if (priceAliEl) {
+        priceAliEl.innerText = isCollection 
+            ? (currentLang === 'he' ? `החל מ-₪${priceAli}` : `от ₪${priceAli}`)
+            : `₪${priceAli}`;
+    }
+    if (priceLocalEl) {
+        if (isCollection) {
+            priceLocalEl.innerText = currentLang === 'he' ? `${review.products?.length || ''} מוצרים` : `${review.products?.length || ''} товаров`;
+            const localLabel = document.querySelector('.price-label-local');
+            if (localLabel) localLabel.innerText = currentLang === 'he' ? 'באוסף זה:' : 'В этой подборке:';
+        } else {
+            priceLocalEl.innerText = `₪${priceLocal}`;
+        }
+    }
+    if (savingsEl) {
+        savingsEl.innerText = isCollection
+            ? (currentLang === 'he' ? 'מבחר מוצרים מומלצים' : 'Проверенные товары с отзывами')
+            : `${t.savingsCard || 'Экономия '}₪${savings} (-${discountVal}%)`;
+    }
 
     // 1-Click Copy Coupon Code
     const couponBox = document.getElementById('fast-buy-coupon');
@@ -783,10 +911,11 @@ function normalizeRating(rawRating) {
         const fullStars = Math.round(ratingObj.numOutOf5);
         for (let i = 1; i <= 5; i++) {
             if (i <= fullStars) {
-                starsContainer.innerHTML += `<svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+                starsHTML = `<svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
             } else {
-                starsContainer.innerHTML += `<svg class="star empty" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+                starsHTML = `<svg class="star empty" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
             }
+            starsContainer.innerHTML += starsHTML;
         }
         starsContainer.innerHTML += `<span class="rating-value">${ratingObj.outOf5}</span>`;
     }
@@ -802,10 +931,17 @@ function normalizeRating(rawRating) {
         }
     }
 
-    // Buy link
+    // Buy link / Collection link
     const buyBtn = document.getElementById('main-buy-btn');
+    const buyBtnText = document.getElementById('buy-btn-text');
     if (buyBtn) {
-        buyBtn.href = langData.aliLink || '#';
+        if (isCollection && review.products && review.products.length > 0) {
+            buyBtn.href = '#collection-products-section';
+            if (buyBtnText) buyBtnText.innerText = currentLang === 'he' ? 'לצפייה בכל מוצרי האוסף' : 'Смотреть все товары подборки';
+        } else {
+            buyBtn.href = langData.aliLink || '#';
+            if (buyBtnText) buyBtnText.innerText = t.buyBtnText;
+        }
     }
 
     // 5. Render Markdown Body
@@ -813,6 +949,57 @@ function normalizeRating(rawRating) {
     if (bodyContainer) {
         const markdownBody = langData.body || langData.excerpt || '';
         bodyContainer.innerHTML = parseMarkdown(markdownBody);
+    }
+
+    // Render Collection Products Section
+    const existingColSection = document.getElementById('collection-products-section');
+    if (existingColSection) existingColSection.remove();
+
+    if (isCollection && Array.isArray(review.products) && review.products.length > 0) {
+        const colSection = document.createElement('section');
+        colSection.id = 'collection-products-section';
+        colSection.className = 'collection-products-section';
+
+        let productsHtml = '';
+        review.products.forEach((prod, pIdx) => {
+            const prodPrice = prod.priceFormatted || (prod.priceAli ? `₪${Math.round(prod.priceAli * 3.7)}` : '');
+            const prodRating = prod.rating ? `⭐ ${prod.rating}` : '⭐ 5.0';
+            const buyText = currentLang === 'he' ? 'לקנייה בעליאקספרס' : 'Купить на AliExpress';
+            const prodLink = prod.aliLink || langData.aliLink || '#';
+
+            productsHtml += `
+                <div class="col-product-card">
+                    <div class="col-product-num">#${pIdx + 1}</div>
+                    <div class="col-product-img-wrap">
+                        <img src="${prod.image || 'logo.png'}" alt="${prod.title}" loading="lazy" onerror="this.src='logo.png'">
+                    </div>
+                    <div class="col-product-details">
+                        <div class="col-product-meta">
+                            <span class="col-product-rating">${prodRating}</span>
+                            ${prodPrice ? `<span class="col-product-price">${prodPrice}</span>` : ''}
+                        </div>
+                        <h4 class="col-product-title">${prod.title}</h4>
+                        <a href="${prodLink}" target="_blank" rel="sponsored nofollow noopener" class="col-product-buy-btn">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.21 9l-4.38-6.56a1 1 0 0 0-.83-.44 1 1 0 0 0-.83.44L6.79 9H2a1 1 0 0 0-1 1v1a1 1 0 0 0 .88 1L3 21a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2l1.12-9a1 1 0 0 0 .88-1v-1a1 1 0 0 0-1-1h-4.79zM9.38 9l2.62-3.93L14.62 9H9.38zM19 21H5l-1-8h16l-1 8z"/></svg>
+                            <span>${buyText}</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+        });
+
+        colSection.innerHTML = `
+            <h3 class="col-section-title">
+                <span>📦</span> <span>${currentLang === 'he' ? `מוצרים באוסף זה (${review.products.length})` : `Товары из этой подборки (${review.products.length})`}</span>
+            </h3>
+            <div class="col-products-grid">
+                ${productsHtml}
+            </div>
+        `;
+
+        if (bodyContainer && bodyContainer.parentNode) {
+            bodyContainer.parentNode.insertBefore(colSection, bodyContainer.nextSibling);
+        }
     }
 
     // 6. Mobile sticky panel
