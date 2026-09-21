@@ -283,7 +283,12 @@ async function fetchDatabase() {
         const response = await fetch(`./reviews.json?t=${new Date().getTime()}`);
         const data = await response.json();
         categoriesData = data.categories || [];
-        reviewsData = data.reviews || [];
+        const seenIds = new Set();
+        reviewsData = (data.reviews || []).filter(r => {
+            if (!r || !r.id || seenIds.has(r.id)) return false;
+            seenIds.add(r.id);
+            return true;
+        });
         siteSettingsData = data.siteSettings || {};
         applySiteSettings();
     } catch (e) {
