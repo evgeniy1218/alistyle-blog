@@ -1663,6 +1663,16 @@ nav[aria-label="Breadcrumb"] {
     color: var(--color-ali-red);
     letter-spacing: -0.5px;
     font-family: var(--font-sans);
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.card-price-usd {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-inline-start: 4px;
+    letter-spacing: 0;
 }
 
 .card-price-local {

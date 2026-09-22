@@ -445,6 +445,122 @@ if (typeof window !== 'undefined') {
 }
 
 /**
+ * Price Normalizer Helper
+ * Standardizes prices across single reviews and collections.
+ * Ensures AliExpress prices are displayed in ILS (₪) with optional USD reference ($),
+ * Israeli retail comparison prices are in ILS (₪), and calculates realistic discounts & savings.
+ */
+function normalizePrices(item) {
+    if (!item) {
+        return {
+            isCollection: false,
+            priceAliIls: 0,
+            priceAliUsd: null,
+            priceLocal: 0,
+            savings: 0,
+            discountVal: 35,
+            productsCount: 0
+        };
+    }
+
+    const isCollection = !!(item.isCollection || (item.products && item.products.length > 0));
+
+    // Handle Collections (Multi-product roundups)
+    if (isCollection && Array.isArray(item.products) && item.products.length > 0) {
+        let minPriceIls = Infinity;
+        let minPriceUsd = Infinity;
+
+        item.products.forEach(p => {
+            let pIls = 0;
+            let pUsd = 0;
+            if (p.priceFormatted) {
+                const m = p.priceFormatted.match(/[\d.]+/);
+                if (m) pIls = parseFloat(m[0]);
+            }
+            if (p.priceAli) {
+                const val = parseFloat(p.priceAli);
+                if (val > 0) {
+                    if (pIls > 0 && pIls > val * 2.5) {
+                        pUsd = val;
+                    } else if (!pIls) {
+                        pUsd = val;
+                        pIls = Math.round(val * 3.7);
+                    }
+                }
+            }
+            if (!pUsd && pIls > 0) {
+                pUsd = Math.round((pIls / 3.7) * 10) / 10;
+            }
+            if (pIls > 0 && pIls < minPriceIls) minPriceIls = pIls;
+            if (pUsd > 0 && pUsd < minPriceUsd) minPriceUsd = pUsd;
+        });
+
+        if (minPriceIls === Infinity) {
+            minPriceIls = Number(item.priceAli) || 0;
+        }
+
+        return {
+            isCollection: true,
+            priceAliIls: Math.round(minPriceIls),
+            priceAliUsd: minPriceUsd !== Infinity ? minPriceUsd : (item.priceAliUsd || null),
+            priceLocal: 0,
+            savings: 0,
+            discountVal: 0,
+            productsCount: item.products.length
+        };
+    }
+
+    // Single Review
+    let rawAli = Number(item.priceAli) || 0;
+    let rawLocal = Number(item.priceLocal) || 0;
+    let rawUsd = Number(item.priceAliUsd) || 0;
+
+    let priceAliIls = rawAli;
+    let priceLocalIls = rawLocal;
+
+    // Detect if rawAli was stored in USD (e.g. legacy data before conversion or fresh scrapers)
+    // Rule: rawLocal / rawAli >= 3.5 (e.g. 132 / 24 = 5.5) or both were USD (e.g. 68 / 30.99)
+    if (rawLocal > 0 && rawAli > 0 && (rawLocal / rawAli >= 3.5 || (rawLocal <= 100 && rawAli < 50 && rawLocal / rawAli >= 2.0))) {
+        if (rawLocal <= 100 && rawLocal / rawAli < 2.5) {
+            rawUsd = rawAli;
+            priceAliIls = Math.round(rawAli * 3.7);
+            priceLocalIls = Math.round(rawLocal * 3.7);
+        } else {
+            rawUsd = rawAli;
+            priceAliIls = Math.round(rawAli * 3.7);
+        }
+    } else if (rawUsd > 0) {
+        priceAliIls = rawAli;
+    } else if (rawAli > 0 && rawLocal === 0) {
+        priceLocalIls = Math.round(rawAli * 1.5);
+    }
+
+    if (!rawUsd && priceAliIls > 0) {
+        rawUsd = Math.round((priceAliIls / 3.7) * 10) / 10;
+    }
+
+    if (priceLocalIls <= priceAliIls && priceAliIls > 0) {
+        priceLocalIls = Math.round(priceAliIls * 1.5);
+    }
+
+    const savings = priceLocalIls > priceAliIls ? (priceLocalIls - priceAliIls) : 0;
+    const discountVal = priceLocalIls > 0 ? Math.round(((priceLocalIls - priceAliIls) / priceLocalIls) * 100) : 35;
+
+    return {
+        isCollection: false,
+        priceAliIls,
+        priceAliUsd: rawUsd,
+        priceLocal: priceLocalIls,
+        savings,
+        discountVal,
+        productsCount: 0
+    };
+}
+if (typeof window !== 'undefined') {
+    window.normalizePrices = normalizePrices;
+}
+
+/**
  * Dynamic Category Filters with Auto-discovery of all published categories
  */
 let currentActiveFilter = 'all';
@@ -599,26 +715,8 @@ function renderIndexPage() {
         const langData = item[currentLang] || item['ru'] || item['he'];
         if (!langData) return;
 
-        // Calculate discount percentage and savings
-        let priceAli = Number(item.priceAli) || 0;
-        let priceLocal = Number(item.priceLocal) || 0;
-        const isCollection = !!(item.isCollection || (item.products && item.products.length > 0));
-
-        if (isCollection && item.products && item.products.length > 0) {
-            const productPrices = item.products.map(p => {
-                if (p.priceFormatted) {
-                    const m = p.priceFormatted.match(/[\d.]+/);
-                    if (m) return parseFloat(m[0]);
-                }
-                return parseFloat(p.priceAli || 0);
-            }).filter(v => v > 0);
-            if (productPrices.length > 0) {
-                priceAli = Math.min(...productPrices);
-            }
-        }
-
-        const savings = priceLocal > priceAli ? (priceLocal - priceAli) : 0;
-        const discountVal = priceLocal > 0 ? Math.round(((priceLocal - priceAli) / priceLocal) * 100) : 35;
+        // Calculate normalized prices and savings
+        const prices = normalizePrices(item);
 
         // Map Category Label
         const categoryObj = categoriesData.find(c => c.id === item.category);
@@ -636,17 +734,21 @@ function renderIndexPage() {
             }
         }
 
-        const badgeHtml = isCollection
-            ? `<span class="discount-badge" style="background: linear-gradient(135deg, #FF6F00, #FF8F00);">${currentLang === 'he' ? `אוסף (${item.products?.length || ''})` : `Подборка (${item.products?.length || ''})`}</span>`
-            : `<span class="discount-badge">-${discountVal}%</span>`;
+        const badgeHtml = prices.isCollection
+            ? `<span class="discount-badge" style="background: linear-gradient(135deg, #FF6F00, #FF8F00);">${currentLang === 'he' ? `אוסף (${prices.productsCount})` : `Подборка (${prices.productsCount})`}</span>`
+            : `<span class="discount-badge">-${prices.discountVal}%</span>`;
 
-        const priceAliDisplay = isCollection
-            ? (currentLang === 'he' ? `החל מ-₪${priceAli}` : `от ₪${priceAli}`)
-            : `₪${priceAli}`;
+        const priceAliDisplay = prices.isCollection
+            ? (currentLang === 'he' ? `החל מ-₪${prices.priceAliIls}` : `от ₪${prices.priceAliIls}`)
+            : `₪${prices.priceAliIls}`;
 
-        const savingsBadgeHtml = isCollection
-            ? `<span class="card-savings-badge" style="background: rgba(46, 125, 50, 0.1); color: var(--color-success);">${currentLang === 'he' ? `${item.products?.length} מוצרים` : `${item.products?.length} товаров`}</span>`
-            : (savings > 0 ? `<span class="card-savings-badge">${t.savingsCard}₪${savings}</span>` : '');
+        const priceUsdBadge = (!prices.isCollection && prices.priceAliUsd)
+            ? `<span class="card-price-usd">($${prices.priceAliUsd})</span>`
+            : '';
+
+        const savingsBadgeHtml = prices.isCollection
+            ? `<span class="card-savings-badge" style="background: rgba(46, 125, 50, 0.1); color: var(--color-success);">${currentLang === 'he' ? `${prices.productsCount} מוצרים` : `${prices.productsCount} товаров`}</span>`
+            : (prices.savings > 0 ? `<span class="card-savings-badge">${t.savingsCard}₪${prices.savings}</span>` : '');
 
         const card = document.createElement('article');
         card.className = 'article-card';
@@ -668,8 +770,8 @@ function renderIndexPage() {
                     <a href="review.html?id=${item.id}">${langData.title}</a>
                 </h2>
                 <div class="card-prices">
-                    <span class="card-price-ali">${priceAliDisplay}</span>
-                    ${priceLocal && !isCollection ? `<span class="card-price-local">₪${priceLocal}</span>` : ''}
+                    <span class="card-price-ali">${priceAliDisplay}${priceUsdBadge}</span>
+                    ${prices.priceLocal && !prices.isCollection ? `<span class="card-price-local">₪${prices.priceLocal}</span>` : ''}
                     ${savingsBadgeHtml}
                 </div>
                 <p class="article-excerpt">${langData.excerpt || ''}</p>
@@ -827,48 +929,36 @@ function renderReviewPage() {
     }
 
     // Prices and savings
-    let priceAli = Number(review.priceAli) || 0;
-    let priceLocal = Number(review.priceLocal) || Math.round(priceAli * 1.8);
-    const isCollection = !!(review.isCollection || (review.products && review.products.length > 0));
-
-    if (isCollection && review.products && review.products.length > 0) {
-        const productPrices = review.products.map(p => {
-            if (p.priceFormatted) {
-                const m = p.priceFormatted.match(/[\d.]+/);
-                if (m) return parseFloat(m[0]);
-            }
-            return parseFloat(p.priceAli || 0);
-        }).filter(v => v > 0);
-        if (productPrices.length > 0) {
-            priceAli = Math.min(...productPrices);
-        }
-    }
-
-    const savings = priceLocal > priceAli ? (priceLocal - priceAli) : 0;
-    const discountVal = priceLocal > 0 ? Math.round(((priceLocal - priceAli) / priceLocal) * 100) : 35;
+    const prices = normalizePrices(review);
+    const priceAli = prices.priceAliIls;
+    const discountVal = prices.discountVal;
 
     const priceAliEl = document.getElementById('fast-buy-price-ali');
     const priceLocalEl = document.getElementById('fast-buy-price-local');
     const savingsEl = document.getElementById('fast-buy-savings');
 
     if (priceAliEl) {
-        priceAliEl.innerText = isCollection 
-            ? (currentLang === 'he' ? `החל מ-₪${priceAli}` : `от ₪${priceAli}`)
-            : `₪${priceAli}`;
+        if (prices.isCollection) {
+            priceAliEl.innerText = currentLang === 'he' ? `החל מ-₪${prices.priceAliIls}` : `от ₪${prices.priceAliIls}`;
+        } else {
+            const usdSpan = prices.priceAliUsd ? `<span class="usd-hint" style="font-size: 0.6em; font-weight: 600; color: var(--color-text-muted); margin-inline-start: 6px;">($${prices.priceAliUsd})</span>` : '';
+            priceAliEl.innerHTML = `₪${prices.priceAliIls}${usdSpan}`;
+        }
     }
     if (priceLocalEl) {
-        if (isCollection) {
-            priceLocalEl.innerText = currentLang === 'he' ? `${review.products?.length || ''} מוצרים` : `${review.products?.length || ''} товаров`;
-            const localLabel = document.querySelector('.price-label-local');
+        const localLabel = document.querySelector('.price-label-local');
+        if (prices.isCollection) {
+            priceLocalEl.innerText = currentLang === 'he' ? `${prices.productsCount} מוצרים` : `${prices.productsCount} товаров`;
             if (localLabel) localLabel.innerText = currentLang === 'he' ? 'באוסף זה:' : 'В этой подборке:';
         } else {
-            priceLocalEl.innerText = `₪${priceLocal}`;
+            priceLocalEl.innerText = `₪${prices.priceLocal}`;
+            if (localLabel) localLabel.innerText = currentLang === 'he' ? 'בארץ:' : 'В Израиле:';
         }
     }
     if (savingsEl) {
-        savingsEl.innerText = isCollection
-            ? (currentLang === 'he' ? 'מבחר מוצרים מומלצים' : 'Проверенные товары с отзывами')
-            : `${t.savingsCard || 'Экономия '}₪${savings} (-${discountVal}%)`;
+        savingsEl.innerText = prices.isCollection
+            ? (currentLang === 'he' ? 'מבחר מוצרים מומלצים לבחירתכם' : 'Проверенные товары с отзывами')
+            : `${t.savingsCard || 'Экономия '}₪${prices.savings} (-${prices.discountVal}%)`;
     }
 
     // 1-Click Copy Coupon Code
@@ -966,7 +1056,7 @@ function renderReviewPage() {
     const buyBtn = document.getElementById('main-buy-btn');
     const buyBtnText = document.getElementById('buy-btn-text');
     if (buyBtn) {
-        if (isCollection && review.products && review.products.length > 0) {
+        if (prices.isCollection && review.products && review.products.length > 0) {
             buyBtn.href = '#collection-products-section';
             if (buyBtnText) buyBtnText.innerText = currentLang === 'he' ? 'לצפייה בכל מוצרי האוסף' : 'Смотреть все товары подборки';
         } else {
@@ -986,14 +1076,36 @@ function renderReviewPage() {
     const existingColSection = document.getElementById('collection-products-section');
     if (existingColSection) existingColSection.remove();
 
-    if (isCollection && Array.isArray(review.products) && review.products.length > 0) {
+    if (prices.isCollection && Array.isArray(review.products) && review.products.length > 0) {
         const colSection = document.createElement('section');
         colSection.id = 'collection-products-section';
         colSection.className = 'collection-products-section';
 
         let productsHtml = '';
         review.products.forEach((prod, pIdx) => {
-            const prodPrice = prod.priceFormatted || (prod.priceAli ? `₪${Math.round(prod.priceAli * 3.7)}` : '');
+            let prodIls = 0;
+            let prodUsd = 0;
+            if (prod.priceFormatted) {
+                const m = prod.priceFormatted.match(/[\d.]+/);
+                if (m) prodIls = Math.round(parseFloat(m[0]));
+            }
+            if (prod.priceAli) {
+                const val = parseFloat(prod.priceAli);
+                if (val > 0) {
+                    if (prodIls > 0 && prodIls > val * 2.5) {
+                        prodUsd = val;
+                    } else if (!prodIls) {
+                        prodUsd = val;
+                        prodIls = Math.round(val * 3.7);
+                    }
+                }
+            }
+            if (!prodUsd && prodIls > 0) {
+                prodUsd = Math.round((prodIls / 3.7) * 10) / 10;
+            }
+
+            const usdNote = prodUsd > 0 ? `<span class="col-usd-hint" style="font-size:0.82em;opacity:0.75;font-weight:500;margin-inline-start:4px;">($${prodUsd})</span>` : '';
+            const prodPrice = prodIls > 0 ? `₪${prodIls}${usdNote}` : (prod.priceFormatted || '');
             const prodRating = prod.rating ? `⭐ ${prod.rating}` : '⭐ 5.0';
             const buyText = currentLang === 'he' ? 'לקנייה בעליאקספרס' : 'Купить на AliExpress';
             const prodLink = prod.aliLink || langData.aliLink || '#';
@@ -1043,7 +1155,9 @@ function renderReviewPage() {
     if (stickyThumb) stickyThumb.src = review.image || 'logo.png';
     if (stickyTitle) stickyTitle.innerText = langData.title;
     if (stickyPrice) {
-        stickyPrice.innerText = `₪${priceAli} (-${discountVal}%)`;
+        stickyPrice.innerText = prices.isCollection
+            ? (currentLang === 'he' ? `החל מ-₪${prices.priceAliIls}` : `от ₪${prices.priceAliIls}`)
+            : `₪${prices.priceAliIls} (-${prices.discountVal}%)`;
     }
     if (stickyBuyBtn) {
         stickyBuyBtn.href = langData.aliLink || '#';
