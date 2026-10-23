@@ -6,7 +6,11 @@
     <title id="page-head-title">Обзор товара — AliStyle Blog</title>
     <meta name="description" content="Честные обзоры и тестирование гаджетов и товаров с AliExpress. Реальный опыт использования и выводы.">
     <link rel="icon" type="image/png" href="logo.png">
+    <meta name="theme-color" content="#07070d">
+    <link rel="manifest" href="manifest.webmanifest">
+    <script>try{document.documentElement.setAttribute("data-theme",JSON.parse(localStorage.getItem("alistyle_theme"))||"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
     <link rel="stylesheet" href="style.css?v=2.2">
+    <link rel="stylesheet" href="neon.css?v=1.0">
 </head>
 <body>
 
@@ -268,6 +272,8 @@
             return { outOf5: r.toFixed(1), outOf10: (r * 2).toFixed(1), numOutOf5: r };
         };
     </script>
+    <form name="reader-review" data-netlify="true" hidden><input name="form-name"><input name="review-id"><input name="name"><input name="rating"><textarea name="message"></textarea></form>
     <script src="main.js?v=2.2"></script>
+    <script src="features.js?v=1.0"></script>
 </body>
 </html>

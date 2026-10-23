@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-translate="pageTitle">AliStyle Blog — Честные обзоры товаров с AliExpress</title>
     <meta name="description" content="Реальные тесты, обзоры и подборки крутых гаджетов и товаров с AliExpress. Секретные промокоды, купоны и скидки для Израиля.">
-    <meta name="theme-color" content="#FCFCFD">
+    <meta name="theme-color" content="#07070d">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <script>try{document.documentElement.setAttribute("data-theme",JSON.parse(localStorage.getItem("alistyle_theme"))||"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
     
     <!-- Open Graph & Social Cards -->
     <meta property="og:title" content="AliStyle Blog — Честные обзоры товаров с AliExpress">
@@ -18,6 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css?v=2.2">
+    <link rel="stylesheet" href="neon.css?v=1.0">
 </head>
 <body>
 
@@ -86,9 +90,7 @@
         <div class="container">
             <div class="articles-grid" id="reviews-grid">
                 <!-- Review cards will be dynamically loaded here by main.js from reviews.json -->
-                <div style="grid-column: 1/-1; text-align: center; color: var(--color-text-secondary); padding: 40px 0;">
-                    Загрузка обзоров...
-                </div>
+                <div class="nx-skel"><i class="s-img"></i><div class="s-body"><i class="s-l w40"></i><i class="s-l w90"></i><i class="s-l w60"></i></div></div><div class="nx-skel"><i class="s-img"></i><div class="s-body"><i class="s-l w40"></i><i class="s-l w90"></i><i class="s-l w60"></i></div></div><div class="nx-skel"><i class="s-img"></i><div class="s-body"><i class="s-l w40"></i><i class="s-l w90"></i><i class="s-l w60"></i></div></div><div class="nx-skel"><i class="s-img"></i><div class="s-body"><i class="s-l w40"></i><i class="s-l w90"></i><i class="s-l w60"></i></div></div><div class="nx-skel"><i class="s-img"></i><div class="s-body"><i class="s-l w40"></i><i class="s-l w90"></i><i class="s-l w60"></i></div></div><div class="nx-skel"><i class="s-img"></i><div class="s-body"><i class="s-l w40"></i><i class="s-l w90"></i><i class="s-l w60"></i></div></div>
             </div>
         </div>
     </main>
@@ -194,5 +196,6 @@
         };
     </script>
     <script src="main.js?v=2.2"></script>
+    <script src="features.js?v=1.0"></script>
 </body>
 </html>
