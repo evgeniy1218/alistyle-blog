@@ -63,6 +63,43 @@
     ],
     "reviews": [
         {
+            "id": "tuya-mmwave---pir",
+            "category": "other",
+            "rating": 98.0,
+            "priceAli": 10.41,
+            "priceLocal": 57,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S8bb1144c57974c46a1334f7aa74077f0U.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S8bb1144c57974c46a1334f7aa74077f0U.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Обзор датчика присутствия Tuya mmWave: прощайте, глупые PIR-сенсоры! 📡",
+                "excerpt": "Устали от того, что в ванной или гостиной постоянно гаснет свет, пока вы читаете? Наш подробный обзор датчика Tuya mmWave доказывает, что идеальная автоматизация умного дома доступна всего за $10.",
+                "body": "Знакома ситуация: сидите вы в туалете или читаете книгу на диване, и вдруг гаснет свет? Приходится дико махать руками, чтобы старый ИК-датчик движения (PIR) соизволил вас заметить. Забудьте об этом маразме раз и навсегда.\n\nСегодня мы разберем девайс, который обещает решить эту проблему за счет технологии микроволнового радара (mmWave). Этот компактный датчик присутствия Tuya Zigbee/WiFi определяет человека, даже если он абсолютно неподвижен и просто дышит. Для израильских квартир, где ванные комнаты и коридоры часто имеют сложную планировку, этот гаджет станет настоящим спасением.\n\n### Главные особенности и опыт использования\n\nДатчик поставляется в ультракомпактном пластиковом корпусе диаметром всего 5 см. Он оснащен удобной ножкой-подставкой с регулировкой угла наклона. Устройство требует постоянного питания 5V/1A через USB-C порт — в израильском климате, где летом постоянно работают кондиционеры, а зимой обогреватели, это даже плюс: вам не придется постоянно менять батарейки, которые быстро садятся из-за частых срабатываний.\n\nВ отличие от простых PIR-сенсоров, этот радар работает на частоте 24 ГГц. Он улавливает микроколебания грудной клетки при дыхании. В приложении Smart Life / Tuya можно настроить чувствительность (от 1 до 9), чтобы избежать ложных срабатываний от сквозняков или движения штор. Также прибор оснащен точным люксметром (датчиком освещенности), благодаря которому свет не будет включаться в солнечные израильские дни.\n\n### Стоит ли покупать?\n\nОднозначно да. Версия Zigbee идеально интегрируется в локальные системы умного дома (например, Home Assistant), что гарантирует моментальный отклик (около 0.5 секунды) даже при перебоях с интернетом. За свою цену чуть более $10 — это абсолютный маст-хэв для автоматизации освещения.",
+                "pros": [
+                    "Реальное обнаружение неподвижного человека по дыханию",
+                    "Встроенный точный датчик освещенности (0-10000 Lux)",
+                    "Сверхнизкая цена для технологии mmWave — около $10"
+                ],
+                "linkText": "Купить на AliExpress с быстрой доставкой",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4otTBa7BiYwFwSFjtoddqbQ8AW37ftRa53ujgk1lx09PjfI06blXP5LWunIiVsfh1uFHi2kKVQnCREjxuSm7LsFj0iudewRj9zZrAwBZ6XPSIj5anYrWrjBVqwTm2QJTZkjajPVhsOfiXqO6qtozGTMWV7P8r1vG1X5b5ARPNgOoz6w9q57h94JUAMsaXs4haRZgbUmr0Vftg62B4qt1iZdIk0kiUBY5DYHKj4N4lAtQW31KK1ZLMWnvgpF4UBkRqNPOK0qtttO74I2emLTuUxEYM5DtiG8Lu0v5tP0O3J8bhchQs3m4gbXsTeO4ipvoR5qE7bs0RBQeNAlAEC6QUA0MR0W0QVVgyuwUIf6DkxAxG0HFCeg0HPbOOc5Tm1upyrK6CWu1kjq37FNGsqenEEFxplh27yZX2IVQFrmPXmfmlMj6zPPNwbmZk5uY1eb7DeljO9O1c2zbAgg6UOthbmo7oFSCvlrhEpBpgiteLKKlD5il1OH5A1NBM18hYTKgUWHCLmRDpA57VVQ0uI0qCbFJNj2V6HRoJ1BoWnPklM9i1QaYa6I3kf4UmYeYZeMvyGTYz8dDjrwoZSKlh3imojOH8T0Ny1BzyG3v4SeaCgxq1TkqFD6oy0jJt5VyaJxBSISGDmJJVbaXxTlXAJfYOopMb8I8o0Gco9ndCTyre7SqpuoJKs0XMCdCpLB1EF3B6oZibEeS11hJDy"
+            },
+            "he": {
+                "title": "סקירה על חיישן נוכחות Tuya mmWave: תגידו שלום לחיישני ה-PIR הטיפשים! 📡",
+                "excerpt": "נמאס לכם שהאור בשירותים או בסלון נכבה כשאתם קוראים ספר? חיישן הנוכחות Tuya mmWave מבוסס מכ\"ם מיקרוגל יפתור לכם את הבעיה לתמיד ובמחיר מצחיק של כ-10 דולרים בלבד.",
+                "body": "מכירים את הסיטואציה שבה אתם יושבים בשירותים או קוראים ספר על הספה, ופתאום האור נכבה? אתם נאלצים לנפנף בידיים בפראות רק כדי שחיישן התנועה הישן (PIR) יואיל בטובו לזהות אתכם. הגיע הזמן להתקדם לטכנולוגיה של שנות ה-2000.\n\nהיום נסקור מכשיר שמבטיח לפתור את הבעיה הזו פעם אחת ולתמיד באמצעות טכנולוגיית מכ\"ם גלי מיקרוגל (mmWave). החיישן החכם של Tuya מסוגל לזהות נוכחות אנושית גם כשאתם קופאים במקום ורק נושמים. עבור הבית הישראלי הממוצע, מדובר בשדרוג עצום לחוויית האוטומציה הביתית.\n\n### חוויית שימוש ואיכות בנייה\n\nהחיישן מגיע במארז פלסטיק קומפקטי במיוחד בקוטר של 5 ס\"מ בלבד, עם זרוע מתכווננת המאפשרת לכוון את זווית המכ\"ם בקלות. המכשיר דורש חיבור קבוע לחשמל באמצעות כבל USB-C (אינו פועל על סוללות) – מה שחוסך את הצורך בהחלפת סוללות תכופה, במיוחד בבתים דינמיים בישראל שבהם החיישן עובד ללא הפסקה.\n\nבניגוד לחיישני אינפרא-אדום פשוטים, המכ\"ם כאן פועל בתדר 24GHz ומזהה תנועות זעירות כמו נשימה. באפליקציית Smart Life / Tuya ניתן לכוונן את רמת הרגישות (מ-1 עד 9) כדי למנוע הפעלות שווא כתוצאה מרוח של מזגן או וילון נע. בנוסף, החיישן כולל מד עוצמת אור מובנה (Lux), המאפשר להגדיר שהאור לא יידלק במהלך שעות היום המוארות בישראל.\n\n### שורה תחתונה: האם שווה לקנות?\n\nללא ספק כן. גרסת ה-Zigbee מומלצת במיוחד לחובבי בית חכם (כמו משתמשי Home Assistant) בזכות עבודה מקומית מהירה ויציבה ללא תלות באינטרנט. במחיר של כ-$10.41, מדובר ברכישה המשתלמת ביותר לשדרוג תאורת הבית שלכם.",
+                "pros": [
+                    "זיהוי נוכחות אמיתי ומדויק על בסיס נשימה (טכנולוגיית 24GHz)",
+                    "חיישן עוצמת אור מובנה ואיכותי לחסכון בחשמל ביום",
+                    "תמורה מטורפת למחיר – כ-10 דולר בלבד בעליאקספרס"
+                ],
+                "linkText": "לקנייה בעליאקספרס במשלוח מהיר",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4otTBa7BiYwFwSFjtoddqbQ8AW37ftRa53ujgk1lx09PjfI06blXP5LWunIiVsfh1uFHi2kKVQnCREjxuSm7LsFj0iudewRj9zZrAwBZ6XPSIj5anYrWrjBVqwTm2QJTZkjajPVhsOfiXqO6qtozGTMWV7P8r1vG1X5b5ARPNgOoz6w9q57h94JUAMsaXs4haRZgbUmr0Vftg62B4qt1iZdIk0kiUBY5DYHKj4N4lAtQW31KK1ZLMWnvgpF4UBkRqNPOK0qtttO74I2emLTuUxEYM5DtiG8Lu0v5tP0O3J8bhchQs3m4gbXsTeO4ipvoR5qE7bs0RBQeNAlAEC6QUA0MR0W0QVVgyuwUIf6DkxAxG0HFCeg0HPbOOc5Tm1upyrK6CWu1kjq37FNGsqenEEFxplh27yZX2IVQFrmPXmfmlMj6zPPNwbmZk5uY1eb7DeljO9O1c2zbAgg6UOthbmo7oFSCvlrhEpBpgiteLKKlD5il1OH5A1NBM18hYTKgUWHCLmRDpA57VVQ0uI0qCbFJNj2V6HRoJ1BoWnPklM9i1QaYa6I3kf4UmYeYZeMvyGTYz8dDjrwoZSKlh3imojOH8T0Ny1BzyG3v4SeaCgxq1TkqFD6oy0jJt5VyaJxBSISGDmJJVbaXxTlXAJfYOopMb8I8o0Gco9ndCTyre7SqpuoJKs0XMCdCpLB1EF3B6oZibEeS11hJDy"
+            }
+        },
+        {
             "id": "tuya-smart-ir",
             "category": "other",
             "rating": 98.0,
