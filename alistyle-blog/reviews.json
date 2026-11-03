@@ -63,6 +63,43 @@
     ],
     "reviews": [
         {
+            "id": "tuya-smart-ir",
+            "category": "other",
+            "rating": 98.0,
+            "priceAli": 8.29,
+            "priceLocal": 46,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S055cc893fa3a4a1c83ccc106d54827afS.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S055cc893fa3a4a1c83ccc106d54827afS.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Обзор Tuya Smart IR: копеечный пульт, который смог",
+                "excerpt": "В эпоху умных домов захламлять тумбочку кучей пультов от телевизора и кондиционера — прошлый век. Разбираемся, как копеечный ИК-пульт Tuya Smart IR решает эту проблему в израильских квартирах.",
+                "body": "В эпоху умных домов захламлять тумбочку россыпью пластиковых пультов от телевизора, кондиционера и аудиосистемы — моветон. Сегодня мы детально разберем ультрабюджетный ИК-пульт Tuya Smart IR Remote Control. При цене менее 10 долларов этот девайс обещает заменить всё ИК-управление в комнате. Давайте посмотрим, из чего он собран и как работает на практике в израильских квартирах.\n\n**Первый взгляд и сборка**\nУстройство представляет собой крошечную «шайбу» из полуглянцевого темного пластика. Пластик здесь непростой: верхняя крышка выполнена из специального ИК-прозрачного материала, чтобы светодиоды внутри могли беспрепятственно светить на 360 градусов. Сборка на удивление плотная — никаких скрипов при сжатии. На корпусе минимум элементов: разъем micro-USB для питания (увы, не Type-C, копеечная экономия на разъеме расстраивает) и физическая кнопка сброса на дне. Комплектация спартанская: сам пульт, кабель и инструкция. Блок питания придется искать свой, подойдет любой старый адаптер на 5V/1A.\n\n**Ключевые ТТХ в деле**\nВнутри установлена круговая плата с ИК-диодами, бьющими во все стороны на расстояние до 8-10 метров (в прямой видимости). Подключение происходит через приложение Smart Life или Tuya Smart по Wi-Fi 2.4 ГГц. Поддержки 5 ГГц тут нет, учитывайте это при настройке роутера.\nВ работе пульт мгновенно реагирует на команды из приложения и сценарии автоматизации. Интеграция с Google Home и Alexa проходит «в один клик». Если вашего кондиционера (например, старых моделей Electra или Tadiran) нет в огромной облачной базе кодов, у гаджета есть режим обучения — можно вручную скопировать сигналы с родного пульта. Главное — не перекрывать девайсу прямую видимость до техники, так как ИК-лучи не проходят сквозь стены.",
+                "pros": [
+                    "Экстремально низкая цена при высоком качестве",
+                    "Покрытие ИК-сигнала на 360 градусов",
+                    "Огромная база готовых пресетов и режим обучения"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ms8jX9ZcYpww8rPJ3GtwZcoqnGI1pHk69lPu2baWK9kr3yrzVdyYPwelYuZTAVOFmstPFSQOGtlyoTyCZrRdlsKg0EMWPpdvzhesmjo5oC78FvRbH0hniygKrjhsft9fwdxEtwG3fqoUaZFL3QpzHwI9IZPsNDjhsr5ZKtVjfR5gAAfFojz9Gc6MGqfLuBJcaosU0RK9MIG7vM8FW80U9Hp8FGfXCDU53ekBGVRIPfkeGNwObyANITN9nstTK5sbWeejjrh5sFXCSCmFgOkyX8XpG4Y4OoYh3nnLCdGDNZC2VlPCMRRTZTx73lf72nOs4BOJR2NUvrcmbeSX4BA6d50cQG8Du6woPvMPxbMNqLaiST6BLOOLTGpL2oX3HsBQuH4GQhWG1xOoRarpr0SBsblYX1ifzEyoqUS71g6CNKLliP7EQMGsOsfq2cDqbplWTb9I64wmkozTs6B9r5VjcBa3G9UYoCnCTH3EvMmPaDGQMLxcNHKSdikuSDzmwYZ4abj2bgTyJI9r9K2pQJVO6RYW8nZKVPFBtWuqKTot8Sf7mulujfDBAzPK15fAC25er6NT1B77AMIBf80j1xBid3m3wnq9ZuGu5ARnzEsNQxuNopAhe8o4dBMsPy4AQXmWjPPpPUwFnyccVKI8GClx9K77WbW1oi3aYiQjkN825N7gQxPJ5L5JlUwP3NGNOgjQuxRg2GqzAakQI"
+            },
+            "he": {
+                "title": "סקירה: Tuya Smart IR – השלט החכם והזול שיעשה לכם סדר בבלאגן",
+                "excerpt": "נמאס לכם מערימת השלטים על השולחן בסלון? שלט ה-IR החכם של Tuya יחליף את כולם וישדרג את המזגן והטלוויזיה שלכם לפעולה חכמה בפחות מ-10 דולרים.",
+                "body": "בעידן של בתים חכמים, למלא את השולחן בסלון בערימה של שלטי פלסטיק ישנים לטלוויזיה, למזגן ולמערכת הסטריאו זה פשוט פאסה. היום נפרק לפרטים את שלט ה-IR האולטרה-תקציבי: Tuya Smart IR Remote Control. במחיר של פחות מ-10 דולרים, המכשיר הקטנטן הזה מבטיח להחליף את כל שלטי האינפרה-אדום בחדר. בואו נראה ממה הוא עשוי ואיך הוא עובד בפועל בדירה הישראלית.\n\n**מבט ראשון ואיכות בנייה**\nהמכשיר מעוצב כ'דסקית' קטנה מפלסטיק כהה חצי מבריק. הפלסטיק של המכסה העליון עשוי מחומר מיוחד השקוף לקרני אינפרה-אדום (IR), כך שהנוריות בפנים יכולות לשדר ללא הפרעה ב-360 מעלות. איכות ההרכבה מפתיעה לטובה – אין חריקות או תחושה זולה. החיסרון הבולט בעיצוב הוא חיבור ה-micro-USB המיושן לחשמל (חיסכון מרגיז של כמה סנטים על חשבון Type-C) וכפתור איפוס פיזי בתחתית. המכשיר מגיע ללא מטען קיר, אך כל מטען ישן של 5V/1A ששוכב לכם במגירה יעשה את העבודה.\n\n**ביצועים ושימוש בשטח**\nבתוך המכשיר מותקן לוח מעגלי עם דיודות IR המשדרות לכל הכיוונים לטווח של עד 8-10 מטרים (בקו ראייה ישיר). החיבור מתבצע דרך האפליקציות הפופולריות Smart Life או Tuya Smart בתדר Wi-Fi של 2.4 גיגה-הרץ (אין תמיכה ב-5GHz, קחו זאת בחשבון בהגדרות הראוטר). השלט מגיב במהירות הבזק לפקודות מהאפליקציה או לתרחישי אוטומציה. השילוב עם Google Home ו-Alexa מתבצע בקליק אחד. יתרון ענק לישראלים: אם המזגן הישן שלכם (כמו תדיראן או אלקטרה) לא מופיע במאגר הקודים העצום בענן, לשלט יש מצב למידה (Learning Mode) המאפשר להעתיק ידנית את האותות מהשלט המקורי.",
+                "pros": [
+                    "מחיר אפסי לחלוטין ביחס לתמורה",
+                    "כיסוי אותות אינפרה-אדום ב-360 מעלות",
+                    "מאגר קודים ענק ומצב למידה עצמי למזגנים ישנים"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ms8jX9ZcYpww8rPJ3GtwZcoqnGI1pHk69lPu2baWK9kr3yrzVdyYPwelYuZTAVOFmstPFSQOGtlyoTyCZrRdlsKg0EMWPpdvzhesmjo5oC78FvRbH0hniygKrjhsft9fwdxEtwG3fqoUaZFL3QpzHwI9IZPsNDjhsr5ZKtVjfR5gAAfFojz9Gc6MGqfLuBJcaosU0RK9MIG7vM8FW80U9Hp8FGfXCDU53ekBGVRIPfkeGNwObyANITN9nstTK5sbWeejjrh5sFXCSCmFgOkyX8XpG4Y4OoYh3nnLCdGDNZC2VlPCMRRTZTx73lf72nOs4BOJR2NUvrcmbeSX4BA6d50cQG8Du6woPvMPxbMNqLaiST6BLOOLTGpL2oX3HsBQuH4GQhWG1xOoRarpr0SBsblYX1ifzEyoqUS71g6CNKLliP7EQMGsOsfq2cDqbplWTb9I64wmkozTs6B9r5VjcBa3G9UYoCnCTH3EvMmPaDGQMLxcNHKSdikuSDzmwYZ4abj2bgTyJI9r9K2pQJVO6RYW8nZKVPFBtWuqKTot8Sf7mulujfDBAzPK15fAC25er6NT1B77AMIBf80j1xBid3m3wnq9ZuGu5ARnzEsNQxuNopAhe8o4dBMsPy4AQXmWjPPpPUwFnyccVKI8GClx9K77WbW1oi3aYiQjkN825N7gQxPJ5L5JlUwP3NGNOgjQuxRg2GqzAakQI"
+            }
+        },
+        {
             "id": "item-3256812603735390",
             "category": "other",
             "rating": 100.0,
