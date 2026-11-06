@@ -1,6 +1,24 @@
 [build]
   publish = "alistyle-blog"
 
+[[redirects]]
+  from = "/api/v1/*"
+  to = "http://129.121.96.26/api/v1/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/static/*"
+  to = "http://129.121.96.26/static/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/go/*"
+  to = "http://129.121.96.26/go/:splat"
+  status = 302
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

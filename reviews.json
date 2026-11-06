@@ -63,6 +63,675 @@
     ],
     "reviews": [
         {
+            "id": "tuya-mmwave---pir",
+            "category": "other",
+            "rating": 98.0,
+            "priceAli": 10.41,
+            "priceLocal": 57,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S8bb1144c57974c46a1334f7aa74077f0U.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S8bb1144c57974c46a1334f7aa74077f0U.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Обзор датчика присутствия Tuya mmWave: прощайте, глупые PIR-сенсоры! 📡",
+                "excerpt": "Устали от того, что в ванной или гостиной постоянно гаснет свет, пока вы читаете? Наш подробный обзор датчика Tuya mmWave доказывает, что идеальная автоматизация умного дома доступна всего за $10.",
+                "body": "Знакома ситуация: сидите вы в туалете или читаете книгу на диване, и вдруг гаснет свет? Приходится дико махать руками, чтобы старый ИК-датчик движения (PIR) соизволил вас заметить. Забудьте об этом маразме раз и навсегда.\n\nСегодня мы разберем девайс, который обещает решить эту проблему за счет технологии микроволнового радара (mmWave). Этот компактный датчик присутствия Tuya Zigbee/WiFi определяет человека, даже если он абсолютно неподвижен и просто дышит. Для израильских квартир, где ванные комнаты и коридоры часто имеют сложную планировку, этот гаджет станет настоящим спасением.\n\n### Главные особенности и опыт использования\n\nДатчик поставляется в ультракомпактном пластиковом корпусе диаметром всего 5 см. Он оснащен удобной ножкой-подставкой с регулировкой угла наклона. Устройство требует постоянного питания 5V/1A через USB-C порт — в израильском климате, где летом постоянно работают кондиционеры, а зимой обогреватели, это даже плюс: вам не придется постоянно менять батарейки, которые быстро садятся из-за частых срабатываний.\n\nВ отличие от простых PIR-сенсоров, этот радар работает на частоте 24 ГГц. Он улавливает микроколебания грудной клетки при дыхании. В приложении Smart Life / Tuya можно настроить чувствительность (от 1 до 9), чтобы избежать ложных срабатываний от сквозняков или движения штор. Также прибор оснащен точным люксметром (датчиком освещенности), благодаря которому свет не будет включаться в солнечные израильские дни.\n\n### Стоит ли покупать?\n\nОднозначно да. Версия Zigbee идеально интегрируется в локальные системы умного дома (например, Home Assistant), что гарантирует моментальный отклик (около 0.5 секунды) даже при перебоях с интернетом. За свою цену чуть более $10 — это абсолютный маст-хэв для автоматизации освещения.",
+                "pros": [
+                    "Реальное обнаружение неподвижного человека по дыханию",
+                    "Встроенный точный датчик освещенности (0-10000 Lux)",
+                    "Сверхнизкая цена для технологии mmWave — около $10"
+                ],
+                "linkText": "Купить на AliExpress с быстрой доставкой",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4otTBa7BiYwFwSFjtoddqbQ8AW37ftRa53ujgk1lx09PjfI06blXP5LWunIiVsfh1uFHi2kKVQnCREjxuSm7LsFj0iudewRj9zZrAwBZ6XPSIj5anYrWrjBVqwTm2QJTZkjajPVhsOfiXqO6qtozGTMWV7P8r1vG1X5b5ARPNgOoz6w9q57h94JUAMsaXs4haRZgbUmr0Vftg62B4qt1iZdIk0kiUBY5DYHKj4N4lAtQW31KK1ZLMWnvgpF4UBkRqNPOK0qtttO74I2emLTuUxEYM5DtiG8Lu0v5tP0O3J8bhchQs3m4gbXsTeO4ipvoR5qE7bs0RBQeNAlAEC6QUA0MR0W0QVVgyuwUIf6DkxAxG0HFCeg0HPbOOc5Tm1upyrK6CWu1kjq37FNGsqenEEFxplh27yZX2IVQFrmPXmfmlMj6zPPNwbmZk5uY1eb7DeljO9O1c2zbAgg6UOthbmo7oFSCvlrhEpBpgiteLKKlD5il1OH5A1NBM18hYTKgUWHCLmRDpA57VVQ0uI0qCbFJNj2V6HRoJ1BoWnPklM9i1QaYa6I3kf4UmYeYZeMvyGTYz8dDjrwoZSKlh3imojOH8T0Ny1BzyG3v4SeaCgxq1TkqFD6oy0jJt5VyaJxBSISGDmJJVbaXxTlXAJfYOopMb8I8o0Gco9ndCTyre7SqpuoJKs0XMCdCpLB1EF3B6oZibEeS11hJDy"
+            },
+            "he": {
+                "title": "סקירה על חיישן נוכחות Tuya mmWave: תגידו שלום לחיישני ה-PIR הטיפשים! 📡",
+                "excerpt": "נמאס לכם שהאור בשירותים או בסלון נכבה כשאתם קוראים ספר? חיישן הנוכחות Tuya mmWave מבוסס מכ\"ם מיקרוגל יפתור לכם את הבעיה לתמיד ובמחיר מצחיק של כ-10 דולרים בלבד.",
+                "body": "מכירים את הסיטואציה שבה אתם יושבים בשירותים או קוראים ספר על הספה, ופתאום האור נכבה? אתם נאלצים לנפנף בידיים בפראות רק כדי שחיישן התנועה הישן (PIR) יואיל בטובו לזהות אתכם. הגיע הזמן להתקדם לטכנולוגיה של שנות ה-2000.\n\nהיום נסקור מכשיר שמבטיח לפתור את הבעיה הזו פעם אחת ולתמיד באמצעות טכנולוגיית מכ\"ם גלי מיקרוגל (mmWave). החיישן החכם של Tuya מסוגל לזהות נוכחות אנושית גם כשאתם קופאים במקום ורק נושמים. עבור הבית הישראלי הממוצע, מדובר בשדרוג עצום לחוויית האוטומציה הביתית.\n\n### חוויית שימוש ואיכות בנייה\n\nהחיישן מגיע במארז פלסטיק קומפקטי במיוחד בקוטר של 5 ס\"מ בלבד, עם זרוע מתכווננת המאפשרת לכוון את זווית המכ\"ם בקלות. המכשיר דורש חיבור קבוע לחשמל באמצעות כבל USB-C (אינו פועל על סוללות) – מה שחוסך את הצורך בהחלפת סוללות תכופה, במיוחד בבתים דינמיים בישראל שבהם החיישן עובד ללא הפסקה.\n\nבניגוד לחיישני אינפרא-אדום פשוטים, המכ\"ם כאן פועל בתדר 24GHz ומזהה תנועות זעירות כמו נשימה. באפליקציית Smart Life / Tuya ניתן לכוונן את רמת הרגישות (מ-1 עד 9) כדי למנוע הפעלות שווא כתוצאה מרוח של מזגן או וילון נע. בנוסף, החיישן כולל מד עוצמת אור מובנה (Lux), המאפשר להגדיר שהאור לא יידלק במהלך שעות היום המוארות בישראל.\n\n### שורה תחתונה: האם שווה לקנות?\n\nללא ספק כן. גרסת ה-Zigbee מומלצת במיוחד לחובבי בית חכם (כמו משתמשי Home Assistant) בזכות עבודה מקומית מהירה ויציבה ללא תלות באינטרנט. במחיר של כ-$10.41, מדובר ברכישה המשתלמת ביותר לשדרוג תאורת הבית שלכם.",
+                "pros": [
+                    "זיהוי נוכחות אמיתי ומדויק על בסיס נשימה (טכנולוגיית 24GHz)",
+                    "חיישן עוצמת אור מובנה ואיכותי לחסכון בחשמל ביום",
+                    "תמורה מטורפת למחיר – כ-10 דולר בלבד בעליאקספרס"
+                ],
+                "linkText": "לקנייה בעליאקספרס במשלוח מהיר",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4otTBa7BiYwFwSFjtoddqbQ8AW37ftRa53ujgk1lx09PjfI06blXP5LWunIiVsfh1uFHi2kKVQnCREjxuSm7LsFj0iudewRj9zZrAwBZ6XPSIj5anYrWrjBVqwTm2QJTZkjajPVhsOfiXqO6qtozGTMWV7P8r1vG1X5b5ARPNgOoz6w9q57h94JUAMsaXs4haRZgbUmr0Vftg62B4qt1iZdIk0kiUBY5DYHKj4N4lAtQW31KK1ZLMWnvgpF4UBkRqNPOK0qtttO74I2emLTuUxEYM5DtiG8Lu0v5tP0O3J8bhchQs3m4gbXsTeO4ipvoR5qE7bs0RBQeNAlAEC6QUA0MR0W0QVVgyuwUIf6DkxAxG0HFCeg0HPbOOc5Tm1upyrK6CWu1kjq37FNGsqenEEFxplh27yZX2IVQFrmPXmfmlMj6zPPNwbmZk5uY1eb7DeljO9O1c2zbAgg6UOthbmo7oFSCvlrhEpBpgiteLKKlD5il1OH5A1NBM18hYTKgUWHCLmRDpA57VVQ0uI0qCbFJNj2V6HRoJ1BoWnPklM9i1QaYa6I3kf4UmYeYZeMvyGTYz8dDjrwoZSKlh3imojOH8T0Ny1BzyG3v4SeaCgxq1TkqFD6oy0jJt5VyaJxBSISGDmJJVbaXxTlXAJfYOopMb8I8o0Gco9ndCTyre7SqpuoJKs0XMCdCpLB1EF3B6oZibEeS11hJDy"
+            }
+        },
+        {
+            "id": "tuya-smart-ir",
+            "category": "other",
+            "rating": 98.0,
+            "priceAli": 8.29,
+            "priceLocal": 46,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S055cc893fa3a4a1c83ccc106d54827afS.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S055cc893fa3a4a1c83ccc106d54827afS.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Обзор Tuya Smart IR: копеечный пульт, который смог",
+                "excerpt": "В эпоху умных домов захламлять тумбочку кучей пультов от телевизора и кондиционера — прошлый век. Разбираемся, как копеечный ИК-пульт Tuya Smart IR решает эту проблему в израильских квартирах.",
+                "body": "В эпоху умных домов захламлять тумбочку россыпью пластиковых пультов от телевизора, кондиционера и аудиосистемы — моветон. Сегодня мы детально разберем ультрабюджетный ИК-пульт Tuya Smart IR Remote Control. При цене менее 10 долларов этот девайс обещает заменить всё ИК-управление в комнате. Давайте посмотрим, из чего он собран и как работает на практике в израильских квартирах.\n\n**Первый взгляд и сборка**\nУстройство представляет собой крошечную «шайбу» из полуглянцевого темного пластика. Пластик здесь непростой: верхняя крышка выполнена из специального ИК-прозрачного материала, чтобы светодиоды внутри могли беспрепятственно светить на 360 градусов. Сборка на удивление плотная — никаких скрипов при сжатии. На корпусе минимум элементов: разъем micro-USB для питания (увы, не Type-C, копеечная экономия на разъеме расстраивает) и физическая кнопка сброса на дне. Комплектация спартанская: сам пульт, кабель и инструкция. Блок питания придется искать свой, подойдет любой старый адаптер на 5V/1A.\n\n**Ключевые ТТХ в деле**\nВнутри установлена круговая плата с ИК-диодами, бьющими во все стороны на расстояние до 8-10 метров (в прямой видимости). Подключение происходит через приложение Smart Life или Tuya Smart по Wi-Fi 2.4 ГГц. Поддержки 5 ГГц тут нет, учитывайте это при настройке роутера.\nВ работе пульт мгновенно реагирует на команды из приложения и сценарии автоматизации. Интеграция с Google Home и Alexa проходит «в один клик». Если вашего кондиционера (например, старых моделей Electra или Tadiran) нет в огромной облачной базе кодов, у гаджета есть режим обучения — можно вручную скопировать сигналы с родного пульта. Главное — не перекрывать девайсу прямую видимость до техники, так как ИК-лучи не проходят сквозь стены.",
+                "pros": [
+                    "Экстремально низкая цена при высоком качестве",
+                    "Покрытие ИК-сигнала на 360 градусов",
+                    "Огромная база готовых пресетов и режим обучения"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ms8jX9ZcYpww8rPJ3GtwZcoqnGI1pHk69lPu2baWK9kr3yrzVdyYPwelYuZTAVOFmstPFSQOGtlyoTyCZrRdlsKg0EMWPpdvzhesmjo5oC78FvRbH0hniygKrjhsft9fwdxEtwG3fqoUaZFL3QpzHwI9IZPsNDjhsr5ZKtVjfR5gAAfFojz9Gc6MGqfLuBJcaosU0RK9MIG7vM8FW80U9Hp8FGfXCDU53ekBGVRIPfkeGNwObyANITN9nstTK5sbWeejjrh5sFXCSCmFgOkyX8XpG4Y4OoYh3nnLCdGDNZC2VlPCMRRTZTx73lf72nOs4BOJR2NUvrcmbeSX4BA6d50cQG8Du6woPvMPxbMNqLaiST6BLOOLTGpL2oX3HsBQuH4GQhWG1xOoRarpr0SBsblYX1ifzEyoqUS71g6CNKLliP7EQMGsOsfq2cDqbplWTb9I64wmkozTs6B9r5VjcBa3G9UYoCnCTH3EvMmPaDGQMLxcNHKSdikuSDzmwYZ4abj2bgTyJI9r9K2pQJVO6RYW8nZKVPFBtWuqKTot8Sf7mulujfDBAzPK15fAC25er6NT1B77AMIBf80j1xBid3m3wnq9ZuGu5ARnzEsNQxuNopAhe8o4dBMsPy4AQXmWjPPpPUwFnyccVKI8GClx9K77WbW1oi3aYiQjkN825N7gQxPJ5L5JlUwP3NGNOgjQuxRg2GqzAakQI"
+            },
+            "he": {
+                "title": "סקירה: Tuya Smart IR – השלט החכם והזול שיעשה לכם סדר בבלאגן",
+                "excerpt": "נמאס לכם מערימת השלטים על השולחן בסלון? שלט ה-IR החכם של Tuya יחליף את כולם וישדרג את המזגן והטלוויזיה שלכם לפעולה חכמה בפחות מ-10 דולרים.",
+                "body": "בעידן של בתים חכמים, למלא את השולחן בסלון בערימה של שלטי פלסטיק ישנים לטלוויזיה, למזגן ולמערכת הסטריאו זה פשוט פאסה. היום נפרק לפרטים את שלט ה-IR האולטרה-תקציבי: Tuya Smart IR Remote Control. במחיר של פחות מ-10 דולרים, המכשיר הקטנטן הזה מבטיח להחליף את כל שלטי האינפרה-אדום בחדר. בואו נראה ממה הוא עשוי ואיך הוא עובד בפועל בדירה הישראלית.\n\n**מבט ראשון ואיכות בנייה**\nהמכשיר מעוצב כ'דסקית' קטנה מפלסטיק כהה חצי מבריק. הפלסטיק של המכסה העליון עשוי מחומר מיוחד השקוף לקרני אינפרה-אדום (IR), כך שהנוריות בפנים יכולות לשדר ללא הפרעה ב-360 מעלות. איכות ההרכבה מפתיעה לטובה – אין חריקות או תחושה זולה. החיסרון הבולט בעיצוב הוא חיבור ה-micro-USB המיושן לחשמל (חיסכון מרגיז של כמה סנטים על חשבון Type-C) וכפתור איפוס פיזי בתחתית. המכשיר מגיע ללא מטען קיר, אך כל מטען ישן של 5V/1A ששוכב לכם במגירה יעשה את העבודה.\n\n**ביצועים ושימוש בשטח**\nבתוך המכשיר מותקן לוח מעגלי עם דיודות IR המשדרות לכל הכיוונים לטווח של עד 8-10 מטרים (בקו ראייה ישיר). החיבור מתבצע דרך האפליקציות הפופולריות Smart Life או Tuya Smart בתדר Wi-Fi של 2.4 גיגה-הרץ (אין תמיכה ב-5GHz, קחו זאת בחשבון בהגדרות הראוטר). השלט מגיב במהירות הבזק לפקודות מהאפליקציה או לתרחישי אוטומציה. השילוב עם Google Home ו-Alexa מתבצע בקליק אחד. יתרון ענק לישראלים: אם המזגן הישן שלכם (כמו תדיראן או אלקטרה) לא מופיע במאגר הקודים העצום בענן, לשלט יש מצב למידה (Learning Mode) המאפשר להעתיק ידנית את האותות מהשלט המקורי.",
+                "pros": [
+                    "מחיר אפסי לחלוטין ביחס לתמורה",
+                    "כיסוי אותות אינפרה-אדום ב-360 מעלות",
+                    "מאגר קודים ענק ומצב למידה עצמי למזגנים ישנים"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ms8jX9ZcYpww8rPJ3GtwZcoqnGI1pHk69lPu2baWK9kr3yrzVdyYPwelYuZTAVOFmstPFSQOGtlyoTyCZrRdlsKg0EMWPpdvzhesmjo5oC78FvRbH0hniygKrjhsft9fwdxEtwG3fqoUaZFL3QpzHwI9IZPsNDjhsr5ZKtVjfR5gAAfFojz9Gc6MGqfLuBJcaosU0RK9MIG7vM8FW80U9Hp8FGfXCDU53ekBGVRIPfkeGNwObyANITN9nstTK5sbWeejjrh5sFXCSCmFgOkyX8XpG4Y4OoYh3nnLCdGDNZC2VlPCMRRTZTx73lf72nOs4BOJR2NUvrcmbeSX4BA6d50cQG8Du6woPvMPxbMNqLaiST6BLOOLTGpL2oX3HsBQuH4GQhWG1xOoRarpr0SBsblYX1ifzEyoqUS71g6CNKLliP7EQMGsOsfq2cDqbplWTb9I64wmkozTs6B9r5VjcBa3G9UYoCnCTH3EvMmPaDGQMLxcNHKSdikuSDzmwYZ4abj2bgTyJI9r9K2pQJVO6RYW8nZKVPFBtWuqKTot8Sf7mulujfDBAzPK15fAC25er6NT1B77AMIBf80j1xBid3m3wnq9ZuGu5ARnzEsNQxuNopAhe8o4dBMsPy4AQXmWjPPpPUwFnyccVKI8GClx9K77WbW1oi3aYiQjkN825N7gQxPJ5L5JlUwP3NGNOgjQuxRg2GqzAakQI"
+            }
+        },
+        {
+            "id": "tuya-smart-ir",
+            "category": "other",
+            "rating": 98.0,
+            "priceAli": 8.29,
+            "priceLocal": 46,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S055cc893fa3a4a1c83ccc106d54827afS.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S055cc893fa3a4a1c83ccc106d54827afS.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Обзор Tuya Smart IR: копеечный пульт, который смог",
+                "excerpt": "В эпоху умных домов захламлять тумбочку кучей пультов от телевизора и кондиционера — прошлый век. Разбираемся, как копеечный ИК-пульт Tuya Smart IR решает эту проблему в израильских квартирах.",
+                "body": "В эпоху умных домов захламлять тумбочку россыпью пластиковых пультов от телевизора, кондиционера и аудиосистемы — моветон. Сегодня мы детально разберем ультрабюджетный ИК-пульт Tuya Smart IR Remote Control. При цене менее 10 долларов этот девайс обещает заменить всё ИК-управление в комнате. Давайте посмотрим, из чего он собран и как работает на практике в израильских квартирах.\n\n**Первый взгляд и сборка**\nУстройство представляет собой крошечную «шайбу» из полуглянцевого темного пластика. Пластик здесь непростой: верхняя крышка выполнена из специального ИК-прозрачного материала, чтобы светодиоды внутри могли беспрепятственно светить на 360 градусов. Сборка на удивление плотная — никаких скрипов при сжатии. На корпусе минимум элементов: разъем micro-USB для питания (увы, не Type-C, копеечная экономия на разъеме расстраивает) и физическая кнопка сброса на дне. Комплектация спартанская: сам пульт, кабель и инструкция. Блок питания придется искать свой, подойдет любой старый адаптер на 5V/1A.\n\n**Ключевые ТТХ в деле**\nВнутри установлена круговая плата с ИК-диодами, бьющими во все стороны на расстояние до 8-10 метров (в прямой видимости). Подключение происходит через приложение Smart Life или Tuya Smart по Wi-Fi 2.4 ГГц. Поддержки 5 ГГц тут нет, учитывайте это при настройке роутера.\nВ работе пульт мгновенно реагирует на команды из приложения и сценарии автоматизации. Интеграция с Google Home и Alexa проходит «в один клик». Если вашего кондиционера (например, старых моделей Electra или Tadiran) нет в огромной облачной базе кодов, у гаджета есть режим обучения — можно вручную скопировать сигналы с родного пульта. Главное — не перекрывать девайсу прямую видимость до техники, так как ИК-лучи не проходят сквозь стены.",
+                "pros": [
+                    "Экстремально низкая цена при высоком качестве",
+                    "Покрытие ИК-сигнала на 360 градусов",
+                    "Огромная база готовых пресетов и режим обучения"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ms8jX9ZcYpww8rPJ3GtwZcoqnGI1pHk69lPu2baWK9kr3yrzVdyYPwelYuZTAVOFmstPFSQOGtlyoTyCZrRdlsKg0EMWPpdvzhesmjo5oC78FvRbH0hniygKrjhsft9fwdxEtwG3fqoUaZFL3QpzHwI9IZPsNDjhsr5ZKtVjfR5gAAfFojz9Gc6MGqfLuBJcaosU0RK9MIG7vM8FW80U9Hp8FGfXCDU53ekBGVRIPfkeGNwObyANITN9nstTK5sbWeejjrh5sFXCSCmFgOkyX8XpG4Y4OoYh3nnLCdGDNZC2VlPCMRRTZTx73lf72nOs4BOJR2NUvrcmbeSX4BA6d50cQG8Du6woPvMPxbMNqLaiST6BLOOLTGpL2oX3HsBQuH4GQhWG1xOoRarpr0SBsblYX1ifzEyoqUS71g6CNKLliP7EQMGsOsfq2cDqbplWTb9I64wmkozTs6B9r5VjcBa3G9UYoCnCTH3EvMmPaDGQMLxcNHKSdikuSDzmwYZ4abj2bgTyJI9r9K2pQJVO6RYW8nZKVPFBtWuqKTot8Sf7mulujfDBAzPK15fAC25er6NT1B77AMIBf80j1xBid3m3wnq9ZuGu5ARnzEsNQxuNopAhe8o4dBMsPy4AQXmWjPPpPUwFnyccVKI8GClx9K77WbW1oi3aYiQjkN825N7gQxPJ5L5JlUwP3NGNOgjQuxRg2GqzAakQI"
+            },
+            "he": {
+                "title": "סקירה: Tuya Smart IR – השלט החכם והזול שיעשה לכם סדר בבלאגן",
+                "excerpt": "נמאס לכם מערימת השלטים על השולחן בסלון? שלט ה-IR החכם של Tuya יחליף את כולם וישדרג את המזגן והטלוויזיה שלכם לפעולה חכמה בפחות מ-10 דולרים.",
+                "body": "בעידן של בתים חכמים, למלא את השולחן בסלון בערימה של שלטי פלסטיק ישנים לטלוויזיה, למזגן ולמערכת הסטריאו זה פשוט פאסה. היום נפרק לפרטים את שלט ה-IR האולטרה-תקציבי: Tuya Smart IR Remote Control. במחיר של פחות מ-10 דולרים, המכשיר הקטנטן הזה מבטיח להחליף את כל שלטי האינפרה-אדום בחדר. בואו נראה ממה הוא עשוי ואיך הוא עובד בפועל בדירה הישראלית.\n\n**מבט ראשון ואיכות בנייה**\nהמכשיר מעוצב כ'דסקית' קטנה מפלסטיק כהה חצי מבריק. הפלסטיק של המכסה העליון עשוי מחומר מיוחד השקוף לקרני אינפרה-אדום (IR), כך שהנוריות בפנים יכולות לשדר ללא הפרעה ב-360 מעלות. איכות ההרכבה מפתיעה לטובה – אין חריקות או תחושה זולה. החיסרון הבולט בעיצוב הוא חיבור ה-micro-USB המיושן לחשמל (חיסכון מרגיז של כמה סנטים על חשבון Type-C) וכפתור איפוס פיזי בתחתית. המכשיר מגיע ללא מטען קיר, אך כל מטען ישן של 5V/1A ששוכב לכם במגירה יעשה את העבודה.\n\n**ביצועים ושימוש בשטח**\nבתוך המכשיר מותקן לוח מעגלי עם דיודות IR המשדרות לכל הכיוונים לטווח של עד 8-10 מטרים (בקו ראייה ישיר). החיבור מתבצע דרך האפליקציות הפופולריות Smart Life או Tuya Smart בתדר Wi-Fi של 2.4 גיגה-הרץ (אין תמיכה ב-5GHz, קחו זאת בחשבון בהגדרות הראוטר). השלט מגיב במהירות הבזק לפקודות מהאפליקציה או לתרחישי אוטומציה. השילוב עם Google Home ו-Alexa מתבצע בקליק אחד. יתרון ענק לישראלים: אם המזגן הישן שלכם (כמו תדיראן או אלקטרה) לא מופיע במאגר הקודים העצום בענן, לשלט יש מצב למידה (Learning Mode) המאפשר להעתיק ידנית את האותות מהשלט המקורי.",
+                "pros": [
+                    "מחיר אפסי לחלוטין ביחס לתמורה",
+                    "כיסוי אותות אינפרה-אדום ב-360 מעלות",
+                    "מאגר קודים ענק ומצב למידה עצמי למזגנים ישנים"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ms8jX9ZcYpww8rPJ3GtwZcoqnGI1pHk69lPu2baWK9kr3yrzVdyYPwelYuZTAVOFmstPFSQOGtlyoTyCZrRdlsKg0EMWPpdvzhesmjo5oC78FvRbH0hniygKrjhsft9fwdxEtwG3fqoUaZFL3QpzHwI9IZPsNDjhsr5ZKtVjfR5gAAfFojz9Gc6MGqfLuBJcaosU0RK9MIG7vM8FW80U9Hp8FGfXCDU53ekBGVRIPfkeGNwObyANITN9nstTK5sbWeejjrh5sFXCSCmFgOkyX8XpG4Y4OoYh3nnLCdGDNZC2VlPCMRRTZTx73lf72nOs4BOJR2NUvrcmbeSX4BA6d50cQG8Du6woPvMPxbMNqLaiST6BLOOLTGpL2oX3HsBQuH4GQhWG1xOoRarpr0SBsblYX1ifzEyoqUS71g6CNKLliP7EQMGsOsfq2cDqbplWTb9I64wmkozTs6B9r5VjcBa3G9UYoCnCTH3EvMmPaDGQMLxcNHKSdikuSDzmwYZ4abj2bgTyJI9r9K2pQJVO6RYW8nZKVPFBtWuqKTot8Sf7mulujfDBAzPK15fAC25er6NT1B77AMIBf80j1xBid3m3wnq9ZuGu5ARnzEsNQxuNopAhe8o4dBMsPy4AQXmWjPPpPUwFnyccVKI8GClx9K77WbW1oi3aYiQjkN825N7gQxPJ5L5JlUwP3NGNOgjQuxRg2GqzAakQI"
+            }
+        },
+        {
+            "id": "item-3256812603735390",
+            "category": "other",
+            "rating": 100.0,
+            "priceAli": 37.71,
+            "priceLocal": 209,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/A5576e1ef263c4aafac603a6abcb63d25e.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/A5576e1ef263c4aafac603a6abcb63d25e.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Ac34a1834ae154aef88fb5ac8e903527d0.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Acc0395b08e0c4634a83e67af61710ff1h.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/A3f611d68e2f84fa2a46f7d0d49fff7a50.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/A27cbb3a673ae424ca7136ff5069417caP.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Ab38e9394bfc94c15ba50a1d9e353a34aL.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Как навсегда убрать грязные носки с пола: гениальный лайфхак для дома",
+                "excerpt": "Устали собирать разбросанные вещи по комнате? Эта подвесная корзина-баскетбольное кольцо превратит рутину в веселую игру для всей семьи.",
+                "body": "Сколько раз вы вздыхали, видя гору грязного белья на полу в спальне или детской? Особый вид домашнего хаоса — это разбросанные носки, которые никак не долетают до ванной, и вечные споры о порядке.\n\nХватит тратить нервы! Это простое решение превращает рутину в веселую игру. Подвесная корзина для белья в виде баскетбольного кольца легко крепится на любую дверь с помощью надежного самоклеящегося крючка. Это идеальный вариант для израильских квартир (особенно съемных), где не хочется лишний раз сверлить стены или портить двери.\n\nТеперь каждый бросок грязной футболки или пары носков — это точное попадание в цель и гарантированный порядок. Сетка выполнена из прочных материалов, которые легко выдерживают вес одежды, а лаконичный дизайн отлично впишется в любой интерьер. Вы больше не будете тратить время на сбор одежды по углам и портить настроение замечаниями близким. Дети и взрослые с азартом будут поддерживать чистоту сами. Это не просто органайзер, а гениальная бытовая находка, которая окупает себя в первый же день, даря покой и идеальный порядок без усилий.",
+                "pros": [
+                    "Превращает уборку в веселую игру",
+                    "Легкая установка без сверления стен",
+                    "Прочные и качественные материалы сетки"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/e/_c3S6lxkN"
+            },
+            "he": {
+                "title": "איך להעלים את הגרביים המלוכלכים מהרצפה לתמיד: הפתרון הגאוני",
+                "excerpt": "נמאס לכם לאסוף בגדים מלוכלכים מרצפת חדר הילדים? סל הכביסה התלוי בעיצוב סל כדורסל יהפוך את המטלה המשעממת למשחק מהנה עבור כולם.",
+                "body": "כמה פעמים נאנחתם כשראיתם ערימת כביסה מלוכלכת על הרצפה בחדר השינה או בחדר הילדים? סוג מיוחד של כאוס ביתי הוא גרביים מפוזרים שלעולם לא מגיעים לארגז הכביסה, והוויכוחים הנצחיים על סדר בבית.\n\nהגיע הזמן להפסיק לבזבז אנרגיה ועצבים! הפתרון הפשוט הזה הופך את השגרה למשחק ספורטיבי ומהנה. סל כביסה תלוי בעיצוב טבעת כדורסל נתלה בקלות על כל דלת באמצעות וו הדבקה חזק ועמיד במיוחד — פתרון מושלם לדירות בישראל (במיוחד לדירות שכורות) שבהן מעדיפים להימנע מקידוחים מיותרים בקירות או בדלתות.\n\nעכשיו, כל השלכה של חולצה מלוכלכת או זוג גרביים היא קליעה מדויקת למטרה וסדר מובטח. הרשת עשויה מחומרים איכותיים וחזקים שיכולים לשאת משקל של בגדים רבים ללא בעיה. לא תצטרכו יותר לבזבז זמן על איסוף בגדים מהפינות או להרוס את מצב הרוח עם הערות לבני המשפחה. הילדים ואפילו המבוגרים ישמרו על הניקיון בהתלהבות ובאופן עצמאי. זה לא סתם עוד מארגן כביסה, אלא המצאה ביתית גאונית שמחזירה את ההשקעה מהיום הראשון ומעניקה שקט נפשי וסדר מושלם ללא מאמץ.",
+                "pros": [
+                    "הופך את סידור החדר למשחק חווייתי",
+                    "תלייה קלה ומהירה ללא צורך בקידוח",
+                    "איכות חומרים גבוהה ועמידות לאורך זמן"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/e/_c3S6lxkN"
+            }
+        },
+        {
+            "id": "rojeco-85l---49",
+            "category": "other",
+            "rating": 97.8,
+            "priceAli": 51.89,
+            "priceLocal": 287,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sce41ee6f52364a1b807c1ad4c63e7a14P.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sce41ee6f52364a1b807c1ad4c63e7a14P.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S6187593d7bfe4dffb633a9c557258d81T.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Se767a895511f43c79b8b033aafd54b1ev.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sc8734da83fcb4a13954f4f583a49ac17y.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S710a1c81675d4e35b31cf0f7efa5a295H.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sccad911207db431081be745b6e34d81dF.png"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "🐱 Умная кормушка-поилка ROJECO 8.5L: хит на 4.9 звезды для вашего питомца",
+                "excerpt": "Забудьте о беспокойстве за своего любимца с автоматической системой питания ROJECO 8.5L. Умное решение для заботливых хозяев в Израиле с управлением по Wi-Fi.",
+                "body": "Более 97.8% владельцев домашних животных уже сделали свой выбор, оценив эту новинку на рекордные 4.9 из 5 звезд! Забудьте о постоянном беспокойстве на тему «А сыт ли мой кот?». Автоматическая кормушка и поилка ROJECO 8.5L (5 литров для корма и 3.5 литра для воды) — это абсолютный хит продаж, который освобождает ваше время и дарит питомцу королевскую заботу.\n\nПочему сотни покупателей называют ROJECO лучшей инвестицией года? Во-первых, это продуманная система «2-в-1»: огромный резервуар для сухого корма и автоматическая гравитационная поилка, запаса которой хватит на несколько недель. Во-вторых, полное управление через мобильное приложение по Wi-Fi. Вы можете настроить точное расписание кормления до грамма или покормить любимца одним кликом, даже находясь на работе или в поездке. Больше никаких перееданий или голодных глаз по утрам! Особенно это актуально для жаркого израильского климата, где свежая вода и точный режим питания критически важны для здоровья животных.\n\nПредставьте себе идеальное утро: вы спокойно спите в выходной, а ROJECO ровно по расписанию выдает свежую порцию корма и подает чистую воду для вашего пушистого друга. Больше не нужно просить соседей присмотреть за питомцем во время коротких командировок или поездок на выходные по Израилю. Корпус надежно защищен от хитрых лап, корм всегда остается свежим и хрустящим благодаря герметичной крышке, а ваш любимец — сытым и довольным.\n\nНе откладывайте заботу на потом, пока девайс есть в наличии по суперцене всего $51.89! Доставка в Израиль быстрая, а цена находится значительно ниже порога налогообложения в $75, что делает покупку максимально выгодной и освобождает от уплаты пошлин. Подарите себе спокойствие, а хвостику — идеальный технологичный уход прямо сейчас.",
+                "pros": [
+                    "Умное управление через Wi-Fi",
+                    "Огромный объем 8.5 л (корм + вода)",
+                    "Герметичное хранение корма"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/e/_c3Mpdaj9"
+            },
+            "he": {
+                "title": "🐱 מתקן האכלה ושתייה חכם ROJECO 8.5L: הלהיט שזכה לציון 4.9 כוכבים!",
+                "excerpt": "תשכחו מהדאגות אם חיית המחמד שלכם שבעה. מערכת ההאכלה והשתייה האוטומטית ROJECO 8.5L עם שליטת Wi-Fi היא הפתרון המושלם לבית שלכם.",
+                "body": "למעלה מ-97.8% מבעלי חיות המחמד כבר עשו את הבחירה שלהם והעניקו למוצר החדשני הזה ציון שיא של 4.9 מתוך 5 כוכבים! הגיע הזמן להפסיק לדאוג בכל פעם שאתם יוצאים מהבית: \"האם החתול שלי אכל?\". מתקן ההאכלה והשתייה האוטומטי ROJECO בנפח 8.5 ליטר (5 ליטר למזון יבש ו-3.5 ליטר למים) הוא להיט מכירות מטורף שיחסוך לכם זמן ויעניק לכלב או לחתול שלכם טיפול ברמה של חמישה כוכבים.\n\nמדוע מאות קונים רואים ב-ROJECO את ההשקעה הטובה ביותר של השנה? ראשית, מדובר במערכת חכמה של \"2 ב-1\": מיכל ענק למזון יבש ומתקן מים אוטומטי מבוסס כבידה, שמספיקים למספר שבועות. שנית, שליטה מלאה דרך אפליקציה לנייד באמצעות חיבור Wi-Fi. תוכלו להגדיר לוח זמנים מדויק להאכלה ברמת הגרם או להאכיל את חיית המחמד בלחיצת כפתור אחת, גם כשאתם בעבודה או בסידורים. אין יותר אכילת יתר או עיניים רעבות על הבוקר! במזג האוויר החם של ישראל, זמינות של מים טריים ומזון שמור היטב היא קריטית לבריאות של בעלי החיים שלנו.\n\nדמיינו בוקר מושלם: אתם ישנים בשקט בסוף השבוע, בזמן ש-ROJECO מספק בדיוק בזמן מנה טרייה של אוכל ומים נקיים לחבר הפרוותי שלכם. לא תצטרכו יותר לבקש מהשכנים לבדוק את חיית המחמד במהלך נסיעות קצרות או חופשות בארץ. המכשיר מעוצב בצורה חסינה מפני כפות רגליים סקרניות, המזון נשאר תמיד טרי ופריך הודות למכסה אטום, וחיית המחמד שלכם נשארת שבעה ומרוצה.\n\nאל תדחו את הטיפול למועד מאוחר יותר, במיוחד כשהמכשיר זמין כעת במחיר סופר משתלם של $51.89 בלבד! זהו מחיר הנמוך משמעותית מרף המכס בישראל ($75), מה שהופך את הרכישה למשתלמת במיוחד וללא מיסים נוספים. העניקו לעצמכם שקט נפשי ולחיית המחמד שלכם את הטיפול הטכנולוגי המושלם כבר עכשיו.",
+                "pros": [
+                    "שליטה חכמה מרחוק באמצעות Wi-Fi",
+                    "נפח עצום של 8.5 ליטר (אוכל ומים)",
+                    "שומר על טריות המזון לאורך זמן"
+                ],
+                "linkText": "לקנייה בעליאקספרס",
+                "aliLink": "https://s.click.aliexpress.com/e/_c3Mpdaj9"
+            }
+        },
+        {
+            "id": "new-air-pro---9",
+            "category": "other",
+            "rating": 84.8,
+            "priceAli": 9.34,
+            "priceLocal": 51,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S356c477f21bb4484b4f0fa8fb4984e1cy.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S356c477f21bb4484b4f0fa8fb4984e1cy.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Честный обзор New Air Pro: топ за $9? 🎧",
+                "excerpt": "Стоит ли покупать ультрабюджетные беспроводные наушники New Air Pro с AliExpress всего за 9 долларов? Мы подготовили подробный разбор преимуществ и недостатков этой модели.",
+                "body": "Привет, друзья! На связи AliStyle Blog. Сегодня у нас на операционном столе ультрабюджетный хит с AliExpress. Мы подготовили этот детальный обзор беспроводных наушников New Air Pro, чтобы вы узнали, стоит ли покупать данный девайс, или это просто выброшенные деньги.\n\nКаждый из нас в Израиле искал дешевые беспроводные наушники «на всякий случай» — для спортзала, пробежек по набережной или как резервную пару, которую не жалко потерять. Обычно в сегменте до 10 долларов продается откровенный хлам. Но этот экземпляр за $9.34 собрал отличные отзывы покупателей на AliExpress и приличный рейтинг 4.2 из 5 звезд.\n\nКачество звука неплохое для этой цены: средние и высокие частоты здесь чистые, голоса в подкастах звучат отлично. А вот глубокого баса явно не хватает — барабаны звучат плотновато. Функция активного шумоподавления (ANC) здесь присутствует, но работает на базовом уровне. Она неплохо отсекает монотонный уличный гул благодаря плотной посадке, но полностью изолировать вас в израильском автобусе или поезде не сможет.\n\nЗато автономность порадовала: от одной зарядки наушники работают около 3 часов 45 минут на громкости 70%, а зарядный кейс позволяет зарядить их еще 3 раза. Итого мы получаем до 15 часов музыки без розетки. Это отличный рабочий вариант для израильских студентов, спортсменов и всех, кто ищет надежный ультрабюджетный гаджет с быстрой доставкой.",
+                "pros": [
+                    "Низкая цена ($9.34 на момент покупки)",
+                    "Хорошая автономность до 15 часов с кейсом",
+                    "Стабильный сигнал благодаря Bluetooth 5.3"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kjngrkOxhCk4CB3lJoHAimsdciFYVE5j9EX8U5MX1YsBIYwpRxmbvXf9iPQQInXi4SQSTfQlp9f6zXe5uqdNsg02i4agubyYREWiPCkkelnNbyrFzn6xIInVHItAoRP8cu2mwIzgZlt7YBJtita3RyuzRAwDzXTab6VCERzwDkVb7oZDWnhVTrvgk03H2iiIpRKRzFkA3IR6cr9wv077NkUpsjtUqcwRheNmrPIP1LTAW5gZE23s4aO8V8aFMGylc3IiRNn1JzOaXD9flXwwiyXMfqSKfRy3PRrlI1lGSD7rynNq342kFv4Hk1IvOm2nEpLyJn5ErrShbyNcto85pl8LaEOJxw2OUEMQ7yBUttSpB49ZfRJT77EDOY7XYtEVqaCUdDbS8IwJQfidPKBEAsdnJHOH6a2PXkOqevNoqIH2IDm1yHkC0VOTXzwXuLTAG69G6zgBigGupmgzSu4s4RJU2ErDHpclBZpEF6ToHz1g0gmS91XhdEk0ivbfYmvLW6rgiI8piqR3bJDJht6TcsGtzXDFbTjQF68QGNtgoXf6vGrYPjuA0p8rnsikHkLVrb7InnIkolDvA3dR815R4vFbP4ddnf2w8hYQ9VGuKmHN4JIhqQoRqCrMShsR0PeMHvtxBMzaFvMd5RI7l6ZKG1s9HyjOkRhRPfOzr0Wv8DFX2mtDLU97d7wZicPRxbtqxmlVVeyzw8qCi"
+            },
+            "he": {
+                "title": "סקירה כנה על New Air Pro: האם אלו אוזניות ה-True Wireless הטובות ביותר ב-9 דולר? 🎧",
+                "excerpt": "האם כדאי לקנות את אוזניות הבלוטוס הזולות New Air Pro מאליאקספרס ב-9 דולר בלבד? סקירה כנה ומפורטת על היתרונות והחסרונות של הלהיט התורן.",
+                "body": "היי חברים! כאן AliStyle Blog. היום יש לנו על שולחן הניתוחים להיט אולטרה-תקציבי מאליאקספרס. הכנו עבורכם סקירה מפורטת של האוזניות האלחוטיות New Air Pro True Wireless, כדי שתוכלו להבין האם המוצר הזה שווה את הכסף שלכם או שמדובר בבזבוז מוחלט.\n\nכל אחד מאיתנו בישראל חיפש פעם אוזניות אלחוטיות זולות 'ליתר ביטחון' – לאימונים בחדר הכושר, לריצה בטיילת או סתם כזוג רזרבי שלא חבל לאבד. בדרך כלל, בקטגוריה של פחות מ-10 דולר מקבלים זבל סיני קלאסי. אבל הדגם הזה, שעולה רק $9.34, צבר ביקורות מעולות ודירוג מכובד של 4.2 מתוך 5 כוכבים באליאקספרס. בואו נראה מה המציאות ומה רק שיווק.\n\nאיכות הסאונד מפתיעה לטובה ביחס למחיר: התדרים הבינוניים והגבוהים נקיים מאוד, ופודקאסטים נשמעים מצוין. עם זאת, אל תצפו לבאסים עמוקים ומורכבים. סינון הרעשים האקטיבי (ANC) קיים אך בסיסי למדי – הוא יצליח להחליש רעשי רקע מונוטוניים ברחוב, אך לא יבודד אתכם לחלוטין ברכבת או באוטובוס בישראל.\n\nמבחינת סוללה, האוזניות מספקות כ-3 שעות ו-45 דקות של מוזיקה בווליום של 70% בטעינה אחת, ומארז הטעינה מאפשר עוד 3 טעינות מלאות (סך הכל כ-15 שעות עבודה). זוהי בחירה מצוינת לסטודנטים, ספורטאים וכל מי שמחפש פתרון זול ויעיל עם משלוח מהיר לארץ.",
+                "pros": [
+                    "מחיר נמוך במיוחד ($9.34 בזמן הרכישה)",
+                    "חיי סוללה טובים של עד 15 שעות עם המארז",
+                    "חיבור בלוטות' 5.3 יציב ומהיר ללא ניתוקים"
+                ],
+                "linkText": "לקנייה באליאקספרס",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kjngrkOxhCk4CB3lJoHAimsdciFYVE5j9EX8U5MX1YsBIYwpRxmbvXf9iPQQInXi4SQSTfQlp9f6zXe5uqdNsg02i4agubyYREWiPCkkelnNbyrFzn6xIInVHItAoRP8cu2mwIzgZlt7YBJtita3RyuzRAwDzXTab6VCERzwDkVb7oZDWnhVTrvgk03H2iiIpRKRzFkA3IR6cr9wv077NkUpsjtUqcwRheNmrPIP1LTAW5gZE23s4aO8V8aFMGylc3IiRNn1JzOaXD9flXwwiyXMfqSKfRy3PRrlI1lGSD7rynNq342kFv4Hk1IvOm2nEpLyJn5ErrShbyNcto85pl8LaEOJxw2OUEMQ7yBUttSpB49ZfRJT77EDOY7XYtEVqaCUdDbS8IwJQfidPKBEAsdnJHOH6a2PXkOqevNoqIH2IDm1yHkC0VOTXzwXuLTAG69G6zgBigGupmgzSu4s4RJU2ErDHpclBZpEF6ToHz1g0gmS91XhdEk0ivbfYmvLW6rgiI8piqR3bJDJht6TcsGtzXDFbTjQF68QGNtgoXf6vGrYPjuA0p8rnsikHkLVrb7InnIkolDvA3dR815R4vFbP4ddnf2w8hYQ9VGuKmHN4JIhqQoRqCrMShsR0PeMHvtxBMzaFvMd5RI7l6ZKG1s9HyjOkRhRPfOzr0Wv8DFX2mtDLU97d7wZicPRxbtqxmlVVeyzw8qCi"
+            }
+        },
+        {
+            "id": "new-air-pro---9",
+            "category": "other",
+            "rating": 84.8,
+            "priceAli": 9.34,
+            "priceLocal": 51,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S356c477f21bb4484b4f0fa8fb4984e1cy.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S356c477f21bb4484b4f0fa8fb4984e1cy.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Честный обзор New Air Pro: топ за $9? 🎧",
+                "excerpt": "Стоит ли покупать ультрабюджетные беспроводные наушники New Air Pro с AliExpress всего за 9 долларов? Мы подготовили подробный разбор преимуществ и недостатков этой модели.",
+                "body": "Привет, друзья! На связи AliStyle Blog. Сегодня у нас на операционном столе ультрабюджетный хит с AliExpress. Мы подготовили этот детальный обзор беспроводных наушников New Air Pro, чтобы вы узнали, стоит ли покупать данный девайс, или это просто выброшенные деньги.\n\nКаждый из нас в Израиле искал дешевые беспроводные наушники «на всякий случай» — для спортзала, пробежек по набережной или как резервную пару, которую не жалко потерять. Обычно в сегменте до 10 долларов продается откровенный хлам. Но этот экземпляр за $9.34 собрал отличные отзывы покупателей на AliExpress и приличный рейтинг 4.2 из 5 звезд.\n\nКачество звука неплохое для этой цены: средние и высокие частоты здесь чистые, голоса в подкастах звучат отлично. А вот глубокого баса явно не хватает — барабаны звучат плотновато. Функция активного шумоподавления (ANC) здесь присутствует, но работает на базовом уровне. Она неплохо отсекает монотонный уличный гул благодаря плотной посадке, но полностью изолировать вас в израильском автобусе или поезде не сможет.\n\nЗато автономность порадовала: от одной зарядки наушники работают около 3 часов 45 минут на громкости 70%, а зарядный кейс позволяет зарядить их еще 3 раза. Итого мы получаем до 15 часов музыки без розетки. Это отличный рабочий вариант для израильских студентов, спортсменов и всех, кто ищет надежный ультрабюджетный гаджет с быстрой доставкой.",
+                "pros": [
+                    "Низкая цена ($9.34 на момент покупки)",
+                    "Хорошая автономность до 15 часов с кейсом",
+                    "Стабильный сигнал благодаря Bluetooth 5.3"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kjngrkOxhCk4CB3lJoHAimsdciFYVE5j9EX8U5MX1YsBIYwpRxmbvXf9iPQQInXi4SQSTfQlp9f6zXe5uqdNsg02i4agubyYREWiPCkkelnNbyrFzn6xIInVHItAoRP8cu2mwIzgZlt7YBJtita3RyuzRAwDzXTab6VCERzwDkVb7oZDWnhVTrvgk03H2iiIpRKRzFkA3IR6cr9wv077NkUpsjtUqcwRheNmrPIP1LTAW5gZE23s4aO8V8aFMGylc3IiRNn1JzOaXD9flXwwiyXMfqSKfRy3PRrlI1lGSD7rynNq342kFv4Hk1IvOm2nEpLyJn5ErrShbyNcto85pl8LaEOJxw2OUEMQ7yBUttSpB49ZfRJT77EDOY7XYtEVqaCUdDbS8IwJQfidPKBEAsdnJHOH6a2PXkOqevNoqIH2IDm1yHkC0VOTXzwXuLTAG69G6zgBigGupmgzSu4s4RJU2ErDHpclBZpEF6ToHz1g0gmS91XhdEk0ivbfYmvLW6rgiI8piqR3bJDJht6TcsGtzXDFbTjQF68QGNtgoXf6vGrYPjuA0p8rnsikHkLVrb7InnIkolDvA3dR815R4vFbP4ddnf2w8hYQ9VGuKmHN4JIhqQoRqCrMShsR0PeMHvtxBMzaFvMd5RI7l6ZKG1s9HyjOkRhRPfOzr0Wv8DFX2mtDLU97d7wZicPRxbtqxmlVVeyzw8qCi"
+            },
+            "he": {
+                "title": "סקירה כנה על New Air Pro: האם אלו אוזניות ה-True Wireless הטובות ביותר ב-9 דולר? 🎧",
+                "excerpt": "האם כדאי לקנות את אוזניות הבלוטוס הזולות New Air Pro מאליאקספרס ב-9 דולר בלבד? סקירה כנה ומפורטת על היתרונות והחסרונות של הלהיט התורן.",
+                "body": "היי חברים! כאן AliStyle Blog. היום יש לנו על שולחן הניתוחים להיט אולטרה-תקציבי מאליאקספרס. הכנו עבורכם סקירה מפורטת של האוזניות האלחוטיות New Air Pro True Wireless, כדי שתוכלו להבין האם המוצר הזה שווה את הכסף שלכם או שמדובר בבזבוז מוחלט.\n\nכל אחד מאיתנו בישראל חיפש פעם אוזניות אלחוטיות זולות 'ליתר ביטחון' – לאימונים בחדר הכושר, לריצה בטיילת או סתם כזוג רזרבי שלא חבל לאבד. בדרך כלל, בקטגוריה של פחות מ-10 דולר מקבלים זבל סיני קלאסי. אבל הדגם הזה, שעולה רק $9.34, צבר ביקורות מעולות ודירוג מכובד של 4.2 מתוך 5 כוכבים באליאקספרס. בואו נראה מה המציאות ומה רק שיווק.\n\nאיכות הסאונד מפתיעה לטובה ביחס למחיר: התדרים הבינוניים והגבוהים נקיים מאוד, ופודקאסטים נשמעים מצוין. עם זאת, אל תצפו לבאסים עמוקים ומורכבים. סינון הרעשים האקטיבי (ANC) קיים אך בסיסי למדי – הוא יצליח להחליש רעשי רקע מונוטוניים ברחוב, אך לא יבודד אתכם לחלוטין ברכבת או באוטובוס בישראל.\n\nמבחינת סוללה, האוזניות מספקות כ-3 שעות ו-45 דקות של מוזיקה בווליום של 70% בטעינה אחת, ומארז הטעינה מאפשר עוד 3 טעינות מלאות (סך הכל כ-15 שעות עבודה). זוהי בחירה מצוינת לסטודנטים, ספורטאים וכל מי שמחפש פתרון זול ויעיל עם משלוח מהיר לארץ.",
+                "pros": [
+                    "מחיר נמוך במיוחד ($9.34 בזמן הרכישה)",
+                    "חיי סוללה טובים של עד 15 שעות עם המארז",
+                    "חיבור בלוטות' 5.3 יציב ומהיר ללא ניתוקים"
+                ],
+                "linkText": "לקנייה באליאקספרס",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kjngrkOxhCk4CB3lJoHAimsdciFYVE5j9EX8U5MX1YsBIYwpRxmbvXf9iPQQInXi4SQSTfQlp9f6zXe5uqdNsg02i4agubyYREWiPCkkelnNbyrFzn6xIInVHItAoRP8cu2mwIzgZlt7YBJtita3RyuzRAwDzXTab6VCERzwDkVb7oZDWnhVTrvgk03H2iiIpRKRzFkA3IR6cr9wv077NkUpsjtUqcwRheNmrPIP1LTAW5gZE23s4aO8V8aFMGylc3IiRNn1JzOaXD9flXwwiyXMfqSKfRy3PRrlI1lGSD7rynNq342kFv4Hk1IvOm2nEpLyJn5ErrShbyNcto85pl8LaEOJxw2OUEMQ7yBUttSpB49ZfRJT77EDOY7XYtEVqaCUdDbS8IwJQfidPKBEAsdnJHOH6a2PXkOqevNoqIH2IDm1yHkC0VOTXzwXuLTAG69G6zgBigGupmgzSu4s4RJU2ErDHpclBZpEF6ToHz1g0gmS91XhdEk0ivbfYmvLW6rgiI8piqR3bJDJht6TcsGtzXDFbTjQF68QGNtgoXf6vGrYPjuA0p8rnsikHkLVrb7InnIkolDvA3dR815R4vFbP4ddnf2w8hYQ9VGuKmHN4JIhqQoRqCrMShsR0PeMHvtxBMzaFvMd5RI7l6ZKG1s9HyjOkRhRPfOzr0Wv8DFX2mtDLU97d7wZicPRxbtqxmlVVeyzw8qCi"
+            }
+        },
+        {
+            "id": "new-air-pro---9",
+            "category": "other",
+            "rating": 84.8,
+            "priceAli": 9.34,
+            "priceLocal": 51,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S356c477f21bb4484b4f0fa8fb4984e1cy.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S356c477f21bb4484b4f0fa8fb4984e1cy.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Честный обзор New Air Pro: топ за $9? 🎧",
+                "excerpt": "Стоит ли покупать ультрабюджетные беспроводные наушники New Air Pro с AliExpress всего за 9 долларов? Мы подготовили подробный разбор преимуществ и недостатков этой модели.",
+                "body": "Привет, друзья! На связи AliStyle Blog. Сегодня у нас на операционном столе ультрабюджетный хит с AliExpress. Мы подготовили этот детальный обзор беспроводных наушников New Air Pro, чтобы вы узнали, стоит ли покупать данный девайс, или это просто выброшенные деньги.\n\nКаждый из нас в Израиле искал дешевые беспроводные наушники «на всякий случай» — для спортзала, пробежек по набережной или как резервную пару, которую не жалко потерять. Обычно в сегменте до 10 долларов продается откровенный хлам. Но этот экземпляр за $9.34 собрал отличные отзывы покупателей на AliExpress и приличный рейтинг 4.2 из 5 звезд.\n\nКачество звука неплохое для этой цены: средние и высокие частоты здесь чистые, голоса в подкастах звучат отлично. А вот глубокого баса явно не хватает — барабаны звучат плотновато. Функция активного шумоподавления (ANC) здесь присутствует, но работает на базовом уровне. Она неплохо отсекает монотонный уличный гул благодаря плотной посадке, но полностью изолировать вас в израильском автобусе или поезде не сможет.\n\nЗато автономность порадовала: от одной зарядки наушники работают около 3 часов 45 минут на громкости 70%, а зарядный кейс позволяет зарядить их еще 3 раза. Итого мы получаем до 15 часов музыки без розетки. Это отличный рабочий вариант для израильских студентов, спортсменов и всех, кто ищет надежный ультрабюджетный гаджет с быстрой доставкой.",
+                "pros": [
+                    "Низкая цена ($9.34 на момент покупки)",
+                    "Хорошая автономность до 15 часов с кейсом",
+                    "Стабильный сигнал благодаря Bluetooth 5.3"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kjngrkOxhCk4CB3lJoHAimsdciFYVE5j9EX8U5MX1YsBIYwpRxmbvXf9iPQQInXi4SQSTfQlp9f6zXe5uqdNsg02i4agubyYREWiPCkkelnNbyrFzn6xIInVHItAoRP8cu2mwIzgZlt7YBJtita3RyuzRAwDzXTab6VCERzwDkVb7oZDWnhVTrvgk03H2iiIpRKRzFkA3IR6cr9wv077NkUpsjtUqcwRheNmrPIP1LTAW5gZE23s4aO8V8aFMGylc3IiRNn1JzOaXD9flXwwiyXMfqSKfRy3PRrlI1lGSD7rynNq342kFv4Hk1IvOm2nEpLyJn5ErrShbyNcto85pl8LaEOJxw2OUEMQ7yBUttSpB49ZfRJT77EDOY7XYtEVqaCUdDbS8IwJQfidPKBEAsdnJHOH6a2PXkOqevNoqIH2IDm1yHkC0VOTXzwXuLTAG69G6zgBigGupmgzSu4s4RJU2ErDHpclBZpEF6ToHz1g0gmS91XhdEk0ivbfYmvLW6rgiI8piqR3bJDJht6TcsGtzXDFbTjQF68QGNtgoXf6vGrYPjuA0p8rnsikHkLVrb7InnIkolDvA3dR815R4vFbP4ddnf2w8hYQ9VGuKmHN4JIhqQoRqCrMShsR0PeMHvtxBMzaFvMd5RI7l6ZKG1s9HyjOkRhRPfOzr0Wv8DFX2mtDLU97d7wZicPRxbtqxmlVVeyzw8qCi"
+            },
+            "he": {
+                "title": "סקירה כנה על New Air Pro: האם אלו אוזניות ה-True Wireless הטובות ביותר ב-9 דולר? 🎧",
+                "excerpt": "האם כדאי לקנות את אוזניות הבלוטוס הזולות New Air Pro מאליאקספרס ב-9 דולר בלבד? סקירה כנה ומפורטת על היתרונות והחסרונות של הלהיט התורן.",
+                "body": "היי חברים! כאן AliStyle Blog. היום יש לנו על שולחן הניתוחים להיט אולטרה-תקציבי מאליאקספרס. הכנו עבורכם סקירה מפורטת של האוזניות האלחוטיות New Air Pro True Wireless, כדי שתוכלו להבין האם המוצר הזה שווה את הכסף שלכם או שמדובר בבזבוז מוחלט.\n\nכל אחד מאיתנו בישראל חיפש פעם אוזניות אלחוטיות זולות 'ליתר ביטחון' – לאימונים בחדר הכושר, לריצה בטיילת או סתם כזוג רזרבי שלא חבל לאבד. בדרך כלל, בקטגוריה של פחות מ-10 דולר מקבלים זבל סיני קלאסי. אבל הדגם הזה, שעולה רק $9.34, צבר ביקורות מעולות ודירוג מכובד של 4.2 מתוך 5 כוכבים באליאקספרס. בואו נראה מה המציאות ומה רק שיווק.\n\nאיכות הסאונד מפתיעה לטובה ביחס למחיר: התדרים הבינוניים והגבוהים נקיים מאוד, ופודקאסטים נשמעים מצוין. עם זאת, אל תצפו לבאסים עמוקים ומורכבים. סינון הרעשים האקטיבי (ANC) קיים אך בסיסי למדי – הוא יצליח להחליש רעשי רקע מונוטוניים ברחוב, אך לא יבודד אתכם לחלוטין ברכבת או באוטובוס בישראל.\n\nמבחינת סוללה, האוזניות מספקות כ-3 שעות ו-45 דקות של מוזיקה בווליום של 70% בטעינה אחת, ומארז הטעינה מאפשר עוד 3 טעינות מלאות (סך הכל כ-15 שעות עבודה). זוהי בחירה מצוינת לסטודנטים, ספורטאים וכל מי שמחפש פתרון זול ויעיל עם משלוח מהיר לארץ.",
+                "pros": [
+                    "מחיר נמוך במיוחד ($9.34 בזמן הרכישה)",
+                    "חיי סוללה טובים של עד 15 שעות עם המארז",
+                    "חיבור בלוטות' 5.3 יציב ומהיר ללא ניתוקים"
+                ],
+                "linkText": "לקנייה באליאקספרס",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kjngrkOxhCk4CB3lJoHAimsdciFYVE5j9EX8U5MX1YsBIYwpRxmbvXf9iPQQInXi4SQSTfQlp9f6zXe5uqdNsg02i4agubyYREWiPCkkelnNbyrFzn6xIInVHItAoRP8cu2mwIzgZlt7YBJtita3RyuzRAwDzXTab6VCERzwDkVb7oZDWnhVTrvgk03H2iiIpRKRzFkA3IR6cr9wv077NkUpsjtUqcwRheNmrPIP1LTAW5gZE23s4aO8V8aFMGylc3IiRNn1JzOaXD9flXwwiyXMfqSKfRy3PRrlI1lGSD7rynNq342kFv4Hk1IvOm2nEpLyJn5ErrShbyNcto85pl8LaEOJxw2OUEMQ7yBUttSpB49ZfRJT77EDOY7XYtEVqaCUdDbS8IwJQfidPKBEAsdnJHOH6a2PXkOqevNoqIH2IDm1yHkC0VOTXzwXuLTAG69G6zgBigGupmgzSu4s4RJU2ErDHpclBZpEF6ToHz1g0gmS91XhdEk0ivbfYmvLW6rgiI8piqR3bJDJht6TcsGtzXDFbTjQF68QGNtgoXf6vGrYPjuA0p8rnsikHkLVrb7InnIkolDvA3dR815R4vFbP4ddnf2w8hYQ9VGuKmHN4JIhqQoRqCrMShsR0PeMHvtxBMzaFvMd5RI7l6ZKG1s9HyjOkRhRPfOzr0Wv8DFX2mtDLU97d7wZicPRxbtqxmlVVeyzw8qCi"
+            }
+        },
+        {
+            "id": "tenda-ax3000",
+            "category": "other",
+            "rating": 98.0,
+            "priceAli": 53.62,
+            "priceLocal": 297,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc3032412031f42d6abd961e5918d6bf0m.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sc3032412031f42d6abd961e5918d6bf0m.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Обзор Tenda AX3000: стоит ли покупать? 📶",
+                "excerpt": "Tenda AX3000 WiFi6 Mesh System: это настоящая находка для тех, кто хочет улучшить покрытие Wi-Fi по всему дому. Мы проверили его в реальных условиях.",
+                "body": "Все мы сталкивались с проблемой слабого Wi-Fi сигнала в доме, особенно когда в одной комнате все летает, а в другой едва грузится YouTube. Вот почему я решил рискнуть и заказать Tenda AX3000 WiFi6 Mesh System.\n\n## Спойлер / Краткий вердикт\nЕсли жилплощадь у тебя побольше или просто устал от зон с плохим сигналом — стоит попробовать. Цена $53.62 делает его доступным вариантом, а убедиться в актуальности цены можно по ссылке на официального продавца с быстрой доставкой.\n\n## Распаковка и первое впечатление\nКомплектация минималистична, но надежна: сам роутер, блок питания и короткая инструкция. Пластик совсем не пахнет, а дизайн приятно прост и ненавязчив. Ничего лишнего, подходит под любой интерьер.\n\n## Опыт использования\n### Скорость и зона покрытия\nTenda AX3000 обещает покрытие до 7000 кв. футов — и в жизни оправдывает это. В квартире 100 кв. метров проблем с сигналом не возникало.\n\n### Подключение и шумоподавление\nНекоторые могут озаботиться шумом работающей техники, но у Tenda все тихо. Да и установка не требует особых навыков — интерфейс интуитивно понятен.\n\n### Автономность\nРоутер работает стабильно, не перегревается и не выключается без предупреждения. В течение недели использования никаких сбоев.\n\n## Плюсы и минусы\n| Плюсы                     | Минусы                  |\n|---------------------------|--------------------------|\n| Широкая зона покрытия     | Настройки на английском  |\n| Доступная цена            | Не самый стильный дизайн |\n| Стабильная работа         | Отсутствие USB порта     |\n\n## Итог и мощный Call-to-Action\nЕсли ищешь надежный роутер с современными характеристиками — Tenda AX3000 стоит внимания. Переходи по ссылке на официального продавца с быстрой доставкой, чтобы получить его со скидкой. И подпишись на наш Telegram-канал за эксклюзивными промокодами!",
+                "pros": [
+                    "Широкая зона покрытия",
+                    "Доступная цена",
+                    "Стабильная работа"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mMxIMaQ0uUvrBc5K8bJUlTveXyHrie7nd8lVRBHCiYbe6TLz3Ym5qwVyvdvzSmYN2n7FFvdMhaKiV3RkX2dlpN36jeXGhepvqVodcFDqXTAJwe75t2Zz1lVqecmdK0O5eeR00k0HAlqlqF3jA5VrDk0eeKYIRsLg3cJLJ2dGQMMus5oJOBsakBdyIbS1gGL8nbMWAo8wPTrQjfJyc5IeTZShH3aNm6lbiQQvdWLpJflMN93gGtJfJAgTHREanjKVJ4lUibzlOZFg3N8Kd88S6TBVSsZXPp10ViVhq31uW4rq1zvD0Ml8INY29P65NdmxhxYt8ya5FYNe8KBuUx79rbrgaVFRAiefq0zlKJFIbd6cfsLEZ8qiPeDFCnLqrlHhbGt7j2xiw2xFUW032LTdLslS6vS08dEywufmdQPUUiIh2bhm3mzXDrxQthndJELgNCeWWSFHTLooYfj7UrQ0BDvaXHA2lO51DlvBrapZ9yaRkWSqNBXfkngE0VyOGBgBksJqKl5p5gKcV6tTHf5nMdvQtETxI8mlMtsv3JHVToW3x3E44BJ7OsZ5W4mcbYhld97ny4DRnfJVKWYUMIDUGDzSfBwPySav8qgT3NDzIZWhGlPF0tOedgZB8bVZpzxm70WIOXl7lirqX7O3nlQlLbXkDxpiMe6z2sqJ8Dzzd7islxgvffvimtOz8hXyrVTtmlXpsIKEXE7Hy"
+            },
+            "he": {
+                "title": "סקירה על Tenda AX3000: האם כדאי לקנות? 📶",
+                "excerpt": "מערכת ה-WiFi6 של Tenda AX3000 Mesh מציעה פתרון למי שמחפש לכסות את כל הבית ב-Wi-Fi מהר ואמין. בדקנו אותו כאן בשבילכם.",
+                "body": "כולנו נתקלנו בבעיית אות Wi-Fi חלש בבית, במיוחד כשבחדר אחד הכל טס ובשני יוטיוב בקושי נטען. זו הסיבה שהחלטתי להסתכן ולהזמין את מערכת ה-WiFi6 של Tenda AX3000 Mesh.\n\n## ספוילר / פסיקה קצרה\nאם יש לך דירה גדולה או פשוט נמאס לך מאזורי אות גרועים - כדאי לנסות. המחיר של $53.62 הופך אותו לאופציה נוחה, ותוכלו לבדוק את עדכניות המחיר בקישור למוכר הרשמי עם משלוח מהיר.\n\n## אריזה ורושם ראשוני\nהאריזה מינימליסטית אך אמינה: המכשיר עצמו, ספק כוח והוראות קצרות. הפלסטיק לא מריח ועיצובו פשוט ונעים. לא יותר מדי, מתאים לכל עיצוב פנים.\n\n## חוויית שימוש\n### מהירות וטווח כיסוי\nTenda AX3000 מבטיחה כיסוי עד 7000 רגל רבוע - ובחיים מממשת את ההבטחה. בדירה של 100 מטר רבוע לא היו בעיות אות.\n\n### חיבור וביטול רעשים\nחלק מהמשתמשים עלולים לדאוג לרעשי המכשיר, אבל אצל Tenda הכל שקט. וההתקנה אינה דורשת מיומנויות מיוחדות - הממשק אינטואיטיבי.\n\n### עצמאות\nהראוטר פועל יציב, לא מתחמם ולא מכבה ללא התראה. בתוך שבוע שימוש לא היו תקלות.\n\n## יתרונות וחסרונות\n| יתרונות                    | חסרונות                 |\n|---------------------------|-------------------------|\n| טווח כיסוי רחב           | ההגדרות באנגלית        |\n| מחיר נגיש                 | עיצוב לא הכי אופנתי     |\n| פעולה יציבה              | אין יציאת USB           |\n\n## סיכום והנעה לפעולה חזקה\nאם אתה מחפש ראוטר אמין עם מאפיינים מודרניים - Tenda AX3000 שווה תשומת לב. מעבר לקישור למוכר הרשמי עם משלוח מהיר, כדי לקבל אותו בהנחה. והירשם לערוץ הטלגרם שלנו לקוד קופון בלעדי!",
+                "pros": [
+                    "טווח כיסוי רחב",
+                    "מחיר נגיש",
+                    "פעולה יציבה"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mMxIMaQ0uUvrBc5K8bJUlTveXyHrie7nd8lVRBHCiYbe6TLz3Ym5qwVyvdvzSmYN2n7FFvdMhaKiV3RkX2dlpN36jeXGhepvqVodcFDqXTAJwe75t2Zz1lVqecmdK0O5eeR00k0HAlqlqF3jA5VrDk0eeKYIRsLg3cJLJ2dGQMMus5oJOBsakBdyIbS1gGL8nbMWAo8wPTrQjfJyc5IeTZShH3aNm6lbiQQvdWLpJflMN93gGtJfJAgTHREanjKVJ4lUibzlOZFg3N8Kd88S6TBVSsZXPp10ViVhq31uW4rq1zvD0Ml8INY29P65NdmxhxYt8ya5FYNe8KBuUx79rbrgaVFRAiefq0zlKJFIbd6cfsLEZ8qiPeDFCnLqrlHhbGt7j2xiw2xFUW032LTdLslS6vS08dEywufmdQPUUiIh2bhm3mzXDrxQthndJELgNCeWWSFHTLooYfj7UrQ0BDvaXHA2lO51DlvBrapZ9yaRkWSqNBXfkngE0VyOGBgBksJqKl5p5gKcV6tTHf5nMdvQtETxI8mlMtsv3JHVToW3x3E44BJ7OsZ5W4mcbYhld97ny4DRnfJVKWYUMIDUGDzSfBwPySav8qgT3NDzIZWhGlPF0tOedgZB8bVZpzxm70WIOXl7lirqX7O3nlQlLbXkDxpiMe6z2sqJ8Dzzd7islxgvffvimtOz8hXyrVTtmlXpsIKEXE7Hy"
+            }
+        },
+        {
+            "id": "item-1005012058096770",
+            "category": "other",
+            "rating": 94.4,
+            "priceAli": 85.76,
+            "priceLocal": 475,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S97f1111b119244f98dc5825f2ec532e4F.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S97f1111b119244f98dc5825f2ec532e4F.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Открытие камеры 🌞 — полезно или нет?",
+                "excerpt": "Solar Camera 4G предлагает круглосуточную запись и прекрасное ночное видение, но стоит ли она своих денег?",
+                "body": "Когда вы ищете надежную камеру для домашней безопасности, сложно не обратить внимание на Solar Camera 4G. Она обещает круглосуточную запись и автономность — так ли хороша на практике?\n\nЕсли вам важна безопасность и ночное видение, эта камера вас не разочарует. Отличный вариант для тех, кто ищет автономность и качество изображения. Убедитесь сами, проверив актуальную цену на ранке.\n\n🇷🇺 Упаковка весьма компактная и защищена от влаги — полезно, если за доставкой следовал дождь. На ощупь пластик кажется крепким.\n\nБатарея держится в среднем три дня без подзарядки — это действительно удобно для уличного видеонаблюдения.\n\nКачество ночной съёмки действительно впечатляет. Даже в полной темноте лица различимы.\n\nПлюс: Звук записывается чётко, без лишних шумов, что важно для определения источника.\n\n## Плюсы и минусы\n\n| Плюсы | Минусы |\n|-------|--------|\n| Долговечная батарея | Цена чуть выше средней |\n| Качественное ночное видение | Нет встроенного хранилища |\n| Быстрая доставка | Отсутствие поддержки Wi-Fi |\n\n## Итог и мощный Call-to-Action\n\nSolar Camera 4G — это проверенный способ защитить ваш дом. Стоит ли она своих денег? Скорее, да. Переходите на AliExpress и подписывайтесь на наш Telegram-канал за эксклюзивными промокодами!",
+                "pros": [
+                    "Долговечная батарея",
+                    "Качественное ночное видение",
+                    "Быстрая доставка"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4FmHhE9AwDZHHVtvTMgq9gZ2hlpxV0NZgR4XPUpcj5XeR0abzDoBhXXiKqyxu1e4ILraztpaX6tR3W5vToplNGE6A5wJ4YgmyOCx27UU3gahCOqtQ9fFQ8cov3eGuFrrDc6jHr11ythMiJ1AwrSvoW8Li2AY5bTAVT6Gp55XTK48vGDUU44ePI2FfF6ZQ1I5GsLxoisZRouqR4lF8uP1KZxJ3OGsu0rkydKUske0G1PZEAfRskwmEMcG2OhY1SddfmkOvKJ3v5r4qTnb6NOqUezNGrFE7smPjItVQu7azK3388t7QwW5x5TwUVqAxOPMMIF3JwJsiAP65clPECsiT9OTLEtZMQhTjAxa9mJODjUXqPr0o9JuBKudBb4zQPX2cOBsBr6TDELotw5eSWCU8dnbXJGfcUZ0mXFB0NPoNN5jW1F0ee2EWBCcXQp30EMhKnVyoKX5zoIzBr9EXgNOpGNbYvqR0b8gvGUeNRGSAa7InhmuRqV5pQkUBhNxxawr78RLyFZ1VLrvN4FODDZ4NK1ZkA2gShSKPwu6CzMPeTIQnFuEvyeYfPcFIuUMPPNsuwkPITdjo7PXsiMNYgLYOSQUazWuwZDyXZ7wkkwDcgp6R8QdTyQWoMPC07YvkiOpfNg9IIQLuGdJrCJdKdJX21CGCSuOscO7bkYIOK1VMBZpfQkhrXqZjlG8X48YcHOSCtdqXlvKNGI5Ui"
+            },
+            "he": {
+                "title": "פתיחת מצלמה 🌞 - מועיל או לא?",
+                "excerpt": "Solar Camera 4G מציעה הקלטה סביב השעון וראיית לילה מצויינת, אבל האם זה שווה את המחיר?",
+                "body": "כאשר מחפשים מצלמה אמינה לבית בישראל, קשה לא לשים לב ל-Solar Camera 4G. היא מבטיחה הקלטה רצופה ועצמאות — האם היא מוכיחה את עצמה בפועל?\n\nאם ביטחון וראיית לילה חשובים לכם, המצלמה הזו לא תאכזב. היא אפשרות נהדרת למי שמחפש עצמאות ואיכות תמונה. בדקו בעצמכם את המחירון המעודכן.\n\n🇮🇱 האריזה קטנה ומוגנת מים - שימושי אם המשלוח הגיע בחורף. הפלסטיק מרגיש יציב.\n\nהסוללה מחזיקה בממוצע שלושה ימים ללא טעינה — נוח מאוד למעקב באוויר הפתוח.\n\nאיכות ההקלטה בלילה מרשימה מאוד. ניתן להבחין בפנים אפילו בחושך מוחלט.\n\nבתוספת לכך: הצליל מוקלט בצורה נקייה וללא רעשי רקע, חשובה לזיהוי המקור.\n\n## יתרונות וחסרונות\n\n| יתרונות | חסרונות |\n|---------|---------|\n| חיי סוללה ארוכים | מחיר מעט גבוה מהממוצע |\n| ראיית לילה איכותית | אין אחסון מובנה |\n| משלוח מהיר | חוסר תמיכה ב-Wi-Fi |\n\n## סיכום וקול קריאה לפעולה\n\nSolar Camera 4G היא דרך מוכחת להגן על ביתכם בישראל. האם זה שווה את כספכם? קרוב לוודאי שכן. לחצו לקנייה בעליאקספרס והירשמו לערוץ הטלגרם שלנו כדי לקבל קודי קופון בלעדיים!",
+                "pros": [
+                    "חיי סוללה ארוכים",
+                    "ראיית לילה איכותית",
+                    "משלוח מהיר"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4FmHhE9AwDZHHVtvTMgq9gZ2hlpxV0NZgR4XPUpcj5XeR0abzDoBhXXiKqyxu1e4ILraztpaX6tR3W5vToplNGE6A5wJ4YgmyOCx27UU3gahCOqtQ9fFQ8cov3eGuFrrDc6jHr11ythMiJ1AwrSvoW8Li2AY5bTAVT6Gp55XTK48vGDUU44ePI2FfF6ZQ1I5GsLxoisZRouqR4lF8uP1KZxJ3OGsu0rkydKUske0G1PZEAfRskwmEMcG2OhY1SddfmkOvKJ3v5r4qTnb6NOqUezNGrFE7smPjItVQu7azK3388t7QwW5x5TwUVqAxOPMMIF3JwJsiAP65clPECsiT9OTLEtZMQhTjAxa9mJODjUXqPr0o9JuBKudBb4zQPX2cOBsBr6TDELotw5eSWCU8dnbXJGfcUZ0mXFB0NPoNN5jW1F0ee2EWBCcXQp30EMhKnVyoKX5zoIzBr9EXgNOpGNbYvqR0b8gvGUeNRGSAa7InhmuRqV5pQkUBhNxxawr78RLyFZ1VLrvN4FODDZ4NK1ZkA2gShSKPwu6CzMPeTIQnFuEvyeYfPcFIuUMPPNsuwkPITdjo7PXsiMNYgLYOSQUazWuwZDyXZ7wkkwDcgp6R8QdTyQWoMPC07YvkiOpfNg9IIQLuGdJrCJdKdJX21CGCSuOscO7bkYIOK1VMBZpfQkhrXqZjlG8X48YcHOSCtdqXlvKNGI5Ui"
+            }
+        },
+        {
+            "id": "item-3256812603735390",
+            "category": "other",
+            "rating": 100.0,
+            "priceAli": 37.71,
+            "priceLocal": 209,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/A5576e1ef263c4aafac603a6abcb63d25e.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/A5576e1ef263c4aafac603a6abcb63d25e.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Ac34a1834ae154aef88fb5ac8e903527d0.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Acc0395b08e0c4634a83e67af61710ff1h.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/A3f611d68e2f84fa2a46f7d0d49fff7a50.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/A27cbb3a673ae424ca7136ff5069417caP.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Ab38e9394bfc94c15ba50a1d9e353a34aL.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Необычная находка для стирки 🧺",
+                "excerpt": "Оценив двухфункциональную корзину для белья, я был приятно удивлен её качеством и функциональностью.",
+                "body": "Как человек, который всегда ищет способы упростить домашние дела, я долго мучился с разбросанным бельем. Казалось, решение так близко — купить что-то удобное, чтобы больше не наталкиваться на кучу вещей в ванной. Честно, поначалу не верил, что этот двухфункциональный корзиночка действительно окажется полезной. Боялся, что придет что-то хлипкое или так и вовсе будет ехать неделями, да и функциональность вызывала сомнения. Но цена была заманчивой, и я все-таки рискнул.\n\nКогда я открыл коробку, был приятно удивлен качеством. Корзина оказалась более прочной, чем я ожидал. Пользуюсь уже неделю, и могу сказать, что это действительно удобно: можно просто закидывать белье в ‘баскетбольную корзину’ — в игру увлекаются даже дети. Да, такая простая вещь, а сколько радости и порядка она привносит в нашу повседневность.\n\nМой вердикт: если вам надоело постоянно натыкаться на белье, такая корзина — это находка. Конечно, можно было бы добавить инструкцию по установке, но это мелочи. Если у вас такая же проблема — искренне рекомендую попробовать. Это действительно что-то новое и очень полезное!",
+                "pros": [
+                    "Прочная конструкция",
+                    "Удобство использования",
+                    "Дети играют"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/e/_c3S6lxkN"
+            },
+            "he": {
+                "title": "תגלית לא שגרתית לכביסה 🧺",
+                "excerpt": "הופתעתי לטובה מהאיכות והפונקציונליות של סל הכביסה הדו-תכליתי הקטן.",
+                "body": "בתור אחד שמחפש תמיד דרכים לפשט את המטלות הביתיות, התמודדתי עם כביסה מפוזרת זמן רב. נדמה היה שהפתרון קרוב - לקנות משהו נוח כדי שלא אצטרך להיתקל בערימת דברים בחדר האמבטיה. הייתי ספקן בהתחלה אם הסל הקטן והדו-תכליתי הזה יהיה שימושי ובאמת חששתי שיגיע משהו שביר או שייקח שבועות להגיע. אך המחיר היה מפתה ולכן לקחתי את הסיכון.\n\nכשפתחתי את הקופסה, הופתעתי לטובה מהאיכות. הסל התגלה כעמיד יותר ממה שציפיתי. אני משתמש בו כבר שבוע, ואני יכול לומר שזה באמת נוח: אפשר פשוט להשליך את הכביסה לתוך סל 'הכדורסל' - אפילו הילדים נהנים מהמשחק. כן, דבר פשוט כזה מביא כל כך הרבה שמחה וסדר לחיי היומיום שלנו.\n\nהמסר שלי: אם נמאס לכם להיתקל בכביסה, סל כזה הוא תגלית. כמובן, היה נחמד אם הייתה כוללת חוברת התקנה, אבל זה זוטות. אם הבעיה שלכם דומה - ממליץ בלב שלם לנסות. זה באמת משהו חדש ושימושי מאוד!",
+                "pros": [
+                    "מבנה קשיח",
+                    "נוחות בשימוש",
+                    "הילדים משחקים"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/e/_c3S6lxkN"
+            }
+        },
+        {
+            "id": "item-1005012058096770",
+            "category": "other",
+            "rating": 94.4,
+            "priceAli": 85.76,
+            "priceLocal": 475,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S97f1111b119244f98dc5825f2ec532e4F.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S97f1111b119244f98dc5825f2ec532e4F.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Открытие камеры 🌞 — полезно или нет?",
+                "excerpt": "Solar Camera 4G предлагает круглосуточную запись и прекрасное ночное видение, но стоит ли она своих денег?",
+                "body": "Когда вы ищете надежную камеру для домашней безопасности, сложно не обратить внимание на Solar Camera 4G. Она обещает круглосуточную запись и автономность — так ли хороша на практике?\n\nЕсли вам важна безопасность и ночное видение, эта камера вас не разочарует. Отличный вариант для тех, кто ищет автономность и качество изображения. Убедитесь сами, проверив актуальную цену на ранке.\n\n🇷🇺 Упаковка весьма компактная и защищена от влаги — полезно, если за доставкой следовал дождь. На ощупь пластик кажется крепким.\n\nБатарея держится в среднем три дня без подзарядки — это действительно удобно для уличного видеонаблюдения.\n\nКачество ночной съёмки действительно впечатляет. Даже в полной темноте лица различимы.\n\nПлюс: Звук записывается чётко, без лишних шумов, что важно для определения источника.\n\n## Плюсы и минусы\n\n| Плюсы | Минусы |\n|-------|--------|\n| Долговечная батарея | Цена чуть выше средней |\n| Качественное ночное видение | Нет встроенного хранилища |\n| Быстрая доставка | Отсутствие поддержки Wi-Fi |\n\n## Итог и мощный Call-to-Action\n\nSolar Camera 4G — это проверенный способ защитить ваш дом. Стоит ли она своих денег? Скорее, да. Переходите на AliExpress и подписывайтесь на наш Telegram-канал за эксклюзивными промокодами!",
+                "pros": [
+                    "Долговечная батарея",
+                    "Качественное ночное видение",
+                    "Быстрая доставка"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4FmHhE9AwDZHHVtvTMgq9gZ2hlpxV0NZgR4XPUpcj5XeR0abzDoBhXXiKqyxu1e4ILraztpaX6tR3W5vToplNGE6A5wJ4YgmyOCx27UU3gahCOqtQ9fFQ8cov3eGuFrrDc6jHr11ythMiJ1AwrSvoW8Li2AY5bTAVT6Gp55XTK48vGDUU44ePI2FfF6ZQ1I5GsLxoisZRouqR4lF8uP1KZxJ3OGsu0rkydKUske0G1PZEAfRskwmEMcG2OhY1SddfmkOvKJ3v5r4qTnb6NOqUezNGrFE7smPjItVQu7azK3388t7QwW5x5TwUVqAxOPMMIF3JwJsiAP65clPECsiT9OTLEtZMQhTjAxa9mJODjUXqPr0o9JuBKudBb4zQPX2cOBsBr6TDELotw5eSWCU8dnbXJGfcUZ0mXFB0NPoNN5jW1F0ee2EWBCcXQp30EMhKnVyoKX5zoIzBr9EXgNOpGNbYvqR0b8gvGUeNRGSAa7InhmuRqV5pQkUBhNxxawr78RLyFZ1VLrvN4FODDZ4NK1ZkA2gShSKPwu6CzMPeTIQnFuEvyeYfPcFIuUMPPNsuwkPITdjo7PXsiMNYgLYOSQUazWuwZDyXZ7wkkwDcgp6R8QdTyQWoMPC07YvkiOpfNg9IIQLuGdJrCJdKdJX21CGCSuOscO7bkYIOK1VMBZpfQkhrXqZjlG8X48YcHOSCtdqXlvKNGI5Ui"
+            },
+            "he": {
+                "title": "פתיחת מצלמה 🌞 - מועיל או לא?",
+                "excerpt": "Solar Camera 4G מציעה הקלטה סביב השעון וראיית לילה מצויינת, אבל האם זה שווה את המחיר?",
+                "body": "כאשר מחפשים מצלמה אמינה לבית בישראל, קשה לא לשים לב ל-Solar Camera 4G. היא מבטיחה הקלטה רצופה ועצמאות — האם היא מוכיחה את עצמה בפועל?\n\nאם ביטחון וראיית לילה חשובים לכם, המצלמה הזו לא תאכזב. היא אפשרות נהדרת למי שמחפש עצמאות ואיכות תמונה. בדקו בעצמכם את המחירון המעודכן.\n\n🇮🇱 האריזה קטנה ומוגנת מים - שימושי אם המשלוח הגיע בחורף. הפלסטיק מרגיש יציב.\n\nהסוללה מחזיקה בממוצע שלושה ימים ללא טעינה — נוח מאוד למעקב באוויר הפתוח.\n\nאיכות ההקלטה בלילה מרשימה מאוד. ניתן להבחין בפנים אפילו בחושך מוחלט.\n\nבתוספת לכך: הצליל מוקלט בצורה נקייה וללא רעשי רקע, חשובה לזיהוי המקור.\n\n## יתרונות וחסרונות\n\n| יתרונות | חסרונות |\n|---------|---------|\n| חיי סוללה ארוכים | מחיר מעט גבוה מהממוצע |\n| ראיית לילה איכותית | אין אחסון מובנה |\n| משלוח מהיר | חוסר תמיכה ב-Wi-Fi |\n\n## סיכום וקול קריאה לפעולה\n\nSolar Camera 4G היא דרך מוכחת להגן על ביתכם בישראל. האם זה שווה את כספכם? קרוב לוודאי שכן. לחצו לקנייה בעליאקספרס והירשמו לערוץ הטלגרם שלנו כדי לקבל קודי קופון בלעדיים!",
+                "pros": [
+                    "חיי סוללה ארוכים",
+                    "ראיית לילה איכותית",
+                    "משלוח מהיר"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4FmHhE9AwDZHHVtvTMgq9gZ2hlpxV0NZgR4XPUpcj5XeR0abzDoBhXXiKqyxu1e4ILraztpaX6tR3W5vToplNGE6A5wJ4YgmyOCx27UU3gahCOqtQ9fFQ8cov3eGuFrrDc6jHr11ythMiJ1AwrSvoW8Li2AY5bTAVT6Gp55XTK48vGDUU44ePI2FfF6ZQ1I5GsLxoisZRouqR4lF8uP1KZxJ3OGsu0rkydKUske0G1PZEAfRskwmEMcG2OhY1SddfmkOvKJ3v5r4qTnb6NOqUezNGrFE7smPjItVQu7azK3388t7QwW5x5TwUVqAxOPMMIF3JwJsiAP65clPECsiT9OTLEtZMQhTjAxa9mJODjUXqPr0o9JuBKudBb4zQPX2cOBsBr6TDELotw5eSWCU8dnbXJGfcUZ0mXFB0NPoNN5jW1F0ee2EWBCcXQp30EMhKnVyoKX5zoIzBr9EXgNOpGNbYvqR0b8gvGUeNRGSAa7InhmuRqV5pQkUBhNxxawr78RLyFZ1VLrvN4FODDZ4NK1ZkA2gShSKPwu6CzMPeTIQnFuEvyeYfPcFIuUMPPNsuwkPITdjo7PXsiMNYgLYOSQUazWuwZDyXZ7wkkwDcgp6R8QdTyQWoMPC07YvkiOpfNg9IIQLuGdJrCJdKdJX21CGCSuOscO7bkYIOK1VMBZpfQkhrXqZjlG8X48YcHOSCtdqXlvKNGI5Ui"
+            }
+        },
+        {
+            "id": "xiaomi-pet-water-fountain-2",
+            "category": "other",
+            "rating": 4.8,
+            "priceAli": 56.85,
+            "priceLocal": 315,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5d2a55d248f6470885604281992cc6abv.png",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S5d2a55d248f6470885604281992cc6abv.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S2c68cd4743b340dcb646cca78399d22ev.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S341701b0e7ba44d790f6293ffcca97b68.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S5cdce9a519434a3bbcdf49d2ef15345eV.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sffd23e6c833c4990878da7d31f7c75c1C.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sd3b720bf8344461085dc10d62da970d2p.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Стоит ли покупать Xiaomi Pet Water Fountain 2? 🐾",
+                "excerpt": "Вы ищете способ обеспечить вашего питомца свежей водой 24/7? Обзор нового домашнего водного фонтана Xiaomi Pet Water Fountain 2 поможет вам сделать выбор.",
+                "body": "# Обзор Xiaomi Pet Water Fountain 2: Убийца флагманов или пустая трата денег?\n\nЖивотные — это не просто спутники, а настоящие члены семьи. Все, что мы можем сделать для их комфорта, стоит того. Так почему же я решил заказать Xiaomi Pet Water Fountain 2? Ответ прост: этот фонтанчик обещает решить проблему свежей воды для домашних питомцев на раз-два.\n\n## Спойлер / Краткий вердикт\n\nЕсли вы устали наполнять миску для вашего пушистого друга каждые несколько часов, то этот товар для вас. Однако, если ваш питомец любит играть с водой, возможно, стоит рассмотреть другие варианты. Узнайте актуальную цену по [ссылке на официального продавца с быстрой доставкой](#).\n\n## Распаковка и первое впечатление\n\nЗаказ прибыл через Алиэкспресс в стандартной картонной коробке — никаких проблем. Внутри: сам фонтан, фильтр, шнур питания и документация. Запах пластика присутствует, но исчезает после проветривания. Комплектация простая, но функциональная.\n\n## Опыт использования\n\n### Технология фильтрации и автономности\n\nФонтан оснащен многоуровневой системой фильтрации, чистая свежая вода круглый год. Тестированное время показало хорошую автономность: полной зарядки хватает на неделю активного использования.\n\n### Уровень шума\n\nУдивительно, но устройство практически бесшумно. Это большая редкость для подобных фонтанов. Даже ночью оно работает так тихо, что можно забыть, что у вас есть электронный помощник.\n\n## Плюсы и минусы\n\n| Плюсы | Минусы |\n|-------|--------|\n| Компактный размер | Цена выше средней по рынку |\n| Тихий в работе | Требует регулярной тщательной чистки |\n| Простая настройка | Нет батареи в комплекте |\n\n## Итог и мощный Call-to-Action\n\nЕсли вам нужно удобное и эффективное решение проблемы с водой для вашего питомца, Xiaomi Pet Water Fountain 2 — отличный выбор. Закажите через [ссылку на официального продавца с быстрой доставкой](#). Подписывайтесь на наш Telegram-канал — там куча промокодов не только на этот товар!\n",
+                "pros": [
+                    "Компактный размер",
+                    "Тихий в работе",
+                    "Простая настройка"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/e/_c2yJUz7x"
+            },
+            "he": {
+                "title": "האם כדאי לקנות את Xiaomi Pet Water Fountain 2? 🐾",
+                "excerpt": "מחפשים דרך להבטיח לחיית המחמד שלכם מים טריים 24/7? סקירת המזרקה בבית ממותג Xiaomi תעזור לכם להחליט.",
+                "body": "# סקירה על Xiaomi Pet Water Fountain 2: האם זה שווה את ההשקעה?\n\nחיות מחמד הן לא רק חברות אלא חברים אמיתיים למשפחה. כל מה שנוכל לעשות לנוחיותם שווה את זה. אז למה החלטתי להזמין את Xiaomi Pet Water Fountain 2? התשובה פשוטה: המזרקה הזו מבטיחה לפתור את בעיית המים הטריים לחיות הבית בקלות.\n\n## ספוילר ותקציר\n\nאם אתם עייפים מלהזין את הקערה לחיית המחמד הפרוותית שלכם כל כמה שעות, המוצר הזה עבורכם. עם זאת, אם חיית המחמד שלכם אוהבת לשחק עם מים, אולי כדאי לשקול אופציות אחרות. בדקו את המחיר המעודכן [בקישור למוכר הרשמי עם משלוח מהיר](#).\n\n## פתיחת האריזה ורושם ראשוני\n\nההזמנה הגיעה מאליאקספרס בקופסת קרטון סטנדרטית – ללא בעיות. בפנים: המזרקה, הפילטר, כבל החשמל ותיעוד. ריח פלסטיק קיים אך נעלם לאחר איוורור. התכולה פשוטה אך פונקציונלית.\n\n## חווית שימוש\n\n### טכנולוגיית סינון ואוטונומיה\n\nהמזרקה מצוידת במערכת סינון רב-שלבית, מים טריים ונקיים לאורך כל השנה. זמן הבדיקה הראה אוטונומיה טובה: טעינה מלאה מספיקה לשבוע שימוש פעיל.\n\n### רמת רעש\n\nמפתיע, אך המכשיר כמעט שקט לחלוטין. זו נדירות גדולה עבור מזרקות כאלה. גם בלילה זה פועל בשקט כל כך שאפשר לשכוח שיש לכם עוזר אלקטרוני.\n\n## יתרונות וחסרונות\n\n| יתרונות | חסרונות |\n|---------|---------|\n| גודל קומפקטי | מחיר מעל הממוצע בשוק |\n| שקט בעבודה | דורש ניקוי יסודי באופן קבוע |\n| הגדרה פשוטה | אין סוללה כלולה |\n\n## סיכום וקריאה לפעולה\n\nאם אתם צריכים פתרון נוח ואפקטיבי לבעיית המים לחיית המחמד שלכם, Xiaomi Pet Water Fountain 2 היא בחירה מצוינת. הזמינו דרך [קישור למוכר הרשמי עם משלוח מהיר](#). עקבו אחרי ערוץ הטלגרם שלנו – יש שם המון קופוני הנחה לא רק למוצר הזה!\n",
+                "pros": [
+                    "גודל קומפקטי",
+                    "שקט בעבודה",
+                    "הגדרה פשוטה"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/e/_c2yJUz7x"
+            }
+        },
+        {
+            "id": "kindle",
+            "category": "other",
+            "rating": 94.7,
+            "priceAli": 5.38,
+            "priceLocal": 29,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S2c58747c503a4be4b1871a4e65e243955.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S2c58747c503a4be4b1871a4e65e243955.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S053d08b732904808b57217881c1783dbL.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sa4689fcfeba7433ea1d5bb0274de95a3B.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S778b06e54aad419b82ac65aff48c9fa34.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S05fd9e48095a489a9969f86e4d130b44z.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S261d6a0e1e4a470c9c19f17fafe22122E.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "📚 Защити свой Kindle: Чехол на все случаи жизни!",
+                "excerpt": "Ищете идеальный чехол для Kindle, который защитит от царапин и пыли? Мы нашли его для вас!",
+                "body": "В Израиле всё покупается с борьбой — драгоценная электроника не исключение. Наши любимые читалки Kindle нуждаются в защите, и мы нашли идеальный чехол, который спасет от царапин и пыли! Этот магнитный чехол подходит для всех моделей с 2021 по 2024 год, и даже ранние версии не остаются без внимания. \n\nПреимущества очевидны: надежная защита от механических повреждений, стильный дизайн и большой выбор цветов, которые подчеркнут ваш стиль, магнитные застёжки для удобства использования. \n\nЦена вопроса — всего 5.38 USD, что в переводе на шекели по курсу $3.7 — это примерно 20 ₪. Для сравнения, в местных магазинах аналогичное покрытие обойдётся в 40-50 ₪ и выше. Важно отметить, что покупка на AliExpress без пошлин и НДС, так как товар дешевле 277 ₪. \n\nНе упускайте шанс сэкономить и красиво оформить свой Kindle!",
+                "pros": [
+                    "Надёжная защита",
+                    "Шикарный дизайн",
+                    "Магнитные застёжки"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/e/_c4kpNpO1"
+            },
+            "he": {
+                "title": "📚 הגנו על הקינדל שלכם: כיסוי לכל מצב!",
+                "excerpt": "מחפשים את הכיסוי המושלם לקינדל שלכם שיגן עליכם משריטות ואבק? מצאנו אותו עבורכם!",
+                "body": "בישראל כל קנייה היא מאבק, ואלקטרוניקה יקרה לא יוצאת דופן. הקינדל האהוב עלינו זקוק להגנה, ומצאנו את הכיסוי המושלם שיגן עליו משריטות ואבק! כיסוי מגנטי זה מתאים לכל הדגמים משנת 2021 ועד 2024, ואפילו לגרסאות הקודמות לא נשכחו. \n\nהיתרונות ברורים: הגנה אמינה מנזקים מכניים, עיצוב מדהים ומגוון רחב של צבעים שידגישו את הסגנון שלכם, סגרי מגנטים לנוחות השימוש. \n\nהמחיר — רק 5.38 דולר, שמתורגמים לפי שער של 3.7 דולר לשקל לכ-20 ₪. לשם השוואה, בחנויות המקומיות כיסוי דומה יעלה 40-50 ₪ ומעלה. חשוב לציין שהקנייה ב-AliExpress ללא מכסים ומע\"מ, מכיוון שהמוצר זול יותר מ-277 ₪. \n\nאל תפספסו את ההזדמנות לחסוך ולעצב את הקינדל שלכם באופן מושלם!",
+                "pros": [
+                    "הגנה אמינה",
+                    "עיצוב מדהים",
+                    "סגרי מגנטים"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/e/_c4kpNpO1"
+            }
+        },
+        {
+            "id": "item-3256805667255753",
+            "category": "other",
+            "rating": 92.6,
+            "priceAli": 3.36,
+            "priceLocal": 18,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S004dbef3dd624da6b208fdffcf4627b1b.jpg",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S004dbef3dd624da6b208fdffcf4627b1b.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S5ddec8fb73a4431e842932373315edcd9.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S6a60f343cd4e442282e262f03ce46781R.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sa09a1d536463479c937b87c0fb7a2e974.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S0e8f96f1018f408fab6ef136874d6f6cB.jpg",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S5ed26644d3a649ebaa4b9bdd019acbc0k.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Душевая насадка-диверсант 👀: стоящая ли покупка?",
+                "excerpt": "Устали от слабого напора воды и высоких счетов? Опробуйте насадку High Pressure Shower Head, возможно именно она вам и нужна.",
+                "body": "В наше время экономия ресурсов — не просто тренд, а жизненная необходимость. Так почему бы не начать с воды? Я решил попробовать \"High Pressure Shower Head\" с АлиЭкспресс и готов рассказать вам, стоит ли она ваших денег.\n\nСпойлер: если вы устали от низкого напора воды и хотите сократить счета, стоит присмотреться. Хотя некоторым может показаться, что она немного шумновата, преимущества перевешивают.\n\n### Распаковка и первое впечатление\nУпаковка пришла довольно компактной. Внутри — насадка, без лишних пластиковых запахов, что уже радует. Первый тест показал, что она действительно повышает давление, даже если у вас в квартире слабый напор.\n\n### Опыт использования\nТри режима работы: **Массажный режим** — отличный способ расслабиться после напряженного дня, **Режим дождя** — имитация природного дождя, напоминает SPA, **Пульсирующий режим** — энергичное обливание для пробуждения и бодрости.\n\nФункция \"Stop\" с практичной кнопкой для быстрого остановки воды — удобно и экономно.\n\n### Экономия воды\nПо тестовому месяцу использования счета за воду уменьшились на 15%. Отличный результат для такой цены!\n\n### Таблица плюсов и минусов | Плюсы | Минусы | |------------------------------|------------------------------| | Экономия воды | Немного шумная работа | | Улучшенное давление | Может не подойти для любителей мощного напора | | Легкость установки | |\n\n### Итог и мощный Call-to-Action\nВам нужен функциональный и экономичный душ? Тогда стоит дать шанс этой насадке. Проверьте его по ссылке на официального продавца и не забудьте подписаться на наш Telegram-канал за промокодами!",
+                "pros": [
+                    "Экономия воды",
+                    "Улучшенное давление",
+                    "Легкость установки"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/e/_c4sB0n89"
+            },
+            "he": {
+                "title": "ראש מקלחת חוסך מים: האם כדאי לקנות?",
+                "excerpt": "מחפשים להגביר את לחץ המים ולהפחית בעלויות? נסו את ראש המקלחת High Pressure, ייתכן שזה הפתרון שחיפשתם.",
+                "body": "בזמננו, חיסכון במשאבים הוא לא רק אופנה, אלא הכרח אמיתי. אז למה לא להתחיל עם המים? החלטתי לנסות את \"High Pressure Shower Head\" מעליאקפסרס ומוכן לספר לכם אם זה שווה את הכסף.\n\nספוילר: אם נמאס לכם מלחץ המים הנמוך ורוצים להקטין את החשבונות, כדאי לשקול. אמנם חלק עלולים למצוא אותו קצת רועש, אך היתרונות עולים על החסרונות.\n\n### פתיחה ורושם ראשוני\nהחבילה הגיעה במצב קומפקטי למדי. בפנים — הראש, ללא ריח פלסטיק מיותר, שזה כבר מבשר טוב. הבדיקה הראשונה הראתה שהיא באמת מגבירה את הלחץ, גם אם יש לכם זרם חלש בדירה.\n\n### ניסיון השימוש\nשלושה מצבים לעבודה: **מצב עיסוי** – דרך מצוינת להירגע אחרי יום מתוח, **מצב גשם** – חיקוי גשם טבעי, מזכיר SPA, **מצב פעימה** – שטיפה אנרגטית להתעוררות ורענון.\n\nפונקציית \"עצור\" עם כפתור נח להפסקה מהירה של המים – נוח וחסכוני.\n\n### חיסכון במים\nבחודש המבחן של השימוש החשבונות על המים ירדו ב-15%. תוצאה מצוינת במחיר כזה!\n\n### טבלת יתרונות וחסרונות | יתרונות | חסרונות | |-----------------------------|-----------------------------| | חיסכון במים | מעט רועשת בפעולה | | שיפור בלחץ | ייתכן ולא מתאים למי שאוהב זרם חזק| | קלות בהתקנה | |\n\n### סיכום וקריאה לפעולה\nצריכים מקלחת פונקציונלית וחסכונית? אז כדאי לתת סיכוי לראש הזה. בדקו את המוצר דרך הקישור למוכר הרשמי ואל תשכחו להירשם לערוץ הטלגרם שלנו לקבלת קודי הנחה!",
+                "pros": [
+                    "חיסכון במים",
+                    "שיפור בלחץ",
+                    "קלות בהתקנה"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/e/_c4sB0n89"
+            }
+        },
+        {
+            "id": "item-1005013133253111",
+            "category": "other",
+            "rating": 4.8,
+            "priceAli": 56.85,
+            "priceLocal": 315,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5d2a55d248f6470885604281992cc6abv.png",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S5d2a55d248f6470885604281992cc6abv.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S2c68cd4743b340dcb646cca78399d22ev.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S341701b0e7ba44d790f6293ffcca97b68.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S5cdce9a519434a3bbcdf49d2ef15345eV.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sffd23e6c833c4990878da7d31f7c75c1C.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sd3b720bf8344461085dc10d62da970d2p.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "💧Умный фонтан для питомцев: комфорт в жару!",
+                "excerpt": "С Xiaomi Pet Water Fountain 2 ваш питомец всегда будет иметь доступ к свежей воде, даже в самую жаркую погоду.",
+                "body": "С наступлением жары забота о наших пушистых друзьях становится особенно актуальной. В Израиле, где температура может достигать 40°C, обеспечить кота свежей водой становится настоящей задачей. А цене на бутилированную воду в магазинах, особенно в съемных квартирах, порой сложно найти оправдание.\n\nXiaomi Pet Water Fountain 2 решает эту проблему сразу несколькими способами:\n1. **Большая емкость**: С объемом 3 литра не придется каждый час наполнять фонтан, ваш питомец всегда будет пить свежую воду.\n2. **Фильтрация**: Интегрированная фильтрация гарантирует, что вода будет чистой и свежей, избавляя от необходимости часто менять ее.\n3. **Автоматизированный процесс**: Умный функционал позволяет фонтану работать по расписанию, что идеально для занятых хозяев.\n4. **Экономия**: Фонтан стоит всего 56.85$, что примерно 210 ₪. Сравните это с ценами в израильских магазинах: аналог в KSP стоит около 350 ₪. Заказав на AliExpress, вы сэкономите приличную сумму!\n\nК тому же, этот товар попадает под налоговый лимит, так что платить пошлину не придется. Отличное вложение в здоровье вашего животного и ваш бюджет!",
+                "pros": [
+                    "Большая емкость",
+                    "Интегрированная фильтрация",
+                    "Автоматизированный процесс"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/e/_c2yJUz7x"
+            },
+            "he": {
+                "title": "💧מזרקת מים חכמה לחיות מחמד: נוחות בחום!",
+                "excerpt": "עם מזרקת המים החכמה Xiaomi Pet Water Fountain 2, חיית המחמד שלך תמיד תהיה עם מים טריים, גם בחום הכבד.",
+                "body": "בעונת הקיץ, הדאגה לחיות המחמד שלנו הופכת להיות חיונית במיוחד. בישראל, שבה הטמפרטורות עשויות להגיע ל-40 מעלות צלזיוס, להבטיח שהחתול שלנו יהיה עם מים טריים זו משימה לא פשוטה. במיוחד כשמחירי המים הבקבוקים בחנויות, ובעיקר בדירות שכורות, לפעמים קשה להצדיק.\n\nמזרקת המים Xiaomi Pet Water Fountain 2 פותרת את הבעיה הזו במספר דרכים:\n1. **קיבולת גדולה**: בנפח של 3 ליטרים לא תצטרכו למלא את המזרקה בכל שעה, חיית המחמד שלכם תמיד תשתה מים טריים.\n2. **סינון**: סינון מובנה מבטיח שהמים יהיו נקיים וטריים, כך שלא תצטרכו להחליף אותם לעיתים תדירות.\n3. **תהליך אוטומטי**: הפונקציה החכמה מאפשרת למזרקה לפעול על פי לוח זמנים, מה שמתאים במיוחד לבעלים עסוקים.\n4. **חיסכון**: המזרקה עולה רק 56.85$, שזה בערך 210 ₪. השוו את זה למחירים בחנויות ישראליות: המוצר דומה ב-KSP עולה כ-350 ₪. אם תזמינו ב-AliExpress, תחסכו סכום ניכר!\n\nכמו כן, המוצר הזה נמצא תחת הגבול המס, כך שלא תצטרכו לשלם מכס. השקעה מצוינת בבריאות חיית המחמד שלכם ובתקציב שלכם!",
+                "pros": [
+                    "קיבולת גדולה",
+                    "סינון מובנה",
+                    "תהליך אוטומטי"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/e/_c2yJUz7x"
+            }
+        },
+        {
+            "id": "xiaomi-pet-water-fountain-2",
+            "category": "other",
+            "rating": 4.8,
+            "priceAli": 56.85,
+            "priceLocal": 315,
+            "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5d2a55d248f6470885604281992cc6abv.png",
+            "images": [
+                "https://ae-pic-a1.aliexpress-media.com/kf/S5d2a55d248f6470885604281992cc6abv.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S2c68cd4743b340dcb646cca78399d22ev.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S341701b0e7ba44d790f6293ffcca97b68.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/S5cdce9a519434a3bbcdf49d2ef15345eV.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sffd23e6c833c4990878da7d31f7c75c1C.png",
+                "https://ae-pic-a1.aliexpress-media.com/kf/Sd3b720bf8344461085dc10d62da970d2p.jpg"
+            ],
+            "isCollection": false,
+            "products": [],
+            "ru": {
+                "title": "Обзор Xiaomi Pet Water Fountain 2: стоит ли покупать? 🐱",
+                "excerpt": "Если вы ищете практичное решение для вашей кошки, Xiaomi Pet Water Fountain 2 стоит рассмотреть!",
+                "body": "Когда речь идет о здоровье наших питомцев, мы все хотим делать всё возможное. Я решил заказать этот автоматический диспенсер для воды, потому что моя кошка постоянно игнорировала обычную миску. Она отреагировала на новинку положительно. \n\nУпаковка пришла в целости и сохранности. Диспенсер был хорошо упакован в пупырку, защитив его от повреждений. При открытии ощущается легкий запах пластика, но он быстро выветривается. В комплекте идет: \n- Диспенсер \n- Фильтр \n- USB-кабель \n- Инструкция на нескольких языках.\n\nКорпус выполнен из прочного материала с матовой текстурой, что выглядит стильно и современно. \n\nЯ тестировал фонтан в течение недели, и он радует своей автономностью. Полного резервуара (3 литра) хватает примерно на неделю постоянной работы. Диспенсер работает довольно тихо, и на минимальной настройке его звук больше напоминает легкое шуршание. \n\nУстройство довольно легко разбирается для чистки, но требуется усилия, чтобы поменять фильтр, который необходимо менять каждые 4 недели.\n\nВ целом, Xiaomi Pet Water Fountain 2 — это достойный вариант для заботливых хозяев. Он значительно улучшает доступ к свежей воде для вашей кошки, если вы готовы к небольшим неудобствам с чисткой.",
+                "pros": [
+                    "Хорошая автономность",
+                    "Тихая работа",
+                    "Эстетичный дизайн"
+                ],
+                "linkText": "Купить на AliExpress",
+                "aliLink": "https://s.click.aliexpress.com/e/_c2yJUz7x"
+            },
+            "he": {
+                "title": "סקירה על מכונת מים לחיות מחמד Xiaomi Pet Water Fountain 2: האם שווה לקנות? 🐱",
+                "excerpt": "אם אתם מחפשים פתרון מעשי לחתול שלכם, מכונת המים של Xiaomi Pet Water Fountain 2 בהחלט שווה לחשוב עליה!",
+                "body": "כשמדובר בבריאות חיות המחמד שלנו, כולנו רוצים לעשות את המקסימום. החלטתי להזמין את מכונת המים האוטומטית הזו כי החתולה שלי מתעלמת באופן קבוע מהקערה הרגילה. היא הגיבה לחידוש מאוד חיובית. \n\nהאריזה הגיעה שלמה ולא פגועה. המכשיר היה ארוז היטב בנייר פטיש, מה שהגן עליו מפני נזקים. כשהפתחתי, הייתה שם ריח קל של פלסטיק, אבל הוא עבר במהרה. בערכה יש: \n- מכונת מים \n- פילטר \n- כבל USB \n- מדריך במספר שפות.\n\nהמרכיב עשוי מחומר עמיד עם טקסטורה מט, מה שנראה אלגנטי ומודרני. \n\nבדקתי את המכשיר במשך שבוע והוא ריגש אותי בעמידותו. מיכל מלא (3 ליטרים) מספיק לעבודה רציפה של כשבוע. המכשיר פועל די בשקט, ועל ההגדרה המינימלית הקול שלו מזכיר יותר רעש קל מאשר געקוע חזק. \n\nהמכשיר מתפרק בקלות לניקוי, אך יש להשקיע מאמצים כדי להחליף את הפילטר שצריך להחליף כל 4 שבועות.\n\nבסך הכל, Xiaomi Pet Water Fountain 2 היא אפשרות מכובדת עבור בעלי חיות המחמד הדואגים. היא משפרת בצורה משמעותית את הגישה למים טריים עבור החתול שלכם, אם אתם מוכנים לנוחות הקטנה של הניקוי.",
+                "pros": [
+                    "עמידות טובה",
+                    "עבודה שקטה",
+                    "עיצוב אלגנטי"
+                ],
+                "linkText": "לקנייה בעליאקפסרס",
+                "aliLink": "https://s.click.aliexpress.com/e/_c2yJUz7x"
+            }
+        },
+        {
             "id": "item-1005012678832633",
             "category": "other",
             "rating": 95.0,

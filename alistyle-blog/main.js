@@ -281,18 +281,22 @@ let siteSettingsData = {};
 async function fetchDatabase() {
     try {
         let data = null;
-        try {
-            const response = await fetch(`./reviews.json?t=${new Date().getTime()}`);
-            if (response.ok) {
-                data = await response.json();
-            }
-        } catch (localErr) {
-            console.warn('Local reviews.json fetch failed, trying GitHub fallback...', localErr);
+        let liveData = null;
+
+        const [localRes, liveRes] = await Promise.allSettled([
+            fetch(`./reviews.json?t=${new Date().getTime()}`),
+            fetch(`/api/v1/funnel/alistyle-feed?t=${new Date().getTime()}`)
+        ]);
+
+        if (localRes.status === 'fulfilled' && localRes.value.ok) {
+            try { data = await localRes.value.json(); } catch (e) {}
+        }
+        if (liveRes.status === 'fulfilled' && liveRes.value.ok) {
+            try { liveData = await liveRes.value.json(); } catch (e) {}
         }
 
         // Fallback to raw GitHub repo if local fetch failed or returned no reviews
         if (!data || !data.reviews || data.reviews.length === 0) {
-            console.log('Fetching reviews from GitHub fallback...');
             try {
                 const ghResponse = await fetch(`https://raw.githubusercontent.com/evgeniy1218/alistyle-blog/main/alistyle-blog/reviews.json?t=${new Date().getTime()}`);
                 if (ghResponse.ok) {
@@ -303,17 +307,55 @@ async function fetchDatabase() {
             }
         }
 
-        if (data) {
-            categoriesData = data.categories || [];
-            const seenIds = new Set();
-            reviewsData = (data.reviews || []).filter(r => {
-                if (!r || !r.id || seenIds.has(r.id)) return false;
-                seenIds.add(r.id);
-                return true;
-            });
-            siteSettingsData = data.siteSettings || {};
-            applySiteSettings();
-        }
+        const baseReviews = (data && Array.isArray(data.reviews)) ? data.reviews : [];
+        const liveReviews = (liveData && Array.isArray(liveData.reviews)) ? liveData.reviews : [];
+
+        // Enrich existing curated bilingual reviews with live video URLs & reviewId, and append any new live reviews
+        const seenIds = new Set();
+        const seenImages = new Set();
+        const seenLinks = new Set();
+        const merged = [];
+
+        // Index live reviews by image and affiliate link for fast enrichment
+        const liveByImg = new Map();
+        const liveByLink = new Map();
+        liveReviews.forEach(lr => {
+            if (lr.image) liveByImg.set(lr.image, lr);
+            const link = lr.ru?.aliLink || '';
+            if (link) liveByLink.set(link, lr);
+        });
+
+        baseReviews.forEach(r => {
+            if (!r || !r.id || seenIds.has(r.id)) return;
+            seenIds.add(r.id);
+            if (r.image) seenImages.add(r.image);
+            const rLink = r.ru?.aliLink || r.he?.aliLink || '';
+            if (rLink) seenLinks.add(rLink);
+
+            const matchLive = (r.image && liveByImg.get(r.image)) || (rLink && liveByLink.get(rLink));
+            if (matchLive) {
+                if (!r.video && matchLive.video) r.video = matchLive.video;
+                if (!r.reviewId && matchLive.reviewId) r.reviewId = matchLive.reviewId;
+            }
+            merged.push(r);
+        });
+
+        // Prepend brand new live reviews from VPS that aren't in static reviews.json yet
+        const newLive = [];
+        liveReviews.forEach(lr => {
+            if (!lr || !lr.id || seenIds.has(lr.id)) return;
+            const lrLink = lr.ru?.aliLink || '';
+            if ((lr.image && seenImages.has(lr.image)) || (lrLink && seenLinks.has(lrLink))) return;
+            seenIds.add(lr.id);
+            if (lr.image) seenImages.add(lr.image);
+            if (lrLink) seenLinks.add(lrLink);
+            newLive.push(lr);
+        });
+
+        reviewsData = [...newLive, ...merged];
+        categoriesData = (data && data.categories) || (liveData && liveData.categories) || [];
+        siteSettingsData = (data && data.siteSettings) || {};
+        applySiteSettings();
     } catch (e) {
         console.error('Error fetching reviews database:', e);
         reviewsData = [];
@@ -753,13 +795,29 @@ function renderIndexPage() {
         const card = document.createElement('article');
         card.className = 'article-card';
         card.setAttribute('data-category', item.category);
+        if (item.video || item.videoUrl) {
+            card.dataset.nxVideo = '1';
+        }
+        if (index >= 6) {
+            card.style.contentVisibility = 'auto';
+            card.style.containIntrinsicSize = 'auto none auto 380px';
+        }
 
         // SEO/Performance: fetchpriority for first LCP image card
         const imgPriority = index === 0 ? 'fetchpriority="high"' : 'loading="lazy"';
+        const hasVideo = !!(item.video || item.videoUrl);
+        const videoBadgeHtml = hasVideo
+            ? `<span class="video-badge" style="position:absolute;bottom:10px;left:10px;z-index:3;background:rgba(15,23,42,0.88);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:700;padding:4px 9px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);display:inline-flex;align-items:center;gap:4px;">🎥 ${currentLang === 'he' ? 'וידאו' : 'Видео'}</span>`
+            : '';
+        const buyLinkUrl = langData.aliLink || item.ru?.aliLink || '';
+        const directBuyHtml = buyLinkUrl && !prices.isCollection
+            ? `<a href="${buyLinkUrl}" target="_blank" rel="sponsored nofollow noopener" class="card-direct-buy" style="background:linear-gradient(135deg,#ff4747,#ff6f00);color:#fff;font-size:12px;font-weight:700;padding:6px 11px;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;box-shadow:0 4px 12px rgba(255,71,71,0.25);">${currentLang === 'he' ? '🛒 לקנייה' : '🛒 На Ali'}</a>`
+            : '';
 
         card.innerHTML = `
             <div class="article-img-wrapper">
                 ${badgeHtml}
+                ${videoBadgeHtml}
                 <img class="article-img" src="${item.image || 'logo.png'}" alt="${langData.title}" ${imgPriority} decoding="async" width="350" height="220" onerror="this.src='logo.png'">
             </div>
             <div class="article-content">
@@ -775,17 +833,20 @@ function renderIndexPage() {
                     ${savingsBadgeHtml}
                 </div>
                 <p class="article-excerpt">${langData.excerpt || ''}</p>
-                <div class="article-footer">
+                <div class="article-footer" style="gap:8px;flex-wrap:wrap;">
                     <div class="rating-stars" aria-label="Рейтинг: ${itemRatingObj.outOf5} из 5">
                         ${starsHTML}
                         <span class="rating-value">${itemRatingObj.outOf5}</span>
                     </div>
-                    <a href="review.html?id=${item.id}" class="read-more-link">
-                        ${t.readMoreBtn} 
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="transform: ${currentLang === 'he' ? 'scaleX(-1)' : 'none'}">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
+                    <div style="display:flex;align-items:center;gap:8px;margin-inline-start:auto;">
+                        <a href="review.html?id=${item.id}" class="read-more-link">
+                            ${t.readMoreBtn} 
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="transform: ${currentLang === 'he' ? 'scaleX(-1)' : 'none'}">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        ${directBuyHtml}
+                    </div>
                 </div>
             </div>
         `;
@@ -869,7 +930,8 @@ function renderReviewPage() {
         return;
     }
 
-    const review = reviewsData.find(r => r.id === reviewId);
+    const cleanNumId = reviewId.replace(/^rev-/, '');
+    const review = reviewsData.find(r => r.id === reviewId || String(r.reviewId) === cleanNumId);
     if (!review) {
         renderErrorPage(t.errorNotFound);
         return;

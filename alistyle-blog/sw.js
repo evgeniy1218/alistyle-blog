@@ -1,5 +1,5 @@
 /* AliStyle service worker: network-first (always fresh), cache fallback for offline use. */
-const CACHE = 'alistyle-v1';
+const CACHE = 'alistyle-v2';
 const SHELL = ['./', 'index.html', 'review.html', 'style.css', 'neon.css', 'main.js', 'features.js', 'logo.png', 'manifest.webmanifest'];
 
 self.addEventListener('install', e => {
@@ -13,6 +13,7 @@ self.addEventListener('fetch', e => {
     if (req.method !== 'GET') return;
     const url = new URL(req.url);
     if (url.origin !== location.origin) return;
+    if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/static/') || url.pathname.startsWith('/go/')) return;
     e.respondWith(
         fetch(req).then(res => {
             if (res && res.ok) { const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); }

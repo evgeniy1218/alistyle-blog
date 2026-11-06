@@ -20,23 +20,39 @@
     const T = {
         ru: {
             sort: 'Сортировка', sortNew: 'Сначала новые', sortPriceAsc: 'Цена: по возрастанию', sortPriceDesc: 'Цена: по убыванию',
-            sortRating: 'По рейтингу', sortDiscount: 'По выгоде', maxPrice: 'Цена до', favOnly: '♥ Избранное', found: 'Найдено',
+            sortRating: 'По рейтингу', sortDiscount: 'По выгоде', maxPrice: 'Цена до', favOnly: '♥ Избранное', videoOnly: '🎥 С видео', found: 'Найдено',
             hot: '🔥 Максимальная выгода', save: 'выгода', compare: 'Сравнить', compareTitle: 'Сравнение товаров', clear: 'Очистить',
             image: 'Фото', price: 'Цена на Ali', local: 'В Израиле', savings: 'Экономия', rating: 'Рейтинг', pros: 'Плюсы', buy: 'Купить',
             selected: 'выбрано', favEmpty: 'В избранном пока пусто — нажмите ♥ на карточке', noMatch: 'Ничего не найдено — измените фильтры',
             voteTitle: 'Стоит ли покупать этот товар?', voteUp: '👍 Да, стоит', voteDown: '👎 Нет, не стоит',
             voteThanks: 'Спасибо! Ваш голос сохранён на этом устройстве.', fbTitle: 'Ваш отзыв о товаре', fbName: 'Ваше имя', fbMsg: 'Расскажите, покупали ли вы этот товар и что думаете…',
-            fbSend: 'Отправить отзыв', fbOk: '✅ Спасибо! Отзыв отправлен на модерацию.', fbErr: '⚠️ Не удалось отправить. Попробуйте позже.', theme: 'Тема', favs: 'Избранное'
+            fbSend: 'Отправить отзыв', fbOk: '✅ Спасибо! Отзыв отправлен на модерацию.', fbErr: '⚠️ Не удалось отправить. Попробуйте позже.', theme: 'Тема', favs: 'Избранное',
+            aiTitle: '🤖 AI-Консультант AliStyle 2026',
+            aiSub: 'Напишите, что ищете и на какой бюджет (в ₪ или $) — ИИ выберет проверенные товары из наших обзоров',
+            aiPlaceholder: 'Например: Посоветуй гаджет до 60₪ ($15) или что взять для умного дома...',
+            aiBtn: 'Подобрать ✨',
+            aiLoading: 'Подбираю...',
+            aiClear: 'Сбросить ✕',
+            readRev: 'Читать обзор →',
+            chips: ['Топ гаджеты до ₪60 ($15)', 'Что полезного взять для дома?', 'Обзоры с видео 🎥', 'Что купить для авто и ремонта?']
         },
         he: {
             sort: 'מיון', sortNew: 'החדשים ראשונים', sortPriceAsc: 'מחיר: מהנמוך לגבוה', sortPriceDesc: 'מחיר: מהגבוה לנמוך',
-            sortRating: 'לפי דירוג', sortDiscount: 'לפי חיסכון', maxPrice: 'מחיר עד', favOnly: '♥ מועדפים', found: 'נמצאו',
+            sortRating: 'לפי דירוג', sortDiscount: 'לפי חיסכון', maxPrice: 'מחיר עד', favOnly: '♥ מועדפים', videoOnly: '🎥 וידאו', found: 'נמצאו',
             hot: '🔥 החיסכון הגדול ביותר', save: 'חיסכון', compare: 'השוואה', compareTitle: 'השוואת מוצרים', clear: 'ניקוי',
             image: 'תמונה', price: 'מחיר באלי', local: 'בארץ', savings: 'חיסכון', rating: 'דירוג', pros: 'יתרונות', buy: 'לקנייה',
             selected: 'נבחרו', favEmpty: 'אין עדיין מועדפים — לחצו ♥ על הכרטיס', noMatch: 'לא נמצאו תוצאות — שנו את הסינון',
             voteTitle: 'האם כדאי לקנות את המוצר?', voteUp: '👍 כן, כדאי', voteDown: '👎 לא, לא כדאי',
             voteThanks: 'תודה! ההצבעה נשמרה במכשיר זה.', fbTitle: 'חוות הדעת שלך על המוצר', fbName: 'השם שלך', fbMsg: 'ספרו אם קניתם את המוצר ומה דעתכם…',
-            fbSend: 'שליחת חוות דעת', fbOk: '✅ תודה! חוות הדעת נשלחה לאישור.', fbErr: '⚠️ השליחה נכשלה. נסו שוב מאוחר יותר.', theme: 'ערכת נושא', favs: 'מועדפים'
+            fbSend: 'שליחת חוות דעת', fbOk: '✅ תודה! חוות הדעת נשלחה לאישור.', fbErr: '⚠️ השליחה נכשלה. נסו שוב מאוחר יותר.', theme: 'ערכת נושא', favs: 'מועדפים',
+            aiTitle: '🤖 יועץ הקניות החכם AliStyle AI',
+            aiSub: 'כתבו מה אתם מחפשים ובאיזה תקציב (ב-₪ או ב-$) — ה-AI יבחר עבורכם את המוצרים הכי משתלמים מהסקירות שלנו',
+            aiPlaceholder: 'לדוגמה: תמליץ על גאדג׳ט עד 60₪ או מוצר שווה לבית חכם...',
+            aiBtn: 'מצא לי ✨',
+            aiLoading: 'מחפש...',
+            aiClear: 'נקה ✕',
+            readRev: 'לסקירה המלאה ←',
+            chips: ['גאדג׳טים מומלצים עד ₪60', 'מוצרים שווים לבית חכם', 'סקירות עם וידאו 🎥', 'מוצרים לרכב וכלי עבודה']
         }
     };
     const t = k => (T[lang()] || T.ru)[k] || k;
@@ -90,7 +106,7 @@
     const ratingOf = r => (typeof normalizeRating === 'function' ? parseFloat(normalizeRating(r.rating).outOf5) : Number(r.rating) || 0);
 
     /* ================= Index page ================= */
-    const state = { fav: false, sort: 'new', max: null };
+    const state = { fav: false, video: false, sort: 'new', max: null };
     let favs = store.get('alistyle_fav', []);
     let cmp = [];
     let maxAll = 0;
@@ -102,6 +118,7 @@
         const b = $('#nx-fav-btn');
         if (b) b.classList.toggle('active', state.fav);
         $$('.nx-chip[data-nx="fav"]').forEach(x => x.classList.toggle('on', state.fav));
+        $$('.nx-chip[data-nx="video"]').forEach(x => x.classList.toggle('on', state.video));
     }
 
     function enhanceCards() {
@@ -122,6 +139,7 @@
             card.dataset.nxDiscount = p.isCollection ? 0 : p.discountVal;
             card.dataset.nxRating = ratingOf(r);
             card.dataset.nxCol = p.isCollection ? '1' : '';
+            card.dataset.nxVideo = (r.video || r.videoUrl) ? '1' : '';
             max = Math.max(max, p.priceAliIls);
             if (!card.classList.contains('nx-reveal')) { card.classList.add('nx-reveal'); card.style.transitionDelay = ((idx % 3) * 80) + 'ms'; observeReveal(card); }
             if (card.querySelector('.card-actions')) return;
@@ -179,6 +197,143 @@
         return top;
     }
 
+    function buildAiConsultant() {
+        const top = ensureTop();
+        if (!top) return;
+        let box = $('#nx-ai-box', top);
+        const curLang = lang();
+        if (box && box.dataset.lang === curLang) return;
+        if (!box) {
+            box = document.createElement('section');
+            box.id = 'nx-ai-box';
+            top.prepend(box);
+        }
+        box.dataset.lang = curLang;
+        box.style.cssText = 'margin-bottom:20px;padding:18px 20px;border-radius:18px;background:linear-gradient(135deg,rgba(79,70,229,0.14),rgba(15,23,42,0.92),rgba(236,72,153,0.12));border:1px solid rgba(99,102,241,0.35);box-shadow:0 10px 30px rgba(0,0,0,0.22);';
+        const chips = t('chips') || [];
+        box.innerHTML = `
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+                <div>
+                    <div style="font-size:15px;font-weight:800;color:var(--color-text-primary);">${esc(t('aiTitle'))}</div>
+                    <div style="font-size:12px;color:var(--color-text-secondary);margin-top:2px;">${esc(t('aiSub'))}</div>
+                </div>
+                <button type="button" id="nx-ai-clear" style="display:none;background:none;border:none;color:var(--color-text-secondary);font-size:12px;cursor:pointer;">${esc(t('aiClear'))}</button>
+            </div>
+            <form id="nx-ai-form" style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+                <input id="nx-ai-input" type="text" placeholder="${esc(t('aiPlaceholder'))}" style="flex:1;min-width:220px;padding:10px 14px;border-radius:12px;border:1px solid rgba(148,163,184,0.3);background:rgba(15,23,42,0.75);color:#fff;font-size:13px;outline:none;">
+                <button id="nx-ai-submit" type="submit" style="padding:10px 18px;border-radius:12px;border:none;background:linear-gradient(135deg,#4f46e5,#9333ea);color:#fff;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;">${esc(t('aiBtn'))}</button>
+            </form>
+            <div id="nx-ai-chips" style="display:flex;flex-wrap:wrap;gap:6px;">
+                ${chips.map(c => `<button type="button" class="nx-ai-chip" data-prompt="${esc(c)}" style="padding:5px 11px;border-radius:10px;border:1px solid rgba(99,102,241,0.3);background:rgba(30,41,59,0.7);color:#a5b4fc;font-size:11px;font-weight:600;cursor:pointer;">${esc(c)}</button>`).join('')}
+            </div>
+            <div id="nx-ai-res" style="display:none;margin-top:14px;padding-top:12px;border-top:1px solid rgba(99,102,241,0.25);"></div>
+        `;
+
+        const form = $('#nx-ai-form', box);
+        const input = $('#nx-ai-input', box);
+        const submit = $('#nx-ai-submit', box);
+        const resBox = $('#nx-ai-res', box);
+        const clearBtn = $('#nx-ai-clear', box);
+
+        async function askAi(qText) {
+            const q = (qText || input.value || '').trim();
+            if (!q) return;
+            input.value = q;
+            submit.disabled = true;
+            submit.textContent = t('aiLoading');
+            resBox.style.display = 'block';
+            resBox.innerHTML = `<div style="font-size:12px;color:var(--color-text-secondary);">${esc(t('aiLoading'))}</div>`;
+
+            try {
+                const resp = await fetch('/api/v1/funnel/showcase/2/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query: q, language: lang() })
+                });
+                if (!resp.ok) throw new Error('API fallback');
+                const data = await resp.json();
+                const recs = data.recommended_items || [];
+                clearBtn.style.display = 'inline-block';
+
+                const cardsHtml = recs.map(rec => {
+                    const priceUsd = Number(rec.price_sale) || 0;
+                    const priceIls = priceUsd > 0 ? Math.round(priceUsd * 3.7) : 45;
+                    const targetRevId = rec.alistyle_id || ('rev-' + (rec.review_id || rec.id));
+                    return `
+                        <div style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:rgba(15,23,42,0.85);border:1px solid rgba(148,163,184,0.2);">
+                            <img src="${esc(rec.main_image || 'logo.png')}" alt="" loading="lazy" onerror="this.src='logo.png'" style="width:56px;height:56px;border-radius:10px;object-fit:cover;flex-shrink:0;">
+                            <div style="min-width:0;flex:1;">
+                                <a href="review.html?id=${encodeURIComponent(targetRevId)}" style="font-size:12px;font-weight:700;color:#fff;text-decoration:none;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(rec.review_title || rec.title)}</a>
+                                <div style="font-size:11px;margin-top:3px;display:flex;align-items:center;gap:8px;">
+                                    <span style="color:#34d399;font-weight:800;">₪${priceIls} ($${priceUsd})</span>
+                                    <span style="color:#fbbf24;font-weight:700;">★ ${Number(rec.rating || 4.9).toFixed(1)}</span>
+                                </div>
+                                <div style="margin-top:4px;display:flex;gap:10px;font-size:11px;font-weight:700;">
+                                    <a href="review.html?id=${encodeURIComponent(targetRevId)}" style="color:#818cf8;text-decoration:none;">${esc(t('readRev'))}</a>
+                                    <a href="${esc(rec.buy_url || '#')}" target="_blank" rel="sponsored nofollow noopener" style="color:#fb923c;text-decoration:none;">${esc(t('buy'))} ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                resBox.innerHTML = `
+                    <div style="padding:11px 14px;border-radius:12px;background:rgba(15,23,42,0.9);border:1px solid rgba(99,102,241,0.3);font-size:13px;line-height:1.55;color:#e2e8f0;margin-bottom:10px;">
+                        <b style="color:#818cf8;">AI:</b> ${esc(data.answer || '')}
+                    </div>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;">${cardsHtml}</div>
+                `;
+            } catch (err) {
+                // Local instant fallback across reviewsData
+                const ql = q.toLowerCase();
+                const words = ql.split(/\s+/).filter(w => w.length >= 2);
+                const scored = reviews().map(r => {
+                    const ld = langData(r);
+                    const blob = ((ld.title || '') + ' ' + (ld.excerpt || '') + ' ' + (r.category || '')).toLowerCase();
+                    let s = 0;
+                    words.forEach(w => { if (blob.includes(w)) s += 10; });
+                    if (r.video) s += 2;
+                    return { s, r };
+                }).sort((a, b) => b.s - a.s).slice(0, 3).map(x => x.r);
+
+                clearBtn.style.display = 'inline-block';
+                resBox.innerHTML = `
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;">
+                        ${scored.map(r => {
+                            const ld = langData(r);
+                            const p = priceInfo(r);
+                            return `
+                                <div style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:rgba(15,23,42,0.85);border:1px solid rgba(148,163,184,0.2);">
+                                    <img src="${esc(r.image || 'logo.png')}" alt="" loading="lazy" onerror="this.src='logo.png'" style="width:56px;height:56px;border-radius:10px;object-fit:cover;flex-shrink:0;">
+                                    <div style="min-width:0;flex:1;">
+                                        <a href="review.html?id=${encodeURIComponent(r.id)}" style="font-size:12px;font-weight:700;color:#fff;text-decoration:none;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(ld.title)}</a>
+                                        <div style="font-size:11px;margin-top:3px;color:#34d399;font-weight:800;">₪${p.priceAliIls}</div>
+                                        <div style="margin-top:4px;display:flex;gap:10px;font-size:11px;font-weight:700;">
+                                            <a href="review.html?id=${encodeURIComponent(r.id)}" style="color:#818cf8;text-decoration:none;">${esc(t('readRev'))}</a>
+                                            <a href="${esc(ld.aliLink || '#')}" target="_blank" rel="sponsored nofollow noopener" style="color:#fb923c;text-decoration:none;">${esc(t('buy'))} ↗</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            } finally {
+                submit.disabled = false;
+                submit.textContent = t('aiBtn');
+            }
+        }
+
+        form.addEventListener('submit', e => { e.preventDefault(); askAi(); });
+        $$('.nx-ai-chip', box).forEach(btn => btn.addEventListener('click', () => askAi(btn.dataset.prompt)));
+        clearBtn.addEventListener('click', () => {
+            input.value = '';
+            resBox.style.display = 'none';
+            resBox.innerHTML = '';
+            clearBtn.style.display = 'none';
+        });
+    }
+
     function buildHot() {
         const top = ensureTop();
         if (!top) return;
@@ -186,7 +341,7 @@
         const items = reviews().map(r => ({ r, p: priceInfo(r) })).filter(x => !x.p.isCollection && x.p.savings > 0 && x.r.image)
             .sort((a, b) => b.p.discountVal - a.p.discountVal || b.p.savings - a.p.savings).slice(0, 8);
         if (!items.length) { if (hot) hot.remove(); return; }
-        if (!hot) { hot = document.createElement('section'); hot.id = 'nx-hot'; hot.className = 'nx-hot'; top.prepend(hot); }
+        if (!hot) { hot = document.createElement('section'); hot.id = 'nx-hot'; hot.className = 'nx-hot'; top.appendChild(hot); }
         hot.innerHTML = '<div class="nx-hot-title">' + esc(t('hot')) + '</div><div class="nx-hot-row">' + items.map(({ r, p }) =>
             '<a class="nx-hot-item" href="review.html?id=' + encodeURIComponent(r.id) + '"><img loading="lazy" src="' + esc(r.image) + '" alt="" onerror="this.src=\'logo.png\'"><div class="nx-hot-meta"><div class="nx-hot-name">' + esc(langData(r).title) + '</div><div class="nx-hot-price">₪' + p.priceAliIls + '<span class="nx-hot-save">' + esc(t('save')) + ' ₪' + p.savings + '</span></div></div></a>').join('') + '</div>';
     }
@@ -201,10 +356,12 @@
             '<label class="nx-tb-group">' + esc(t('sort')) + '<select class="nx-select" id="nx-sort">' + opts.map(o => '<option value="' + o[0] + '"' + (state.sort === o[0] ? ' selected' : '') + '>' + esc(t(o[1])) + '</option>').join('') + '</select></label>' +
             '<label class="nx-tb-group">' + esc(t('maxPrice')) + '<input class="nx-range" id="nx-max" type="range" min="50" max="' + maxAll + '" step="10" value="' + state.max + '"><span class="nx-range-val" id="nx-max-val">₪' + state.max + '</span></label>' +
             '<button type="button" class="nx-chip' + (state.fav ? ' on' : '') + '" data-nx="fav">' + esc(t('favOnly')) + '</button>' +
+            '<button type="button" class="nx-chip' + (state.video ? ' on' : '') + '" data-nx="video">' + esc(t('videoOnly')) + '</button>' +
             '<span class="nx-tb-count" id="nx-count"></span>';
         $('#nx-sort', tb).addEventListener('change', e => { state.sort = e.target.value; apply(); });
         $('#nx-max', tb).addEventListener('input', e => { state.max = Number(e.target.value); $('#nx-max-val').textContent = '₪' + state.max; apply(); });
-        $('.nx-chip', tb).addEventListener('click', () => { state.fav = !state.fav; syncFavUi(); apply(); });
+        $('.nx-chip[data-nx="fav"]', tb).addEventListener('click', () => { state.fav = !state.fav; syncFavUi(); apply(); });
+        $('.nx-chip[data-nx="video"]', tb).addEventListener('click', () => { state.video = !state.video; syncFavUi(); apply(); });
     }
 
     function apply() {
@@ -224,11 +381,11 @@
         let shown = 0;
         real.forEach((c, i) => {
             c.style.order = i;
-            const hide = (state.fav && !favs.includes(c.dataset.nxId)) || Number(c.dataset.nxPrice) > state.max;
+            const hide = (state.fav && !favs.includes(c.dataset.nxId)) || (state.video && c.dataset.nxVideo !== '1') || Number(c.dataset.nxPrice) > state.max;
             c.classList.toggle('nx-hidden', hide);
             if (!hide) shown++;
         });
-        ads.forEach(c => { c.style.order = state.sort === 'new' ? Number(c.dataset.nxIdx) : 9999; c.classList.toggle('nx-hidden', state.fav); });
+        ads.forEach(c => { c.style.order = state.sort === 'new' ? Number(c.dataset.nxIdx) : 9999; c.classList.toggle('nx-hidden', state.fav || state.video); });
         const cnt = $('#nx-count');
         if (cnt) cnt.textContent = t('found') + ': ' + shown;
         let empty = $('#nx-empty');
@@ -272,12 +429,30 @@
             row('', r => '<a class="nx-btn" style="display:inline-block" target="_blank" rel="sponsored nofollow noopener" href="' + esc(langData(r).aliLink || '#') + '">' + esc(t('buy')) + '</a>') +
             '</table>';
         let m = $('#nx-modal');
-        if (!m) { m = document.createElement('div'); m.id = 'nx-modal'; m.className = 'nx-modal'; document.body.appendChild(m); m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); }); }
-        m.innerHTML = '<div class="nx-modal-card"><div class="nx-modal-head"><h3>' + esc(t('compareTitle')) + '</h3><button class="nx-icon-btn" type="button" id="nx-modal-x" aria-label="Close">✕</button></div>' + html + '</div>';
-        $('#nx-modal-x', m).addEventListener('click', () => m.classList.remove('open'));
+        if (!m) {
+            m = document.createElement('dialog');
+            m.id = 'nx-modal';
+            m.className = 'nx-modal';
+            m.setAttribute('closedby', 'any');
+            m.setAttribute('aria-labelledby', 'nx-modal-title');
+            document.body.appendChild(m);
+            m.addEventListener('close', () => m.classList.remove('open'));
+            if (!('closedBy' in HTMLDialogElement.prototype)) {
+                m.addEventListener('click', e => {
+                    if (e.target !== m) return;
+                    const rect = m.getBoundingClientRect();
+                    if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
+                        m.close();
+                    }
+                });
+            }
+        }
+        m.innerHTML = '<div class="nx-modal-card"><div class="nx-modal-head"><h3 id="nx-modal-title">' + esc(t('compareTitle')) + '</h3><button class="nx-icon-btn" type="button" id="nx-modal-x" aria-label="Close">✕</button></div>' + html + '</div>';
+        $('#nx-modal-x', m).addEventListener('click', () => m.close());
         m.classList.add('open');
+        if (typeof m.showModal === 'function' && !m.open) m.showModal();
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') { const m = $('#nx-modal'); if (m) m.classList.remove('open'); const s = $('#nx-suggest'); if (s) s.classList.remove('open'); } });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { const s = $('#nx-suggest'); if (s) s.classList.remove('open'); } });
 
     /* ---- Search suggestions ---- */
     function initSuggest() {
@@ -308,6 +483,7 @@
             const grid = $('#reviews-grid');
             if (!grid || !$('.article-card', grid)) return;
             enhanceCards();
+            buildAiConsultant();
             buildHot();
             buildToolbar();
             syncFavUi();
