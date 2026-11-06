@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alistyle.netlify.app/sitemap.xml

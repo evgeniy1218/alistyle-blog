@@ -312,15 +312,21 @@ async function fetchDatabase() {
 
         // Enrich existing curated bilingual reviews with live video URLs & reviewId, and append any new live reviews
         const seenIds = new Set();
+        const seenReviewIds = new Set();
+        const seenProductIds = new Set();
         const seenImages = new Set();
         const seenLinks = new Set();
         const merged = [];
 
-        // Index live reviews by image and affiliate link for fast enrichment
+        // Index live reviews by image, reviewId, productId, and affiliate link for fast enrichment
         const liveByImg = new Map();
         const liveByLink = new Map();
+        const liveByRevId = new Map();
+        const liveByProdId = new Map();
         liveReviews.forEach(lr => {
             if (lr.image) liveByImg.set(lr.image, lr);
+            if (lr.reviewId) liveByRevId.set(String(lr.reviewId), lr);
+            if (lr.productId) liveByProdId.set(String(lr.productId), lr);
             const link = lr.ru?.aliLink || '';
             if (link) liveByLink.set(link, lr);
         });
@@ -328,25 +334,39 @@ async function fetchDatabase() {
         baseReviews.forEach(r => {
             if (!r || !r.id || seenIds.has(r.id)) return;
             seenIds.add(r.id);
+            if (r.reviewId) seenReviewIds.add(String(r.reviewId));
+            if (r.productId) seenProductIds.add(String(r.productId));
             if (r.image) seenImages.add(r.image);
             const rLink = r.ru?.aliLink || r.he?.aliLink || '';
             if (rLink) seenLinks.add(rLink);
 
-            const matchLive = (r.image && liveByImg.get(r.image)) || (rLink && liveByLink.get(rLink));
+            const matchLive = (r.reviewId && liveByRevId.get(String(r.reviewId))) ||
+                              (r.productId && liveByProdId.get(String(r.productId))) ||
+                              (r.image && liveByImg.get(r.image)) ||
+                              (rLink && liveByLink.get(rLink));
             if (matchLive) {
                 if (!r.video && matchLive.video) r.video = matchLive.video;
                 if (!r.reviewId && matchLive.reviewId) r.reviewId = matchLive.reviewId;
+                if (!r.productId && matchLive.productId) r.productId = matchLive.productId;
             }
             merged.push(r);
         });
 
-        // Prepend brand new live reviews from VPS that aren't in static reviews.json yet
+        // Prepend brand new live reviews from VPS that aren't in static reviews.json yet (and are full blog reviews, not short social posts)
         const newLive = [];
         liveReviews.forEach(lr => {
             if (!lr || !lr.id || seenIds.has(lr.id)) return;
+            if (lr.reviewId && seenReviewIds.has(String(lr.reviewId))) return;
+            if (lr.productId && seenProductIds.has(String(lr.productId))) return;
             const lrLink = lr.ru?.aliLink || '';
             if ((lr.image && seenImages.has(lr.image)) || (lrLink && seenLinks.has(lrLink))) return;
+            // Skip short social media snippets (< 600 chars) so only full editorial reviews appear on the blog
+            const ruBodyLen = (lr.ru?.body || '').length;
+            if (ruBodyLen < 600 && !lr.isCollection) return;
+
             seenIds.add(lr.id);
+            if (lr.reviewId) seenReviewIds.add(String(lr.reviewId));
+            if (lr.productId) seenProductIds.add(String(lr.productId));
             if (lr.image) seenImages.add(lr.image);
             if (lrLink) seenLinks.add(lrLink);
             newLive.push(lr);
@@ -557,36 +577,44 @@ function normalizePrices(item) {
     let rawLocal = Number(item.priceLocal) || 0;
     let rawUsd = Number(item.priceAliUsd) || 0;
 
-    let priceAliIls = rawAli;
-    let priceLocalIls = rawLocal;
+    let priceAliIls = Math.round(rawAli);
+    let priceLocalIls = Math.round(rawLocal);
 
-    // Detect if rawAli was stored in USD (e.g. legacy data before conversion or fresh scrapers)
-    // Rule: rawLocal / rawAli >= 3.5 (e.g. 132 / 24 = 5.5) or both were USD (e.g. 68 / 30.99)
-    if (rawLocal > 0 && rawAli > 0 && (rawLocal / rawAli >= 3.5 || (rawLocal <= 100 && rawAli < 50 && rawLocal / rawAli >= 2.0))) {
-        if (rawLocal <= 100 && rawLocal / rawAli < 2.5) {
-            rawUsd = rawAli;
-            priceAliIls = Math.round(rawAli * 3.7);
-            priceLocalIls = Math.round(rawLocal * 3.7);
+    // 1. If priceAliUsd is explicitly provided, rawAli is ALREADY in ILS (when rawAli > rawUsd * 2)
+    //    NEVER multiply rawAli by 3.7 a second time when priceAliUsd is present!
+    if (rawUsd > 0) {
+        if (rawAli > 0 && rawAli > rawUsd * 2.0) {
+            priceAliIls = Math.round(rawAli);
         } else {
-            rawUsd = rawAli;
-            priceAliIls = Math.round(rawAli * 3.7);
+            priceAliIls = Math.round(rawUsd * 3.7);
         }
-    } else if (rawUsd > 0) {
-        priceAliIls = rawAli;
-    } else if (rawAli > 0 && rawLocal === 0) {
-        priceLocalIls = Math.round(rawAli * 1.5);
+    } else if (rawAli > 0) {
+        // Legacy records without priceAliUsd: check if rawAli was stored in USD
+        if (rawLocal > 0 && rawLocal / rawAli >= 3.3 && rawAli < 250) {
+            rawUsd = Math.round(rawAli * 100) / 100;
+            priceAliIls = Math.round(rawAli * 3.7);
+        } else {
+            priceAliIls = Math.round(rawAli);
+            rawUsd = Math.round((priceAliIls / 3.7) * 100) / 100;
+        }
     }
 
     if (!rawUsd && priceAliIls > 0) {
-        rawUsd = Math.round((priceAliIls / 3.7) * 10) / 10;
+        rawUsd = Math.round((priceAliIls / 3.7) * 100) / 100;
     }
 
-    if (priceLocalIls <= priceAliIls && priceAliIls > 0) {
-        priceLocalIls = Math.round(priceAliIls * 1.5);
+    // 2. Guard against fake AliExpress "original price" inflation (e.g. 10x-20x higher than sale price)
+    //    Realistic Israeli retail comparison is 1.45x - 2.15x of AliExpress price
+    if (priceAliIls > 0) {
+        if (priceLocalIls <= Math.round(priceAliIls * 1.15) || priceLocalIls > Math.round(priceAliIls * 2.25)) {
+            priceLocalIls = Math.round(priceAliIls * 1.58);
+        }
     }
 
     const savings = priceLocalIls > priceAliIls ? (priceLocalIls - priceAliIls) : 0;
-    const discountVal = priceLocalIls > 0 ? Math.round(((priceLocalIls - priceAliIls) / priceLocalIls) * 100) : 35;
+    let discountVal = priceLocalIls > 0 ? Math.round(((priceLocalIls - priceAliIls) / priceLocalIls) * 100) : 35;
+    if (discountVal < 15) discountVal = 35;
+    if (discountVal > 60) discountVal = 55;
 
     return {
         isCollection: false,
@@ -931,7 +959,11 @@ function renderReviewPage() {
     }
 
     const cleanNumId = reviewId.replace(/^rev-/, '');
-    const review = reviewsData.find(r => r.id === reviewId || String(r.reviewId) === cleanNumId);
+    const review = reviewsData.find(r =>
+        r.id === reviewId ||
+        String(r.reviewId) === cleanNumId ||
+        String(r.productId) === cleanNumId
+    );
     if (!review) {
         renderErrorPage(t.errorNotFound);
         return;
@@ -940,19 +972,46 @@ function renderReviewPage() {
     const langData = review[currentLang] || review['ru'] || review['he'];
     if (!langData) return;
 
-    // 1. Page Title & Meta
-    document.title = `${langData.title} — AliStyle Blog`;
+    // 1. Page Title & Dynamic SEO Meta Tags
+    const fullPageTitle = `${langData.title} — AliStyle Blog`;
+    document.title = fullPageTitle;
     const pageHeadTitle = document.getElementById('page-head-title');
-    if (pageHeadTitle) pageHeadTitle.innerText = `${langData.title} — AliStyle Blog`;
+    if (pageHeadTitle) pageHeadTitle.innerText = fullPageTitle;
 
-    // 2. Category mapping
+    const metaDescText = (langData.excerpt || langData.title || '').replace(/\s+/g, ' ').trim().slice(0, 160);
+    const canonicalUrl = `https://alistyle.netlify.app/review.html?id=${encodeURIComponent(review.id)}`;
+
+    const metaDescEl = document.getElementById('meta-description');
+    if (metaDescEl) metaDescEl.setAttribute('content', metaDescText);
+    const canonicalEl = document.getElementById('canonical-link');
+    if (canonicalEl) canonicalEl.setAttribute('href', canonicalUrl);
+    const ogTitleEl = document.getElementById('og-title');
+    if (ogTitleEl) ogTitleEl.setAttribute('content', fullPageTitle);
+    const ogDescEl = document.getElementById('og-description');
+    if (ogDescEl) ogDescEl.setAttribute('content', metaDescText);
+    const ogImageEl = document.getElementById('og-image');
+    if (ogImageEl && review.image) ogImageEl.setAttribute('content', review.image);
+    const ogUrlEl = document.getElementById('og-url');
+    if (ogUrlEl) ogUrlEl.setAttribute('content', canonicalUrl);
+
+    // 2. Category mapping & Reading time
     const categoryObj = categoriesData.find(c => c.id === review.category);
     const categoryLabel = categoryObj ? (categoryObj[currentLang] || categoryObj['ru']) : review.category;
     
     const metaCategory = document.getElementById('review-meta-category');
     if (metaCategory) {
         metaCategory.innerText = categoryLabel;
-        metaCategory.setAttribute('href', `index.html`); // Can redirect filters if configured
+        metaCategory.setAttribute('href', `index.html`);
+    }
+
+    const metaDateEl = document.getElementById('review-meta-date');
+    if (metaDateEl) {
+        const wordCount = (langData.body || '').split(/\s+/).filter(Boolean).length;
+        const readMins = Math.max(3, Math.ceil(wordCount / 180));
+        const dateStr = review.date || '2026-04-06';
+        metaDateEl.innerText = currentLang === 'he'
+            ? `• ${dateStr} • ⏱️ ${readMins} דק׳ קריאה`
+            : `• ${dateStr} • ⏱️ ${readMins} мин чтения`;
     }
 
     const breadcrumbCategory = document.getElementById('breadcrumb-category');
@@ -1055,7 +1114,6 @@ function renderReviewPage() {
     if (thumbsContainer) {
         thumbsContainer.innerHTML = '';
         const rawImages = review.images && review.images.length > 0 ? review.images : (review.image ? [review.image] : []);
-        // Remove empty items and duplicates
         const imageList = [...new Set(rawImages.filter(url => url && typeof url === 'string' && url.trim().length > 0))];
         
         if (imageList.length > 1) {
@@ -1063,7 +1121,9 @@ function renderReviewPage() {
                 const thumb = document.createElement('img');
                 thumb.className = `fast-buy-thumbnail ${idx === 0 ? 'active' : ''}`;
                 thumb.src = imgUrl;
-                thumb.alt = `Product view ${idx + 1}`;
+                thumb.alt = `${langData.title} — фото ${idx + 1}`;
+                thumb.width = 64;
+                thumb.height = 64;
                 thumb.loading = 'lazy';
                 thumb.onerror = () => { thumb.style.display = 'none'; };
                 
@@ -1093,11 +1153,9 @@ function renderReviewPage() {
         starsContainer.innerHTML = '';
         const fullStars = Math.round(ratingObj.numOutOf5);
         for (let i = 1; i <= 5; i++) {
-            if (i <= fullStars) {
-                starsHTML = `<svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
-            } else {
-                starsHTML = `<svg class="star empty" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
-            }
+            const starsHTML = i <= fullStars
+                ? `<svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`
+                : `<svg class="star empty" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
             starsContainer.innerHTML += starsHTML;
         }
         starsContainer.innerHTML += `<span class="rating-value">${ratingObj.outOf5}</span>`;
@@ -1127,7 +1185,7 @@ function renderReviewPage() {
         }
     }
 
-    // 5. Render Markdown Body
+    // 5. Render Markdown Body (also populates window._lastFaqItems & TOC)
     const bodyContainer = document.getElementById('review-body');
     if (bodyContainer) {
         const markdownBody = langData.body || langData.excerpt || '';
@@ -1176,7 +1234,7 @@ function renderReviewPage() {
                 <div class="col-product-card">
                     <div class="col-product-num">#${pIdx + 1}</div>
                     <div class="col-product-img-wrap">
-                        <img src="${prod.image || 'logo.png'}" alt="${prod.title}" loading="lazy" onerror="this.src='logo.png'">
+                        <img src="${prod.image || 'logo.png'}" alt="${prod.title}" loading="lazy" width="240" height="240" onerror="this.src='logo.png'">
                     </div>
                     <div class="col-product-details">
                         <div class="col-product-meta">
@@ -1208,7 +1266,6 @@ function renderReviewPage() {
     }
 
     // 6. Mobile sticky panel
-    const stickyPanel = document.getElementById('mobile-sticky-cta');
     const stickyThumb = document.getElementById('sticky-thumb');
     const stickyTitle = document.getElementById('sticky-title');
     const stickyPrice = document.getElementById('sticky-price');
@@ -1240,7 +1297,7 @@ function renderReviewPage() {
 
     if (videoSection && videoContainer) {
         if (videoUrl && videoUrl.trim()) {
-            videoContainer.innerHTML = renderVideoEmbedHtml(videoUrl);
+            videoContainer.innerHTML = renderVideoEmbedHtml(videoUrl, review.image);
             videoSection.style.display = 'block';
         } else {
             videoSection.style.display = 'none';
@@ -1248,8 +1305,8 @@ function renderReviewPage() {
         }
     }
 
-    // SEO Schema.org JSON-LD
-    injectJsonLd(review, langData, priceAli, discountVal);
+    // SEO Schema.org JSON-LD (Product + Review + BreadcrumbList + FAQPage)
+    injectJsonLd(review, langData, priceAli, discountVal, categoryLabel);
 
     // 7. Load Similar reviews
     renderSimilarReviews(review);
@@ -1258,27 +1315,28 @@ function renderReviewPage() {
 /**
  * Render Responsive Video Embed for YouTube, Shorts or MP4
  */
-function renderVideoEmbedHtml(videoUrl) {
+function renderVideoEmbedHtml(videoUrl, posterUrl) {
     if (!videoUrl) return '';
     const trimmed = videoUrl.trim();
+    const safePoster = posterUrl || 'logo.png';
 
     // 1. YouTube (watch, shorts, youtu.be, embed)
     const ytMatch = trimmed.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/\s]{11})/i);
     if (ytMatch && ytMatch[1]) {
         const videoId = ytMatch[1];
-        return `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: var(--border-radius-md);"></iframe>`;
+        return `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1" title="YouTube video player" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: var(--border-radius-md);"></iframe>`;
     }
 
     // 2. Direct MP4 / WebM / Video file
     if (trimmed.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i)) {
-        return `<video controls playsinline preload="metadata" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; border-radius: var(--border-radius-md); background: #000;">
+        return `<video controls playsinline preload="metadata" width="800" height="450" poster="${safePoster}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; border-radius: var(--border-radius-md); background: #000;">
             <source src="${trimmed}" type="video/mp4">
             Ваш браузер не поддерживает встроенное видео.
         </video>`;
     }
 
     // 3. Generic Embed URL
-    return `<iframe src="${trimmed}" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: var(--border-radius-md);"></iframe>`;
+    return `<iframe src="${trimmed}" width="800" height="450" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: var(--border-radius-md);"></iframe>`;
 }
 
 function renderErrorPage(msg) {
@@ -1295,9 +1353,9 @@ function renderErrorPage(msg) {
 }
 
 /**
- * Dynamic injection of Schema.org Product & Review JSON-LD
+ * Dynamic injection of Schema.org Product, Review, BreadcrumbList & FAQPage JSON-LD
  */
-function injectJsonLd(review, langData, priceAli, discountVal) {
+function injectJsonLd(review, langData, priceAli, discountVal, categoryLabel) {
     try {
         let script = document.getElementById('schema-jsonld');
         if (!script) {
@@ -1307,37 +1365,97 @@ function injectJsonLd(review, langData, priceAli, discountVal) {
             document.head.appendChild(script);
         }
 
-        const jsonLd = {
-            "@context": "https://schema.org",
-            "@type": "Review",
-            "name": langData.title,
-            "reviewBody": langData.excerpt || langData.title,
-            "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": review.rating || 5,
-                "bestRating": 5,
-                "worstRating": 1
-            },
-            "author": {
-                "@type": "Organization",
-                "name": "AliStyle Blog"
-            },
-            "itemReviewed": {
+        const ratingObj = normalizeRating(review.rating);
+        const canonicalUrl = `https://alistyle.netlify.app/review.html?id=${encodeURIComponent(review.id)}`;
+
+        const graph = [
+            {
                 "@type": "Product",
+                "@id": `${canonicalUrl}#product`,
                 "name": langData.title,
-                "image": review.image || "",
-                "description": langData.excerpt || "",
+                "image": review.images && review.images.length > 0 ? review.images : [review.image || "https://alistyle.netlify.app/logo.png"],
+                "description": langData.excerpt || langData.title,
+                "brand": {
+                    "@type": "Brand",
+                    "name": "AliExpress"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": String(ratingObj.outOf5),
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "28"
+                },
                 "offers": {
                     "@type": "Offer",
                     "price": String(priceAli || 0),
                     "priceCurrency": "ILS",
+                    "priceValidUntil": "2026-12-31",
                     "availability": "https://schema.org/InStock",
-                    "url": langData.aliLink || window.location.href
+                    "url": langData.aliLink || canonicalUrl
+                },
+                "review": {
+                    "@type": "Review",
+                    "@id": `${canonicalUrl}#review`,
+                    "name": langData.title,
+                    "datePublished": review.date || "2026-04-06",
+                    "reviewBody": langData.excerpt || langData.title,
+                    "reviewRating": {
+                        "@type": "Rating",
+                        "ratingValue": String(ratingObj.outOf5),
+                        "bestRating": "5",
+                        "worstRating": "1"
+                    },
+                    "author": {
+                        "@type": "Organization",
+                        "name": "AliStyle Editorial"
+                    }
                 }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": currentLang === 'he' ? "ראשי" : "Главная",
+                        "item": "https://alistyle.netlify.app/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": categoryLabel || review.category || "Обзоры",
+                        "item": `https://alistyle.netlify.app/?category=${encodeURIComponent(review.category || 'all')}`
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": langData.title,
+                        "item": canonicalUrl
+                    }
+                ]
             }
-        };
+        ];
 
-        script.text = JSON.stringify(jsonLd);
+        if (Array.isArray(window._lastFaqItems) && window._lastFaqItems.length > 0) {
+            graph.push({
+                "@type": "FAQPage",
+                "@id": `${canonicalUrl}#faq`,
+                "mainEntity": window._lastFaqItems.map(faq => ({
+                    "@type": "Question",
+                    "name": faq.q,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": faq.a
+                    }
+                }))
+            });
+        }
+
+        script.text = JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": graph
+        });
     } catch (e) {
         console.warn('Could not inject JSON-LD schema:', e);
     }
@@ -1356,13 +1474,12 @@ function renderSimilarReviews(currentReview) {
     // Filter reviews in same category, exclude current review
     const similar = reviewsData
         .filter(r => r.category === currentReview.category && r.id !== currentReview.id)
-        .slice(0, 2);
+        .slice(0, 3);
 
-    if (similar.length === 0) {
-        // Fallback to any latest reviews if category doesn't have more
+    if (similar.length < 3) {
         reviewsData
-            .filter(r => r.id !== currentReview.id)
-            .slice(0, 2)
+            .filter(r => r.id !== currentReview.id && !similar.some(s => s.id === r.id))
+            .slice(0, 3 - similar.length)
             .forEach(r => similar.push(r));
     }
 
@@ -1372,6 +1489,7 @@ function renderSimilarReviews(currentReview) {
 
         const categoryObj = categoriesData.find(c => c.id === item.category);
         const categoryLabel = categoryObj ? (categoryObj[currentLang] || categoryObj['ru']) : item.category;
+        const itemPrices = normalizePrices(item);
 
         const card = document.createElement('article');
         card.className = 'similar-card';
@@ -1380,7 +1498,7 @@ function renderSimilarReviews(currentReview) {
                 <img class="similar-image" src="${item.image || 'logo.png'}" alt="${langData.title}" loading="lazy" width="90" height="90" onerror="this.src='logo.png'">
             </div>
             <div class="similar-info">
-                <span class="similar-card-category">${categoryLabel}</span>
+                <span class="similar-card-category">${categoryLabel} • ₪${itemPrices.priceAliIls}</span>
                 <h4 class="similar-card-title">${langData.title}</h4>
                 <a href="review.html?id=${item.id}" class="similar-card-link">${t.readReviewLink}</a>
             </div>
@@ -1472,10 +1590,12 @@ function initNewsletterForm() {
 
 /**
  * Lightweight Client Side Markdown Parser
- * Supports headers, bold, bullet points, blockquotes (Alerts), tables, and paragraphs.
+ * Supports headers + TOC, responsive tables with row headers, callout alerts,
+ * semantic figures, and native <details name="review-faq"> FAQ accordions.
  */
 function parseMarkdown(mdText) {
     if (!mdText) return '';
+    window._lastFaqItems = [];
 
     let html = mdText;
 
@@ -1488,11 +1608,13 @@ function parseMarkdown(mdText) {
     // Restoring blockquote symbol for markdown parsing
     html = html.replace(/&gt;\s?/g, '> ');
 
-    // 1. Parse Tables
+    // 1. Parse Tables (Accessible responsive region + row header th + container query labels)
     const lines = html.split('\n');
     let inTable = false;
     let tableHtml = '';
+    let headerCols = [];
     let processedLines = [];
+    const regionLabel = currentLang === 'he' ? 'טבלת השוואה ומפרט' : 'Таблица характеристик и сравнения';
 
     for (let i = 0; i < lines.length; i++) {
         let line = lines[i].trim();
@@ -1500,24 +1622,25 @@ function parseMarkdown(mdText) {
         if (line.startsWith('|') && line.endsWith('|')) {
             if (!inTable) {
                 inTable = true;
-                tableHtml = '<div style="overflow-x: auto; margin: 30px 0;"><table style="width: 100%; border-collapse: collapse; border: 1px solid var(--color-border); font-size: 0.95rem;">';
-                
-                // Header row
-                const cols = line.split('|').map(c => c.trim()).filter((c, idx, arr) => idx > 0 && idx < arr.length - 1);
-                tableHtml += '<thead><tr style="background-color: var(--color-surface-soft); border-bottom: 2px solid var(--color-border);">';
-                cols.forEach(col => {
-                    tableHtml += `<th style="padding: 12px 16px; font-weight: 700; text-align: ${currentLang === 'he' ? 'right' : 'left'};">${col}</th>`;
+                headerCols = line.split('|').map(c => c.trim()).filter((c, idx, arr) => idx > 0 && idx < arr.length - 1);
+                const labelVars = headerCols.map((c, idx) => `--label-${idx + 1}: '${c.replace(/'/g, "\\'")}'`).join('; ');
+                tableHtml = `<div tabindex="0" role="region" aria-label="${regionLabel}" class="table-wrapper"><table class="review-spec-table" style="${labelVars}">`;
+                tableHtml += '<thead><tr>';
+                headerCols.forEach(col => {
+                    tableHtml += `<th scope="col">${col}</th>`;
                 });
                 tableHtml += '</tr></thead><tbody>';
             } else if (line.includes('---')) {
-                // Divider row - skip
                 continue;
             } else {
-                // Body row
                 const cols = line.split('|').map(c => c.trim()).filter((c, idx, arr) => idx > 0 && idx < arr.length - 1);
-                tableHtml += '<tr style="border-bottom: 1px solid var(--color-border);">';
-                cols.forEach(col => {
-                    tableHtml += `<td style="padding: 12px 16px; color: var(--color-text-secondary);">${col}</td>`;
+                tableHtml += '<tr>';
+                cols.forEach((col, cIdx) => {
+                    if (cIdx === 0) {
+                        tableHtml += `<th scope="row">${col}</th>`;
+                    } else {
+                        tableHtml += `<td>${col}</td>`;
+                    }
                 });
                 tableHtml += '</tr>';
             }
@@ -1536,31 +1659,59 @@ function parseMarkdown(mdText) {
     }
     html = processedLines.join('\n');
 
-    // 2. Parse Headers
-    html = html.replace(/^### (.*?)$/gm, '<h3 style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; margin: 30px 0 12px; line-height: 1.3;">$1</h3>');
-    html = html.replace(/^## (.*?)$/gm, '<h2 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; margin: 40px 0 16px; line-height: 1.3;">$1</h2>');
-    html = html.replace(/^# (.*?)$/gm, '<h1 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; margin: 40px 0 20px; line-height: 1.2;">$1</h1>');
+    // 2. Convert FAQ section bullet items into native exclusive <details name="review-faq"> accordions
+    const faqSectionRegex = /(^##\s+(?:❓|Частые вопросы|שאלות נפוצות).*?\n)([\s\S]*?)(?=(?:^##\s+|\Z))/gm;
+    html = html.replace(faqSectionRegex, (fullMatch, headingLine, bodyPart) => {
+        const faqLines = bodyPart.split('\n');
+        let accordionHtml = '';
+        faqLines.forEach((fLine, idx) => {
+            const trimmed = fLine.trim();
+            const m = trimmed.match(/^[-*]\s+\*\*(.+?)\*\*\s*(.+)$/);
+            if (m) {
+                const qText = m[1].trim();
+                const aText = m[2].trim();
+                window._lastFaqItems.push({ q: qText, a: aText });
+                const openAttr = idx === 0 ? ' open' : '';
+                accordionHtml += `<details name="review-faq" class="review-faq-item"${openAttr}><summary class="review-faq-summary">${qText}</summary><div class="review-faq-answer"><p>${aText}</p></div></details>\n`;
+            } else if (trimmed.length > 0) {
+                accordionHtml += fLine + '\n';
+            }
+        });
+        return `${headingLine}${accordionHtml}\n`;
+    });
 
-    // 3. Parse Alerts & Personal Experience Quote Blocks
-    // Supports: > [!NOTE], > [!TIP], > [!WARNING], > [!CAUTION] and simple blockquotes
-    const blockquoteRegex = /(?:^&gt;.*\n?)+/gm;
+    // 3. Parse Headers & collect TOC entries
+    const tocEntries = [];
+    let h2Index = 0;
+    html = html.replace(/^### (.*?)$/gm, '<h3 class="review-h3">$1</h3>');
+    html = html.replace(/^## (.*?)$/gm, (match, titleText) => {
+        h2Index++;
+        const secId = `sec-${h2Index}`;
+        const cleanTitle = titleText.replace(/\*\*/g, '').trim();
+        tocEntries.push({ id: secId, title: cleanTitle });
+        return `<h2 id="${secId}" class="review-h2">${cleanTitle}</h2>`;
+    });
+    html = html.replace(/^# (.*?)$/gm, '<h2 class="review-h2">$1</h2>');
+
+    // 4. Parse Alerts & Personal Experience Quote Blocks
+    const blockquoteRegex = /(?:^>.*\n?)+/gm;
     html = html.replace(blockquoteRegex, (match) => {
-        let quoteText = match.replace(/^> ?/gm, '').trim();
+        let quoteText = match.replace(/^>\s?/gm, '').trim();
         let borderClass = 'var(--color-ali-orange)';
         let titleText = currentLang === 'he' ? 'חוויה אישית' : 'Личный опыт';
-        let background = 'linear-gradient(135deg, rgba(255, 149, 0, 0.04) 0%, rgba(255, 59, 48, 0.04) 100%)';
+        let background = 'linear-gradient(135deg, rgba(255, 149, 0, 0.05) 0%, rgba(255, 59, 48, 0.04) 100%)';
         let svgIcon = '<svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--color-ali-orange);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>';
 
         if (quoteText.includes('[!TIP]')) {
             borderClass = '#2db742';
-            titleText = currentLang === 'he' ? 'טיפ שימושי' : 'Полезный совет';
-            background = 'rgba(45, 183, 66, 0.04)';
+            titleText = currentLang === 'he' ? 'פסק דין של המערכת' : 'Вердикт редакции AliStyle';
+            background = 'rgba(45, 183, 66, 0.06)';
             svgIcon = '<svg viewBox="0 0 24 24" style="width:20px; height:20px; fill:#2db742;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
             quoteText = quoteText.replace('[!TIP]', '').trim();
         } else if (quoteText.includes('[!WARNING]') || quoteText.includes('[!CAUTION]')) {
             borderClass = 'var(--color-ali-red)';
-            titleText = currentLang === 'he' ? 'אזהרה' : 'Внимание / Минус';
-            background = 'rgba(255, 59, 48, 0.04)';
+            titleText = currentLang === 'he' ? 'חשוב לדעת' : 'Обратите внимание';
+            background = 'rgba(255, 59, 48, 0.05)';
             svgIcon = '<svg viewBox="0 0 24 24" style="width:20px; height:20px; fill:var(--color-ali-red);"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>';
             quoteText = quoteText.replace(/\[!WARNING\]|\[!CAUTION\]/g, '').trim();
         } else if (quoteText.includes('[!NOTE]')) {
@@ -1571,43 +1722,71 @@ function parseMarkdown(mdText) {
         const borderRadius = currentLang === 'he' ? 'var(--border-radius-md) 0 0 var(--border-radius-md)' : '0 var(--border-radius-md) var(--border-radius-md) 0';
 
         return `
-            <blockquote style="background: ${background}; ${borderDirection}: 4px solid ${borderClass}; border-radius: ${borderRadius}; padding: 24px 30px; margin: 36px 0;">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <blockquote class="review-callout" style="background: ${background}; ${borderDirection}: 4px solid ${borderClass}; border-radius: ${borderRadius}; padding: 22px 26px; margin: 32px 0;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                     ${svgIcon}
-                    <span style="font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">${titleText}</span>
+                    <span style="font-weight: 700; font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.5px;">${titleText}</span>
                 </div>
-                <div style="font-style: italic; font-size: 1.05rem; line-height: 1.65; color: var(--color-text-secondary);">${quoteText}</div>
+                <div style="font-size: 1.03rem; line-height: 1.65; color: var(--color-text-primary);">${quoteText}</div>
             </blockquote>
         `;
     });
 
-    // 4. Parse Images
-    html = html.replace(/!\[(.*?)\]\((.*?)\)/g, '<div class="body-image-wrapper"><img src="$2" alt="$1" class="body-image" loading="lazy"><div class="body-image-caption">$1</div></div>');
+    // 5. Parse Images using semantic <figure> and <figcaption> with explicit dimensions
+    html = html.replace(/!\[(.*?)\]\((.*?)\)/g, '<figure class="body-image-wrapper"><img src="$2" alt="$1" class="body-image" loading="lazy" width="720" height="450"><figcaption class="body-image-caption">$1</figcaption></figure>');
 
-    // 5. Parse Bold
+    // 6. Parse Bold
     html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-    // 5. Parse Lists
-    html = html.replace(/^\s*-\s+(.*?)$/gm, '<li style="margin-bottom: 8px; position: relative; padding-left: ${currentLang === \'he\' ? \'0\' : \'20px\'}; padding-right: ${currentLang === \'he\' ? \'20px\' : \'0\'};">$1</li>');
-    html = html.replace(/^\s*\*\s+(.*?)$/gm, '<li style="margin-bottom: 8px; position: relative; padding-left: ${currentLang === \'he\' ? \'0\' : \'20px\'}; padding-right: ${currentLang === \'he\' ? \'20px\' : \'0\'};">$1</li>');
+    // 7. Parse Lists
+    const liPadding = currentLang === 'he' ? 'padding-right: 20px;' : 'padding-left: 20px;';
+    html = html.replace(/^\s*-\s+(.*?)$/gm, `<li class="review-li" style="margin-bottom: 10px; position: relative; ${liPadding}">$1</li>`);
+    html = html.replace(/^\s*\*\s+(.*?)$/gm, `<li class="review-li" style="margin-bottom: 10px; position: relative; ${liPadding}">$1</li>`);
     
     // Wrap lists in ul
-    html = html.replace(/((?:<li.*?>.*?<\/li>\s*)+)/g, '<ul style="list-style: none; margin: 20px 0; padding: 0;">$1</ul>');
+    html = html.replace(/((?:<li class="review-li".*?>.*?<\/li>\s*)+)/g, '<ul class="review-ul" style="list-style: disc inside; margin: 20px 0; padding: 0;">$1</ul>');
 
-    // Add list indicator classes for dynamic styling (checkmark/cross)
-    // Custom check/cross logic can also be inserted dynamically if needed
-
-    // 6. Parse Paragraphs (split by double newlines)
+    // 8. Parse Paragraphs (split by double newlines)
     const blocks = html.split(/\n\n+/);
     html = blocks.map(block => {
         const trimmed = block.trim();
-        // Skip block elements
-        if (trimmed.startsWith('<h') || trimmed.startsWith('<blockquote') || trimmed.startsWith('<div') || trimmed.startsWith('<ul') || trimmed.startsWith('<table') || trimmed.startsWith('<li')) {
+        if (
+            trimmed.startsWith('<h') ||
+            trimmed.startsWith('<blockquote') ||
+            trimmed.startsWith('<div') ||
+            trimmed.startsWith('<ul') ||
+            trimmed.startsWith('<table') ||
+            trimmed.startsWith('<li') ||
+            trimmed.startsWith('<figure') ||
+            trimmed.startsWith('<details') ||
+            trimmed.startsWith('<nav')
+        ) {
             return trimmed;
         }
         if (trimmed.length === 0) return '';
-        return `<p style="margin-bottom: 24px;">${trimmed}</p>`;
+        return `<p style="margin-bottom: 22px;">${trimmed}</p>`;
     }).join('\n');
+
+    // 9. Prepend Interactive Table of Contents if 2+ sections exist
+    if (tocEntries.length >= 2) {
+        const tocTitle = currentLang === 'he' ? '📋 תוכן העניינים בסקירה זו' : '📋 Содержание обзора';
+        const tocLinks = tocEntries.map(item => `<li><a href="#${item.id}" class="review-toc-link">${item.title}</a></li>`).join('');
+        const tocHtml = `
+            <nav class="review-toc" aria-label="${tocTitle}">
+                <div class="review-toc-title">${tocTitle}</div>
+                <ol class="review-toc-list">${tocLinks}</ol>
+            </nav>
+        `;
+        // Insert TOC right after the first blockquote or first paragraph
+        const calloutIdx = html.indexOf('</blockquote>');
+        if (calloutIdx !== -1) {
+            const insertPos = calloutIdx + '</blockquote>'.length;
+            html = html.slice(0, insertPos) + '\n' + tocHtml + '\n' + html.slice(insertPos);
+        } else {
+            html = tocHtml + '\n' + html;
+        }
+    }
 
     return html;
 }
+

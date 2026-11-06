@@ -11,16 +11,19 @@
     <script>try{document.documentElement.setAttribute("data-theme",JSON.parse(localStorage.getItem("alistyle_theme"))||"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
     
     <!-- Open Graph & Social Cards -->
+    <link rel="canonical" id="canonical-link" href="https://alistyle.netlify.app/">
     <meta property="og:title" content="AliStyle Blog — Честные обзоры товаров с AliExpress">
-    <meta property="og:description" content="Реальные тесты, обзоры и подборки крутых гаджетов и товаров с AliExpress. Сравнение цен, промокоды и секретные скидки.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&auto=format&fit=crop&q=80">
+    <meta property="og:description" content="Реальные тесты, обзоры и подборки крутых гаджетов и товаров с AliExpress. Сравнение цен в ₪ и $, промокоды и проверенные продавцы.">
+    <meta property="og:image" content="https://alistyle.netlify.app/logo.png">
+    <meta property="og:url" content="https://alistyle.netlify.app/">
     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="logo.png">
 
     <!-- Preconnect Fonts for Fast Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="style.css?v=2.2">
+    <link rel="stylesheet" href="style.css?v=2.4">
     <link rel="stylesheet" href="neon.css?v=1.0">
 </head>
 <body>
@@ -42,19 +45,19 @@
             </nav>
 
             <div class="nav-actions" style="display: flex; align-items: center; gap: 16px;">
-                <div class="search-container">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <search class="search-container">
+                    <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" id="search-input" class="search-input" data-translate-placeholder="searchPlaceholder" placeholder="Поиск обзоров...">
-                </div>
+                    <input type="search" id="search-input" class="search-input" aria-label="Поиск обзоров" data-translate-placeholder="searchPlaceholder" placeholder="Поиск обзоров...">
+                </search>
 
                 <!-- Language Toggle Button -->
-                <button id="lang-toggle" class="lang-btn" style="background: none; border: 1.5px solid var(--color-text-primary); color: var(--color-text-primary); padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 12px; cursor: pointer; transition: all 0.2s ease;">HE</button>
+                <button id="lang-toggle" type="button" class="lang-btn" style="background: none; border: 1.5px solid var(--color-text-primary); color: var(--color-text-primary); padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 12px; cursor: pointer; transition: all 0.2s ease;">HE</button>
             </div>
 
-            <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Открыть меню">
                 <span class="menu-bar"></span>
                 <span class="menu-bar"></span>
                 <span class="menu-bar"></span>
@@ -195,7 +198,7 @@
             return { outOf5: r.toFixed(1), outOf10: (r * 2).toFixed(1), numOutOf5: r };
         };
     </script>
-    <script src="main.js?v=2.3"></script>
-    <script src="features.js?v=2.3"></script>
+    <script src="main.js?v=2.4"></script>
+    <script src="features.js?v=2.4"></script>
 </body>
 </html>
