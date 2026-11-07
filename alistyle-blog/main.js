@@ -314,61 +314,80 @@ async function fetchDatabase() {
         const seenIds = new Set();
         const seenReviewIds = new Set();
         const seenProductIds = new Set();
+        const seenCollectionIds = new Set();
         const seenImages = new Set();
         const seenLinks = new Set();
         const merged = [];
 
-        // Index live reviews by image, reviewId, productId, and affiliate link for fast enrichment
+        // Index live reviews by image, reviewId, productId, collectionId, and affiliate link for fast enrichment
         const liveByImg = new Map();
         const liveByLink = new Map();
         const liveByRevId = new Map();
         const liveByProdId = new Map();
+        const liveByColId = new Map();
         liveReviews.forEach(lr => {
-            if (lr.image) liveByImg.set(lr.image, lr);
+            if (lr.image && !lr.isCollection) liveByImg.set(lr.image, lr);
             if (lr.reviewId) liveByRevId.set(String(lr.reviewId), lr);
             if (lr.productId) liveByProdId.set(String(lr.productId), lr);
+            if (lr.collectionId) liveByColId.set(String(lr.collectionId), lr);
             const link = lr.ru?.aliLink || '';
-            if (link) liveByLink.set(link, lr);
+            if (link && !link.startsWith('#')) liveByLink.set(link, lr);
         });
 
         baseReviews.forEach(r => {
             if (!r || !r.id || seenIds.has(r.id)) return;
+            const rIsCol = !!(r.isCollection || (r.products && r.products.length > 0));
+            if (rIsCol && r.collectionId && seenCollectionIds.has(String(r.collectionId))) return;
+
             seenIds.add(r.id);
             if (r.reviewId) seenReviewIds.add(String(r.reviewId));
             if (r.productId) seenProductIds.add(String(r.productId));
-            if (r.image) seenImages.add(r.image);
+            if (r.collectionId) seenCollectionIds.add(String(r.collectionId));
+            if (r.image && !rIsCol) seenImages.add(r.image);
             const rLink = r.ru?.aliLink || r.he?.aliLink || '';
-            if (rLink) seenLinks.add(rLink);
+            if (rLink && !rLink.startsWith('#')) seenLinks.add(rLink);
 
             const matchLive = (r.reviewId && liveByRevId.get(String(r.reviewId))) ||
-                              (r.productId && liveByProdId.get(String(r.productId))) ||
-                              (r.image && liveByImg.get(r.image)) ||
-                              (rLink && liveByLink.get(rLink));
+                              (r.collectionId && liveByColId.get(String(r.collectionId))) ||
+                              (!rIsCol && r.productId && liveByProdId.get(String(r.productId))) ||
+                              (!rIsCol && r.image && liveByImg.get(r.image)) ||
+                              (!rIsCol && rLink && !rLink.startsWith('#') && liveByLink.get(rLink));
             if (matchLive) {
                 if (!r.video && matchLive.video) r.video = matchLive.video;
                 if (!r.reviewId && matchLive.reviewId) r.reviewId = matchLive.reviewId;
                 if (!r.productId && matchLive.productId) r.productId = matchLive.productId;
+                if (!r.collectionId && matchLive.collectionId) r.collectionId = matchLive.collectionId;
+                if (rIsCol && Array.isArray(matchLive.products) && matchLive.products.length > 0) {
+                    r.products = matchLive.products;
+                }
             }
             merged.push(r);
         });
 
-        // Prepend brand new live reviews from VPS that aren't in static reviews.json yet (and are full blog reviews, not short social posts)
+        // Prepend brand new live reviews & collections from VPS that aren't in static reviews.json yet
         const newLive = [];
         liveReviews.forEach(lr => {
             if (!lr || !lr.id || seenIds.has(lr.id)) return;
+            const lrIsCol = !!(lr.isCollection || (lr.products && lr.products.length > 0));
             if (lr.reviewId && seenReviewIds.has(String(lr.reviewId))) return;
-            if (lr.productId && seenProductIds.has(String(lr.productId))) return;
-            const lrLink = lr.ru?.aliLink || '';
-            if ((lr.image && seenImages.has(lr.image)) || (lrLink && seenLinks.has(lrLink))) return;
+            if (lrIsCol) {
+                if (lr.collectionId && seenCollectionIds.has(String(lr.collectionId))) return;
+            } else {
+                if (lr.productId && seenProductIds.has(String(lr.productId))) return;
+                const lrLink = lr.ru?.aliLink || '';
+                if ((lr.image && seenImages.has(lr.image)) || (lrLink && !lrLink.startsWith('#') && seenLinks.has(lrLink))) return;
+            }
             // Skip short social media snippets (< 600 chars) so only full editorial reviews appear on the blog
             const ruBodyLen = (lr.ru?.body || '').length;
-            if (ruBodyLen < 600 && !lr.isCollection) return;
+            if (ruBodyLen < 600 && !lrIsCol) return;
 
             seenIds.add(lr.id);
             if (lr.reviewId) seenReviewIds.add(String(lr.reviewId));
             if (lr.productId) seenProductIds.add(String(lr.productId));
-            if (lr.image) seenImages.add(lr.image);
-            if (lrLink) seenLinks.add(lrLink);
+            if (lr.collectionId) seenCollectionIds.add(String(lr.collectionId));
+            if (lr.image && !lrIsCol) seenImages.add(lr.image);
+            const lrLink = lr.ru?.aliLink || '';
+            if (lrLink && !lrLink.startsWith('#')) seenLinks.add(lrLink);
             newLive.push(lr);
         });
 
@@ -959,10 +978,12 @@ function renderReviewPage() {
     }
 
     const cleanNumId = reviewId.replace(/^rev-/, '');
+    const colPrefixMatch = reviewId.match(/^col-(\d+)/);
     const review = reviewsData.find(r =>
         r.id === reviewId ||
         String(r.reviewId) === cleanNumId ||
-        String(r.productId) === cleanNumId
+        String(r.productId) === cleanNumId ||
+        (colPrefixMatch && String(r.collectionId) === colPrefixMatch[1])
     );
     if (!review) {
         renderErrorPage(t.errorNotFound);
@@ -1178,9 +1199,19 @@ function renderReviewPage() {
     if (buyBtn) {
         if (prices.isCollection && review.products && review.products.length > 0) {
             buyBtn.href = '#collection-products-section';
+            buyBtn.removeAttribute('target');
+            buyBtn.onclick = (e) => {
+                const sec = document.getElementById('collection-products-section');
+                if (sec) {
+                    e.preventDefault();
+                    sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            };
             if (buyBtnText) buyBtnText.innerText = currentLang === 'he' ? 'לצפייה בכל מוצרי האוסף' : 'Смотреть все товары подборки';
         } else {
             buyBtn.href = langData.aliLink || '#';
+            buyBtn.setAttribute('target', '_blank');
+            buyBtn.onclick = null;
             if (buyBtnText) buyBtnText.innerText = t.buyBtnText;
         }
     }
@@ -1204,7 +1235,7 @@ function renderReviewPage() {
         let productsHtml = '';
         review.products.forEach((prod, pIdx) => {
             let prodIls = 0;
-            let prodUsd = 0;
+            let prodUsd = parseFloat(prod.priceAliUsd) || 0;
             if (prod.priceFormatted) {
                 const m = prod.priceFormatted.match(/[\d.]+/);
                 if (m) prodIls = Math.round(parseFloat(m[0]));
@@ -1212,7 +1243,9 @@ function renderReviewPage() {
             if (prod.priceAli) {
                 const val = parseFloat(prod.priceAli);
                 if (val > 0) {
-                    if (prodIls > 0 && prodIls > val * 2.5) {
+                    if (prodUsd > 0 && val > prodUsd * 2.0) {
+                        prodIls = Math.round(val);
+                    } else if (prodIls > 0 && prodIls > val * 2.5) {
                         prodUsd = val;
                     } else if (!prodIls) {
                         prodUsd = val;
@@ -1279,7 +1312,21 @@ function renderReviewPage() {
             : `₪${prices.priceAliIls} (-${prices.discountVal}%)`;
     }
     if (stickyBuyBtn) {
-        stickyBuyBtn.href = langData.aliLink || '#';
+        if (prices.isCollection && review.products && review.products.length > 0) {
+            stickyBuyBtn.href = '#collection-products-section';
+            stickyBuyBtn.removeAttribute('target');
+            stickyBuyBtn.onclick = (e) => {
+                const sec = document.getElementById('collection-products-section');
+                if (sec) {
+                    e.preventDefault();
+                    sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            };
+        } else {
+            stickyBuyBtn.href = langData.aliLink || '#';
+            stickyBuyBtn.setAttribute('target', '_blank');
+            stickyBuyBtn.onclick = null;
+        }
     }
 
     // Trigger Mobile sticky visibility Observer
