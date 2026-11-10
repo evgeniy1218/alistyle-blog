@@ -275,30 +275,173 @@ function applyLanguageSettings() {
 
 let siteSettingsData = {};
 
+const DB_CACHE_KEY = 'alistyle_db_cache_v17';
+const DB_CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+
+function mergeBaseAndLiveReviews(baseReviews, liveReviews) {
+    const seenIds = new Set();
+    const seenReviewIds = new Set();
+    const seenProductIds = new Set();
+    const seenCollectionIds = new Set();
+    const seenImages = new Set();
+    const seenLinks = new Set();
+    const merged = [];
+
+    const liveByImg = new Map();
+    const liveByLink = new Map();
+    const liveByRevId = new Map();
+    const liveByProdId = new Map();
+    const liveByColId = new Map();
+    (liveReviews || []).forEach(lr => {
+        if (lr.image && !lr.isCollection) liveByImg.set(lr.image, lr);
+        if (lr.reviewId) liveByRevId.set(String(lr.reviewId), lr);
+        if (lr.productId) liveByProdId.set(String(lr.productId), lr);
+        if (lr.collectionId) liveByColId.set(String(lr.collectionId), lr);
+        const link = lr.ru?.aliLink || '';
+        if (link && !link.startsWith('#')) liveByLink.set(link, lr);
+    });
+
+    let updatedCount = 0;
+    (baseReviews || []).forEach(r => {
+        if (!r || !r.id || seenIds.has(r.id)) return;
+        const rIsCol = !!(r.isCollection || (r.products && r.products.length > 0));
+        if (rIsCol && r.collectionId && seenCollectionIds.has(String(r.collectionId))) return;
+
+        seenIds.add(r.id);
+        if (r.reviewId) seenReviewIds.add(String(r.reviewId));
+        if (r.productId) seenProductIds.add(String(r.productId));
+        if (r.collectionId) seenCollectionIds.add(String(r.collectionId));
+        if (r.image && !rIsCol) seenImages.add(r.image);
+        const rLink = r.ru?.aliLink || r.he?.aliLink || '';
+        if (rLink && !rLink.startsWith('#')) seenLinks.add(rLink);
+
+        const matchLive = (r.reviewId && liveByRevId.get(String(r.reviewId))) ||
+                          (r.collectionId && liveByColId.get(String(r.collectionId))) ||
+                          (!rIsCol && r.productId && liveByProdId.get(String(r.productId))) ||
+                          (!rIsCol && r.image && liveByImg.get(r.image)) ||
+                          (!rIsCol && rLink && !rLink.startsWith('#') && liveByLink.get(rLink));
+        if (matchLive) {
+            if (!r.video && matchLive.video) { r.video = matchLive.video; updatedCount++; }
+            if (!r.reviewId && matchLive.reviewId) r.reviewId = matchLive.reviewId;
+            if (!r.productId && matchLive.productId) r.productId = matchLive.productId;
+            if (!r.collectionId && matchLive.collectionId) r.collectionId = matchLive.collectionId;
+            if (rIsCol && Array.isArray(matchLive.products) && matchLive.products.length > 0) {
+                r.products = matchLive.products;
+            }
+        }
+        merged.push(r);
+    });
+
+    const newLive = [];
+    (liveReviews || []).forEach(lr => {
+        if (!lr || !lr.id || seenIds.has(lr.id)) return;
+        const lrIsCol = !!(lr.isCollection || (lr.products && lr.products.length > 0));
+        if (lr.reviewId && seenReviewIds.has(String(lr.reviewId))) return;
+        if (lrIsCol) {
+            if (lr.collectionId && seenCollectionIds.has(String(lr.collectionId))) return;
+        } else {
+            if (lr.productId && seenProductIds.has(String(lr.productId))) return;
+            const lrLink = lr.ru?.aliLink || '';
+            if ((lr.image && seenImages.has(lr.image)) || (lrLink && !lrLink.startsWith('#') && seenLinks.has(lrLink))) return;
+        }
+        const ruBodyLen = (lr.ru?.body || '').length;
+        if (ruBodyLen < 600 && !lrIsCol) return;
+
+        seenIds.add(lr.id);
+        if (lr.reviewId) seenReviewIds.add(String(lr.reviewId));
+        if (lr.productId) seenProductIds.add(String(lr.productId));
+        if (lr.collectionId) seenCollectionIds.add(String(lr.collectionId));
+        if (lr.image && !lrIsCol) seenImages.add(lr.image);
+        const lrLink = lr.ru?.aliLink || '';
+        if (lrLink && !lrLink.startsWith('#')) seenLinks.add(lrLink);
+        newLive.push(lr);
+    });
+
+    return {
+        all: [...newLive, ...merged],
+        newCount: newLive.length,
+        updatedCount
+    };
+}
+
+function saveDbCache() {
+    try {
+        sessionStorage.setItem(DB_CACHE_KEY, JSON.stringify({
+            ts: Date.now(),
+            reviews: reviewsData,
+            categories: categoriesData,
+            siteSettings: siteSettingsData
+        }));
+    } catch (e) {}
+}
+
+function syncLiveFeedInBackground(baseReviews) {
+    setTimeout(async () => {
+        try {
+            const ctrl = new AbortController();
+            const timer = setTimeout(() => ctrl.abort(), 4500);
+            const res = await fetch('/api/v1/funnel/alistyle-feed', { signal: ctrl.signal });
+            clearTimeout(timer);
+            if (!res.ok) return;
+            const liveData = await res.json();
+            const liveReviews = (liveData && Array.isArray(liveData.reviews)) ? liveData.reviews : [];
+            if (!liveReviews.length) return;
+
+            const { all, newCount, updatedCount } = mergeBaseAndLiveReviews(baseReviews, liveReviews);
+            reviewsData = all;
+            if (!categoriesData.length && Array.isArray(liveData.categories)) {
+                categoriesData = liveData.categories;
+            }
+            saveDbCache();
+
+            // Re-render only if brand-new reviews or new videos arrived from VPS
+            if (newCount > 0 || updatedCount > 0) {
+                if (document.getElementById('reviews-grid')) {
+                    renderIndexPage();
+                } else if (document.getElementById('review-body') && newCount > 0) {
+                    renderReviewPage();
+                }
+            }
+        } catch (e) {
+            // Silent background sync fallback
+        }
+    }, 150);
+}
+
 /**
- * Fetch Reviews JSON Data
+ * Fetch Reviews JSON Data — Instant via sessionStorage / CDN reviews.json,
+ * with non-blocking background sync to VPS live feed.
  */
 async function fetchDatabase() {
     try {
+        // 1. Instant 0ms sessionStorage hit for cross-page navigation
+        try {
+            const rawCache = sessionStorage.getItem(DB_CACHE_KEY);
+            if (rawCache) {
+                const parsed = JSON.parse(rawCache);
+                if (parsed && Array.isArray(parsed.reviews) && parsed.reviews.length > 0 && (Date.now() - (parsed.ts || 0) < DB_CACHE_TTL_MS)) {
+                    reviewsData = parsed.reviews;
+                    categoriesData = parsed.categories || [];
+                    siteSettingsData = parsed.siteSettings || {};
+                    applySiteSettings();
+                    return;
+                }
+            }
+        } catch (e) {}
+
+        // 2. Fast CDN local fetch (./reviews.json without cache-busting timestamp)
         let data = null;
-        let liveData = null;
+        try {
+            const localRes = await fetch('./reviews.json');
+            if (localRes.ok) {
+                data = await localRes.json();
+            }
+        } catch (e) {}
 
-        const [localRes, liveRes] = await Promise.allSettled([
-            fetch(`./reviews.json?t=${new Date().getTime()}`),
-            fetch(`/api/v1/funnel/alistyle-feed?t=${new Date().getTime()}`)
-        ]);
-
-        if (localRes.status === 'fulfilled' && localRes.value.ok) {
-            try { data = await localRes.value.json(); } catch (e) {}
-        }
-        if (liveRes.status === 'fulfilled' && liveRes.value.ok) {
-            try { liveData = await liveRes.value.json(); } catch (e) {}
-        }
-
-        // Fallback to raw GitHub repo if local fetch failed or returned no reviews
-        if (!data || !data.reviews || data.reviews.length === 0) {
+        // 3. Fallback to raw GitHub repo ONLY if local fetch failed
+        if (!data || !Array.isArray(data.reviews) || data.reviews.length === 0) {
             try {
-                const ghResponse = await fetch(`https://raw.githubusercontent.com/evgeniy1218/alistyle-blog/main/alistyle-blog/reviews.json?t=${new Date().getTime()}`);
+                const ghResponse = await fetch('https://raw.githubusercontent.com/evgeniy1218/alistyle-blog/main/alistyle-blog/reviews.json');
                 if (ghResponse.ok) {
                     data = await ghResponse.json();
                 }
@@ -308,93 +451,15 @@ async function fetchDatabase() {
         }
 
         const baseReviews = (data && Array.isArray(data.reviews)) ? data.reviews : [];
-        const liveReviews = (liveData && Array.isArray(liveData.reviews)) ? liveData.reviews : [];
-
-        // Enrich existing curated bilingual reviews with live video URLs & reviewId, and append any new live reviews
-        const seenIds = new Set();
-        const seenReviewIds = new Set();
-        const seenProductIds = new Set();
-        const seenCollectionIds = new Set();
-        const seenImages = new Set();
-        const seenLinks = new Set();
-        const merged = [];
-
-        // Index live reviews by image, reviewId, productId, collectionId, and affiliate link for fast enrichment
-        const liveByImg = new Map();
-        const liveByLink = new Map();
-        const liveByRevId = new Map();
-        const liveByProdId = new Map();
-        const liveByColId = new Map();
-        liveReviews.forEach(lr => {
-            if (lr.image && !lr.isCollection) liveByImg.set(lr.image, lr);
-            if (lr.reviewId) liveByRevId.set(String(lr.reviewId), lr);
-            if (lr.productId) liveByProdId.set(String(lr.productId), lr);
-            if (lr.collectionId) liveByColId.set(String(lr.collectionId), lr);
-            const link = lr.ru?.aliLink || '';
-            if (link && !link.startsWith('#')) liveByLink.set(link, lr);
-        });
-
-        baseReviews.forEach(r => {
-            if (!r || !r.id || seenIds.has(r.id)) return;
-            const rIsCol = !!(r.isCollection || (r.products && r.products.length > 0));
-            if (rIsCol && r.collectionId && seenCollectionIds.has(String(r.collectionId))) return;
-
-            seenIds.add(r.id);
-            if (r.reviewId) seenReviewIds.add(String(r.reviewId));
-            if (r.productId) seenProductIds.add(String(r.productId));
-            if (r.collectionId) seenCollectionIds.add(String(r.collectionId));
-            if (r.image && !rIsCol) seenImages.add(r.image);
-            const rLink = r.ru?.aliLink || r.he?.aliLink || '';
-            if (rLink && !rLink.startsWith('#')) seenLinks.add(rLink);
-
-            const matchLive = (r.reviewId && liveByRevId.get(String(r.reviewId))) ||
-                              (r.collectionId && liveByColId.get(String(r.collectionId))) ||
-                              (!rIsCol && r.productId && liveByProdId.get(String(r.productId))) ||
-                              (!rIsCol && r.image && liveByImg.get(r.image)) ||
-                              (!rIsCol && rLink && !rLink.startsWith('#') && liveByLink.get(rLink));
-            if (matchLive) {
-                if (!r.video && matchLive.video) r.video = matchLive.video;
-                if (!r.reviewId && matchLive.reviewId) r.reviewId = matchLive.reviewId;
-                if (!r.productId && matchLive.productId) r.productId = matchLive.productId;
-                if (!r.collectionId && matchLive.collectionId) r.collectionId = matchLive.collectionId;
-                if (rIsCol && Array.isArray(matchLive.products) && matchLive.products.length > 0) {
-                    r.products = matchLive.products;
-                }
-            }
-            merged.push(r);
-        });
-
-        // Prepend brand new live reviews & collections from VPS that aren't in static reviews.json yet
-        const newLive = [];
-        liveReviews.forEach(lr => {
-            if (!lr || !lr.id || seenIds.has(lr.id)) return;
-            const lrIsCol = !!(lr.isCollection || (lr.products && lr.products.length > 0));
-            if (lr.reviewId && seenReviewIds.has(String(lr.reviewId))) return;
-            if (lrIsCol) {
-                if (lr.collectionId && seenCollectionIds.has(String(lr.collectionId))) return;
-            } else {
-                if (lr.productId && seenProductIds.has(String(lr.productId))) return;
-                const lrLink = lr.ru?.aliLink || '';
-                if ((lr.image && seenImages.has(lr.image)) || (lrLink && !lrLink.startsWith('#') && seenLinks.has(lrLink))) return;
-            }
-            // Skip short social media snippets (< 600 chars) so only full editorial reviews appear on the blog
-            const ruBodyLen = (lr.ru?.body || '').length;
-            if (ruBodyLen < 600 && !lrIsCol) return;
-
-            seenIds.add(lr.id);
-            if (lr.reviewId) seenReviewIds.add(String(lr.reviewId));
-            if (lr.productId) seenProductIds.add(String(lr.productId));
-            if (lr.collectionId) seenCollectionIds.add(String(lr.collectionId));
-            if (lr.image && !lrIsCol) seenImages.add(lr.image);
-            const lrLink = lr.ru?.aliLink || '';
-            if (lrLink && !lrLink.startsWith('#')) seenLinks.add(lrLink);
-            newLive.push(lr);
-        });
-
-        reviewsData = [...newLive, ...merged];
-        categoriesData = (data && data.categories) || (liveData && liveData.categories) || [];
+        const { all } = mergeBaseAndLiveReviews(baseReviews, []);
+        reviewsData = all;
+        categoriesData = (data && data.categories) || [];
         siteSettingsData = (data && data.siteSettings) || {};
+        saveDbCache();
         applySiteSettings();
+
+        // 4. Sync with live VPS feed asynchronously AFTER page renders
+        syncLiveFeedInBackground(reviewsData);
     } catch (e) {
         console.error('Error fetching reviews database:', e);
         reviewsData = [];
@@ -799,6 +864,7 @@ function renderIndexPage() {
     }
 
     const ads = siteSettingsData?.ads;
+    const frag = document.createDocumentFragment();
 
     reviewsData.forEach((item, index) => {
         const langData = item[currentLang] || item['ru'] || item['he'];
@@ -897,7 +963,7 @@ function renderIndexPage() {
                 </div>
             </div>
         `;
-        grid.appendChild(card);
+        frag.appendChild(card);
 
         // Insert native In-Feed Ad Banner card after the 3rd card
         if (index === 2 && ads && ads.inArticleBanner && ads.inArticleBanner.enabled && ads.inArticleBanner.imageUrl) {
@@ -926,9 +992,10 @@ function renderIndexPage() {
                     </div>
                 </div>
             `;
-            grid.appendChild(adCard);
+            frag.appendChild(adCard);
         }
     });
+    grid.appendChild(frag);
 }
 
 /**
