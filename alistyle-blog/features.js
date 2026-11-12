@@ -206,25 +206,26 @@
         if (!box) {
             box = document.createElement('section');
             box.id = 'nx-ai-box';
+            box.className = 'nx-ai-box';
             top.prepend(box);
         }
         box.dataset.lang = curLang;
-        box.style.cssText = 'margin-bottom:20px;padding:18px 20px;border-radius:18px;background:linear-gradient(135deg,rgba(79,70,229,0.14),rgba(15,23,42,0.92),rgba(236,72,153,0.12));border:1px solid rgba(99,102,241,0.35);box-shadow:0 10px 30px rgba(0,0,0,0.22);';
+        box.style.cssText = 'margin-bottom:20px;padding:16px;border-radius:18px;background:linear-gradient(135deg,rgba(79,70,229,0.14),rgba(15,23,42,0.92),rgba(236,72,153,0.12));border:1px solid rgba(99,102,241,0.35);box-shadow:0 10px 30px rgba(0,0,0,0.22);';
         const chips = t('chips') || [];
         box.innerHTML = `
             <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
-                <div>
+                <div style="min-width:0;">
                     <div style="font-size:15px;font-weight:800;color:var(--color-text-primary);">${esc(t('aiTitle'))}</div>
                     <div style="font-size:12px;color:var(--color-text-secondary);margin-top:2px;">${esc(t('aiSub'))}</div>
                 </div>
-                <button type="button" id="nx-ai-clear" style="display:none;background:none;border:none;color:var(--color-text-secondary);font-size:12px;cursor:pointer;">${esc(t('aiClear'))}</button>
+                <button type="button" id="nx-ai-clear" style="display:none;background:none;border:none;color:var(--color-text-secondary);font-size:12px;cursor:pointer;min-height:36px;padding:4px 8px;">${esc(t('aiClear'))}</button>
             </div>
-            <form id="nx-ai-form" style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-                <input id="nx-ai-input" type="text" placeholder="${esc(t('aiPlaceholder'))}" style="flex:1;min-width:220px;padding:10px 14px;border-radius:12px;border:1px solid rgba(148,163,184,0.3);background:rgba(15,23,42,0.75);color:#fff;font-size:13px;outline:none;">
-                <button id="nx-ai-submit" type="submit" style="padding:10px 18px;border-radius:12px;border:none;background:linear-gradient(135deg,#4f46e5,#9333ea);color:#fff;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;">${esc(t('aiBtn'))}</button>
+            <form id="nx-ai-form" class="nx-ai-form" style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+                <input id="nx-ai-input" class="nx-ai-input" type="text" placeholder="${esc(t('aiPlaceholder'))}" style="flex:1 1 220px;min-width:0;width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(148,163,184,0.3);background:rgba(15,23,42,0.75);color:#fff;font-size:16px;outline:none;">
+                <button id="nx-ai-submit" class="nx-ai-submit" type="submit" style="padding:10px 18px;min-height:44px;border-radius:12px;border:none;background:linear-gradient(135deg,#4f46e5,#9333ea);color:#fff;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;">${esc(t('aiBtn'))}</button>
             </form>
-            <div id="nx-ai-chips" style="display:flex;flex-wrap:wrap;gap:6px;">
-                ${chips.map(c => `<button type="button" class="nx-ai-chip" data-prompt="${esc(c)}" style="padding:5px 11px;border-radius:10px;border:1px solid rgba(99,102,241,0.3);background:rgba(30,41,59,0.7);color:#a5b4fc;font-size:11px;font-weight:600;cursor:pointer;">${esc(c)}</button>`).join('')}
+            <div id="nx-ai-chips" class="nx-ai-chips" style="display:flex;flex-wrap:wrap;gap:6px;">
+                ${chips.map(c => `<button type="button" class="nx-ai-chip" data-prompt="${esc(c)}" style="padding:7px 12px;min-height:36px;border-radius:10px;border:1px solid rgba(99,102,241,0.3);background:rgba(30,41,59,0.7);color:#a5b4fc;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;">${esc(c)}</button>`).join('')}
             </div>
             <div id="nx-ai-res" style="display:none;margin-top:14px;padding-top:12px;border-top:1px solid rgba(99,102,241,0.25);"></div>
         `;
@@ -408,6 +409,7 @@
         $('#nx-cmp-go', bar).addEventListener('click', openCompare);
         $('#nx-cmp-clr', bar).addEventListener('click', () => { cmp = []; syncCmpUi(); });
         bar.classList.toggle('show', cmp.length > 0);
+        document.body.classList.toggle('cmp-bar-visible', cmp.length > 0);
     }
 
     function openCompare() {
@@ -418,7 +420,7 @@
         const maxR = Math.max.apply(null, list.map(ratingOf));
         const maxS = Math.max.apply(null, infos.map(p => p.savings));
         const row = (label, cell) => '<tr><th>' + esc(label) + '</th>' + list.map((r, i) => '<td>' + cell(r, infos[i], i) + '</td>').join('') + '</tr>';
-        const html = '<table class="nx-table">' +
+        const html = '<div class="nx-table-scroll"><table class="nx-table">' +
             row(t('image'), r => '<img src="' + esc(r.image) + '" alt="" onerror="this.src=\'logo.png\'">') +
             row('', r => '<a href="review.html?id=' + encodeURIComponent(r.id) + '"><b>' + esc(langData(r).title) + '</b></a>') +
             row(t('price'), (r, p) => '<div class="big' + (p.priceAliIls === minP ? ' best' : '') + '">₪' + p.priceAliIls + '</div>' + (p.priceAliUsd ? '<div class="sub">$' + p.priceAliUsd + '</div>' : '')) +
@@ -427,7 +429,7 @@
             row(t('rating'), r => '<span class="' + (ratingOf(r) === maxR ? 'best' : '') + '">⭐ ' + ratingOf(r).toFixed(1) + '</span>') +
             row(t('pros'), r => '<ul>' + (langData(r).pros || []).map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>') +
             row('', r => '<a class="nx-btn" style="display:inline-block" target="_blank" rel="sponsored nofollow noopener" href="' + esc(langData(r).aliLink || '#') + '">' + esc(t('buy')) + '</a>') +
-            '</table>';
+            '</table></div>';
         let m = $('#nx-modal');
         if (!m) {
             m = document.createElement('dialog');
@@ -609,6 +611,20 @@
             if (next) next.addEventListener('click', e => { e.stopPropagation(); cur = (cur + 1) % urls.length; render(); });
         };
 
+        let touchStartX = 0;
+        const onTouchStart = e => {
+            if (e.touches && e.touches.length === 1) touchStartX = e.touches[0].clientX;
+        };
+        const onTouchEnd = e => {
+            if (!touchStartX || !e.changedTouches || !e.changedTouches.length || urls.length <= 1) return;
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            touchStartX = 0;
+            if (Math.abs(dx) > 40) {
+                cur = dx < 0 ? (cur + 1) % urls.length : (cur - 1 + urls.length) % urls.length;
+                render();
+            }
+        };
+
         const onKey = e => {
             if (e.key === 'Escape') close();
             else if (e.key === 'ArrowLeft') { cur = (cur - 1 + urls.length) % urls.length; render(); }
@@ -621,6 +637,8 @@
             window.removeEventListener('keydown', onKey);
         };
 
+        box.addEventListener('touchstart', onTouchStart, { passive: true });
+        box.addEventListener('touchend', onTouchEnd, { passive: true });
         box.addEventListener('click', e => {
             if (e.target === box) close();
         });

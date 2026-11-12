@@ -336,18 +336,190 @@ html[data-theme="dark"] .nx-vote, html[data-theme="dark"] .nx-feedback { backgro
 .fast-buy-image:hover { transform: scale(1.02); }
 
 
+.nx-table-scroll {
+    overflow-x: auto;
+    max-inline-size: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1120px) {
+    html[data-theme="dark"] .nav-menu {
+        background: rgba(14, 14, 24, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+    html[data-theme="dark"] .nav-menu .nav-link {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--color-border);
+    }
+    html[data-theme="dark"] .menu-toggle {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--color-border);
+    }
+}
+
 @media (max-width: 768px) {
-    .nx-toolbar { padding: 12px; gap: 10px; }
-    .nx-range { width: 110px; }
-    .nx-tb-count { width: 100%; margin: 0; }
-    .nx-table th { width: 80px; }
-    .nx-table img { width: 80px; height: 80px; }
-    .nx-modal-card { padding: 16px; }
-    .nx-cmp-bar { width: calc(100% - 24px); justify-content: space-between; }
-    .nx-form .row { grid-template-columns: 1fr; }
+    /* Mobile full-width search suggestions dropdown */
+    .nx-suggest {
+        width: 100%;
+        max-width: 100%;
+        inset-inline: 0;
+    }
+
+    /* AI Consultant mobile adaptation */
+    .nx-ai-box {
+        padding: 14px !important;
+        margin-bottom: 16px !important;
+    }
+    .nx-ai-submit {
+        width: 100%;
+    }
+    .nx-ai-chips {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+    }
+    .nx-ai-chips::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hot deals horizontal strip on mobile */
+    .nx-hot {
+        margin-bottom: 20px;
+    }
+    .nx-hot-title {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+    }
+    .nx-hot-item {
+        flex: 0 0 225px;
+        padding: 9px 10px;
+    }
+    .nx-hot-item img {
+        width: 56px;
+        height: 56px;
+    }
+
+    /* Toolbar mobile 2-row layout */
+    .nx-toolbar {
+        padding: 12px 14px;
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+    .nx-tb-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .nx-select {
+        flex: 1;
+        max-width: 65%;
+        min-block-size: 40px;
+        font-size: 15px;
+    }
+    .nx-range {
+        flex: 1;
+        width: auto;
+        min-height: 32px;
+    }
+    .nx-chip {
+        min-block-size: 40px;
+        padding: 8px 14px;
+        display: inline-flex;
+        align-items: center;
+    }
+    .nx-tb-count {
+        margin-inline-start: auto;
+        width: auto;
+        font-size: 12px;
+    }
+
+    /* Compare modal & bar on mobile */
+    .nx-table th {
+        width: 78px;
+        font-size: 11px;
+    }
+    .nx-table img {
+        width: 76px;
+        height: 76px;
+    }
+    .nx-modal {
+        padding: 12px;
+    }
+    .nx-modal-card {
+        padding: 16px 14px;
+        max-height: 86dvh;
+    }
+    .nx-cmp-bar {
+        width: calc(100% - 24px);
+        bottom: max(14px, env(safe-area-inset-bottom, 0px));
+        justify-content: space-between;
+        padding: 10px 14px;
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    /* Floating messenger buttons (.nx-fab) — compact & lifted above sticky bars */
+    .nx-fab {
+        inset-inline-end: 12px;
+        bottom: max(16px, env(safe-area-inset-bottom, 0px));
+        gap: 10px;
+        transition: bottom 0.3s ease;
+    }
+    body.sticky-cta-visible .nx-fab,
+    body.cmp-bar-visible .nx-fab {
+        bottom: calc(82px + env(safe-area-inset-bottom, 0px));
+    }
+    .nx-fab a {
+        width: 44px;
+        height: 44px;
+    }
+    .nx-fab a svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Review vote & feedback form on mobile */
+    .nx-vote,
+    .nx-feedback {
+        margin: 24px 0;
+        padding: 16px;
+        border-radius: 16px;
+    }
+    .nx-vote-btn {
+        min-block-size: 46px;
+        padding: 12px;
+        font-size: 14px;
+    }
+    .nx-form .row {
+        grid-template-columns: 1fr;
+    }
+    .nx-form input,
+    .nx-form textarea,
+    .nx-form select {
+        font-size: 16px; /* Prevents iOS Safari zoom on focus */
+    }
+
+    /* Image Lightbox on mobile */
+    .nx-lightbox-img {
+        max-width: 94dvw;
+        max-height: 78dvh;
+    }
+    .nx-lightbox-prev {
+        inset-inline-start: 10px;
+        width: 42px;
+        height: 42px;
+    }
+    .nx-lightbox-next {
+        inset-inline-end: 10px;
+        width: 42px;
+        height: 42px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
     .nx-reveal { opacity: 1; transform: none; }
 }
+
