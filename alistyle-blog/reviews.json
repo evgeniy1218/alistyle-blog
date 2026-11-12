@@ -1014,7 +1014,7 @@
     },
     {
       "id": "item-3256812603735390",
-      "category": "electronics",
+      "category": "smarthome",
       "rating": 5.0,
       "priceAli": 140,
       "priceLocal": 209,
@@ -1106,7 +1106,7 @@
     },
     {
       "id": "new-air-pro---9",
-      "category": "smarthome",
+      "category": "electronics",
       "rating": 4.5,
       "priceAli": 35,
       "priceLocal": 51,
@@ -1275,7 +1275,7 @@
     },
     {
       "id": "kindle",
-      "category": "tools",
+      "category": "electronics",
       "rating": 4.7,
       "priceAli": 20,
       "priceLocal": 29,
@@ -1321,7 +1321,7 @@
     },
     {
       "id": "item-1005012678832633",
-      "category": "electronics",
+      "category": "smarthome",
       "rating": 4.8,
       "priceAli": 91,
       "priceLocal": 136,
@@ -1415,7 +1415,7 @@
     },
     {
       "id": "once-for-all",
-      "category": "tools",
+      "category": "smarthome",
       "rating": 4.8,
       "priceAli": 266,
       "priceLocal": 399,
@@ -1459,7 +1459,7 @@
     },
     {
       "id": "5--1",
-      "category": "smarthome",
+      "category": "electronics",
       "rating": 4.8,
       "priceAli": 118,
       "priceLocal": 180,
@@ -1504,7 +1504,7 @@
     },
     {
       "id": "wireless-video-doorbell-camera",
-      "category": "electronics",
+      "category": "smarthome",
       "rating": 5.0,
       "priceAli": 44,
       "priceLocal": 65,
@@ -1549,7 +1549,7 @@
     },
     {
       "id": "item-3256812154465989",
-      "category": "lifestyle",
+      "category": "smarthome",
       "rating": 4.7,
       "priceAli": 450,
       "priceLocal": 674,
@@ -1686,7 +1686,7 @@
     },
     {
       "id": "220v-800w-high-power-paint-spr",
-      "category": "electronics",
+      "category": "tools",
       "rating": 5.0,
       "priceAli": 326,
       "priceLocal": 488,
@@ -1735,7 +1735,7 @@
     },
     {
       "id": "luxury-leather-card-holder",
-      "category": "electronics",
+      "category": "lifestyle",
       "rating": 4.8,
       "priceAli": 23,
       "priceLocal": 33,
@@ -1871,7 +1871,7 @@
     },
     {
       "id": "usb-starry-sky-projector",
-      "category": "electronics",
+      "category": "smarthome",
       "rating": 4.8,
       "priceAli": 37,
       "priceLocal": 54,
@@ -1962,7 +1962,7 @@
     },
     {
       "id": "automatic-wine-dispenser",
-      "category": "electronics",
+      "category": "smarthome",
       "rating": 4.8,
       "priceAli": 85,
       "priceLocal": 127,
@@ -2007,7 +2007,7 @@
     },
     {
       "id": "item-3256811654061510",
-      "category": "smarthome",
+      "category": "tools",
       "rating": 4.8,
       "priceAli": 113,
       "priceLocal": 170,
@@ -2052,7 +2052,7 @@
     },
     {
       "id": "item-3256809548055123",
-      "category": "lifestyle",
+      "category": "cartech",
       "rating": 4.8,
       "priceAli": 168,
       "priceLocal": 252,
@@ -2142,7 +2142,7 @@
     },
     {
       "id": "emo--aliexpress",
-      "category": "hobbies",
+      "category": "electronics",
       "rating": 5.0,
       "priceAli": 244,
       "priceLocal": 366,
@@ -2232,7 +2232,7 @@
     },
     {
       "id": "vb603",
-      "category": "electronics",
+      "category": "hobbies",
       "rating": 4.8,
       "priceAli": 150,
       "priceLocal": 224,
@@ -2279,7 +2279,7 @@
     },
     {
       "id": "baseus",
-      "category": "electronics",
+      "category": "cartech",
       "rating": 5.0,
       "priceAli": 226,
       "priceLocal": 338,
@@ -2324,7 +2324,7 @@
     },
     {
       "id": "item-3256809407806840",
-      "category": "electronics",
+      "category": "cartech",
       "rating": 4.7,
       "priceAli": 104,
       "priceLocal": 155,
@@ -2414,7 +2414,7 @@
     },
     {
       "id": "item-3256805826467085",
-      "category": "electronics",
+      "category": "smarthome",
       "rating": 4.6,
       "priceAli": 454,
       "priceLocal": 680,
@@ -2594,7 +2594,7 @@
     },
     {
       "id": "xiaomi-washer",
-      "category": "smarthome",
+      "category": "cartech",
       "rating": 4.9,
       "priceAli": 289,
       "priceLocal": 433,
@@ -2824,7 +2824,7 @@
       "id": "rockbros-lock",
       "reviewId": 72,
       "productId": 74,
-      "category": "lifestyle",
+      "category": "cartech",
       "rating": 4.5,
       "priceAli": 250,
       "priceAliUsd": 67.54,
