@@ -275,7 +275,7 @@ function applyLanguageSettings() {
 
 let siteSettingsData = {};
 
-const DB_CACHE_KEY = 'alistyle_db_cache_v17';
+const DB_CACHE_KEY = 'alistyle_db_cache_v18';
 const DB_CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
 function mergeBaseAndLiveReviews(baseReviews, liveReviews) {
@@ -414,7 +414,7 @@ function syncLiveFeedInBackground(baseReviews) {
  */
 async function fetchDatabase() {
     try {
-        // 1. Instant 0ms sessionStorage hit for cross-page navigation
+        // 1. Instant 0ms sessionStorage hit for cross-page navigation + non-blocking background sync
         try {
             const rawCache = sessionStorage.getItem(DB_CACHE_KEY);
             if (rawCache) {
@@ -424,6 +424,7 @@ async function fetchDatabase() {
                     categoriesData = parsed.categories || [];
                     siteSettingsData = parsed.siteSettings || {};
                     applySiteSettings();
+                    syncLiveFeedInBackground(reviewsData);
                     return;
                 }
             }
