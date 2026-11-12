@@ -1,5 +1,5 @@
 /* AliStyle service worker: network-first (always fresh), cache fallback for offline use. */
-const CACHE = 'alistyle-v18-live-2026';
+const CACHE = 'alistyle-v19-cats-2026';
 const SHELL = ['./', 'index.html', 'review.html', 'style.css', 'neon.css', 'main.js', 'features.js', 'logo.png', 'manifest.webmanifest'];
 
 self.addEventListener('install', e => {

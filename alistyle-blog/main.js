@@ -275,8 +275,136 @@ function applyLanguageSettings() {
 
 let siteSettingsData = {};
 
-const DB_CACHE_KEY = 'alistyle_db_cache_v18';
+const DB_CACHE_KEY = 'alistyle_db_cache_v19';
 const DB_CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+
+const DEFAULT_CATEGORIES = [
+    { id: 'collections', ru: '🔥 Подборки', he: '🔥 אוספים מובחרים' },
+    { id: 'electronics', ru: 'Электроника и Гаджеты', he: 'אלקטרוניקה וגאדג\'טים' },
+    { id: 'smarthome', ru: 'Умный дом и Быт', he: 'בית חכם ומוצרים לבית' },
+    { id: 'tools', ru: 'Инструменты и 3D', he: 'כלי עבודה ומדפסות 3D' },
+    { id: 'hobbies', ru: 'Хобби и Модели', he: 'תחביבים, פאזלים ורובוטים' },
+    { id: 'cartech', ru: 'Автотовары', he: 'מוצרים לרכב' },
+    { id: 'lifestyle', ru: 'Стиль, Красота и Питомцы', he: 'לייף סטייל, טיפוח וחיות מחמד' }
+];
+
+const NAV_SHORT_LABELS = {
+    all: { ru: 'Все', he: 'הכל' },
+    collections: { ru: '🔥 Подборки', he: '🔥 אוספים' },
+    electronics: { ru: 'Гаджеты', he: 'גאדג\'טים' },
+    smarthome: { ru: 'Для дома', he: 'לבית' },
+    tools: { ru: 'Инструменты', he: 'כלי עבודה' },
+    hobbies: { ru: 'Хобби', he: 'תחביבים' },
+    cartech: { ru: 'Авто', he: 'לרכב' },
+    lifestyle: { ru: 'Стиль и Питомцы', he: 'לייף סטייל' }
+};
+
+function autoClassifyCategory(item) {
+    if (!item) return 'electronics';
+    const isCol = !!(item.isCollection || (item.products && item.products.length > 0) || String(item.id || '').startsWith('col-'));
+    if (isCol) return 'collections';
+
+    const existing = String(item.category || '').toLowerCase().trim();
+    if (['collections', 'hobbies', 'lifestyle', 'cartech', 'tools'].includes(existing)) {
+        return existing;
+    }
+
+    const titleText = `${item.ru?.title || ''} ${item.he?.title || ''}`.toLowerCase();
+    const fullText = `${titleText} ${item.ru?.excerpt || ''} ${(item.ru?.body || '').slice(0, 600)}`.toLowerCase();
+
+    const hasAny = (text, words) => words.some(w => text.includes(w));
+
+    const hobbyWords = [
+        'rokr', 'robotime', 'пинбол', 'pinball', 'конструктор', 'пазл', 'puzzle',
+        'модель для сборки', 'деревянн', 'book nook', 'румбокс', 'миниатюр',
+        'loona', 'emo ', 'робот-питомец', 'игрушк', 'радиоуправляемый', 'квадрокоптер',
+        'дрон', 'аниме', 'фигурк', 'шахмат', 'настольная игра', 'спиннер', 'fidget'
+    ];
+    const carWords = [
+        'автомобил', 'автомагнитол', 'видеорегистратор', 'регистратор', 'carplay',
+        'android auto', 'dashcam', 'jump starter', 'пусковое', 'компрессор для шин',
+        'разветвитель прикуривателя', 'держатель в авто', 'автопылесос', '70mai',
+        'obd2', 'obd', 'в машину', 'для авто', 'baseus car', 'полировальн'
+    ];
+    const toolWords = [
+        '3d-принтер', '3d принтер', '3d printer', 'bambu', 'creality', 'anycubic',
+        'voron', 'филамент', 'лазерный гравер', 'engraver', 'паяльник', 'паяльн',
+        'мультиметр', 'осциллограф', 'шуруповерт', 'гайковерт', 'перфоратор',
+        'дрель', 'болгарк', 'ушм', 'отвертк', 'набор инструментов', 'инструмент',
+        'динамометрическ', 'ключ', 'плоскогубц', 'стриппер', 'кримпер', 'рулетк',
+        'лазерный уровень', 'нивелир', 'тепловизор', 'эндоскоп', 'пирометр',
+        'точилка для ножей', 'точильн', 'сварочн', 'фрезер', 'гравер', 'dremel',
+        'fnirsi', 'sequre', 'p1s', 'k1c', 'kobra'
+    ];
+    const lifestyleWords = [
+        'кошк', 'собак', 'питомц', 'pet ', 'кормушк', 'поилк', 'ошейник',
+        'когтеточк', 'лежанк', 'rojeco', 'кошач', 'фен ', 'стайлер', 'выпрямитель',
+        'плойк', 'бритв', 'триммер', 'эпилятор', 'массажер', 'массажн', 'зубная щетка',
+        'ирригатор', 'рюкзак', 'сумк', 'чемодан', 'кошелек', 'кардхолдер',
+        'очки', 'часы ', 'наручные часы', 'куртк', 'худи', 'кроссовк', 'ботинк',
+        'обувь', 'одежд', 'термос', 'термокружк', 'бутылка для воды', 'зонт',
+        'кемпинг', 'палатк', 'спальник', 'фонарик', 'налобный фонарь',
+        'велосипед', 'велокомпьютер', 'велофар', 'самокат', 'фитнес', 'гантел',
+        'эспандер', 'коврик для йоги', 'беговая дорожка'
+    ];
+    const smarthomeWords = [
+        'робот-пылесос', 'пылесос', 'dreame', 'roborock', 'ecovacs', 'tineco',
+        'швабр', 'мойщик окон', 'пароочиститель', 'кофемашин', 'кофеварк', 'капучинатор',
+        'кофемолк', 'аэрогриль', 'мультиварк', 'блендер', 'миксер', 'чайник',
+        'тостер', 'вафельниц', 'кухонн', 'посуд', 'сковород', 'кастрюл',
+        'дозатор', 'диспенсер', 'зубных щеток', 'держатель для ванной',
+        'светильник', 'люстр', 'торшер', 'ночник', 'настольная лампа',
+        'светодиодная лента', 'led лента', 'умная лампа', 'умная розетка',
+        'умный выключатель', 'датчик движения', 'датчик протечки', 'датчик температуры',
+        'термостат', 'zigbee', 'tuya', 'aqara', 'sonoff', 'mijia', 'умный дом',
+        'увлажнитель', 'очиститель воздуха', 'осушитель', 'обогреватель',
+        'вентилятор', 'кондиционер', 'отпариватель', 'утюг', 'сушилка',
+        'подушк', 'одеял', 'матрас', 'постельн', 'штор', 'карниз', 'органайзер',
+        'полк', 'стеллаж', 'кресл', 'стул', 'стол', 'мебель', 'сантехник',
+        'душев', 'лейка для душа', 'смеситель', 'кран '
+    ];
+    const electronicsWords = [
+        'смартфон', 'телефон', 'айфон', 'iphone', 'poco', 'redmi', 'realme', 'oneplus',
+        'планшет', 'ipad', 'ноутбук', 'мини-пк', 'mini pc', 'неттоп',
+        'наушник', 'tws', 'гарнитур', 'колонк', 'саундбар', 'динамик', 'микрофон',
+        'цап', 'усилитель звука', 'аудио', 'fiio', 'anker soundcore', 'edifier',
+        'проектор', 'монитор', 'телевизор', 'тв-приставк', 'tv box', 'медиаплеер',
+        'клавиатур', 'мышь', 'мышка', 'коврик для мыши', 'геймпад', 'джойстик',
+        'консоль', 'приставка', 'ретро-консоль', 'anbernic', 'trimui', 'miyoo',
+        'флешк', 'карта памяти', 'microsd', 'ssd', 'nvme', 'жесткий диск', 'карман для ssd',
+        'роутер', 'маршрутизатор', 'wi-fi', 'wifi', 'сетевая карта', 'коммутатор', 'хаб',
+        'док-станц', 'адаптер', 'переходник', 'кабель', 'type-c', 'lightning', 'hdmi',
+        'зарядн', 'gan ', 'повербанк', 'powerbank', 'power bank', 'внешний аккумулятор',
+        'беспроводная зарядка', 'magsafe', 'ugreen', 'baseus', 'essager', 'toocki',
+        'процессор', 'материнск', 'видеокарт', 'оперативная память', 'ddr4', 'ddr5',
+        'кулер для пк', 'водяное охлаждение', 'корпус пк', 'блок питания',
+        'камера наблюдения', 'ip-камера', 'веб-камера', 'экшн-камера', 'петличк',
+        'штатив', 'стабилизатор', 'стедикам', 'кольцевая лампа', 'смарт-часы', 'фитнес-браслет'
+    ];
+
+    if (hasAny(titleText, hobbyWords)) return 'hobbies';
+    if (hasAny(titleText, carWords)) return 'cartech';
+    if (hasAny(titleText, toolWords)) return 'tools';
+    if (hasAny(titleText, lifestyleWords)) return 'lifestyle';
+    if (hasAny(titleText, smarthomeWords)) return 'smarthome';
+    if (hasAny(titleText, electronicsWords)) return 'electronics';
+
+    if (hasAny(fullText, hobbyWords)) return 'hobbies';
+    if (hasAny(fullText, carWords)) return 'cartech';
+    if (hasAny(fullText, toolWords)) return 'tools';
+    if (hasAny(fullText, lifestyleWords)) return 'lifestyle';
+    if (hasAny(fullText, smarthomeWords)) return 'smarthome';
+    if (hasAny(fullText, electronicsWords)) return 'electronics';
+
+    return (existing === 'smarthome' || existing === 'electronics') ? existing : 'electronics';
+}
+
+function getCategoryLabel(catId, lang = currentLang) {
+    if (!catId) return '';
+    const found = (categoriesData || []).find(c => c.id === catId) || DEFAULT_CATEGORIES.find(c => c.id === catId);
+    if (found) return found[lang] || found['ru'] || catId;
+    return catId;
+}
 
 function mergeBaseAndLiveReviews(baseReviews, liveReviews) {
     const seenIds = new Set();
@@ -329,6 +457,7 @@ function mergeBaseAndLiveReviews(baseReviews, liveReviews) {
                 r.products = matchLive.products;
             }
         }
+        r.category = autoClassifyCategory(r);
         merged.push(r);
     });
 
@@ -354,6 +483,7 @@ function mergeBaseAndLiveReviews(baseReviews, liveReviews) {
         if (lr.image && !lrIsCol) seenImages.add(lr.image);
         const lrLink = lr.ru?.aliLink || '';
         if (lrLink && !lrLink.startsWith('#')) seenLinks.add(lrLink);
+        lr.category = autoClassifyCategory(lr);
         newLive.push(lr);
     });
 
@@ -389,7 +519,7 @@ function syncLiveFeedInBackground(baseReviews) {
 
             const { all, newCount, updatedCount } = mergeBaseAndLiveReviews(baseReviews, liveReviews);
             reviewsData = all;
-            if (!categoriesData.length && Array.isArray(liveData.categories)) {
+            if (Array.isArray(liveData.categories) && liveData.categories.length >= DEFAULT_CATEGORIES.length) {
                 categoriesData = liveData.categories;
             }
             saveDbCache();
@@ -720,20 +850,123 @@ if (typeof window !== 'undefined') {
  */
 let currentActiveFilter = 'all';
 
-function renderCategoryFilters() {
-    const container = document.getElementById('filter-container');
-    if (!container) return;
+const catNameFallbacks = {
+    collections: { ru: '🔥 Подборки', he: '🔥 אוספים מובחרים' },
+    electronics: { ru: 'Электроника и Гаджеты', he: 'אלקטרוניקה וגאדג\'טים' },
+    smarthome: { ru: 'Умный дом и Быт', he: 'בית חכם ומוצרים לבית' },
+    tools: { ru: 'Инструменты и 3D', he: 'כלי עבודה ומדפסות 3D' },
+    hobbies: { ru: 'Хобби и Модели', he: 'תחביבים, פאזלים ורובוטים' },
+    cartech: { ru: 'Автотовары', he: 'מוצרים לרכב' },
+    lifestyle: { ru: 'Стиль, Красота и Питомцы', he: 'לייף סטייל, טיפוח וחיות מחמד' },
+    aliexpress: { ru: 'Подборки AliExpress', he: 'אוספי AliExpress' },
+    other: { ru: 'Другие товары', he: 'מוצרים נוספים' }
+};
 
-    const t = translations[currentLang];
-    container.innerHTML = '';
-
-    // Count reviews per category
+function getOrderedActiveCategories() {
     const counts = { all: reviewsData.length };
     reviewsData.forEach(r => {
         if (r.category) {
             counts[r.category] = (counts[r.category] || 0) + 1;
         }
     });
+
+    const ordered = [];
+    const addedIds = new Set(['all']);
+    const catSource = (categoriesData && categoriesData.length >= DEFAULT_CATEGORIES.length)
+        ? categoriesData
+        : DEFAULT_CATEGORIES;
+
+    catSource.forEach(c => {
+        if (counts[c.id] && counts[c.id] > 0 && !addedIds.has(c.id)) {
+            addedIds.add(c.id);
+            const label = c[currentLang] || c['ru'] || (catNameFallbacks[c.id] ? catNameFallbacks[c.id][currentLang] : c.id);
+            ordered.push({ id: c.id, label, count: counts[c.id] });
+        }
+    });
+
+    Object.keys(counts).forEach(catId => {
+        if (!addedIds.has(catId) && counts[catId] > 0) {
+            addedIds.add(catId);
+            const fb = catNameFallbacks[catId];
+            const label = fb ? fb[currentLang] : (catId.charAt(0).toUpperCase() + catId.slice(1));
+            ordered.push({ id: catId, label, count: counts[catId] });
+        }
+    });
+
+    return { counts, ordered };
+}
+
+function renderNavAndFooterCategories(activeCat = currentActiveFilter) {
+    const isIndexPage = !!document.getElementById('reviews-grid');
+    const { ordered } = getOrderedActiveCategories();
+
+    // 1. Update Header Nav Menu (#nav-menu)
+    const navMenu = document.getElementById('nav-menu');
+    if (navMenu && ordered.length > 0) {
+        const allShort = NAV_SHORT_LABELS.all[currentLang] || 'Все';
+        let navHtml = `<li><a href="${isIndexPage ? '#' : 'index.html'}" class="nav-link ${activeCat === 'all' ? 'active' : ''}" data-filter="all">${allShort}</a></li>`;
+        ordered.forEach(cat => {
+            const shortObj = NAV_SHORT_LABELS[cat.id];
+            const shortLabel = shortObj ? (shortObj[currentLang] || shortObj.ru) : cat.label;
+            const href = isIndexPage ? `?category=${encodeURIComponent(cat.id)}` : `index.html?category=${encodeURIComponent(cat.id)}`;
+            navHtml += `<li><a href="${href}" class="nav-link ${activeCat === cat.id ? 'active' : ''}" data-filter="${cat.id}">${shortLabel}</a></li>`;
+        });
+        navMenu.innerHTML = navHtml;
+
+        if (isIndexPage) {
+            navMenu.querySelectorAll('.nav-link[data-filter]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const filterVal = link.getAttribute('data-filter') || 'all';
+                    applyCategoryFilter(filterVal);
+                    navMenu.classList.remove('active');
+                    const toggleBtn = document.getElementById('menu-toggle');
+                    if (toggleBtn) toggleBtn.classList.remove('open');
+                    const grid = document.getElementById('reviews-grid');
+                    if (grid) {
+                        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+    }
+
+    // 2. Update Footer Navigation Categories (.footer-links first block)
+    const footerNavLists = document.querySelectorAll('.footer-links');
+    if (footerNavLists.length > 0 && ordered.length > 0) {
+        const firstFooterList = footerNavLists[0];
+        let footerHtml = '';
+        ordered.forEach(cat => {
+            const href = isIndexPage ? `?category=${encodeURIComponent(cat.id)}` : `index.html?category=${encodeURIComponent(cat.id)}`;
+            footerHtml += `<li><a href="${href}" data-filter="${cat.id}">${cat.label} (${cat.count})</a></li>`;
+        });
+        firstFooterList.innerHTML = footerHtml;
+
+        if (isIndexPage) {
+            firstFooterList.querySelectorAll('a[data-filter]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const filterVal = link.getAttribute('data-filter') || 'all';
+                    applyCategoryFilter(filterVal);
+                    const grid = document.getElementById('reviews-grid');
+                    if (grid) {
+                        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+    }
+}
+
+function renderCategoryFilters() {
+    const container = document.getElementById('filter-container');
+    renderNavAndFooterCategories(currentActiveFilter);
+    if (!container) return;
+
+    const t = translations[currentLang];
+    container.innerHTML = '';
+
+    const { counts, ordered } = getOrderedActiveCategories();
 
     // 1. All reviews button
     const allBtn = document.createElement('button');
@@ -742,43 +975,13 @@ function renderCategoryFilters() {
     allBtn.innerHTML = `<span>${t.filterAll}</span><span class="filter-count">(${counts.all})</span>`;
     container.appendChild(allBtn);
 
-    // Fallbacks dictionary for category names
-    const catNameFallbacks = {
-        electronics: { ru: 'Электроника и Гаджеты', he: 'אלקטרוניקה וגאדג\'טים' },
-        smarthome: { ru: 'Товары для дома', he: 'מוצרים לבית' },
-        cartech: { ru: 'Автотовары', he: 'מוצרים לרכב' },
-        tools: { ru: 'Инструменты', he: 'כלי עבודה' },
-        aliexpress: { ru: 'Подборки AliExpress', he: 'אוספי AliExpress' },
-        other: { ru: 'Другие товары', he: 'מוצרים נוספים' }
-    };
-
-    const addedIds = new Set(['all']);
-
-    // First add from categoriesData
-    categoriesData.forEach(c => {
-        if (counts[c.id] && counts[c.id] > 0 && !addedIds.has(c.id)) {
-            addedIds.add(c.id);
-            const label = c[currentLang] || c['ru'] || (catNameFallbacks[c.id] ? catNameFallbacks[c.id][currentLang] : c.id);
-            const btn = document.createElement('button');
-            btn.className = `filter-btn ${currentActiveFilter === c.id ? 'active' : ''}`;
-            btn.setAttribute('data-filter', c.id);
-            btn.innerHTML = `<span>${label}</span><span class="filter-count">(${counts[c.id]})</span>`;
-            container.appendChild(btn);
-        }
-    });
-
-    // Any remaining categories in reviewsData
-    Object.keys(counts).forEach(catId => {
-        if (!addedIds.has(catId) && counts[catId] > 0) {
-            addedIds.add(catId);
-            const fb = catNameFallbacks[catId];
-            const label = fb ? fb[currentLang] : (catId.charAt(0).toUpperCase() + catId.slice(1));
-            const btn = document.createElement('button');
-            btn.className = `filter-btn ${currentActiveFilter === catId ? 'active' : ''}`;
-            btn.setAttribute('data-filter', catId);
-            btn.innerHTML = `<span>${label}</span><span class="filter-count">(${counts[catId]})</span>`;
-            container.appendChild(btn);
-        }
+    // 2. Ordered category buttons
+    ordered.forEach(c => {
+        const btn = document.createElement('button');
+        btn.className = `filter-btn ${currentActiveFilter === c.id ? 'active' : ''}`;
+        btn.setAttribute('data-filter', c.id);
+        btn.innerHTML = `<span>${c.label}</span><span class="filter-count">(${c.count})</span>`;
+        container.appendChild(btn);
     });
 
     // Bind event listeners
@@ -792,6 +995,17 @@ function renderCategoryFilters() {
 
 function applyCategoryFilter(filterValue) {
     currentActiveFilter = filterValue;
+
+    // Update URL query string cleanly without reloading
+    if (document.getElementById('reviews-grid') && window.history && window.history.replaceState) {
+        const url = new URL(window.location.href);
+        if (filterValue && filterValue !== 'all') {
+            url.searchParams.set('category', filterValue);
+        } else {
+            url.searchParams.delete('category');
+        }
+        window.history.replaceState({}, '', url.toString());
+    }
 
     // Sync filter buttons
     document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -832,20 +1046,15 @@ function applyCategoryFilter(filterValue) {
 }
 
 function initCategoryFilters() {
+    const params = new URLSearchParams(window.location.search);
+    const urlCat = params.get('category');
+    if (urlCat) {
+        currentActiveFilter = urlCat;
+    }
     renderCategoryFilters();
-
-    // Nav-bar filter links
-    document.querySelectorAll('.nav-link[data-filter]').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const filterVal = link.getAttribute('data-filter') || 'all';
-            applyCategoryFilter(filterVal);
-            const grid = document.getElementById('reviews-grid');
-            if (grid) {
-                grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
+    if (urlCat && urlCat !== 'all') {
+        applyCategoryFilter(urlCat);
+    }
 }
 
 /**
@@ -875,8 +1084,7 @@ function renderIndexPage() {
         const prices = normalizePrices(item);
 
         // Map Category Label
-        const categoryObj = categoriesData.find(c => c.id === item.category);
-        const categoryLabel = categoryObj ? (categoryObj[currentLang] || categoryObj['ru']) : item.category;
+        const categoryLabel = getCategoryLabel(item.category, currentLang) || (catNameFallbacks[item.category] ? catNameFallbacks[item.category][currentLang] : item.category);
 
         // Build Star Ratings
         const itemRatingObj = normalizeRating(item.rating);
@@ -936,7 +1144,7 @@ function renderIndexPage() {
             </div>
             <div class="article-content">
                 <div class="article-meta">
-                    <span class="article-category">${categoryLabel}</span>
+                    <span class="article-category" data-cat-filter="${item.category}" style="cursor:pointer;" title="${categoryLabel}">${categoryLabel}</span>
                 </div>
                 <h2 class="article-title">
                     <a href="review.html?id=${item.id}">${langData.title}</a>
@@ -964,6 +1172,13 @@ function renderIndexPage() {
                 </div>
             </div>
         `;
+        const catBadgeEl = card.querySelector('.article-category[data-cat-filter]');
+        if (catBadgeEl) {
+            catBadgeEl.addEventListener('click', () => {
+                applyCategoryFilter(item.category);
+                grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
         frag.appendChild(card);
 
         // Insert native In-Feed Ad Banner card after the 3rd card
@@ -997,6 +1212,9 @@ function renderIndexPage() {
         }
     });
     grid.appendChild(frag);
+    if (currentActiveFilter && currentActiveFilter !== 'all') {
+        applyCategoryFilter(currentActiveFilter);
+    }
 }
 
 /**
@@ -1058,6 +1276,8 @@ function renderReviewPage() {
         return;
     }
 
+    renderNavAndFooterCategories(review.category);
+
     const langData = review[currentLang] || review['ru'] || review['he'];
     if (!langData) return;
 
@@ -1084,13 +1304,12 @@ function renderReviewPage() {
     if (ogUrlEl) ogUrlEl.setAttribute('content', canonicalUrl);
 
     // 2. Category mapping & Reading time
-    const categoryObj = categoriesData.find(c => c.id === review.category);
-    const categoryLabel = categoryObj ? (categoryObj[currentLang] || categoryObj['ru']) : review.category;
+    const categoryLabel = getCategoryLabel(review.category, currentLang) || (catNameFallbacks[review.category] ? catNameFallbacks[review.category][currentLang] : review.category);
+    const categoryHref = `index.html?category=${encodeURIComponent(review.category || 'all')}`;
     
     const metaCategory = document.getElementById('review-meta-category');
     if (metaCategory) {
-        metaCategory.innerText = categoryLabel;
-        metaCategory.setAttribute('href', `index.html`);
+        metaCategory.innerHTML = `<a href="${categoryHref}" style="color:inherit;text-decoration:none;">${categoryLabel}</a>`;
     }
 
     const metaDateEl = document.getElementById('review-meta-date');
@@ -1105,7 +1324,7 @@ function renderReviewPage() {
 
     const breadcrumbCategory = document.getElementById('breadcrumb-category');
     if (breadcrumbCategory) {
-        breadcrumbCategory.innerText = categoryLabel;
+        breadcrumbCategory.innerHTML = `<a href="${categoryHref}" style="color:inherit;text-decoration:none;">${categoryLabel}</a>`;
     }
     
     const breadcrumbTitle = document.getElementById('breadcrumb-title');
@@ -1602,8 +1821,7 @@ function renderSimilarReviews(currentReview) {
         const langData = item[currentLang] || item['ru'] || item['he'];
         if (!langData) return;
 
-        const categoryObj = categoriesData.find(c => c.id === item.category);
-        const categoryLabel = categoryObj ? (categoryObj[currentLang] || categoryObj['ru']) : item.category;
+        const categoryLabel = getCategoryLabel(item.category, currentLang) || (catNameFallbacks[item.category] ? catNameFallbacks[item.category][currentLang] : item.category);
         const itemPrices = normalizePrices(item);
 
         const card = document.createElement('article');
